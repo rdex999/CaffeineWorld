@@ -1,0 +1,87 @@
+#include "vector2d.h"
+
+vector2d::vector2d()
+{
+    X = 0;
+    Y = 0;
+}
+
+vector2d::vector2d(int X, int Y)
+{
+    this->X = X;
+    this->Y = Y;
+}
+
+void vector2d::operator+=(const vector2d &vec)
+{
+    this->X += vec.X;
+    this->Y += vec.Y;
+}
+
+void vector2d::operator-=(const vector2d &vec)
+{
+    this->X -= vec.X;
+    this->Y -= vec.Y;
+}
+
+void vector2d::operator*=(const vector2d &vec)
+{
+    this->X *= vec.X;
+    this->Y *= vec.Y;
+}
+
+void vector2d::operator/=(const vector2d &vec)
+{
+    this->X /= vec.X;
+    this->Y /= vec.Y;
+}
+
+vector2d vector2d::operator+(const vector2d &vec)
+{
+    return vector2d(this->X + vec.X, this->Y + vec.Y);
+}
+
+vector2d vector2d::operator-(const vector2d &vec)
+{
+    return vector2d(this->X - vec.X, this->Y - vec.Y);
+}
+
+vector2d vector2d::operator*(const vector2d &vec)
+{
+    return vector2d(this->X * vec.X, this->Y * vec.Y);
+}
+
+vector2d vector2d::operator/(const vector2d &vec)
+{
+    return vector2d(this->X / vec.X, this->Y / vec.Y);
+}
+
+bool vector2d::operator==(const vector2d &vec)
+{
+    return this->X == vec.X && this->Y == vec.Y;
+}
+
+bool vector2d::operator!=(const vector2d &vec)
+{
+    return this->X != vec.X || this->Y != vec.Y;
+}
+
+bool vector2d::operator>=(const vector2d &vec)
+{
+    return this->X >= vec.X && this->Y >= vec.Y;
+}
+
+bool vector2d::operator<=(const vector2d &vec)
+{
+    return this->X <= vec.X && this->Y <= vec.Y;
+}
+
+bool vector2d::operator>(const vector2d &vec)
+{
+    return this->X > vec.X && this->Y > vec.Y;
+}
+
+bool vector2d::operator<(const vector2d &vec)
+{
+    return this->X < vec.X && this->Y < vec.Y;
+}
