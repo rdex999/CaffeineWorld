@@ -20,7 +20,7 @@ background::background(base* baseObj)
     }
     SDL_FreeSurface(tempSurface);
 
-    setBox();
+    baseObj->boxes.insert(baseObj->boxes.begin(), new box(texture, vector2d(0, 0), baseObj->screenSize, false, nullptr));
 }
 
 background::~background()
@@ -33,5 +33,5 @@ background::~background()
 void background::setBox()
 {
     // insert a new box at the beginning of the array (index 0)
-    baseObj->boxes.insert(baseObj->boxes.begin(), new box(texture, vector2d(0, 0), baseObj->screenSize)); 
+    baseObj->boxes[0] = new box(texture, vector2d(0, 0), baseObj->screenSize, false, nullptr);
 }

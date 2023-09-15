@@ -12,6 +12,7 @@ int main()
 
         containerObj->baseObj->renderBoxes();
         containerObj->handleEvent();
+        containerObj->runTicks();
 
         containerObj->baseObj->deltaTime = (double)(time(NULL) - deltaTimeStart);
     }
@@ -72,6 +73,15 @@ void container::handleEvent()
 
             default:
                 break;
+        }
+    }
+}
+
+void container::runTicks()
+{
+    for(box* b: baseObj->boxes){
+        if(b->shouldTick){
+            b->tick();
         }
     }
 }

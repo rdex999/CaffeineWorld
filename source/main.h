@@ -16,6 +16,9 @@ typedef struct container
 
     // handle keyboard
     void handleEvent();
+
+    // runs all the tick functions from the boxes array 
+    void runTicks();
 } container;
 
 #endif

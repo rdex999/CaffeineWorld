@@ -21,6 +21,8 @@ class player
 
         vector2d screenLocation;
         vector2d playerSize;
+
+        void tick();
 };
 
 #endif
