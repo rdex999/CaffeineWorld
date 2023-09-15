@@ -22,7 +22,7 @@ class player
         vector2d screenLocation;
         vector2d playerSize;
 
-        void tick();
+        void tick(double deltaTime);
 };
 
 #endif

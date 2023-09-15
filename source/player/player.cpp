@@ -25,7 +25,7 @@ player::player(base *baseObj)
     }
 
     baseObj->boxes.insert(baseObj->boxes.end(), new box(textures[0], screenLocation,
-        playerSize, true, std::bind(&player::tick, this)));
+        playerSize, true, std::bind(&player::tick, this, std::placeholders::_1)));
 }
 
 player::~player()
@@ -41,10 +41,9 @@ void player::setBox(int textureIndex)
 {
     // update box in the last position in the array
     baseObj->boxes[baseObj->boxes.size() - 1] = new box(textures[textureIndex], screenLocation,
-        screenLocation+playerSize, true, std::bind(&player::tick, this));
+        screenLocation+playerSize, true, std::bind(&player::tick, this, std::placeholders::_1));
 }
 
-void player::tick()
+void player::tick(double deltaTime)
 {
-    std::cout << "player tick called" << std::endl;
 }

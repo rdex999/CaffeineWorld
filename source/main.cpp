@@ -5,16 +5,17 @@ int main()
     srand(time(NULL));
     container* containerObj = new container;
 
-    double deltaTimeStart = 0; 
+    Uint64 deltaTimeNow = SDL_GetPerformanceCounter();
+    Uint64 deltaTimeLast = 0;
     while(containerObj->baseObj->run)
     {
-        deltaTimeStart = (double)time(NULL);
+        deltaTimeLast = deltaTimeNow;
+        deltaTimeNow = SDL_GetPerformanceCounter();
+        containerObj->baseObj->deltaTime = ((deltaTimeNow - deltaTimeLast)*1000 / (double)SDL_GetPerformanceFrequency())*0.001;
 
         containerObj->baseObj->renderBoxes();
         containerObj->handleEvent();
         containerObj->runTicks();
-
-        containerObj->baseObj->deltaTime = (double)(time(NULL) - deltaTimeStart);
     }
 
     delete containerObj; 
@@ -81,7 +82,7 @@ void container::runTicks()
 {
     for(box* b: baseObj->boxes){
         if(b->shouldTick){
-            b->tick();
+            b->tick(baseObj->deltaTime);
         }
     }
 }
