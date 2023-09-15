@@ -2,11 +2,11 @@ files = ./source/main.cpp ./source/vector2d/vector2d.cpp ./source/base/base.cpp 
 flags = -lSDL2_image
 
 all:
-	g++ -Wall `sdl2-config --cflags --libs` $(flags) -o main $(files)
+	g++ -Wall `sdl2-config --cflags --libs` $(flags) -o CaffeineWorld $(files)
 
 launch:
-	g++ -Wall `sdl2-config --cflags --libs` $(flags) -o main $(files)
+	g++ -Wall `sdl2-config --cflags --libs` $(flags) -o CaffeineWorld $(files)
 	./main
 
 build:
-	g++ -Wall `sdl2-config --cflags --libs` $(flags) -o main $(files)
+	g++ -Wall `sdl2-config --cflags --libs` $(flags) -o CaffeineWorld $(files)

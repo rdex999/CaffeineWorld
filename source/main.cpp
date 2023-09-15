@@ -11,6 +11,7 @@ int main()
         deltaTimeStart = (double)time(NULL);
 
         containerObj->baseObj->renderBoxes();
+        containerObj->handleEvent();
 
         containerObj->baseObj->deltaTime = (double)(time(NULL) - deltaTimeStart);
     }
@@ -30,4 +31,44 @@ container::~container()
 {
     if(baseObj){delete baseObj;}
     if(backgroundObj){delete backgroundObj;}
+
+    SDL_Quit();
+}
+
+void container::handleEvent()
+{
+    SDL_Event event;
+    while(SDL_PollEvent(&event))
+    {
+        switch(event.type)
+        {
+            // In case user requests exit, quit the game.
+            case SDL_WINDOWEVENT_CLOSE: 
+                std::cout << "Quiting." << std::endl;
+                baseObj->run = false; 
+                break;
+
+            case SDL_QUIT:
+                std::cout << "Quiting." << std::endl;
+                baseObj->run = false; 
+                break;
+
+            case SDL_KEYDOWN:
+            {
+                switch(event.key.keysym.sym)
+                {
+                    // add in future
+                    case SDLK_ESCAPE:
+                        break;
+
+                    default:
+                        break;
+                }
+                break; 
+            }
+
+            default:
+                break;
+        }
+    }
 }

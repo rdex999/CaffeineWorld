@@ -12,6 +12,8 @@ typedef struct container
     base* baseObj;
     background* backgroundObj;
 
+    // handle keyboard
+    void handleEvent();
 } container;
 
 #endif
