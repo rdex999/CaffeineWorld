@@ -23,14 +23,17 @@ int main()
 container::container()
 {
     vector2d screenSize(1920, 1080);
+
     baseObj = new base(&screenSize);
     backgroundObj = new background(baseObj);
+    playerObj = new player(baseObj);
 }
 
 container::~container()
 {
     if(baseObj){delete baseObj;}
     if(backgroundObj){delete backgroundObj;}
+    if(playerObj){delete playerObj;}
 
     SDL_Quit();
 }

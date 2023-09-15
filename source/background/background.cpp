@@ -2,21 +2,25 @@
 
 background::background(base* baseObj)
 {
-    SDL_Surface* tempSurface = IMG_Load("./images/background.png");
+    //store the baseObj pointer
+    this->baseObj = baseObj;
+
+    // load the image and create a surface
+    SDL_Surface* tempSurface = IMG_Load("./images/background/backgroundMain.png");
     if(!tempSurface){
-        std::cout << "Error: could not load background image. " << SDL_GetError() << std::endl;
+        std::cout << "Error: could not load background image.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
 
+    // create the background texture
     texture = SDL_CreateTextureFromSurface(baseObj->mainRenderer, tempSurface);
     if(!texture){
-        std::cout << "Error: could not create background texture." << std::endl;
+        std::cout << "Error: could not create background texture.\n" << SDL_GetError() << std::endl;
         exit(1); 
     }
     SDL_FreeSurface(tempSurface);
 
-    // insert the background texture to the boxes array at index 0
-    baseObj->boxes.insert(baseObj->boxes.begin(), new box(texture, vector2d(0, 0), baseObj->screenSize)); 
+    setBox();
 }
 
 background::~background()
@@ -24,4 +28,10 @@ background::~background()
     if(texture){
         SDL_DestroyTexture(texture);
     }
+}
+
+void background::setBox()
+{
+    // insert a new box at the beginning of the array (index 0)
+    baseObj->boxes.insert(baseObj->boxes.begin(), new box(texture, vector2d(0, 0), baseObj->screenSize)); 
 }

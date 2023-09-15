@@ -9,6 +9,13 @@ class background
         background(base* baseObj);
         ~background();
 
+        // a function to update the boxes array
+        void setBox();
+
+        // the baseObj pointer
+        base* baseObj;
+
+        // the texture
         SDL_Texture* texture;
 };
 

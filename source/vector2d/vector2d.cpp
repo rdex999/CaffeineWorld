@@ -36,6 +36,30 @@ void vector2d::operator/=(const vector2d &vec)
     this->Y /= vec.Y;
 }
 
+void vector2d::operator+=(const int &val)
+{
+    this->X += val;
+    this->Y += val;
+}
+
+void vector2d::operator-=(const int &val)
+{
+    this->X -= val;
+    this->Y -= val;
+}
+
+void vector2d::operator*=(const int &val)
+{
+    this->X *= val;
+    this->Y *= val;
+}
+
+void vector2d::operator/=(const int &val)
+{
+    this->X /= val;
+    this->Y /= val;
+}
+
 vector2d vector2d::operator+(const vector2d &vec)
 {
     return vector2d(this->X + vec.X, this->Y + vec.Y);
@@ -54,6 +78,26 @@ vector2d vector2d::operator*(const vector2d &vec)
 vector2d vector2d::operator/(const vector2d &vec)
 {
     return vector2d(this->X / vec.X, this->Y / vec.Y);
+}
+
+vector2d vector2d::operator+(const int &val)
+{
+    return vector2d(this->X + val, this->Y + val);
+}
+
+vector2d vector2d::operator-(const int &val)
+{
+    return vector2d(this->X - val, this->Y - val);
+}
+
+vector2d vector2d::operator*(const int &val)
+{
+    return vector2d(this->X * val, this->Y * val);
+}
+
+vector2d vector2d::operator/(const int &val)
+{
+    return vector2d(this->X / val, this->Y / val);
 }
 
 bool vector2d::operator==(const vector2d &vec)
