@@ -12,14 +12,10 @@ vector2d::vector2d(int X, int Y)
     this->Y = Y;
 }
 
-vector2d vector2d::norm(vector2d *vec)
+vector2d vector2d::norm()
 {
-    return vector2d(1/vec->X, 1/vec->Y);
-}
-
-vector2d vector2d::norm(vector2d vec)
-{
-    return vector2d(1/vec.X, 1/vec.Y);
+    float mag = std::sqrt(this->X * this->X + this->Y * this->Y);
+    return vector2d(this->X/mag, this->Y/mag);
 }
 
 void vector2d::operator+=(const vector2d &vec)

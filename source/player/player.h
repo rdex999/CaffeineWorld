@@ -36,6 +36,18 @@ class player
 
         // walking speed
         float walkingSpeed;
+
+        // original walking speed
+        float walkingSpeedOrigin;
+
+        // the speed of the slow walking when starting/stopping to walk
+        float walkingSlowDown;
+
+        // if the player stopped walking. 0=false, -1 for right, 1 for left
+        int stoppedWalking;
+
+        // the slow down speed of stopping to walk
+        float slowDownEndWalk;
 };
 
 #endif

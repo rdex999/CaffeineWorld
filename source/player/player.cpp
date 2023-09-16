@@ -11,22 +11,29 @@ player::player(base *baseObj)
     // sould the texture flip (for walking right or left)
     flip = false;
 
-    walkingSpeed = 20.f;
+    // original walking speed
+    walkingSpeedOrigin = 37.f;
+
+    // walking speed
+    walkingSpeed = walkingSpeedOrigin;
+
+    // the slow start/end of walking
+    walkingSlowDown = 0.f;
+
+    // the slow down speed of stopping to walk
+    slowDownEndWalk = 1;
+
+    // if the player stopped walking
+    stoppedWalking = 0;
 
     // set the spawn location on screen
-    screenLocation.X = baseObj->screenSize.X / 2;
-    screenLocation.Y = baseObj->screenSize.Y / 2;
+    screenLocation = baseObj->screenSize / 2;
 
     // set the player skin size
     playerSize = vector2d(422, 420)/2;
 
     // load the skin images
-    SDL_Surface* tempSurface = IMG_Load("./images/player/skin.png");
-    if(!tempSurface){
-        std::cout << "Error: could not load skin image.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
-    textures[0] = SDL_CreateTextureFromSurface(this->baseObj->mainRenderer, tempSurface);
+    textures[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skin.png");
     if(!textures[0]){
         std::cout << "Error: could not create skin texture.\n" << SDL_GetError() << std::endl;
         exit(1);
@@ -56,8 +63,18 @@ void player::setBox()
 
 void player::tick(double deltaTime)
 {
+    // allways update the box when using tick 
     setBox();
-    
+
+    if(stoppedWalking != 0){
+        if(slowDownEndWalk <= 0){
+            slowDownEndWalk = 1;
+            stoppedWalking = 0;
+        }
+        slowDownEndWalk -= deltaTime * 1.7;
+        slowDownEndWalk = std::clamp(slowDownEndWalk, 0.f, 1.f);
+        screenLocation.X -= (int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * deltaTime);
+    }
 }
 
 void player::walk(int direction)
@@ -65,5 +82,10 @@ void player::walk(int direction)
     if(direction == -1){flip = true;}
     if(direction == 1){flip = false;}
 
-    screenLocation.X += (int)(baseObj->deltaTime * walkingSpeed * -15 * direction);
+    // make starting walking smooth 
+    walkingSlowDown += baseObj->deltaTime * 1.5;
+    walkingSlowDown = std::clamp(walkingSlowDown, 0.2f, 1.f);
+
+    // set the location
+    screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
 }

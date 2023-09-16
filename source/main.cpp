@@ -72,6 +72,28 @@ void container::handleEvent()
                 break; 
             }
 
+            case SDL_KEYUP:
+            {
+                switch(event.key.keysym.sym)
+                {
+                    case SDLK_d:
+                    case SDLK_RIGHT:
+                        playerObj->walkingSlowDown = 0; 
+                        playerObj->stoppedWalking = -1;
+                        break;
+
+                    case SDLK_a:
+                    case SDLK_LEFT:
+                        playerObj->walkingSlowDown = 0; 
+                        playerObj->stoppedWalking = 1;
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+            }
+
             default:
                 break;
         }

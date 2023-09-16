@@ -1,5 +1,7 @@
 #ifndef VECTOR2D_H
 #define VECTOR2D_H
+#include <cmath>
+#include <iostream>
 
 class vector2d
 {
@@ -9,8 +11,7 @@ class vector2d
         vector2d();
         vector2d(int X, int Y);
 
-        vector2d norm(vector2d *vec);
-        vector2d norm(vector2d vec);
+        vector2d norm();
 
         void operator += (const vector2d& vec);
         void operator -= (const vector2d& vec);
