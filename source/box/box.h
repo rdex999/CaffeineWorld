@@ -9,8 +9,11 @@
 // Note 2: SOULD ONLY BE CREATED WITH THE 'new' KEYWORD
 typedef struct box
 {
-    box(class SDL_Texture* texture, vector2d* startPosition, vector2d* endPosition, bool shouldTick, std::function<void(double)> tick);
-    box(class SDL_Texture* texture, vector2d startPosition, vector2d endPosition, bool shouldTick, std::function<void(double)> tick);
+    box(class SDL_Texture* texture, vector2d* startPosition,
+        vector2d* endPosition, bool shouldTick = false, std::function<void(double)> tick = nullptr, bool flip = false);
+    
+    box(class SDL_Texture* texture, vector2d startPosition,
+        vector2d endPosition, bool shouldTick = false, std::function<void(double)> tick = nullptr, bool flip = false);
 
     vector2d startPosition;
     vector2d endPosition;
@@ -19,6 +22,9 @@ typedef struct box
 
     // if the tick function should be called or not
     bool shouldTick;
+
+    // if the renderer should flip the texture, false for the default texture
+    bool flip;
 
     std::function<void(double)> tick;
 } box;

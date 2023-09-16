@@ -32,6 +32,6 @@ background::~background()
 
 void background::setBox()
 {
-    // insert a new box at the beginning of the array (index 0)
-    baseObj->boxes[0] = new box(texture, vector2d(0, 0), baseObj->screenSize, false, nullptr);
+    // update the box at the beginning of the array (index 0)
+    baseObj->boxes[1]->texture = texture;
 }

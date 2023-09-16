@@ -9,6 +9,9 @@ class vector2d
         vector2d();
         vector2d(int X, int Y);
 
+        vector2d norm(vector2d *vec);
+        vector2d norm(vector2d vec);
+
         void operator += (const vector2d& vec);
         void operator -= (const vector2d& vec);
         void operator *= (const vector2d& vec);

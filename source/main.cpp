@@ -76,6 +76,13 @@ void container::handleEvent()
                 break;
         }
     }
+    const Uint8 *state = SDL_GetKeyboardState(NULL);
+    if(state[SDL_SCANCODE_D] || state[SDL_SCANCODE_RIGHT]){
+        playerObj->walk(-1);
+    }
+    if(state[SDL_SCANCODE_A] || state[SDL_SCANCODE_LEFT]){
+        playerObj->walk(1);
+    }
 }
 
 void container::runTicks()

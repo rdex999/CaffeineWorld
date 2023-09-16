@@ -12,6 +12,16 @@ vector2d::vector2d(int X, int Y)
     this->Y = Y;
 }
 
+vector2d vector2d::norm(vector2d *vec)
+{
+    return vector2d(1/vec->X, 1/vec->Y);
+}
+
+vector2d vector2d::norm(vector2d vec)
+{
+    return vector2d(1/vec.X, 1/vec.Y);
+}
+
 void vector2d::operator+=(const vector2d &vec)
 {
     this->X += vec.X;

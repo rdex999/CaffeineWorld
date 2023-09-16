@@ -5,6 +5,14 @@ player::player(base *baseObj)
     // store the baseObj pointer
     this->baseObj = baseObj;
 
+    // set the texture index
+    textureIndex = 0;
+
+    // sould the texture flip (for walking right or left)
+    flip = false;
+
+    walkingSpeed = 20.f;
+
     // set the spawn location on screen
     screenLocation.X = baseObj->screenSize.X / 2;
     screenLocation.Y = baseObj->screenSize.Y / 2;
@@ -37,13 +45,25 @@ player::~player()
     }
 }
 
-void player::setBox(int textureIndex)
+void player::setBox()
 {
     // update box in the last position in the array
-    baseObj->boxes[baseObj->boxes.size() - 1] = new box(textures[textureIndex], screenLocation,
-        screenLocation+playerSize, true, std::bind(&player::tick, this, std::placeholders::_1));
+    baseObj->boxes[baseObj->boxes.size() - 1]->startPosition = screenLocation;
+    baseObj->boxes[baseObj->boxes.size() - 1]->endPosition = playerSize;
+    baseObj->boxes[baseObj->boxes.size() - 1]->texture = textures[textureIndex];
+    baseObj->boxes[baseObj->boxes.size() - 1]->flip = flip;
 }
 
 void player::tick(double deltaTime)
 {
+    setBox();
+    
+}
+
+void player::walk(int direction)
+{
+    if(direction == -1){flip = true;}
+    if(direction == 1){flip = false;}
+
+    screenLocation.X += (int)(baseObj->deltaTime * walkingSpeed * -15 * direction);
 }

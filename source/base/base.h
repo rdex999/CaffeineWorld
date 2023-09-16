@@ -23,10 +23,11 @@ typedef struct base
 
     vector2d screenSize;
 
+    // the boxes vector. each box containes detailes on how it should be rendered
     std::vector<box*> boxes;
 
+    // renders each texture from each box in the boxes array 
     void renderBoxes();
-
 } base;
 
 #endif

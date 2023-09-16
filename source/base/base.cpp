@@ -30,7 +30,7 @@ void base::renderBoxes()
 {
     for(box* b: boxes){
         SDL_Rect rect = {b->startPosition.X, b->startPosition.Y, b->endPosition.X, b->endPosition.Y};
-        SDL_RenderCopy(mainRenderer, b->texture, NULL, &rect);
+        SDL_RenderCopyEx(mainRenderer, b->texture, NULL, &rect, 0, NULL, SDL_RendererFlip(b->flip));
     }
     SDL_RenderPresent(mainRenderer);
 }
