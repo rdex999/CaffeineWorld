@@ -9,6 +9,7 @@ class background
         background(base* baseObj);
         ~background();
 
+    private:
         // a function to update the boxes array
         void setBox();
 

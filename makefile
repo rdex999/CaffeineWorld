@@ -1,4 +1,5 @@
-files = ./source/main.cpp ./source/vector2d/vector2d.cpp ./source/base/base.cpp ./source/box/box.cpp ./source/background/background.cpp ./source/player/player.cpp
+s = ./source/
+files = $(s)main.cpp $(s)vector2d/vector2d.cpp $(s)base/base.cpp $(s)box/box.cpp $(s)background/background.cpp $(s)player/player.cpp
 flags = -lSDL2_image
 
 all:
