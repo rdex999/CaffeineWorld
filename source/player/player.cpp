@@ -126,7 +126,7 @@ void player::tick(double deltaTime)
     // if the player wants to jump and he is not in the air then jump
     if(jump){
         screenLocation.Y -= deltaTime * jumpIntensity * gravity * 7.5f;
-        jumpIntensity -= deltaTime * gravity;
+        jumpIntensity -= deltaTime * gravity * 1.7;
         if(jumpIntensity <= -10){
             jump = false;
             jumpIntensity = 10;

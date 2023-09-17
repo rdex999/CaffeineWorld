@@ -3,6 +3,7 @@
 #include "base/base.h"
 #include "background/background.h"
 #include "player/player.h"
+#include "inventory/inventory.h"
 
 // container for all of the components
 typedef struct container
@@ -13,6 +14,7 @@ typedef struct container
     base* baseObj;
     background* backgroundObj;
     player* playerObj;
+    inventory* inventoryObj;
 
     // handle keyboard
     void handleEvent();

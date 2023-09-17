@@ -29,6 +29,7 @@ container::container()
     baseObj = new base(&screenSize);
     backgroundObj = new background(baseObj);
     playerObj = new player(baseObj);
+    inventoryObj = new inventory(baseObj, playerObj);
 }
 
 container::~container()
@@ -36,6 +37,7 @@ container::~container()
     if(baseObj){delete baseObj;}
     if(backgroundObj){delete backgroundObj;}
     if(playerObj){delete playerObj;}
+    if(inventoryObj){delete inventoryObj;}
 
     SDL_Quit();
 }

@@ -38,7 +38,7 @@ class player
         // the player has some different textures (standing skin, reloading skin, etc..) so an array it is 
         std::array<SDL_Texture*, 1> textures;
 
-        // updates the players box at teh boxes array
+        // updates the players box at the boxes array
         void setBox();
 
         vector2d screenLocation;
