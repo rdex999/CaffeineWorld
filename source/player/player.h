@@ -49,7 +49,11 @@ class player
         
         // sould the texture flip (for walking right or left) 
         bool flip;
-        
+
+        // the gravity intensity
+        float gravity;
+
+        vector2d floorLocation;
 };
 
 #endif

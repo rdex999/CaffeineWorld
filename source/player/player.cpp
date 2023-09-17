@@ -26,6 +26,11 @@ player::player(base *baseObj)
     // if the player stopped walking
     stoppedWalking = 0;
 
+    // the gravity intensity on earth (from wikipedia)
+    gravity = 9.80665;
+
+    floorLocation = vector2d(0, baseObj->screenSize.Y/1.332);
+
     // set the spawn location on screen
     screenLocation = baseObj->screenSize / 2;
 
@@ -66,6 +71,17 @@ void player::tick(double deltaTime)
     // allways update the box when using tick 
     setBox();
 
+    // if the player is above the floor then use gravity 
+    if(screenLocation.Y < floorLocation.Y){
+        screenLocation.Y += deltaTime * gravity * 15 * 3;
+    }
+
+    // if the player is below the floor then take him up a bit
+    if(screenLocation.Y > floorLocation.Y){
+        screenLocation.Y -= 3 * deltaTime;
+    }
+
+    // slow stop when the player stops walking
     if(stoppedWalking != 0){
         if(slowDownEndWalk <= 0){
             slowDownEndWalk = 1;
