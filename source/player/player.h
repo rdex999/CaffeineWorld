@@ -23,7 +23,10 @@ class player
 
         // original walking speed
         float walkingSpeedOrigin;
-    
+
+        // checks if the player is in the air and if he is not then jump 
+        void doJump();
+
     private: 
         // function that runs on every fram
         void tick(double deltaTime);
@@ -53,7 +56,17 @@ class player
         // the gravity intensity
         float gravity;
 
+        // the floor location
         vector2d floorLocation;
+
+        // if the player should jump
+        bool jump;
+        
+        // jumping intensity
+        float jumpIntensity;
+
+        // returns whether the player is in the air or not
+        bool inAir();
 };
 
 #endif

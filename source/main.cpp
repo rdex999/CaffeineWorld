@@ -66,6 +66,12 @@ void container::handleEvent()
                     case SDLK_ESCAPE:
                         break;
 
+                    case SDLK_SPACE:
+                    case SDLK_w:
+                    case SDLK_UP:
+                        playerObj->doJump(); 
+                        break;
+
                     default:
                         break;
                 }
