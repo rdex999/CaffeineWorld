@@ -23,6 +23,12 @@ typedef struct base
 
     vector2d screenSize;
 
+    // the mouse location on the screen
+    vector2d mouseLocation;
+
+    // the mouse state 1 = left click, 2 = middle click, 3 = right click
+    Uint32 mouseState;
+
     // the boxes vector. each box containes detailes on how it should be rendered
     std::vector<box*> boxes;
 
