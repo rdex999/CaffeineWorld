@@ -29,6 +29,9 @@ player::player(base *baseObj, inventory* inventoryObj)
     // if the player stopped walking
     stoppedWalking = 0;
 
+    // the time between each step animation
+    walkStepTime = 0.f;
+
     // the gravity intensity on earth (from wikipedia)
     gravity = 9.80665;
 
@@ -44,7 +47,7 @@ player::player(base *baseObj, inventory* inventoryObj)
     screenLocation = baseObj->screenSize / 2;
 
     // set the player skin size
-    playerSize = vector2d(422, 420)/2;
+    playerSize = vector2d(556, 1030)/5;
 
     // load the skin images
     textures[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skin.png");
@@ -52,11 +55,27 @@ player::player(base *baseObj, inventory* inventoryObj)
         std::cout << "Error: could not create skin texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-
+    
+    textures[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skinWalking2.png");
+    if(!textures[1]){
+        std::cout << "Error: could not create skin walking 2 texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+    
+    textures[2] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skinWalking4.png");
+    if(!textures[2]){
+        std::cout << "Error: could not create skin walking 4 texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+    
     // because the inventory has more than one box in the boxes array, and + 1 because there is also the highlight box
     // which doesnt count in the itemsCount
-    baseObj->boxes.insert(baseObj->boxes.end() - (inventoryObj->itemsCount + 1), new box(textures[0], screenLocation,
-        playerSize, true, std::bind(&player::tick, this, std::placeholders::_1)));
+    box* tempBoxPtr = new box(textures[0], screenLocation,
+        playerSize, true, std::bind(&player::tick, this, std::placeholders::_1));
+
+    baseObj->boxes.insert(baseObj->boxes.end() - (inventoryObj->itemsCount + 1), tempBoxPtr);
+
+    boxIndex = std::distance(baseObj->boxes.begin(), std::find(baseObj->boxes.begin(), baseObj->boxes.end(), tempBoxPtr));
 }
 
 player::~player()
@@ -72,10 +91,10 @@ void player::setBox()
 {
     // update box in the last position in the array
     // -1 for the last box in the array, and also the item count +1 because the highlight texture doesnt count
-    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->startPosition = screenLocation;
-    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->endPosition = playerSize;
-    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->texture = textures[textureIndex];
-    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->flip = flip;
+    baseObj->boxes[boxIndex]->startPosition = screenLocation;
+    baseObj->boxes[boxIndex]->endPosition = playerSize;
+    baseObj->boxes[boxIndex]->texture = textures[textureIndex];
+    baseObj->boxes[boxIndex]->flip = flip;
 }
 
 bool player::inAir()
@@ -90,6 +109,11 @@ void player::doJump()
     }
 }
 
+void player::setTextureStand()
+{
+    textureIndex = 0;
+}
+
 void player::walk(int direction)
 {
     if(direction == -1){flip = true;}
@@ -98,6 +122,16 @@ void player::walk(int direction)
     // make starting walking smooth 
     walkingSlowDown += baseObj->deltaTime * 1.5;
     walkingSlowDown = std::clamp(walkingSlowDown, 0.2f, 1.f);
+
+    // the walking animation
+    if(walkStepTime >= 0.8f){
+        walkStepTime = 0.f;
+    }else if(walkStepTime >= 0.4f){
+        textureIndex = 2;
+    }else if(walkStepTime >= 0.f){
+        textureIndex = 1;
+    }
+    walkStepTime += baseObj->deltaTime;
 
     // set the location
     screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
@@ -132,7 +166,7 @@ void player::tick(double deltaTime)
     // if the player wants to jump and he is not in the air then jump
     if(jump){
         screenLocation.Y -= deltaTime * jumpIntensity * gravity * 7.5f;
-        jumpIntensity -= deltaTime * gravity * 1.7;
+        jumpIntensity -= deltaTime * gravity * 2.f;
         if(jumpIntensity < -11){
             jump = false;
             jumpIntensity = 10;

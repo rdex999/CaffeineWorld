@@ -28,6 +28,8 @@ class player
         // checks if the player is in the air and if he is not then jump 
         void doJump();
 
+        void setTextureStand();
+
     private: 
         // function that runs on every fram
         void tick(double deltaTime);
@@ -36,11 +38,14 @@ class player
         base* baseObj;
         inventory* inventoryObj;
 
+        // the index of the player box in the array
+        int boxIndex;
+
         // the texture index to render
         int textureIndex;
 
         // the player has some different textures (standing skin, reloading skin, etc..) so an array it is 
-        std::array<SDL_Texture*, 1> textures;
+        std::array<SDL_Texture*, 3> textures;
 
         // updates the players box at the boxes array
         void setBox();
@@ -71,6 +76,9 @@ class player
 
         // returns whether the player is in the air or not
         bool inAir();
+
+        // the time between each step animation
+        double walkStepTime;
 };
 
 #endif

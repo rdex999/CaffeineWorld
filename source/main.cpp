@@ -36,8 +36,8 @@ container::~container()
 {
     if(baseObj){delete baseObj;}
     if(backgroundObj){delete backgroundObj;}
-    if(playerObj){delete playerObj;}
     if(inventoryObj){delete inventoryObj;}
+    if(playerObj){delete playerObj;}
 
     SDL_Quit();
 }
@@ -96,12 +96,14 @@ void container::handleEvent()
                     case SDLK_RIGHT:
                         playerObj->walkingSlowDown = 0; 
                         playerObj->stoppedWalking = -1;
+                        playerObj->setTextureStand();
                         break;
 
                     case SDLK_a:
                     case SDLK_LEFT:
                         playerObj->walkingSlowDown = 0; 
                         playerObj->stoppedWalking = 1;
+                        playerObj->setTextureStand();
                         break;
 
                     default:
