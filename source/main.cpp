@@ -28,8 +28,8 @@ container::container()
 
     baseObj = new base(&screenSize);
     backgroundObj = new background(baseObj);
-    playerObj = new player(baseObj);
-    inventoryObj = new inventory(baseObj, playerObj);
+    inventoryObj = new inventory(baseObj);
+    playerObj = new player(baseObj, inventoryObj);
 }
 
 container::~container()

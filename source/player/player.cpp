@@ -1,9 +1,12 @@
 #include "player.h"
 
-player::player(base *baseObj)
+player::player(base *baseObj, inventory* inventoryObj)
 {
     // store the baseObj pointer
     this->baseObj = baseObj;
+
+    // store the inventoryObj pointer
+    this->inventoryObj = inventoryObj;    
 
     // set the texture index
     textureIndex = 0;
@@ -50,7 +53,9 @@ player::player(base *baseObj)
         exit(1);
     }
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(textures[0], screenLocation,
+    // because the inventory has more than one box in the boxes array, and + 1 because there is also the highlight box
+    // which doesnt count in the itemsCount
+    baseObj->boxes.insert(baseObj->boxes.end() - (inventoryObj->itemsCount + 1), new box(textures[0], screenLocation,
         playerSize, true, std::bind(&player::tick, this, std::placeholders::_1)));
 }
 
@@ -66,10 +71,11 @@ player::~player()
 void player::setBox()
 {
     // update box in the last position in the array
-    baseObj->boxes[baseObj->boxes.size() - 1]->startPosition = screenLocation;
-    baseObj->boxes[baseObj->boxes.size() - 1]->endPosition = playerSize;
-    baseObj->boxes[baseObj->boxes.size() - 1]->texture = textures[textureIndex];
-    baseObj->boxes[baseObj->boxes.size() - 1]->flip = flip;
+    // -1 for the last box in the array, and also the item count +1 because the highlight texture doesnt count
+    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->startPosition = screenLocation;
+    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->endPosition = playerSize;
+    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->texture = textures[textureIndex];
+    baseObj->boxes[baseObj->boxes.size() - 1 - (inventoryObj->itemsCount + 1)]->flip = flip;
 }
 
 bool player::inAir()
@@ -79,7 +85,7 @@ bool player::inAir()
 
 void player::doJump()
 {
-    if(!inAir()){
+    if(!jump){
         jump = true;
     }
 }
