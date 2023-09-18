@@ -59,7 +59,8 @@ void inventory::selectItem(int itemNumber)
 
 void inventory::setBox()
 {
-
+    // change the highlight texture position. -1 because the selectedItem counts from one and array count from 0
+    baseObj->boxes[firstBoxIndex+selectedItem - 1]->startPosition.X = firstItemScreenLocation.X + 85 * selectedItem + 10;
 }
 
 void inventory::tick(double deltaTime)
