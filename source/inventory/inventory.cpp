@@ -54,18 +54,19 @@ inventory::~inventory()
 
 void inventory::selectItem(int itemNumber)
 {
-    selectedItem = itemNumber;
-    setBox();
+    if(selectedItem < itemNumber){
+        selectedItem = itemNumber;
+        setBox(10);
+    }else if(selectedItem > itemNumber){
+        selectedItem = itemNumber;
+        setBox(0);
+    }
 }
 
-void inventory::setBox() // backOrForward can only be 10 or -10
+void inventory::setBox(int backOrForward)
 {
     // change the highlight texture position.
-    if(85*(selectedItem-1) == 0){
-        baseObj->boxes[highlightBoxIndex + 1]->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1));
-    }else{
-        baseObj->boxes[highlightBoxIndex + 1]->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + 10;
-    }
+    baseObj->boxes[highlightBoxIndex + 1]->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + backOrForward;
 }
 
 void inventory::tick(double deltaTime)

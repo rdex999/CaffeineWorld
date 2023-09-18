@@ -15,6 +15,9 @@ class inventory
         // the current amount of items`
         int itemsCount;
     
+        // the selected item number
+        int selectedItem;
+    
     private:
         base* baseObj;
 
@@ -22,10 +25,9 @@ class inventory
         void tick(double deltaTime);
 
         // updates the the inventory items boxes at the boxes array
-        void setBox();
-
-        // the selected item number
-        int selectedItem;
+        // backOrForward can only be 10 or 0
+        // 10 is the amount of pixels between each item on the screen
+        void setBox(int backOrForward);
 
         // the index of the first box of the inventory in the boxes array
         int firstBoxIndex;
