@@ -30,6 +30,8 @@ class inventory
         // the index of the first box of the inventory in the boxes array
         int firstBoxIndex;
 
+        // the index of the highlight box
+        int highlightBoxIndex;
 
         // the location of the first item on the screen
         vector2d firstItemScreenLocation;

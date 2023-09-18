@@ -133,7 +133,7 @@ void player::tick(double deltaTime)
     if(jump){
         screenLocation.Y -= deltaTime * jumpIntensity * gravity * 7.5f;
         jumpIntensity -= deltaTime * gravity * 1.7;
-        if(jumpIntensity <= -10){
+        if(jumpIntensity < -11){
             jump = false;
             jumpIntensity = 10;
         }

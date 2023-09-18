@@ -42,6 +42,7 @@ inventory::inventory(base *baseObj)
         vector2d((baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2)*selectedItem,
             baseObj->screenSize.Y - baseObj->screenSize.Y/11),
         vector2d(85, 85)));
+    highlightBoxIndex = baseObj->boxes.size() - 1;
 }
 
 inventory::~inventory()
@@ -57,10 +58,14 @@ void inventory::selectItem(int itemNumber)
     setBox();
 }
 
-void inventory::setBox()
+void inventory::setBox() // backOrForward can only be 10 or -10
 {
-    // change the highlight texture position. -1 because the selectedItem counts from one and array count from 0
-    baseObj->boxes[firstBoxIndex+selectedItem - 1]->startPosition.X = firstItemScreenLocation.X + 85 * selectedItem + 10;
+    // change the highlight texture position.
+    if(85*(selectedItem-1) == 0){
+        baseObj->boxes[highlightBoxIndex + 1]->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1));
+    }else{
+        baseObj->boxes[highlightBoxIndex + 1]->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + 10;
+    }
 }
 
 void inventory::tick(double deltaTime)

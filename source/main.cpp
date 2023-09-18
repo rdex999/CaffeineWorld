@@ -74,6 +74,14 @@ void container::handleEvent()
                         playerObj->doJump(); 
                         break;
 
+                    case SDLK_1:
+                        inventoryObj->selectItem(1);
+                        break;
+
+                    case SDLK_2:
+                        inventoryObj->selectItem(2);
+                        break;
+
                     default:
                         break;
                 }
