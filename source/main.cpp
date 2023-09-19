@@ -30,6 +30,7 @@ container::container()
     backgroundObj = new background(baseObj);
     inventoryObj = new inventory(baseObj);
     playerObj = new player(baseObj, inventoryObj);
+    gunObj = new gun(baseObj, playerObj, inventoryObj);
 }
 
 container::~container()
@@ -38,6 +39,7 @@ container::~container()
     if(backgroundObj){delete backgroundObj;}
     if(inventoryObj){delete inventoryObj;}
     if(playerObj){delete playerObj;}
+    if(gunObj){delete gunObj;}
 
     SDL_Quit();
 }

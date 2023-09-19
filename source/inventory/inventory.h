@@ -18,6 +18,9 @@ class inventory
         // the selected item number
         int selectedItem;
     
+        // the index of the first box of the inventory in the boxes array
+        int firstBoxIndex;
+    
     private:
         base* baseObj;
 
@@ -29,8 +32,6 @@ class inventory
         // 10 is the amount of pixels between each item on the screen
         void setBox(int backOrForward);
 
-        // the index of the first box of the inventory in the boxes array
-        int firstBoxIndex;
 
         // the index of the highlight box
         int highlightBoxIndex;

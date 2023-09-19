@@ -30,6 +30,12 @@ class player
 
         void setTextureStand();
 
+        vector2d screenLocation;
+        vector2d playerSize;
+
+        // sould the texture flip (for walking right or left) 
+        bool flip;
+    
     private: 
         // function that runs on every fram
         void tick(double deltaTime);
@@ -49,9 +55,6 @@ class player
 
         // updates the players box at the boxes array
         void setBox();
-
-        vector2d screenLocation;
-        vector2d playerSize;
        
         // the slow down speed of stopping to walk
         float slowDownEndWalk;
@@ -59,8 +62,6 @@ class player
         // walking speed
         float walkingSpeed;
         
-        // sould the texture flip (for walking right or left) 
-        bool flip;
 
         // the gravity intensity
         float gravity;
