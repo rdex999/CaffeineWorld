@@ -16,6 +16,9 @@ class gun
         player* playerObj;
         inventory* inventoryObj;
 
+        // the gun box pointer
+        box* boxPtr;
+
         // the texture of the gun
         SDL_Texture* texture;
         

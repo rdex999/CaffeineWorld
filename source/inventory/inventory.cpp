@@ -39,15 +39,12 @@ inventory::inventory(base *baseObj)
         exit(1);
     }
 
-    tempBoxPtr = new box(selectedItemHighLight,
+    highlightBoxPtr = new box(selectedItemHighLight,
         vector2d((baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2)*selectedItem,
             baseObj->screenSize.Y - baseObj->screenSize.Y/11),
         vector2d(85, 85));
 
-    baseObj->boxes.insert(baseObj->boxes.end(), tempBoxPtr);
-
-    highlightBoxIndex = std::distance(baseObj->boxes.begin(),
-        std::find(baseObj->boxes.begin(), baseObj->boxes.end(), tempBoxPtr));
+    baseObj->boxes.insert(baseObj->boxes.end(), highlightBoxPtr);
 }
 
 inventory::~inventory()
@@ -71,7 +68,7 @@ void inventory::selectItem(int itemNumber)
 void inventory::setBox(int backOrForward)
 {
     // change the highlight texture position.
-    baseObj->boxes[highlightBoxIndex]->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + backOrForward;
+    highlightBoxPtr->startPosition.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + backOrForward;
 }
 
 void inventory::tick(double deltaTime)

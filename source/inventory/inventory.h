@@ -34,7 +34,7 @@ class inventory
 
 
         // the index of the highlight box
-        int highlightBoxIndex;
+        box* highlightBoxPtr;
 
         // the location of the first item on the screen
         vector2d firstItemScreenLocation;

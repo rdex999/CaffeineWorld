@@ -12,13 +12,11 @@ gun::gun(base *baseObj, player *playerObj, inventory* inventoryObj)
         exit(1);
     }
 
-    box* tempBoxPtr = new box(texture,
+    boxPtr = new box(texture,
         playerObj->screenLocation, vector2d(251, 130)/2, true,
         std::bind(&gun::tick, this, std::placeholders::_1), playerObj->flip);
 
-    baseObj->boxes.insert(baseObj->boxes.end() - (inventoryObj->firstBoxIndex), tempBoxPtr);
-
-    boxesIndex = std::distance(baseObj->boxes.begin(), std::find(baseObj->boxes.begin(), baseObj->boxes.end(), tempBoxPtr));
+    baseObj->boxes.insert(baseObj->boxes.end() - (inventoryObj->firstBoxIndex), boxPtr);
 }
 
 gun::~gun()
@@ -33,7 +31,6 @@ void gun::tick(double deltaTime)
 
 void gun::setBox()
 {
-    baseObj->boxes[boxesIndex]->startPosition = playerObj->screenLocation;
-    baseObj->boxes[boxesIndex]->startPosition.Y = playerObj->screenLocation.Y + playerObj->playerSize.Y/2.3;
-    baseObj->boxes[boxesIndex]->flip = playerObj->flip;
+    boxPtr->startPosition = playerObj->screenLocation;
+    boxPtr->flip = playerObj->flip;
 }
