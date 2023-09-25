@@ -34,7 +34,9 @@ class player
 
         // sould the texture flip (for walking right or left) 
         bool flip;
-    
+
+        // the selected item 
+        int selectedItem;
     private: 
         // function that runs on every frame
         void tick(double deltaTime);
@@ -60,7 +62,6 @@ class player
         // walking speed
         float walkingSpeed;
         
-
         // the gravity intensity
         float gravity;
 
@@ -78,6 +79,7 @@ class player
 
         // the time between each step animation
         double walkStepTime;
+
 };
 
 #endif

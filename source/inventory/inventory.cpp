@@ -48,9 +48,11 @@ void inventory::selectItem(int itemNumber)
 {
     if(selectedItem < itemNumber){
         selectedItem = itemNumber;
+        playerObj->selectedItem = selectedItem;
         setBox(10);
     }else if(selectedItem > itemNumber){
         selectedItem = itemNumber;
+        playerObj->selectedItem = selectedItem;
         setBox(0);
     }
 }
