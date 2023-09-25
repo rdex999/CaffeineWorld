@@ -10,8 +10,9 @@ class background
         ~background();
 
     private:
-        // a function to update the boxes array
-        void setBox();
+
+        // renders the background
+        void render();
 
         // the baseObj pointer
         base* baseObj;

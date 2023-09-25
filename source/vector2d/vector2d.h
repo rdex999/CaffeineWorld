@@ -18,20 +18,20 @@ class vector2d
         void operator *= (const vector2d& vec);
         void operator /= (const vector2d& vec);
       
-        void operator += (const int& val);
-        void operator -= (const int& val);
-        void operator *= (const int& val);
-        void operator /= (const int& val);
+        void operator += (const float& val);
+        void operator -= (const float& val);
+        void operator *= (const float& val);
+        void operator /= (const float& val);
        
         vector2d operator + (const vector2d& vec);
         vector2d operator - (const vector2d& vec);
         vector2d operator * (const vector2d& vec);
         vector2d operator / (const vector2d& vec);
         
-        vector2d operator + (const int& val);
-        vector2d operator - (const int& val);
-        vector2d operator * (const int& val);
-        vector2d operator / (const int& val);
+        vector2d operator + (const float& val);
+        vector2d operator - (const float& val);
+        vector2d operator * (const float& val);
+        vector2d operator / (const float& val);
         
         bool operator == (const vector2d& vec);
         bool operator != (const vector2d& vec);

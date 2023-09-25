@@ -1,12 +1,9 @@
 #include "player.h"
 
-player::player(base *baseObj, inventory* inventoryObj)
+player::player(base *baseObj)
 {
     // store the baseObj pointer
     this->baseObj = baseObj;
-
-    // store the inventoryObj pointer
-    this->inventoryObj = inventoryObj;    
 
     // set the texture index
     textureIndex = 0;
@@ -68,14 +65,8 @@ player::player(base *baseObj, inventory* inventoryObj)
         exit(1);
     }
     
-    // because the inventory has more than one box in the boxes array, and + 1 because there is also the highlight box
-    // which doesnt count in the itemsCount
-    box* tempBoxPtr = new box(textures[0], screenLocation,
-        playerSize, true, std::bind(&player::tick, this, std::placeholders::_1));
-
-    baseObj->boxes.insert(baseObj->boxes.end() - (inventoryObj->itemsCount + 1), tempBoxPtr);
-
-    boxIndex = std::distance(baseObj->boxes.begin(), std::find(baseObj->boxes.begin(), baseObj->boxes.end(), tempBoxPtr));
+    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&player::render, this),
+        std::bind(&player::tick, this, std::placeholders::_1)));
 }
 
 player::~player()
@@ -85,16 +76,6 @@ player::~player()
             SDL_DestroyTexture(texture);
         }
     }
-}
-
-void player::setBox()
-{
-    // update box in the last position in the array
-    // -1 for the last box in the array, and also the item count +1 because the highlight texture doesnt count
-    baseObj->boxes[boxIndex]->startPosition = screenLocation;
-    baseObj->boxes[boxIndex]->endPosition = playerSize;
-    baseObj->boxes[boxIndex]->texture = textures[textureIndex];
-    baseObj->boxes[boxIndex]->flip = flip;
 }
 
 bool player::inAir()
@@ -139,9 +120,6 @@ void player::walk(int direction)
 
 void player::tick(double deltaTime)
 {
-    // allways update the box when using tick 
-    setBox();
-
     // slow stop when the player stops walking
     if(stoppedWalking != 0){
         if(slowDownEndWalk <= 0){
@@ -172,4 +150,10 @@ void player::tick(double deltaTime)
             jumpIntensity = 10;
         }
     }
+}
+
+void player::render()
+{
+    SDL_Rect rect = {screenLocation.X, screenLocation.Y, playerSize.X, playerSize.Y};
+    SDL_RenderCopyEx(baseObj->mainRenderer, textures[textureIndex], NULL, &rect, 0, NULL, SDL_RendererFlip(flip));
 }

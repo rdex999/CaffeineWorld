@@ -29,8 +29,9 @@ base::~base()
 void base::renderBoxes()
 {
     for(box* b: boxes){
-        SDL_Rect rect = {b->startPosition.X, b->startPosition.Y, b->endPosition.X, b->endPosition.Y};
-        SDL_RenderCopyEx(mainRenderer, b->texture, NULL, &rect, 0, NULL, SDL_RendererFlip(b->flip));
+        if(b && b->render){
+            b->render();
+        }
     }
     SDL_RenderPresent(mainRenderer);
 }

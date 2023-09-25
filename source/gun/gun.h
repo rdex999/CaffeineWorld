@@ -6,7 +6,7 @@
 class gun
 {
     public:
-        gun(base* baseObj, player* playerObj, inventory* inventoryObj);
+        gun(base* baseObj, player* playerObj);
         ~gun();
     
     private:
@@ -14,10 +14,6 @@ class gun
         // store object pointers
         base* baseObj;
         player* playerObj;
-        inventory* inventoryObj;
-
-        // the gun box pointer
-        box* boxPtr;
 
         // the texture of the gun
         SDL_Texture* texture;
@@ -25,11 +21,11 @@ class gun
         // runs every frame 
         void tick(double deltaTime);
 
-        // updates the gun box in the boxes array
-        void setBox();
+        // renders the gun
+        void render();
 
-        // the gun box index in the boxes array
-        int boxesIndex;
+        // the size of the gun image
+        vector2d gunSize;
 
 };
 

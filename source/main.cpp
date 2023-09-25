@@ -13,9 +13,9 @@ int main()
         deltaTimeNow = SDL_GetPerformanceCounter();
         containerObj->baseObj->deltaTime = ((deltaTimeNow - deltaTimeLast)*1000 / (double)SDL_GetPerformanceFrequency())*0.001;
 
-        containerObj->baseObj->renderBoxes();
         containerObj->handleEvent();
         containerObj->runTicks();
+        containerObj->baseObj->renderBoxes();
     }
 
     delete containerObj; 
@@ -28,9 +28,9 @@ container::container()
 
     baseObj = new base(&screenSize);
     backgroundObj = new background(baseObj);
-    inventoryObj = new inventory(baseObj);
-    playerObj = new player(baseObj, inventoryObj);
-    gunObj = new gun(baseObj, playerObj, inventoryObj);
+    playerObj = new player(baseObj);
+    gunObj = new gun(baseObj, playerObj);
+    inventoryObj = new inventory(baseObj, playerObj);
 }
 
 container::~container()
@@ -132,7 +132,7 @@ void container::handleEvent()
 void container::runTicks()
 {
     for(box* b: baseObj->boxes){
-        if(b->shouldTick){
+        if(b && b->tick){
             b->tick(baseObj->deltaTime);
         }
     }

@@ -5,12 +5,11 @@
 #include <iostream>
 #include <array>
 #include "../base/base.h"
-#include "../inventory/inventory.h"
 
 class player
 {
     public:
-        player(base* baseObj, inventory* inventoryObj);
+        player(base* baseObj);
         ~player();
 
         // function for walking. direction = -1 for right and direction = 1 for left 
@@ -37,12 +36,14 @@ class player
         bool flip;
     
     private: 
-        // function that runs on every fram
+        // function that runs on every frame
         void tick(double deltaTime);
 
-        // baseObj and inventoryObj pointers 
+        // renders the player
+        void render();
+
+        // baseObj pointer 
         base* baseObj;
-        inventory* inventoryObj;
 
         // the index of the player box in the array
         int boxIndex;
@@ -53,9 +54,6 @@ class player
         // the player has some different textures (standing skin, reloading skin, etc..) so an array it is 
         std::array<SDL_Texture*, 3> textures;
 
-        // updates the players box at the boxes array
-        void setBox();
-       
         // the slow down speed of stopping to walk
         float slowDownEndWalk;
         

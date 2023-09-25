@@ -12,7 +12,7 @@ background::background(base* baseObj)
         exit(1); 
     }
 
-    baseObj->boxes.insert(baseObj->boxes.begin(), new box(texture, vector2d(0, 0), baseObj->screenSize, false, nullptr));
+    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&background::render, this)));
 }
 
 background::~background()
@@ -22,8 +22,8 @@ background::~background()
     }
 }
 
-void background::setBox()
+void background::render()
 {
-    // update the box at the beginning of the array (index 0)
-    baseObj->boxes[1]->texture = texture;
+    SDL_Rect rect = {0, 0, baseObj->screenSize.X, baseObj->screenSize.Y};
+    SDL_RenderCopy(baseObj->mainRenderer, texture, NULL, &rect);
 }

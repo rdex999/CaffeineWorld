@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <SDL2/SDL.h>
+#include "../vector2d/vector2d.h"
 #include "../box/box.h"
 
 // basic variables and functions that almost every class will need
