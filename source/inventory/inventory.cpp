@@ -7,6 +7,8 @@ inventory::inventory(base *baseObj, player* playerObj)
 
     itemsCount = 0;
     selectedItem = 1;
+
+    playerObj->selectedItem = selectedItem;
     
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
         baseObj->screenSize.Y - baseObj->screenSize.Y/11);
