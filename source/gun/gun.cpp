@@ -29,7 +29,19 @@ void gun::tick(double deltaTime)
 void gun::render()
 {
     if(playerObj->selectedItem == 2){
-        SDL_Rect rect = {playerObj->screenLocation.X, (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7), gunSize.X, gunSize.Y};
-        SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect, 0, NULL, SDL_RendererFlip(playerObj->flip));
+        double rotateDegree;
+
+        if(playerObj->flip){
+            rotateDegree = atan2(baseObj->mouseLocation.Y - (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7),
+                baseObj->mouseLocation.X - playerObj->screenLocation.X)*180/M_PI;
+        }else{
+            rotateDegree = atan2(baseObj->mouseLocation.Y*-1 - (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7)*-1,
+                baseObj->mouseLocation.X*-1 - playerObj->screenLocation.X*-1)*180/M_PI;
+        }
+        SDL_Rect rect = {playerObj->screenLocation.X,
+            (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7), gunSize.X, gunSize.Y};
+
+        SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect,
+            rotateDegree, NULL, SDL_RendererFlip(playerObj->flip));
     }
 }
