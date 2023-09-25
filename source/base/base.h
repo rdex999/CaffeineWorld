@@ -18,6 +18,8 @@ typedef struct base
     // time between each frame
     double deltaTime = 0;
 
+    double rotationPlayerToMouse;
+
     // renderer and window pointers
     SDL_Renderer* mainRenderer;
     SDL_Window* window;
