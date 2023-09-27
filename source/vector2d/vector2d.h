@@ -13,6 +13,12 @@ class vector2d
 
         vector2d norm();
 
+        // returns whether this vector is in a box defined by two vectors 
+        bool inBox(vector2d point1, vector2d point2);
+
+        // prints the vector to the terminal
+        void printVec();
+
         void operator += (const vector2d& vec);
         void operator -= (const vector2d& vec);
         void operator *= (const vector2d& vec);

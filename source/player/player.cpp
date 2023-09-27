@@ -64,9 +64,11 @@ player::player(base *baseObj)
         std::cout << "Error: could not create skin walking 4 texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-    
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&player::render, this),
-        std::bind(&player::tick, this, std::placeholders::_1)));
+
+    boxPtr = new box(std::bind(&player::render, this),
+        std::bind(&player::tick, this, std::placeholders::_1));
+
+    baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
 }
 
 player::~player()
@@ -149,6 +151,12 @@ void player::tick(double deltaTime)
             jump = false;
             jumpIntensity = 10;
         }
+    }
+
+    // handle shooting with the gun
+    if(selectedItem == 2 && baseObj->mouseState == 1){
+        bullet* blt = new bullet(baseObj, std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr),
+            screenLocation, baseObj->mouseLocation, flip);
     }
 }
 

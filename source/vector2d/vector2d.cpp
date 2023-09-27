@@ -18,6 +18,17 @@ vector2d vector2d::norm()
     return vector2d(this->X/mag, this->Y/mag);
 }
 
+bool vector2d::inBox(vector2d point1, vector2d point2)
+{
+    return (this->X >= point1.X && this->X <= point2.X) && 
+        (this->Y >= point1.Y && this->Y <= point2.Y);
+}
+
+void vector2d::printVec()
+{
+    std::cout << "Vector: (" << this->X << ", " << this->Y << ")" << std::endl;
+}
+
 void vector2d::operator+=(const vector2d &vec)
 {
     this->X += vec.X;

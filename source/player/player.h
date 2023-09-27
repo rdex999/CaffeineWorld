@@ -5,6 +5,7 @@
 #include <iostream>
 #include <array>
 #include "../base/base.h"
+#include "../bullet/bullet.h"
 
 class player
 {
@@ -79,6 +80,9 @@ class player
 
         // the time between each step animation
         double walkStepTime;
+
+        // the player box pointer
+        box* boxPtr;
 
 };
 
