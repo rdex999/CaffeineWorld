@@ -12,13 +12,21 @@ gun::gun(base *baseObj, player *playerObj)
     }
 
     gunSize = vector2d(251, 130)/1.7;
+    currentBullet = 0;
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&gun::tick, this, std::placeholders::_1)));
+    boxPtr = new box(std::bind(&gun::tick, this, std::placeholders::_1));
+
+    baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
 }
 
 gun::~gun()
 {
     if(texture){SDL_DestroyTexture(texture);}
+}
+
+void gun::reload()
+{
+    currentBullet = 0;
 }
 
 void gun::tick(double deltaTime)
@@ -31,6 +39,21 @@ void gun::tick(double deltaTime)
     }else{
         baseObj->rotationPlayerToMouse = atan2(baseObj->mouseLocation.Y*-1 - (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7)*-1,
             baseObj->mouseLocation.X*-1 - playerObj->screenLocation.X*-1)*180/M_PI;
+    }
+
+    vector2d gunLocation(playerObj->screenLocation.X,
+        playerObj->screenLocation.Y + playerObj->playerSize.Y/2.7 + gunSize.Y/3);
+
+    // handle shooting with the gun
+    lastGunShotTime += deltaTime;
+    if(playerObj->selectedItem == 2 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
+        bullets[currentBullet] = new bullet(baseObj, std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr),
+            &gunLocation, playerObj->flip, bullets, currentBullet);
+
+        lastGunShotTime = 0;
+        if(currentBullet >= 15)
+            reload();
+        currentBullet++; 
     }
 }
 

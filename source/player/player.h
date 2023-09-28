@@ -4,7 +4,6 @@
 #include <iostream>
 #include <array>
 #include "../base/base.h"
-#include "../bullet/bullet.h"
 
 class player
 {
@@ -82,8 +81,5 @@ class player
 
         // the player box pointer
         box* boxPtr;
-
-        // time since the last gun shot
-        double lastBulletShootTime;
 
 };

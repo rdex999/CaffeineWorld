@@ -1,7 +1,7 @@
 #include "bullet.h"
 
 bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
-    vector2d *shootFrom, bool flip)
+    vector2d *shootFrom, bool flip, bullet** bullets, int bulletIndex)
 {
     this->baseObj = baseObj;
 
@@ -13,7 +13,11 @@ bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
 
     this->flip = flip;
 
-    speed = 70.f;
+    speed = 110.f;
+
+    this->bullets = bullets;
+
+    this->bulletIndex = bulletIndex;
 
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/bullet/bullet.png");
     if(!texture){
@@ -24,7 +28,6 @@ bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
     boxPtr = new box(std::bind(&bullet::tick, this, std::placeholders::_1));
 
     baseObj->boxes.insert(boxesIterator, boxPtr);
-
 }
 
 bullet::~bullet()
@@ -33,6 +36,8 @@ bullet::~bullet()
     if(texture){SDL_DestroyTexture(texture);}
     
     baseObj->boxes.erase(std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr));
+
+    bullets[bulletIndex] = nullptr;
 
     if(boxPtr){
         delete boxPtr;

@@ -152,16 +152,6 @@ void player::tick(double deltaTime)
             jumpIntensity = 10;
         }
     }
-
-    vector2d gunLocation(screenLocation.X, (int)(screenLocation.Y+playerSize.Y/2.7));
-
-    // handle shooting with the gun
-    lastBulletShootTime += deltaTime;
-    if(selectedItem == 2 && baseObj->mouseState == 1 && lastBulletShootTime >= 0.2){
-        bullet* blt = new bullet(baseObj, std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr),
-            &gunLocation, flip);
-            lastBulletShootTime = 0; 
-    }
 }
 
 void player::render()

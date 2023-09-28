@@ -7,7 +7,7 @@ class bullet
 {
     public:
         bullet(base* baseObj, std::vector<box*>::iterator boxesIterator,
-            vector2d *shootFrom, bool flip);
+            vector2d *shootFrom, bool flip, bullet** bullets, int bulletIndex);
         ~bullet();
 
         // from where the bullet was shot,
@@ -45,4 +45,10 @@ class bullet
 
         // the bullet speed
         float speed;
+
+        // this bullets index in the bullets array
+        int bulletIndex;
+        
+        // the bullets array pointer. 
+        bullet** bullets;
 };
