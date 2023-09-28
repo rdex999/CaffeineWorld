@@ -13,8 +13,7 @@ gun::gun(base *baseObj, player *playerObj)
 
     gunSize = vector2d(251, 130)/1.7;
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&gun::render, this),
-        std::bind(&gun::tick, this, std::placeholders::_1)));
+    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&gun::tick, this, std::placeholders::_1)));
 }
 
 gun::~gun()
@@ -24,6 +23,8 @@ gun::~gun()
 
 void gun::tick(double deltaTime)
 {
+    render();
+
     if(playerObj->flip){
         baseObj->rotationPlayerToMouse = atan2(baseObj->mouseLocation.Y - (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7),
             baseObj->mouseLocation.X - playerObj->screenLocation.X)*180/M_PI;

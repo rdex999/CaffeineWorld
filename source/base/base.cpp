@@ -25,13 +25,3 @@ base::~base()
         }
     }
 }
-
-void base::renderBoxes()
-{
-    for(box* b: boxes){
-        if(b && b->render){
-            b->render();
-        }
-    }
-    SDL_RenderPresent(mainRenderer);
-}

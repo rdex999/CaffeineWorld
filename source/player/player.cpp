@@ -65,8 +65,7 @@ player::player(base *baseObj)
         exit(1);
     }
 
-    boxPtr = new box(std::bind(&player::render, this),
-        std::bind(&player::tick, this, std::placeholders::_1));
+    boxPtr = new box(std::bind(&player::tick, this, std::placeholders::_1));
 
     baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
 }
@@ -122,6 +121,7 @@ void player::walk(int direction)
 
 void player::tick(double deltaTime)
 {
+    render();
     // slow stop when the player stops walking
     if(stoppedWalking != 0){
         if(slowDownEndWalk <= 0){

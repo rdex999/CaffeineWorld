@@ -21,8 +21,7 @@ attackHand::attackHand(base *baseObj, player* playerObj)
         exit(1);
     }
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&attackHand::render, this),
-        std::bind(&attackHand::tick, this, std::placeholders::_1)));
+    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&attackHand::tick, this, std::placeholders::_1)));
 }
 
 attackHand::~attackHand()
@@ -32,6 +31,8 @@ attackHand::~attackHand()
 
 void attackHand::tick(double deltaTime)
 {
+    render();
+
     if(playerObj->selectedItem == 1 && baseObj->mouseState == 1){
         attack = true;
     }

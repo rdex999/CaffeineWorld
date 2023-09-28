@@ -21,8 +21,7 @@ bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
         exit(1);
     }
 
-    boxPtr = new box(std::bind(&bullet::render, this),
-        std::bind(&bullet::tick, this, std::placeholders::_1));
+    boxPtr = new box(std::bind(&bullet::tick, this, std::placeholders::_1));
 
     baseObj->boxes.insert(boxesIterator, boxPtr);
 
@@ -42,6 +41,8 @@ bullet::~bullet()
 
 void bullet::tick(double deltaTime)
 {
+    render();
+
     if(flip){
         shootFrom += dVector2d(std::cos(rotation) * deltaTime * speed * 15, std::sin(rotation) * deltaTime * speed * 15);
     }else{

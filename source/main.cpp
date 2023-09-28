@@ -15,7 +15,6 @@ int main()
 
         containerObj->handleEvent();
         containerObj->runTicks();
-        containerObj->baseObj->renderBoxes();
     }
 
     delete containerObj; 
@@ -141,4 +140,5 @@ void container::runTicks()
             b->tick(baseObj->deltaTime);
         }
     }
+    SDL_RenderPresent(baseObj->mainRenderer);
 }

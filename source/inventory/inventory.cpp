@@ -35,8 +35,7 @@ inventory::inventory(base *baseObj, player* playerObj)
         exit(1);
     }
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&inventory::render, this),
-        std::bind(&inventory::tick, this, std::placeholders::_1)));
+    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&inventory::tick, this, std::placeholders::_1)));
 }
 
 inventory::~inventory()
@@ -67,7 +66,7 @@ void inventory::setBox(int backOrForward)
 
 void inventory::tick(double deltaTime)
 {
-
+    render();
 }
 
 void inventory::render()

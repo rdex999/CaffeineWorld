@@ -11,8 +11,8 @@ class background
 
     private:
 
-        // renders the background
-        void render();
+        // renders the background, acts line the tick function because the background doesnt really need a tick function
+        void render(double deltaTime);
 
         // the baseObj pointer
         base* baseObj;

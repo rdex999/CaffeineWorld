@@ -2,15 +2,12 @@
 #define BOX_H
 #include <functional>
 
-// A container for a tick function and a render function for each object.
-// The renderer then loops throgh an array (vector) of boxes and renderer each texture of the position.
+// A container for a tick function, the container the loops through an vector of boxes and runs their tick function.
 typedef struct box
 {
-    box(std::function<void()> render, std::function<void(double)> tick = nullptr);
+    box(std::function<void(double)> tick);
 
     std::function<void(double)> tick;
-    std::function<void()> render;
-
 } box;
 
 #endif
