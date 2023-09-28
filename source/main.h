@@ -1,5 +1,4 @@
-#ifndef MAIN_H
-#define MAIN_H
+#pragma once
 #include "base/base.h"
 #include "background/background.h"
 #include "player/player.h"
@@ -26,5 +25,3 @@ typedef struct container
     // runs all the tick functions from the boxes array 
     void runTicks();
 } container;
-
-#endif

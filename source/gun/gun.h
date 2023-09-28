@@ -1,5 +1,4 @@
-#ifndef GUN_H
-#define GUN_H
+#pragma once
 #include "../base/base.h"
 #include "../player/player.h"
 
@@ -28,5 +27,3 @@ class gun
         vector2d gunSize;
 
 };
-
-#endif

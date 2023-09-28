@@ -1,5 +1,4 @@
-#ifndef BOX_H
-#define BOX_H
+#pragma once
 #include <functional>
 
 // A container for a tick function, the container the loops through an vector of boxes and runs their tick function.
@@ -9,5 +8,3 @@ typedef struct box
 
     std::function<void(double)> tick;
 } box;
-
-#endif

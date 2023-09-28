@@ -1,5 +1,4 @@
-#ifndef VECTOR2D_H
-#define VECTOR2D_H
+#pragma once
 #include <cmath>
 #include <iostream>
 
@@ -46,5 +45,3 @@ class vector2d
         bool operator > (const vector2d& vec);
         bool operator < (const vector2d& vec);
 };
-
-#endif

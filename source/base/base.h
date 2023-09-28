@@ -1,5 +1,4 @@
-#ifndef BASE_H
-#define BASE_H
+#pragma once
 #include <iostream>
 #include <vector>
 #include <SDL2/SDL.h>
@@ -35,5 +34,3 @@ typedef struct base
     // the boxes vector. each box containes detailes on how it should be rendered
     std::vector<box*> boxes;
 } base;
-
-#endif

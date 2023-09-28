@@ -1,5 +1,4 @@
-#ifndef INVENTORY_H
-#define INVENTORY_H
+#pragma once
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
 #include "../base/base.h"
@@ -49,5 +48,3 @@ class inventory
         // the gun item frame texture
         SDL_Texture* textureGunItem;
 };
-
-#endif

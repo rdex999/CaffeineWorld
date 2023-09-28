@@ -13,7 +13,7 @@ bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
 
     this->flip = flip;
 
-    speed = 50.f;
+    speed = 70.f;
 
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/bullet/bullet.png");
     if(!texture){

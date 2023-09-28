@@ -1,5 +1,4 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
+#pragma once
 #include <SDL2/SDL_image.h>
 #include "../base/base.h"
 
@@ -20,5 +19,3 @@ class background
         // the texture
         SDL_Texture* texture;
 };
-
-#endif

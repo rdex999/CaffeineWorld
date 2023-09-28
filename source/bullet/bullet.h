@@ -1,5 +1,4 @@
-#ifndef BULLET_H
-#define BULLET_H
+#pragma once
 #include <SDL2/SDL_image.h>
 #include "../base/base.h"
 #include "../dVector2d/dVector2d.h"
@@ -47,5 +46,3 @@ class bullet
         // the bullet speed
         float speed;
 };
-
-#endif

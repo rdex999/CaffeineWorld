@@ -1,5 +1,4 @@
-#ifndef ATTACKHAND_H
-#define ATTACKHAND_H
+#pragma once
 #include <SDL2/SDL_image.h>
 #include "../base/base.h"
 #include "../player/player.h"
@@ -40,5 +39,3 @@ class attackHand
         // the slow down at the end of the attack
         double attackSlowDown;
 };
-
-#endif
