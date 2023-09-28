@@ -7,7 +7,7 @@ class bullet
 {
     public:
         bullet(base* baseObj, std::vector<box*>::iterator boxesIterator,
-            vector2d *shootFrom, bool flip, bullet** bullets, int bulletIndex);
+            vector2d *shootFrom, bool flip, bullet** bullets = nullptr, int bulletIndex = 0);
         ~bullet();
 
         // from where the bullet was shot,

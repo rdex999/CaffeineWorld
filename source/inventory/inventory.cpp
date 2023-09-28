@@ -1,9 +1,10 @@
 #include "inventory.h"
 
-inventory::inventory(base *baseObj, player* playerObj)
+inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
+    this->gunObj = gunObj;
 
     itemsCount = 0;
     selectedItem = 1;
@@ -22,7 +23,7 @@ inventory::inventory(base *baseObj, player* playerObj)
     }
     itemsCount++;
 
-    textureGunItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem.png");
+    textureGunItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem-v1.2.png");
     if(!textureGunItem){
         std::cout << "Error: could not create the gun inventory frame texture.\n" << SDL_GetError() << std::endl;
         exit(1);
@@ -35,6 +36,14 @@ inventory::inventory(base *baseObj, player* playerObj)
         exit(1);
     }
 
+    textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+        std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), 20,
+        &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
+    if(!textureBulletsLeft){
+        std::cout << "Error: could not create bullets left font texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+    
     baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&inventory::tick, this, std::placeholders::_1)));
 }
 
@@ -43,6 +52,7 @@ inventory::~inventory()
     if(textureHandItem){SDL_DestroyTexture(textureHandItem);}
     if(selectedItemHighLight){SDL_DestroyTexture(selectedItemHighLight);}
     if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
+    if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
 }
 
 void inventory::selectItem(int itemNumber)
@@ -50,7 +60,7 @@ void inventory::selectItem(int itemNumber)
     if(selectedItem < itemNumber){
         selectedItem = itemNumber;
         playerObj->selectedItem = selectedItem;
-        setBox(10);
+        setBox(10 * (itemNumber - 1));
     }else if(selectedItem > itemNumber){
         selectedItem = itemNumber;
         playerObj->selectedItem = selectedItem;
@@ -67,6 +77,18 @@ void inventory::setBox(int backOrForward)
 void inventory::tick(double deltaTime)
 {
     render();
+
+    if(gunObj->gunShot){
+        if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
+        textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+            std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), 20,
+            &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
+        
+        if(!textureBulletsLeft){
+            std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
+            exit(1);
+        }
+    }
 }
 
 void inventory::render()
@@ -76,6 +98,10 @@ void inventory::render()
 
     SDL_Rect gunRect = {(int)firstItemScreenLocation.X + 85 + 10, (int)firstItemScreenLocation.Y, 85, 85};
     SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
+
+    SDL_Rect bulletsLeftFontRect = {firstItemScreenLocation.X + 85 + 27,
+        int(firstItemScreenLocation.Y + 85 - 85/2.5), bulletsLeftFontSize.X,  bulletsLeftFontSize.Y};
+    SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftFontRect);
 
     SDL_Rect highlightRect = {(int)highlightScreenLocation.X, (int)highlightScreenLocation.Y, 85, 85};
     SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);

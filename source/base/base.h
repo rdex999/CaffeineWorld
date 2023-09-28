@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "../vector2d/vector2d.h"
 #include "../box/box.h"
 
@@ -31,6 +32,11 @@ typedef struct base
     // the mouse state 1 = left click, 2 = middle click, 3 = right click
     Uint32 mouseState;
 
-    // the boxes vector. each box containes detailes on how it should be rendered
+    // the boxes vector. each box containes detailes on how it should be rendered.
+    // I know its bad to use a vector for this, i will change that to an array or something in the future. 
     std::vector<box*> boxes;
+
+    // returns a texture of the text with the given size, color, and font
+    SDL_Texture* createTextTexture(const char* fontPath, const char* text, SDL_Color color, int fontSize, int* width, int* height);
+
 } base;

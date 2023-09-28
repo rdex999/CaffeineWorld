@@ -1,13 +1,15 @@
 #pragma once
+#include <format>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
 #include "../base/base.h"
 #include "../player/player.h"
+#include "../gun/gun.h"
 
 class inventory
 {
     public:
-        inventory(base* baseObj, player* playerObj);
+        inventory(base* baseObj, player* playerObj, gun* gunObj);
         ~inventory();
 
         void selectItem(int itemNumber);
@@ -21,6 +23,7 @@ class inventory
     private:
         base* baseObj;
         player* playerObj;
+        gun* gunObj;
 
         // runs on every frame
         void tick(double deltaTime);
@@ -39,6 +42,9 @@ class inventory
         // the highlight texture screen location
         vector2d highlightScreenLocation;
 
+        // the width and height of the bullets left font texture
+        vector2d bulletsLeftFontSize; 
+        
         // the highlight on the selected item
         SDL_Texture* selectedItemHighLight;
 
@@ -47,4 +53,7 @@ class inventory
 
         // the gun item frame texture
         SDL_Texture* textureGunItem;
+
+        // the bullets left count texture
+        SDL_Texture* textureBulletsLeft;
 };

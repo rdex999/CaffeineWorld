@@ -30,7 +30,7 @@ container::container()
     playerObj = new player(baseObj);
     gunObj = new gun(baseObj, playerObj);
     attackHandObj = new attackHand(baseObj, playerObj);
-    inventoryObj = new inventory(baseObj, playerObj);
+    inventoryObj = new inventory(baseObj, playerObj, gunObj);
 }
 
 container::~container()
@@ -80,6 +80,10 @@ void container::handleEvent()
                     case SDLK_w:
                     case SDLK_UP:
                         playerObj->doJump(); 
+                        break;
+
+                    case SDLK_r:
+                        gunObj->reload();
                         break;
 
                     case SDLK_1:

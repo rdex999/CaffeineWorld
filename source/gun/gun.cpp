@@ -11,6 +11,8 @@ gun::gun(base *baseObj, player *playerObj)
         exit(1);
     }
 
+    gunShot = false;
+
     gunSize = vector2d(251, 130)/1.7;
     currentBullet = 0;
 
@@ -50,20 +52,21 @@ void gun::tick(double deltaTime)
         bullets[currentBullet] = new bullet(baseObj, std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr),
             &gunLocation, playerObj->flip, bullets, currentBullet);
 
+        gunShot = true;
         lastGunShotTime = 0;
-        if(currentBullet >= 15)
-            reload();
         currentBullet++; 
+        if(currentBullet >= 16)
+            reload();
     }
 }
 
 void gun::render()
 {
     if(playerObj->selectedItem == 2){
-        SDL_Rect rect = {(int)playerObj->screenLocation.X,
+        SDL_Rect playerRect = {(int)playerObj->screenLocation.X,
             (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7), (int)gunSize.X, (int)gunSize.Y};
 
-        SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect,
+        SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &playerRect,
             baseObj->rotationPlayerToMouse, NULL, SDL_RendererFlip(playerObj->flip));
     }
 }

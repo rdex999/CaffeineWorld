@@ -32,13 +32,13 @@ bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
 
 bullet::~bullet()
 {
-    std::cout << "Destroying bullet" << std::endl;
     if(texture){SDL_DestroyTexture(texture);}
     
     baseObj->boxes.erase(std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr));
-
-    bullets[bulletIndex] = nullptr;
-
+    
+    if(bullets){
+        bullets[bulletIndex] = nullptr;
+    }
     if(boxPtr){
         delete boxPtr;
     }

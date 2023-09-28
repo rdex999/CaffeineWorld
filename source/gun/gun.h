@@ -16,6 +16,14 @@ class gun
         // reload the gun
         void reload();
 
+        // if there was a gun shot.
+        // for the invenvtory class.
+        // sets to true every time the player shoots, and sets to false from the inventory class. 
+        bool gunShot;
+
+        // the current bullet in the bullets array
+        int currentBullet;
+    
     private:
 
         // store object pointers
@@ -24,7 +32,7 @@ class gun
 
         // the texture of the gun
         SDL_Texture* texture;
-        
+
         // runs every frame 
         void tick(double deltaTime);
 
@@ -40,6 +48,4 @@ class gun
         // a pointer to the gun box
         box* boxPtr;
 
-        // the current bullet in the bullets array
-        int currentBullet;
 };
