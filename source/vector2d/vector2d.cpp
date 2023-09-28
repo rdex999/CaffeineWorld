@@ -6,7 +6,7 @@ vector2d::vector2d()
     Y = 0;
 }
 
-vector2d::vector2d(int X, int Y)
+vector2d::vector2d(double X, double Y)
 {
     this->X = X;
     this->Y = Y;
@@ -14,7 +14,7 @@ vector2d::vector2d(int X, int Y)
 
 vector2d vector2d::norm()
 {
-    float mag = std::sqrt(this->X * this->X + this->Y * this->Y);
+    double mag = std::sqrt(this->X * this->X + this->Y * this->Y);
     return vector2d(this->X/mag, this->Y/mag);
 }
 

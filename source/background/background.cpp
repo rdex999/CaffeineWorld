@@ -24,6 +24,6 @@ background::~background()
 
 void background::render()
 {
-    SDL_Rect rect = {0, 0, baseObj->screenSize.X, baseObj->screenSize.Y};
+    SDL_Rect rect = {0, 0, (int)baseObj->screenSize.X, (int)baseObj->screenSize.Y};
     SDL_RenderCopy(baseObj->mainRenderer, texture, NULL, &rect);
 }

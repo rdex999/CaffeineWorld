@@ -44,9 +44,9 @@ void attackHand::tick(double deltaTime)
             attackSlowDown = 3.f;
         }
         if(playerObj->flip){
-            screenLocation = playerObj->screenLocation + vector2d(attackOffset, (int)(playerObj->playerSize.Y/2.7));
+            screenLocation = playerObj->screenLocation + vector2d(attackOffset, playerObj->playerSize.Y/2.7);
         }else{
-            screenLocation = playerObj->screenLocation + vector2d(-1*attackOffset, (int)(playerObj->playerSize.Y/2.7));
+            screenLocation = playerObj->screenLocation + vector2d(-1*attackOffset, playerObj->playerSize.Y/2.7);
         }
     }
 }

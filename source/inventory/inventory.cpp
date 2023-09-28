@@ -72,12 +72,12 @@ void inventory::tick(double deltaTime)
 
 void inventory::render()
 {
-    SDL_Rect handRect = {firstItemScreenLocation.X, firstItemScreenLocation.Y, 85, 85};
+    SDL_Rect handRect = {(int)firstItemScreenLocation.X, (int)firstItemScreenLocation.Y, 85, 85};
     SDL_RenderCopy(baseObj->mainRenderer, textureHandItem, NULL, &handRect);
 
-    SDL_Rect gunRect = {firstItemScreenLocation.X + 85 + 10, firstItemScreenLocation.Y, 85, 85};
+    SDL_Rect gunRect = {(int)firstItemScreenLocation.X + 85 + 10, (int)firstItemScreenLocation.Y, 85, 85};
     SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
-    SDL_Rect highlightRect = {highlightScreenLocation.X, highlightScreenLocation.Y, 85, 85};
+    SDL_Rect highlightRect = {(int)highlightScreenLocation.X, (int)highlightScreenLocation.Y, 85, 85};
     SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
 }

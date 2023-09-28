@@ -140,7 +140,7 @@ void player::tick(double deltaTime)
 
     // if the player is below the floor then take him up a bit
     if(screenLocation.Y > floorLocation.Y){
-        screenLocation.Y -= 3 * deltaTime;
+        screenLocation.Y -= 30 * deltaTime;
     }
 
     // if the player wants to jump and he is not in the air then jump
@@ -153,15 +153,19 @@ void player::tick(double deltaTime)
         }
     }
 
+    vector2d gunLocation(screenLocation.X, (int)(screenLocation.Y+playerSize.Y/2.7));
+
     // handle shooting with the gun
-    if(selectedItem == 2 && baseObj->mouseState == 1){
+    lastBulletShootTime += deltaTime;
+    if(selectedItem == 2 && baseObj->mouseState == 1 && lastBulletShootTime >= 0.2){
         bullet* blt = new bullet(baseObj, std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr),
-            screenLocation, baseObj->mouseLocation, flip);
+            &gunLocation, flip);
+            lastBulletShootTime = 0; 
     }
 }
 
 void player::render()
 {
-    SDL_Rect rect = {screenLocation.X, screenLocation.Y, playerSize.X, playerSize.Y};
+    SDL_Rect rect = {(int)screenLocation.X, (int)screenLocation.Y, (int)playerSize.X, (int)playerSize.Y};
     SDL_RenderCopyEx(baseObj->mainRenderer, textures[textureIndex], NULL, &rect, 0, NULL, SDL_RendererFlip(flip));
 }

@@ -84,6 +84,9 @@ class player
         // the player box pointer
         box* boxPtr;
 
+        // time since the last gun shot
+        double lastBulletShootTime;
+
 };
 
 #endif

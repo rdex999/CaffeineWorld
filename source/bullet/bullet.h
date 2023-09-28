@@ -2,17 +2,18 @@
 #define BULLET_H
 #include <SDL2/SDL_image.h>
 #include "../base/base.h"
+#include "../dVector2d/dVector2d.h"
 
 class bullet
 {
     public:
         bullet(base* baseObj, std::vector<box*>::iterator boxesIterator,
-            vector2d &shootFrom, vector2d &shootTo, bool flip);
+            vector2d *shootFrom, bool flip);
         ~bullet();
 
         // from where the bullet was shot,
         // and also the bullets location on the screen
-        vector2d shootFrom;
+        dVector2d shootFrom;
     
     private:
 
@@ -31,20 +32,20 @@ class bullet
         // the size of the bullet image 
         vector2d size;
 
-        // where the bullet should go
-        vector2d shootTo;
-
         // the bullet box iterator at the boxes array
         std::vector<box*>::iterator boxesIterator;
 
         // the bullet box pointer
         box* boxPtr;
 
-        // the bullet rotation on the screen
+        // the bullet rotation on the screen (radians)
         double rotation;
 
         // if the bullet texture should be fliped
         bool flip;
+
+        // the bullet speed
+        float speed;
 };
 
 #endif

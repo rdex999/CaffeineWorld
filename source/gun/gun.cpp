@@ -36,8 +36,8 @@ void gun::tick(double deltaTime)
 void gun::render()
 {
     if(playerObj->selectedItem == 2){
-        SDL_Rect rect = {playerObj->screenLocation.X,
-            (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7), gunSize.X, gunSize.Y};
+        SDL_Rect rect = {(int)playerObj->screenLocation.X,
+            (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7), (int)gunSize.X, (int)gunSize.Y};
 
         SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect,
             baseObj->rotationPlayerToMouse, NULL, SDL_RendererFlip(playerObj->flip));

@@ -48,8 +48,11 @@ container::~container()
 
 void container::handleEvent()
 {
-    baseObj->mouseState = SDL_GetMouseState(&baseObj->mouseLocation.X, &baseObj->mouseLocation.Y);
-    
+    int x, y;
+    baseObj->mouseState = SDL_GetMouseState(&x, &y);
+    baseObj->mouseLocation.X = x;
+    baseObj->mouseLocation.Y = y;
+ 
     SDL_Event event;
     while(SDL_PollEvent(&event))
     {

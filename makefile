@@ -3,7 +3,7 @@ files = \
 	$(s)main.cpp $(s)vector2d/vector2d.cpp $(s)base/base.cpp \
 	$(s)box/box.cpp $(s)background/background.cpp $(s)player/player.cpp \
 	$(s)inventory/inventory.cpp $(s)gun/gun.cpp $(s)attackHand/attackHand.cpp \
-	$(s)bullet/bullet.cpp
+	$(s)bullet/bullet.cpp $(s)dVector2d/dVector2d.cpp
 
 flags = -lSDL2_image
 

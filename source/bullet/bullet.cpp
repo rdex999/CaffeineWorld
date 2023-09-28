@@ -1,18 +1,19 @@
 #include "bullet.h"
 
 bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
-    vector2d &shootFromTo, vector2d &shootTo, bool flip)
+    vector2d *shootFrom, bool flip)
 {
     this->baseObj = baseObj;
 
-    size = vector2d(1550, 260)/15;
+    size = vector2d(1550, 260)/20;
 
-    this->shootFrom = shootFrom;
-    this->shootTo = shootTo;
+    this->shootFrom = dVector2d(shootFrom->X, shootFrom->Y);
 
-    rotation = baseObj->rotationPlayerToMouse;
+    rotation = baseObj->rotationPlayerToMouse * (M_PI/180.f);
 
     this->flip = flip;
+
+    speed = 50.f;
 
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/bullet/bullet.png");
     if(!texture){
@@ -29,26 +30,30 @@ bullet::bullet(base *baseObj, std::vector<box*>::iterator boxesIterator,
 
 bullet::~bullet()
 {
+    std::cout << "Destroying bullet" << std::endl;
     if(texture){SDL_DestroyTexture(texture);}
     
-    baseObj->boxes.erase(boxesIterator);
+    baseObj->boxes.erase(std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr));
 
-    if(baseObj->boxes[std::distance(baseObj->boxes.begin(), boxesIterator)]){
-        delete baseObj->boxes[std::distance(baseObj->boxes.begin(), boxesIterator)];
+    if(boxPtr){
+        delete boxPtr;
     }
 }
 
 void bullet::tick(double deltaTime)
 {
-    shootFrom = vector2d(shootTo.X - shootFrom.X, shootTo.Y - shootFrom.Y).norm();
-    if(!shootFrom.inBox(vector2d(0, 0), baseObj->screenSize)){
-        this->~bullet();
+    if(flip){
+        shootFrom += dVector2d(std::cos(rotation) * deltaTime * speed * 15, std::sin(rotation) * deltaTime * speed * 15);
+    }else{
+        shootFrom -= dVector2d(std::cos(rotation) * deltaTime * speed * 15, std::sin(rotation) * deltaTime * speed * 15);
+    } 
+    if(!shootFrom.inBox(dVector2d(0, 0), dVector2d(baseObj->screenSize.X, baseObj->screenSize.Y))){
+        delete this;
     }
-    shootFrom.printVec();
 }
 
 void bullet::render()
 {
-    SDL_Rect rect = {shootFrom.X, shootFrom.Y, size.X, size.Y};
-    SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect, rotation, NULL, SDL_RendererFlip(flip));
+    SDL_Rect rect = {(int)shootFrom.X, (int)shootFrom.Y, size.X, size.Y};
+    SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect, rotation * (180/M_PI), NULL, SDL_RendererFlip(flip));
 }

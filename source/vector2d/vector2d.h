@@ -7,9 +7,8 @@ class vector2d
 {
     public:
         int X, Y;
-        
         vector2d();
-        vector2d(int X, int Y);
+        vector2d(double X, double Y);
 
         vector2d norm();
 
