@@ -1,6 +1,6 @@
 #pragma once
-#include <SDL2/SDL_image.h>
-#include "../base/base.h"
+#define MAX_COFFEECUP_SPAWN 10
+#include "../coffeeCup/coffeeCup.h"
 
 class background
 {
@@ -8,10 +8,16 @@ class background
         background(base* baseObj);
         ~background();
 
+        // an array of coffee cup pointers
+        coffeeCup* coffeeCupArray[MAX_COFFEECUP_SPAWN] = {nullptr};
+
     private:
 
-        // renders the background, acts line the tick function because the background doesnt really need a tick function
-        void render(double deltaTime);
+        // runs every frame
+        void tick(double deltaTime);
+
+        // renders the background and the coffee cupt 
+        void render();
 
         // the baseObj pointer
         base* baseObj;

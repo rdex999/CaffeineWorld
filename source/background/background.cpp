@@ -12,7 +12,7 @@ background::background(base* baseObj)
         exit(1); 
     }
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&background::render, this, std::placeholders::_1)));
+    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&background::tick, this, std::placeholders::_1)));
 }
 
 background::~background()
@@ -22,7 +22,14 @@ background::~background()
     }
 }
 
-void background::render(double deltaTime)
+void background::tick(double deltaTime)
+{
+    render();
+
+    
+}
+
+void background::render()
 {
     SDL_Rect rect = {0, 0, (int)baseObj->screenSize.X, (int)baseObj->screenSize.Y};
     SDL_RenderCopy(baseObj->mainRenderer, texture, NULL, &rect);
