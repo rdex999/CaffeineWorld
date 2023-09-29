@@ -45,6 +45,7 @@ void background::tick(double deltaTime)
         }
         currentCoffeeCupIndex++;
         timeCoffeeCupSpawn = 0;
+        if(currentCoffeeCupIndex >= 10){currentCoffeeCupIndex = 0;}
     }
 }
 
