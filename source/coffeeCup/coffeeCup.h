@@ -46,4 +46,7 @@ class coffeeCup
 
         // the index of the coffeeCup in the cuffeeCupArray
         int coffeeCupArrayIndex;
+
+        // the speed that the coffeeCup moves in
+        float speed;
 };

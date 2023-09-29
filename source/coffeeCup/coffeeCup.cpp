@@ -7,6 +7,8 @@ coffeeCup::coffeeCup(base *baseObj, bool direction, std::vector<box*>::iterator 
 
     coffeeCupSize = vector2d(1314, 1322)/15;
 
+    speed = 160.f;
+
     this->coffeeCupArray = coffeeCupArray;
     this->coffeeCupArrayIndex = coffeeCupArrayIndex;
 
@@ -42,7 +44,11 @@ void coffeeCup::tick(double deltaTime)
 {
     render();
 
-    screenLocation.X -= deltaTime * 20;
+    if(!screenLocation.inBox(dVector2d(0, 0), dVector2d(baseObj->screenSize.X, baseObj->screenSize.Y))){
+        delete this;
+    }
+
+    screenLocation += (direction - screenLocation).norm() * deltaTime * speed;
 }
 
 void coffeeCup::render()

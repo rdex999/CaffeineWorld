@@ -39,4 +39,6 @@ typedef struct base
     // returns a texture of the text with the given size, color, and font
     SDL_Texture* createTextTexture(const char* fontPath, const char* text, SDL_Color color, int fontSize, int* width, int* height);
 
+    int randomRange(int min, int max);
+
 } base;

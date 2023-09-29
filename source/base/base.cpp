@@ -45,3 +45,8 @@ SDL_Texture *base::createTextTexture(const char *fontPath, const char *text, SDL
     TTF_CloseFont(font);
     return SDL_CreateTextureFromSurface(mainRenderer, tempFontSurface);
 }
+
+int base::randomRange(int min, int max)
+{
+    return rand()%(max-min)+min;
+}

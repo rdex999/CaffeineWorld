@@ -38,10 +38,11 @@ void background::tick(double deltaTime)
 
     timeCoffeeCupSpawn += deltaTime;
     if(currentCoffeeCupIndex < 10 && timeCoffeeCupSpawn >= 3){
-        coffeeCupArray[currentCoffeeCupIndex] = new coffeeCup(baseObj, 1,
-            std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr) + 1, 
-            coffeeCupArray, currentCoffeeCupIndex); // + 1 so the coffee box will be after the background
-
+        if(!coffeeCupArray[currentCoffeeCupIndex]){
+            coffeeCupArray[currentCoffeeCupIndex] = new coffeeCup(baseObj, baseObj->randomRange(0, 2),
+                std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr) + 1, 
+                coffeeCupArray, currentCoffeeCupIndex); // + 1 so the coffee box will be after the background
+        }
         currentCoffeeCupIndex++;
         timeCoffeeCupSpawn = 0;
     }
