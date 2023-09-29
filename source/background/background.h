@@ -1,5 +1,4 @@
 #pragma once
-#define MAX_COFFEECUP_SPAWN 10
 #include "../coffeeCup/coffeeCup.h"
 
 class background
@@ -9,7 +8,10 @@ class background
         ~background();
 
         // an array of coffee cup pointers
-        coffeeCup* coffeeCupArray[MAX_COFFEECUP_SPAWN] = {nullptr};
+        coffeeCup* coffeeCupArray[10] = {nullptr};
+
+        // the current coffee cup index in the coffeeCupArray
+        int currentCoffeeCupIndex;
 
     private:
 
@@ -24,4 +26,10 @@ class background
 
         // the texture
         SDL_Texture* texture;
+
+        // store the background box pointer
+        box* boxPtr;
+
+        // time since the last coffee cup spawn
+        double timeCoffeeCupSpawn;
 };

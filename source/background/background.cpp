@@ -5,6 +5,8 @@ background::background(base* baseObj)
     //store the baseObj pointer
     this->baseObj = baseObj;
 
+    currentCoffeeCupIndex = 0;
+
     // load the image and create a surface
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/background/backgroundMain.png");
     if(!texture){
@@ -12,7 +14,10 @@ background::background(base* baseObj)
         exit(1); 
     }
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&background::tick, this, std::placeholders::_1)));
+    boxPtr = new box(std::bind(&background::tick, this, std::placeholders::_1));
+
+    baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
+
 }
 
 background::~background()
@@ -20,13 +25,26 @@ background::~background()
     if(texture){
         SDL_DestroyTexture(texture);
     }
+    for(int i=0; i<10; i++){
+        if(coffeeCupArray[i]){
+            delete coffeeCupArray[i];
+        }
+    }
 }
 
 void background::tick(double deltaTime)
 {
     render();
 
-    
+    timeCoffeeCupSpawn += deltaTime;
+    if(currentCoffeeCupIndex < 10 && timeCoffeeCupSpawn >= 3){
+        coffeeCupArray[currentCoffeeCupIndex] = new coffeeCup(baseObj, 1,
+            std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr) + 1, 
+            coffeeCupArray, currentCoffeeCupIndex); // + 1 so the coffee box will be after the background
+
+        currentCoffeeCupIndex++;
+        timeCoffeeCupSpawn = 0;
+    }
 }
 
 void background::render()

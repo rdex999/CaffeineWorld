@@ -1,8 +1,22 @@
 #include "coffeeCup.h"
 
-coffeeCup::coffeeCup(base *baseObj)
+coffeeCup::coffeeCup(base *baseObj, bool direction, std::vector<box*>::iterator boxIterator,
+    coffeeCup** coffeeCupArray, int coffeeCupArrayIndex)
 {
     this->baseObj = baseObj;
+
+    coffeeCupSize = vector2d(1314, 1322)/15;
+
+    this->coffeeCupArray = coffeeCupArray;
+    this->coffeeCupArrayIndex = coffeeCupArrayIndex;
+
+    if(direction){
+        screenLocation = dVector2d(baseObj->screenSize.X - coffeeCupSize.X, 0);
+        this->direction = dVector2d(0, 0);
+    }else{
+        screenLocation = dVector2d(0, 0);
+        this->direction = dVector2d(baseObj->screenSize.X, 0);
+    }
 
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/coffeeCup/coffeeCup.png");
     if(!texture){
@@ -11,17 +25,24 @@ coffeeCup::coffeeCup(base *baseObj)
     }
 
     boxPtr = new box(std::bind(&coffeeCup::tick, this, std::placeholders::_1));
-    baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
+    baseObj->boxes.insert(boxIterator, boxPtr);
 }
 
 coffeeCup::~coffeeCup()
 {
     if(texture){SDL_DestroyTexture(texture);}
+    baseObj->boxes.erase(std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr));
+    if(coffeeCupArray){
+        coffeeCupArray[coffeeCupArrayIndex] = nullptr;
+    }
+    if(boxPtr){delete boxPtr;}
 }
 
 void coffeeCup::tick(double deltaTime)
 {
     render();
+
+    screenLocation.X -= deltaTime * 20;
 }
 
 void coffeeCup::render()

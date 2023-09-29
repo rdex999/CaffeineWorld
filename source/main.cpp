@@ -35,13 +35,13 @@ container::container()
 
 container::~container()
 {
-    if(baseObj){delete baseObj;}
     if(backgroundObj){delete backgroundObj;}
     if(inventoryObj){delete inventoryObj;}
     if(playerObj){delete playerObj;}
     if(gunObj){delete gunObj;}
     if(attackHandObj){delete attackHandObj;}
 
+    if(baseObj){delete baseObj;}
     SDL_Quit();
 }
 
