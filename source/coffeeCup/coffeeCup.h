@@ -9,18 +9,16 @@ class coffeeCup
     public:
 
         // direction 0 for flying to the right, direction 1 for flying to the left
-        coffeeCup(base* baseObj, bool direction, std::vector<box*>::iterator boxIterator,
-            coffeeCup** coffeeCupArray = nullptr, int coffeeCupArrayIndex = 0);
+        coffeeCup(base* baseObj, bool direction, coffeeCup** coffeeCupArray = nullptr, int coffeeCupArrayIndex = 0);
         ~coffeeCup();
-
+    
+        // runs every frame
+        void tick();
     
     private:
 
         // store baseObj pointer
         base* baseObj;
-
-        // runs every frame
-        void tick(double deltaTime);
         
         // renders the coffee cup texture to the screen
         void render();
@@ -33,9 +31,6 @@ class coffeeCup
 
         // the coffee cup image size
         vector2d coffeeCupSize;
-
-        // pointer to the coffee cup box
-        box* boxPtr;
 
         // where the coffee cup should fly to
         dVector2d direction;

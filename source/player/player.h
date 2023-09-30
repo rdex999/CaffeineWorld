@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include <array>
+#include <functional>
 #include "../base/base.h"
 
 class player
@@ -36,18 +37,16 @@ class player
 
         // the selected item 
         int selectedItem;
-    private: 
         // function that runs on every frame
-        void tick(double deltaTime);
+        void tick();
+    
+    private: 
 
         // renders the player
         void render();
 
         // baseObj pointer 
         base* baseObj;
-
-        // the index of the player box in the array
-        int boxIndex;
 
         // the texture index to render
         int textureIndex;
@@ -78,8 +77,4 @@ class player
 
         // the time between each step animation
         double walkStepTime;
-
-        // the player box pointer
-        box* boxPtr;
-
 };

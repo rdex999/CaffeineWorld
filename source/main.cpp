@@ -139,10 +139,10 @@ void container::handleEvent()
 
 void container::runTicks()
 {
-    for(box* b: baseObj->boxes){
-        if(b && b->tick){
-            b->tick(baseObj->deltaTime);
-        }
-    }
+    backgroundObj->tick();
+    playerObj->tick();
+    gunObj->tick();
+    attackHandObj->tick();
+    inventoryObj->tick();
     SDL_RenderPresent(baseObj->mainRenderer);
 }

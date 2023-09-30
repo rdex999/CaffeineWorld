@@ -21,11 +21,6 @@ base::~base()
         SDL_DestroyRenderer(mainRenderer);
     }
 
-    for(box* b: boxes){
-        if(b){
-            delete b;
-        }
-    }
 }
 
 SDL_Texture *base::createTextTexture(const char *fontPath, const char *text, SDL_Color color, int fontSize, int* width, int* height)

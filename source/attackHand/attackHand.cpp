@@ -21,7 +21,6 @@ attackHand::attackHand(base *baseObj, player* playerObj)
         exit(1);
     }
 
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&attackHand::tick, this, std::placeholders::_1)));
 }
 
 attackHand::~attackHand()
@@ -29,7 +28,7 @@ attackHand::~attackHand()
     if(texture){SDL_DestroyTexture(texture);}
 }
 
-void attackHand::tick(double deltaTime)
+void attackHand::tick()
 {
     render();
 
@@ -37,8 +36,8 @@ void attackHand::tick(double deltaTime)
         attack = true;
     }
     if(attack){
-        attackSlowDown -= deltaTime * 10;
-        attackOffset += deltaTime * 230 * attackSlowDown;
+        attackSlowDown -= baseObj->deltaTime * 10;
+        attackOffset += baseObj->deltaTime * 230 * attackSlowDown;
         if(attackOffset <= 0){
             attack = false;
             attackOffset = 0.f;

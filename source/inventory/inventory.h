@@ -20,13 +20,13 @@ class inventory
         // the selected item number
         int selectedItem;
     
+        // runs on every frame
+        void tick();
+    
     private:
         base* baseObj;
         player* playerObj;
         gun* gunObj;
-
-        // runs on every frame
-        void tick(double deltaTime);
 
         // renders all the inventory items
         void render();

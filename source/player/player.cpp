@@ -64,10 +64,6 @@ player::player(base *baseObj)
         std::cout << "Error: could not create skin walking 4 texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-
-    boxPtr = new box(std::bind(&player::tick, this, std::placeholders::_1));
-
-    baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
 }
 
 player::~player()
@@ -119,7 +115,7 @@ void player::walk(int direction)
     screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
 }
 
-void player::tick(double deltaTime)
+void player::tick()
 {
     render();
     // slow stop when the player stops walking
@@ -128,25 +124,25 @@ void player::tick(double deltaTime)
             slowDownEndWalk = 1;
             stoppedWalking = 0;
         }
-        slowDownEndWalk -= deltaTime * 1.7;
+        slowDownEndWalk -= baseObj->deltaTime * 1.7;
         slowDownEndWalk = std::clamp(slowDownEndWalk, 0.f, 1.f);
-        screenLocation.X -= (int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * deltaTime);
+        screenLocation.X -= (int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * baseObj->deltaTime);
     }
     
     // if the player is above the floor and hes not jumping then use gravity 
     if(screenLocation.Y < floorLocation.Y && !jump){
-        screenLocation.Y += deltaTime * gravity * 15 * 4;
+        screenLocation.Y += baseObj->deltaTime * gravity * 15 * 4;
     }
 
     // if the player is below the floor then take him up a bit
     if(screenLocation.Y > floorLocation.Y){
-        screenLocation.Y -= 30 * deltaTime;
+        screenLocation.Y -= 30 * baseObj->deltaTime;
     }
 
     // if the player wants to jump and he is not in the air then jump
     if(jump){
-        screenLocation.Y -= deltaTime * jumpIntensity * gravity * 7.5f;
-        jumpIntensity -= deltaTime * gravity * 2.f;
+        screenLocation.Y -= baseObj->deltaTime * jumpIntensity * gravity * 7.5f;
+        jumpIntensity -= baseObj->deltaTime * gravity * 2.f;
         if(jumpIntensity < -11){
             jump = false;
             jumpIntensity = 10;

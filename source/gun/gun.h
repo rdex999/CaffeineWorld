@@ -11,7 +11,7 @@ class gun
         ~gun();
 
         // an array of bullet pointers
-        bullet* bullets[16];
+        bullet* bullets[16] = {nullptr};
 
         // reload the gun
         void reload();
@@ -24,6 +24,9 @@ class gun
         // the current bullet in the bullets array
         int currentBullet;
     
+        // runs every frame 
+        void tick();
+    
     private:
 
         // store object pointers
@@ -33,9 +36,6 @@ class gun
         // the texture of the gun
         SDL_Texture* texture;
 
-        // runs every frame 
-        void tick(double deltaTime);
-
         // renders the gun
         void render();
 
@@ -44,8 +44,4 @@ class gun
 
         // time since the last gun shot
         double lastGunShotTime;
-
-        // a pointer to the gun box
-        box* boxPtr;
-
 };

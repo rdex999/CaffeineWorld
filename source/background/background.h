@@ -12,11 +12,11 @@ class background
 
         // the current coffee cup index in the coffeeCupArray
         int currentCoffeeCupIndex;
+        
+        // runs every frame
+        void tick();
 
     private:
-
-        // runs every frame
-        void tick(double deltaTime);
 
         // renders the background and the coffee cupt 
         void render();
@@ -26,9 +26,6 @@ class background
 
         // the texture
         SDL_Texture* texture;
-
-        // store the background box pointer
-        box* boxPtr;
 
         // time since the last coffee cup spawn
         double timeCoffeeCupSpawn;

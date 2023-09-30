@@ -44,7 +44,6 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
         exit(1);
     }
     
-    baseObj->boxes.insert(baseObj->boxes.end(), new box(std::bind(&inventory::tick, this, std::placeholders::_1)));
 }
 
 inventory::~inventory()
@@ -74,7 +73,7 @@ void inventory::setBox(int backOrForward)
     highlightScreenLocation.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + backOrForward;
 }
 
-void inventory::tick(double deltaTime)
+void inventory::tick()
 {
     render();
 

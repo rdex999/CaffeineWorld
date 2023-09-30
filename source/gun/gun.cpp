@@ -15,10 +15,6 @@ gun::gun(base *baseObj, player *playerObj)
 
     gunSize = vector2d(251, 130)/1.7;
     currentBullet = 0;
-
-    boxPtr = new box(std::bind(&gun::tick, this, std::placeholders::_1));
-
-    baseObj->boxes.insert(baseObj->boxes.end(), boxPtr);
 }
 
 gun::~gun()
@@ -31,7 +27,7 @@ void gun::reload()
     currentBullet = 0;
 }
 
-void gun::tick(double deltaTime)
+void gun::tick()
 {
     render();
 
@@ -47,10 +43,9 @@ void gun::tick(double deltaTime)
         playerObj->screenLocation.Y + playerObj->playerSize.Y/2.7 + gunSize.Y/3);
 
     // handle shooting with the gun
-    lastGunShotTime += deltaTime;
+    lastGunShotTime += baseObj->deltaTime;
     if(playerObj->selectedItem == 2 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
-        bullets[currentBullet] = new bullet(baseObj, std::find(baseObj->boxes.begin(), baseObj->boxes.end(), boxPtr),
-            &gunLocation, playerObj->flip, bullets, currentBullet);
+        bullets[currentBullet] = new bullet(baseObj, &gunLocation, playerObj->flip, bullets, currentBullet);
 
         gunShot = true;
         lastGunShotTime = 0;
@@ -62,7 +57,13 @@ void gun::tick(double deltaTime)
 
 void gun::render()
 {
+    for(int i=0; i<16; i++){
+        if(bullets[i]){
+            bullets[i]->tick();
+        } 
+    }
     if(playerObj->selectedItem == 2){
+
         SDL_Rect playerRect = {(int)playerObj->screenLocation.X,
             (int)(playerObj->screenLocation.Y+playerObj->playerSize.Y/2.7), (int)gunSize.X, (int)gunSize.Y};
 

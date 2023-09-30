@@ -9,11 +9,11 @@ class attackHand
         attackHand(base* baseObj, player* playerObj);
         ~attackHand();
 
+        // runs every frame
+        void tick();
+    
     private:
 
-        // runs every frame
-        void tick(double deltaTime);
-        
         // renders the hand object 
         void render();
 
