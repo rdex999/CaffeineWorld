@@ -36,6 +36,9 @@ class gun
         // the texture of the gun
         SDL_Texture* texture;
 
+        // the texture of the bullets
+        SDL_Texture* textureBullet;
+
         // renders the gun
         void render();
 

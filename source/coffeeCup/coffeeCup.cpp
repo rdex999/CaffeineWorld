@@ -1,6 +1,6 @@
 #include "coffeeCup.h"
 
-coffeeCup::coffeeCup(base *baseObj, bool direction,
+coffeeCup::coffeeCup(base *baseObj, bool direction, SDL_Texture* texture,
     coffeeCup** coffeeCupArray, int coffeeCupArrayIndex)
 {
     this->baseObj = baseObj;
@@ -12,6 +12,8 @@ coffeeCup::coffeeCup(base *baseObj, bool direction,
     this->coffeeCupArray = coffeeCupArray;
     this->coffeeCupArrayIndex = coffeeCupArrayIndex;
 
+    this->texture = texture;
+
     if(direction){
         screenLocation = dVector2d(baseObj->screenSize.X - coffeeCupSize.X, 0);
         this->direction = dVector2d(0, 0);
@@ -19,17 +21,10 @@ coffeeCup::coffeeCup(base *baseObj, bool direction,
         screenLocation = dVector2d(0, 0);
         this->direction = dVector2d(baseObj->screenSize.X, 0);
     }
-
-    texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/coffeeCup/coffeeCup.png");
-    if(!texture){
-        std::cout << "Error: could not create coffe cup texture.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
 }
 
 coffeeCup::~coffeeCup()
 {
-    if(texture){SDL_DestroyTexture(texture);}
     if(coffeeCupArray){
         coffeeCupArray[coffeeCupArrayIndex] = nullptr;
     }

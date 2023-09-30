@@ -1,6 +1,6 @@
 #include "bullet.h"
 
-bullet::bullet(base *baseObj, vector2d *shootFrom, bool flip, bullet** bullets, int bulletIndex)
+bullet::bullet(base *baseObj, vector2d *shootFrom, bool flip, SDL_Texture* texture, bullet** bullets, int bulletIndex)
 {
     this->baseObj = baseObj;
 
@@ -18,17 +18,11 @@ bullet::bullet(base *baseObj, vector2d *shootFrom, bool flip, bullet** bullets, 
 
     this->bulletIndex = bulletIndex;
 
-    texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/bullet/bullet.png");
-    if(!texture){
-        std::cout << "Error: could not create bullet texture.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
+    this->texture = texture;
 }
 
 bullet::~bullet()
 {
-    if(texture){SDL_DestroyTexture(texture);}
-    
     if(bullets){
         bullets[bulletIndex] = nullptr;
     }

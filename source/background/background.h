@@ -27,6 +27,8 @@ class background
         // the texture
         SDL_Texture* texture;
 
+        SDL_Texture* textureCoffeeCup;
+
         // time since the last coffee cup spawn
         double timeCoffeeCupSpawn;
 };

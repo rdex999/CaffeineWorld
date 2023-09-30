@@ -9,7 +9,8 @@ class coffeeCup
     public:
 
         // direction 0 for flying to the right, direction 1 for flying to the left
-        coffeeCup(base* baseObj, bool direction, coffeeCup** coffeeCupArray = nullptr, int coffeeCupArrayIndex = 0);
+        coffeeCup(base* baseObj, bool direction, SDL_Texture* texture,
+            coffeeCup** coffeeCupArray = nullptr, int coffeeCupArrayIndex = 0);
         ~coffeeCup();
     
         // runs every frame

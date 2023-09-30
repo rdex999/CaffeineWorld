@@ -11,6 +11,12 @@ gun::gun(base *baseObj, player *playerObj)
         exit(1);
     }
 
+    textureBullet = IMG_LoadTexture(baseObj->mainRenderer, "./images/bullet/bullet.png");
+    if(!textureBullet){
+        std::cout << "Error: could not load bullet texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
     gunShot = false;
 
     gunSize = vector2d(251, 130)/1.7;
@@ -20,6 +26,7 @@ gun::gun(base *baseObj, player *playerObj)
 gun::~gun()
 {
     if(texture){SDL_DestroyTexture(texture);}
+    if(textureBullet){SDL_DestroyTexture(textureBullet);}
 }
 
 void gun::reload()
@@ -45,7 +52,7 @@ void gun::tick()
     // handle shooting with the gun
     lastGunShotTime += baseObj->deltaTime;
     if(playerObj->selectedItem == 2 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
-        bullets[currentBullet] = new bullet(baseObj, &gunLocation, playerObj->flip, bullets, currentBullet);
+        bullets[currentBullet] = new bullet(baseObj, &gunLocation, playerObj->flip, textureBullet, bullets, currentBullet);
 
         gunShot = true;
         lastGunShotTime = 0;

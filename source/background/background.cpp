@@ -14,6 +14,11 @@ background::background(base* baseObj)
         exit(1); 
     }
 
+    textureCoffeeCup = IMG_LoadTexture(baseObj->mainRenderer, "./images/coffeeCup/coffeeCup.png");
+    if(!textureCoffeeCup){
+        std::cout << "Error: could not create coffee cup texture.\n" << SDL_GetError() << std::endl;
+        exit(1); 
+    }
 }
 
 background::~background()
@@ -36,7 +41,7 @@ void background::tick()
     if(currentCoffeeCupIndex < 10 && timeCoffeeCupSpawn >= 3){
         if(!coffeeCupArray[currentCoffeeCupIndex]){
             coffeeCupArray[currentCoffeeCupIndex] = new coffeeCup(baseObj, baseObj->randomRange(0, 2),
-                coffeeCupArray, currentCoffeeCupIndex);
+                textureCoffeeCup, coffeeCupArray, currentCoffeeCupIndex);
         }
         currentCoffeeCupIndex++;
         timeCoffeeCupSpawn = 0;
