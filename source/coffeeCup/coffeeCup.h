@@ -45,4 +45,7 @@ class coffeeCup
 
         // the speed that the coffeeCup moves in
         float speed;
+
+        // time since the coffeeCup spawnd
+        double runningTime;
 };

@@ -15,12 +15,14 @@ coffeeCup::coffeeCup(base *baseObj, bool direction, SDL_Texture* texture,
     this->texture = texture;
 
     if(direction){
-        screenLocation = dVector2d(baseObj->screenSize.X - coffeeCupSize.X, 0);
-        this->direction = dVector2d(0, 0);
+        screenLocation = dVector2d(baseObj->screenSize.X - coffeeCupSize.X, 20);
+        this->direction = dVector2d(0, 20);
     }else{
-        screenLocation = dVector2d(0, 0);
-        this->direction = dVector2d(baseObj->screenSize.X, 0);
+        screenLocation = dVector2d(0, 20);
+        this->direction = dVector2d(baseObj->screenSize.X, 20);
     }
+
+    runningTime = 0;
 }
 
 coffeeCup::~coffeeCup()
@@ -38,8 +40,10 @@ void coffeeCup::tick()
         delete this;
         return;
     }
-
-    screenLocation += (direction - screenLocation).norm() * baseObj->deltaTime * speed;
+    
+    runningTime += baseObj->deltaTime;
+    screenLocation.X += ((direction - screenLocation).norm() * baseObj->deltaTime * speed).X;
+    screenLocation.Y += 2.3 * std::sin(runningTime*5);
 }
 
 void coffeeCup::render()
