@@ -35,6 +35,9 @@ player::player(base *baseObj)
     // the gravity intensity on earth (from wikipedia)
     gravity = 9.80665;
 
+    // the slow gravity at the start of falling
+    gravitySlowDown = 1.f;
+
     // if the player should jump
     jump = false;
 
@@ -133,13 +136,9 @@ void player::tick()
     
     // if the player is above the floor and hes not jumping then use gravity 
     if(inAir && !jump){
-        screenLocation.Y += baseObj->deltaTime * gravity * 15 * 4;
+        screenLocation.Y += baseObj->deltaTime * gravity * std::clamp(gravitySlowDown, 1.f, 15.f) * 4;
+        gravitySlowDown += baseObj->deltaTime*50;
     }
-
-    // if the player is below the floor then take him up a bit
-    //if(screenLocation.Y+screenLocation.H > floorLocation.Y){
-    //    screenLocation.Y -= 30 * baseObj->deltaTime;
-    //}
 
     // if the player wants to jump and he is not in the air then jump
     if(jump){

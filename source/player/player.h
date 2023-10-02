@@ -41,7 +41,9 @@ class player
     
         // whether the player is in the air or not
         bool inAir;
-    
+
+        float gravitySlowDown;
+
     private: 
 
         // renders the player

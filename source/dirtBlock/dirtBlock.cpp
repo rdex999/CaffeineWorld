@@ -37,6 +37,7 @@ void dirtBlock::tick()
             location.Y > playerObj->screenLocation.Y)
         {
             playerObj->inAir = false;
+            playerObj->gravitySlowDown = 1.f; 
             playerObj->screenLocation.Y -= (playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y;
         }
     }

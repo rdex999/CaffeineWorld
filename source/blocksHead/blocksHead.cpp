@@ -19,11 +19,20 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     // create all the dirt blocks
     vector2d screenStart(0, baseObj->screenSize.Y/1.064);
     for(int i=0; i<20; i++){
+        if(i == 10){
+            screenStart.Y -= 176/3;
+        }
+        if(i == 15){
+            screenStart.Y -= 176/3;
+        }
         dirtBlockArray[i] = new dirtBlock(baseObj, playerObj, &screenStart, texturesDirtBlock[0], texturesDirtBlock[1],
             dirtBlockArray, i);
-
         screenStart.X += 184/3.1;
-    } 
+        if(i == 15){
+            screenStart.Y -= 176/3;
+            screenStart.X -= 184/3.1;
+        } 
+    }
 }
 
 blocksHead::~blocksHead()
