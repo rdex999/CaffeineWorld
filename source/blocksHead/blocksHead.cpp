@@ -31,7 +31,14 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         if(i == 15){
             screenStart.Y -= 176/3;
             screenStart.X -= 184/3.1;
-        } 
+        }
+        if(i == 16){
+            screenStart.Y -= 176/3;
+            screenStart.X -= 184/3.1;
+        }
+        if(i == 17){
+            screenStart.Y += 176;
+        }
     }
 }
 

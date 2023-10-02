@@ -11,8 +11,9 @@ dirtBlock::dirtBlock(base *baseObj, player* playerObj, vector2d *location, SDL_T
     this->dirtBlockArray = dirtBlockArray;
     this->dirtBlockIndex = dirtBlockIndex;
 
-    dirtBlockSize = vector2d(184, 176)/3;
-
+    this->location.W = 184/3;
+    this->location.H = 176/3;
+    
     currentTextureIndex = 1;
 }
 
@@ -30,21 +31,32 @@ void dirtBlock::tick()
     if(location.inBox(vector2d(0, 0), baseObj->screenSize)){
         render();
 
+        // if the player is blocked by a high wall (when the wall is on the right)
+        if(playerObj->screenLocation.X+playerObj->screenLocation.W >= location.X &&
+            playerObj->screenLocation.X+playerObj->screenLocation.W < location.X+location.W &&
+            location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2 
+            )
+        {
+            playerObj->blockedRight = true;
+            playerObj->screenLocation -= ((playerObj->screenLocation.X+playerObj->screenLocation.W)-location.X);
+        }
+
         // whether the player is standing on the dirtBlock
-        if(location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
+        else if(location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
             location.X >= playerObj->screenLocation.X &&
             location.Y <= playerObj->screenLocation.Y+playerObj->screenLocation.H &&
-            location.Y > playerObj->screenLocation.Y)
+            location.Y > playerObj->screenLocation.Y + playerObj->screenLocation.H/1.8)
         {
             playerObj->inAir = false;
             playerObj->gravitySlowDown = 1.f; 
-            playerObj->screenLocation.Y -= (playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y;
+            playerObj->screenLocation.Y -= ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
+                baseObj->deltaTime * 20;
         }
     }
 }
 
 void dirtBlock::render()
 {
-    SDL_Rect rect = {location.X, location.Y, dirtBlockSize.X, dirtBlockSize.Y};
+    SDL_Rect rect = {location.X, location.Y, location.W, location.H};
     SDL_RenderCopy(baseObj->mainRenderer, textures[currentTextureIndex], NULL, &rect);
 }

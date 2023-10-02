@@ -8,6 +8,9 @@ player::player(base *baseObj)
     // set the texture index
     textureIndex = 0;
 
+    // if the player is blocked by a wall from the right
+    blockedRight = false;
+
     // whether the player is in the air or not
     inAir = true;
 
@@ -98,25 +101,33 @@ void player::setTextureStand()
 
 void player::walk(int direction)
 {
-    if(direction == -1){flip = true;}
-    if(direction == 1){flip = false;}
+        if(direction == -1){flip = true;}
+        if(direction == 1){flip = false;}
+    
+        // make starting walking smooth 
+        walkingSlowDown += baseObj->deltaTime * 1.5;
+        walkingSlowDown = std::clamp(walkingSlowDown, 0.2f, 1.f);
+    
+        // the walking animation
+        if(walkStepTime >= 0.4f){
+            walkStepTime = 0.f;
+        }else if(walkStepTime >= 0.2f){
+            textureIndex = 2;
+        }else if(walkStepTime >= 0.f){
+            textureIndex = 1;
+        }
+        walkStepTime += baseObj->deltaTime;
+    
+        if(direction == -1 && blockedRight){
+            direction = 0;
+        }
 
-    // make starting walking smooth 
-    walkingSlowDown += baseObj->deltaTime * 1.5;
-    walkingSlowDown = std::clamp(walkingSlowDown, 0.2f, 1.f);
+        if(direction == 1){
+            blockedRight = false;            
+        }
 
-    // the walking animation
-    if(walkStepTime >= 0.4f){
-        walkStepTime = 0.f;
-    }else if(walkStepTime >= 0.2f){
-        textureIndex = 2;
-    }else if(walkStepTime >= 0.f){
-        textureIndex = 1;
-    }
-    walkStepTime += baseObj->deltaTime;
-
-    // set the location
-    screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
+        // set the location
+        screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
 }
 
 void player::tick()
@@ -129,6 +140,13 @@ void player::tick()
             slowDownEndWalk = 1;
             stoppedWalking = 0;
         }
+        if(stoppedWalking == -1 && blockedRight){
+            stoppedWalking = 0;
+        }
+        if(stoppedWalking == 1){
+            blockedRight = false;
+        }
+
         slowDownEndWalk -= baseObj->deltaTime * 1.7;
         slowDownEndWalk = std::clamp(slowDownEndWalk, 0.f, 1.f);
         screenLocation.X -= (int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * baseObj->deltaTime);
@@ -142,9 +160,9 @@ void player::tick()
 
     // if the player wants to jump and he is not in the air then jump
     if(jump){
-        screenLocation.Y -= baseObj->deltaTime * jumpIntensity * gravity * 7.5f;
+        screenLocation.Y -= baseObj->deltaTime * std::clamp(jumpIntensity, -11.f, 10.f) * gravity * 7.5f;
         jumpIntensity -= baseObj->deltaTime * gravity * 2.f;
-        if(jumpIntensity < -11){
+        if(!inAir){
             jump = false;
             jumpIntensity = 10;
         }

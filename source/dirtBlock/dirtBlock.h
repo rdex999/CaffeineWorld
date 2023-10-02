@@ -24,9 +24,6 @@ class dirtBlock
         // the location of the dirt block on the screen
         vector2d location;
 
-        // the size of the dirt block
-        vector2d dirtBlockSize;
-
         // there are two textures for the dirt block, one is dirt, and one is dirtGrass 
         SDL_Texture* textures[2];
 

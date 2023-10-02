@@ -5,6 +5,7 @@
 #include <array>
 #include <functional>
 #include "../base/base.h"
+#include "../dVector2d/dVector2d.h"
 
 class player
 {
@@ -42,7 +43,12 @@ class player
         // whether the player is in the air or not
         bool inAir;
 
+        // the slow gravity at the start of falling
         float gravitySlowDown;
+
+        // if the player is blocked by a wall from the right
+        bool blockedRight;
+
 
     private: 
 
@@ -75,7 +81,6 @@ class player
         
         // jumping intensity
         float jumpIntensity;
-
 
         // the time between each step animation
         double walkStepTime;
