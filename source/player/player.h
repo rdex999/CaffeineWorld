@@ -39,6 +39,9 @@ class player
         // function that runs on every frame
         void tick();
     
+        // whether the player is in the air or not
+        bool inAir;
+    
     private: 
 
         // renders the player
@@ -71,8 +74,6 @@ class player
         // jumping intensity
         float jumpIntensity;
 
-        // returns whether the player is in the air or not
-        bool inAir();
 
         // the time between each step animation
         double walkStepTime;

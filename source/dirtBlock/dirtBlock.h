@@ -1,10 +1,11 @@
 #pragma once
 #include "../base/base.h"
+#include "../player/player.h"
 
 class dirtBlock
 {
     public:
-        dirtBlock(base* baseObj, vector2d *location, SDL_Texture* textureDirt, SDL_Texture* textureDirtGrass,
+        dirtBlock(base* baseObj, player* playerObj, vector2d *location, SDL_Texture* textureDirt, SDL_Texture* textureDirtGrass,
             dirtBlock** dirtBlockArray = nullptr, int dirtBlockIndex = 0);
         ~dirtBlock();
 
@@ -13,8 +14,9 @@ class dirtBlock
 
     private:
 
-        // store base pointer
+        // store baseObj and playerObjpointers
         base* baseObj;
+        player* playerObj;
 
         // renders the dirt block to the screen
         void render();

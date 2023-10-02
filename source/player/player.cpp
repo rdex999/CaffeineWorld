@@ -8,6 +8,9 @@ player::player(base *baseObj)
     // set the texture index
     textureIndex = 0;
 
+    // whether the player is in the air or not
+    inAir = true;
+
     // sould the texture flip (for walking right or left)
     flip = false;
 
@@ -77,15 +80,11 @@ player::~player()
     }
 }
 
-bool player::inAir()
-{
-    return screenLocation.Y+screenLocation.H < floorLocation.Y;
-}
-
 void player::doJump()
 {
-    if(!jump){
+    if(!jump && !inAir){
         jump = true;
+        inAir = true;
     }
 }
 
@@ -133,14 +132,14 @@ void player::tick()
     }
     
     // if the player is above the floor and hes not jumping then use gravity 
-    if(inAir() && !jump){
+    if(inAir && !jump){
         screenLocation.Y += baseObj->deltaTime * gravity * 15 * 4;
     }
 
     // if the player is below the floor then take him up a bit
-    if(screenLocation.Y+screenLocation.H > floorLocation.Y){
-        screenLocation.Y -= 30 * baseObj->deltaTime;
-    }
+    //if(screenLocation.Y+screenLocation.H > floorLocation.Y){
+    //    screenLocation.Y -= 30 * baseObj->deltaTime;
+    //}
 
     // if the player wants to jump and he is not in the air then jump
     if(jump){
@@ -151,8 +150,6 @@ void player::tick()
             jumpIntensity = 10;
         }
     }
-
-    baseObj->playerLcation = screenLocation; 
 }
 
 void player::render()

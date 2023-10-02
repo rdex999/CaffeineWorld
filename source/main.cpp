@@ -30,6 +30,7 @@ container::container()
     playerObj = new player(baseObj);
     gunObj = new gun(baseObj, playerObj);
     attackHandObj = new attackHand(baseObj, playerObj);
+    blocksHeadObj = new blocksHead(baseObj, playerObj);
     inventoryObj = new inventory(baseObj, playerObj, gunObj);
 }
 
@@ -40,6 +41,7 @@ container::~container()
     if(playerObj){delete playerObj;}
     if(gunObj){delete gunObj;}
     if(attackHandObj){delete attackHandObj;}
+    if(blocksHeadObj){delete blocksHeadObj;}
 
     if(baseObj){delete baseObj;}
     SDL_Quit();
@@ -143,6 +145,7 @@ void container::runTicks()
     playerObj->tick();
     gunObj->tick();
     attackHandObj->tick();
+    blocksHeadObj->tick();
     inventoryObj->tick();
     SDL_RenderPresent(baseObj->mainRenderer);
 }

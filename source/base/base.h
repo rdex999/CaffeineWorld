@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <vector>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "../vector2d/vector2d.h"
@@ -22,9 +21,6 @@ typedef struct base
     // renderer and window pointers
     SDL_Renderer* mainRenderer;
     SDL_Window* window;
-
-    // the location of the player on the screen
-    vector2d playerLcation;
 
     // the size of the screen
     vector2d screenSize;
