@@ -1,5 +1,6 @@
 #pragma once
 #include "../coffeeCup/coffeeCup.h"
+#include "../dirtBlock/dirtBlock.h"
 
 class background
 {
@@ -24,11 +25,22 @@ class background
         // the baseObj pointer
         base* baseObj;
 
-        // the texture
+        // the background texture
         SDL_Texture* texture;
 
+        // the texture of the coffee cup
         SDL_Texture* textureCoffeeCup;
 
         // time since the last coffee cup spawn
         double timeCoffeeCupSpawn;
+
+        // an array of all dirt blocks in the world
+        dirtBlock* dirtBlockArray[10] = {nullptr};
+
+        // the index of the current dirtBlock to run its tick function
+        int dirtBlockArrayIndex;
+
+        // the textures of the dirt blcks.
+        // index 0 is dirt texture, index 1 is dirtGrass texture
+        SDL_Texture* texturesDirtBlock[2];
 };

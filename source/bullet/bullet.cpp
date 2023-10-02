@@ -4,7 +4,7 @@ bullet::bullet(base *baseObj, vector2d *shootFrom, bool flip, SDL_Texture* textu
 {
     this->baseObj = baseObj;
 
-    size = vector2d(1550, 260)/20;
+    size = vector2d(1550, 260)/22;
 
     this->shootFrom = dVector2d(shootFrom->X, shootFrom->Y);
 

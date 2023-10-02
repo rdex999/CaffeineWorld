@@ -37,14 +37,16 @@ player::player(base *baseObj)
 
     // the jumping intensity
     jumpIntensity = 10;
-    
-    floorLocation = vector2d(0, baseObj->screenSize.Y/1.332);
+
+    // the location of the floor in the background 
+    floorLocation = vector2d(0, baseObj->screenSize.Y/1.064);
 
     // set the spawn location on screen
     screenLocation = baseObj->screenSize / 2;
 
     // set the player skin size
-    playerSize = vector2d(556, 1030)/5;
+    screenLocation.W = 556/7;
+    screenLocation.H = 1030/7;
 
     // load the skin images
     textures[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skin.png");
@@ -77,7 +79,7 @@ player::~player()
 
 bool player::inAir()
 {
-    return screenLocation.Y < floorLocation.Y;
+    return screenLocation.Y+screenLocation.H < floorLocation.Y;
 }
 
 void player::doJump()
@@ -102,9 +104,9 @@ void player::walk(int direction)
     walkingSlowDown = std::clamp(walkingSlowDown, 0.2f, 1.f);
 
     // the walking animation
-    if(walkStepTime >= 0.8f){
+    if(walkStepTime >= 0.4f){
         walkStepTime = 0.f;
-    }else if(walkStepTime >= 0.4f){
+    }else if(walkStepTime >= 0.2f){
         textureIndex = 2;
     }else if(walkStepTime >= 0.f){
         textureIndex = 1;
@@ -118,6 +120,7 @@ void player::walk(int direction)
 void player::tick()
 {
     render();
+
     // slow stop when the player stops walking
     if(stoppedWalking != 0){
         if(slowDownEndWalk <= 0){
@@ -130,12 +133,12 @@ void player::tick()
     }
     
     // if the player is above the floor and hes not jumping then use gravity 
-    if(screenLocation.Y < floorLocation.Y && !jump){
+    if(inAir() && !jump){
         screenLocation.Y += baseObj->deltaTime * gravity * 15 * 4;
     }
 
     // if the player is below the floor then take him up a bit
-    if(screenLocation.Y > floorLocation.Y){
+    if(screenLocation.Y+screenLocation.H > floorLocation.Y){
         screenLocation.Y -= 30 * baseObj->deltaTime;
     }
 
@@ -148,10 +151,12 @@ void player::tick()
             jumpIntensity = 10;
         }
     }
+
+    baseObj->playerLcation = screenLocation; 
 }
 
 void player::render()
 {
-    SDL_Rect rect = {(int)screenLocation.X, (int)screenLocation.Y, (int)playerSize.X, (int)playerSize.Y};
+    SDL_Rect rect = {screenLocation.X, screenLocation.Y, screenLocation.W, screenLocation.H};
     SDL_RenderCopyEx(baseObj->mainRenderer, textures[textureIndex], NULL, &rect, 0, NULL, SDL_RendererFlip(flip));
 }

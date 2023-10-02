@@ -30,7 +30,6 @@ class player
         void setTextureStand();
 
         vector2d screenLocation;
-        vector2d playerSize;
 
         // sould the texture flip (for walking right or left) 
         bool flip;

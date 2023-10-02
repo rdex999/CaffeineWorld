@@ -6,8 +6,10 @@ class vector2d
 {
     public:
         int X, Y;
+        int W, H;
         vector2d();
         vector2d(double X, double Y);
+        vector2d(double X, double Y, double W, double H);
 
         vector2d norm();
 

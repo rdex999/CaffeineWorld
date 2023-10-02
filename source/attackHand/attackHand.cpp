@@ -6,10 +6,9 @@ attackHand::attackHand(base *baseObj, player* playerObj)
     this->playerObj = playerObj;
 
     // set the hand size
-    handSize = vector2d(2274, 1034)/18;
+    handSize = vector2d(2274, 1034)/25;
 
     attack = false;
-
 
     attackOffset = 0.f;
 
@@ -44,9 +43,9 @@ void attackHand::tick()
             attackSlowDown = 3.f;
         }
         if(playerObj->flip){
-            screenLocation = playerObj->screenLocation + vector2d(attackOffset, playerObj->playerSize.Y/2.7);
+            screenLocation = playerObj->screenLocation + vector2d(attackOffset, playerObj->screenLocation.H/2.7);
         }else{
-            screenLocation = playerObj->screenLocation + vector2d(-1*attackOffset, playerObj->playerSize.Y/2.7);
+            screenLocation = playerObj->screenLocation + vector2d(-1*attackOffset, playerObj->screenLocation.H/2.7);
         }
     }
 }

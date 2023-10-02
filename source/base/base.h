@@ -23,6 +23,10 @@ typedef struct base
     SDL_Renderer* mainRenderer;
     SDL_Window* window;
 
+    // the location of the player on the screen
+    vector2d playerLcation;
+
+    // the size of the screen
     vector2d screenSize;
 
     // the mouse location on the screen
@@ -34,6 +38,7 @@ typedef struct base
     // returns a texture of the text with the given size, color, and font
     SDL_Texture* createTextTexture(const char* fontPath, const char* text, SDL_Color color, int fontSize, int* width, int* height);
 
+    // returns a random number between min and max
     int randomRange(int min, int max);
 
 } base;

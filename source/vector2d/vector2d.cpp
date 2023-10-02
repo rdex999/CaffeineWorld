@@ -12,6 +12,14 @@ vector2d::vector2d(double X, double Y)
     this->Y = Y;
 }
 
+vector2d::vector2d(double X, double Y, double W, double H)
+{
+    this->X = X;
+    this->Y = Y;
+    this->W = W;
+    this->H = H;
+}
+
 vector2d vector2d::norm()
 {
     double mag = std::sqrt(this->X * this->X + this->Y * this->Y);
