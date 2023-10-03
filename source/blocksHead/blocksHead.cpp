@@ -37,7 +37,7 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
             screenStart.X -= 184/3.1;
         }
         if(i == 17){
-            screenStart.Y += 176/3*2;
+            screenStart.Y += 176;
         }
         if(i == 20){
             screenStart.Y += 176/3;

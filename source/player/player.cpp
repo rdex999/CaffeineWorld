@@ -91,7 +91,7 @@ player::~player()
 
 void player::doJump()
 {
-    if(!jump && !inAir){
+    if(!jump && !inAir && !(blockedLeft || blockedRight)){
         jump = true;
         inAir = true;
     }
@@ -164,7 +164,7 @@ void player::tick()
     if(jump){
         screenLocation.Y -= baseObj->deltaTime * std::clamp(jumpIntensity, -11.f, 10.f) * gravity * 7.5f;
         jumpIntensity -= baseObj->deltaTime * gravity * 2.f;
-        if(!inAir){
+        if(!inAir || blockedLeft || blockedRight){
             jump = false;
             jumpIntensity = 10;
         }

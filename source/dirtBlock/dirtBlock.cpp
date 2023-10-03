@@ -52,8 +52,10 @@ void dirtBlock::tick()
         }
 
         // whether the player is standing on the dirtBlock
-        if(location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
-            location.X >= playerObj->screenLocation.X &&
+        if(((location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
+            location.X >= playerObj->screenLocation.X) || 
+            (location.X+location.W <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
+            location.X+location.W >= playerObj->screenLocation.X))&&
             location.Y <= playerObj->screenLocation.Y+playerObj->screenLocation.H &&
             location.Y > playerObj->screenLocation.Y + playerObj->screenLocation.H/1.67)
         {
