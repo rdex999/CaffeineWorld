@@ -35,22 +35,32 @@ void dirtBlock::tick()
         if(playerObj->screenLocation.X+playerObj->screenLocation.W >= location.X &&
             playerObj->screenLocation.X+playerObj->screenLocation.W < location.X+location.W &&
             location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2 
-            )
+        )
         {
             playerObj->blockedRight = true;
-            playerObj->screenLocation -= ((playerObj->screenLocation.X+playerObj->screenLocation.W)-location.X);
+            playerObj->screenLocation.X -= ((playerObj->screenLocation.X+playerObj->screenLocation.W)-location.X);
+        }
+
+        // if the player is blocked by a high wall (when the wall is on the left)
+        if(playerObj->screenLocation.X <= location.X+location.W &&
+            playerObj->screenLocation.X > location.X && 
+            location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2
+        )
+        {
+            playerObj->blockedLeft = true;
+            playerObj->screenLocation.X += (location.X+location.W)-playerObj->screenLocation.X;
         }
 
         // whether the player is standing on the dirtBlock
-        else if(location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
+        if(location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
             location.X >= playerObj->screenLocation.X &&
             location.Y <= playerObj->screenLocation.Y+playerObj->screenLocation.H &&
-            location.Y > playerObj->screenLocation.Y + playerObj->screenLocation.H/1.8)
+            location.Y > playerObj->screenLocation.Y + playerObj->screenLocation.H/1.67)
         {
             playerObj->inAir = false;
             playerObj->gravitySlowDown = 1.f; 
             playerObj->screenLocation.Y -= ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
-                baseObj->deltaTime * 20;
+                baseObj->deltaTime * 15;
         }
     }
 }

@@ -19,7 +19,7 @@ class blocksHead
         player* playerObj;
 
         // an array of all dirt blocks in the world
-        dirtBlock* dirtBlockArray[20] = {nullptr};
+        dirtBlock* dirtBlockArray[25] = {nullptr};
 
         // the textures of the dirt blcks.
         // index 0 is dirt texture, index 1 is dirtGrass texture

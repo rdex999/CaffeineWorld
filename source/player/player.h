@@ -49,6 +49,8 @@ class player
         // if the player is blocked by a wall from the right
         bool blockedRight;
 
+        // if the player is blocked by a wall from the left
+        bool blockedLeft;
 
     private: 
 

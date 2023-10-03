@@ -18,7 +18,7 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
 
     // create all the dirt blocks
     vector2d screenStart(0, baseObj->screenSize.Y/1.064);
-    for(int i=0; i<20; i++){
+    for(int i=0; i<25; i++){
         if(i == 10){
             screenStart.Y -= 176/3;
         }
@@ -37,14 +37,17 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
             screenStart.X -= 184/3.1;
         }
         if(i == 17){
-            screenStart.Y += 176;
+            screenStart.Y += 176/3*2;
+        }
+        if(i == 20){
+            screenStart.Y += 176/3;
         }
     }
 }
 
 blocksHead::~blocksHead()
 {
-    for(int i=0;i <20; i++){
+    for(int i=0;i <25; i++){
         if(dirtBlockArray[i]){
             delete dirtBlockArray[i];
         }
@@ -54,7 +57,9 @@ blocksHead::~blocksHead()
 void blocksHead::tick()
 {
     playerObj->inAir = true;
-    for(int i=0; i<20; i++){
+    playerObj->blockedRight = false;
+    playerObj->blockedLeft = false;
+    for(int i=0; i<25; i++){
         if(dirtBlockArray[i]){
             dirtBlockArray[i]->tick();
         }

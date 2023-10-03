@@ -11,6 +11,9 @@ player::player(base *baseObj)
     // if the player is blocked by a wall from the right
     blockedRight = false;
 
+    // if the plaer is blocked by a wall from the left
+    blockedLeft = false;
+
     // whether the player is in the air or not
     inAir = true;
 
@@ -101,8 +104,14 @@ void player::setTextureStand()
 
 void player::walk(int direction)
 {
-        if(direction == -1){flip = true;}
-        if(direction == 1){flip = false;}
+        if(direction == -1){
+            flip = true;
+            blockedLeft = false;
+        }
+        if(direction == 1){
+            flip = false;
+            blockedRight = false;
+        }
     
         // make starting walking smooth 
         walkingSlowDown += baseObj->deltaTime * 1.5;
@@ -118,12 +127,8 @@ void player::walk(int direction)
         }
         walkStepTime += baseObj->deltaTime;
     
-        if(direction == -1 && blockedRight){
+        if(blockedLeft || blockedRight){
             direction = 0;
-        }
-
-        if(direction == 1){
-            blockedRight = false;            
         }
 
         // set the location
@@ -142,9 +147,6 @@ void player::tick()
         }
         if(stoppedWalking == -1 && blockedRight){
             stoppedWalking = 0;
-        }
-        if(stoppedWalking == 1){
-            blockedRight = false;
         }
 
         slowDownEndWalk -= baseObj->deltaTime * 1.7;
