@@ -1,18 +1,50 @@
-s = ./source/
-files = \
-	$(s)main.cpp $(s)vector2d/vector2d.cpp $(s)base/base.cpp \
-	$(s)background/background.cpp $(s)player/player.cpp \
-	$(s)inventory/inventory.cpp $(s)gun/gun.cpp $(s)attackHand/attackHand.cpp \
-	$(s)bullet/bullet.cpp $(s)dVector2d/dVector2d.cpp $(s)coffeeCup/coffeeCup.cpp \
-	$(s)dirtBlock/dirtBlock.cpp $(s)blocksHead/blocksHead.cpp
+objFiles = ./build/attackHand.o ./build/background.o ./build/base.o ./build/blocksHead.o ./build/bullet.o ./build/coffeeCup.o ./build/dirtBlock.o ./build/dVector2d.o ./build/gun.o ./build/inventory.o ./build/player.o ./build/vector2d.o ./build/main.o 
 
-flags = -lSDL2_image -lSDL2_ttf
+CaffeineWorld: $(objFiles)
+	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld $(objFiles)
 
-CaffeineWorld: $(files)
-	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` $(flags) -o CaffeineWorld $(files)
+build/main.o: ./source/main.cpp ./source/main.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/main.o ./source/main.cpp
+
+build/attackHand.o: ./source/attackHand/attackHand.cpp ./source/attackHand/attackHand.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/attackHand.o ./source/attackHand/attackHand.cpp 
+
+build/background.o: ./source/background/background.cpp ./source/background/background.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/background.o ./source/background/background.cpp 
+
+build/base.o: ./source/base/base.cpp ./source/base/base.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/base.o ./source/base/base.cpp 
+
+build/blocksHead.o: ./source/blocksHead/blocksHead.cpp ./source/blocksHead/blocksHead.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/blocksHead.o ./source/blocksHead/blocksHead.cpp 
+
+build/bullet.o: ./source/bullet/bullet.cpp ./source/bullet/bullet.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/bullet.o ./source/bullet/bullet.cpp 
+
+build/coffeeCup.o: ./source/coffeeCup/coffeeCup.cpp ./source/coffeeCup/coffeeCup.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/coffeeCup.o ./source/coffeeCup/coffeeCup.cpp 
+
+build/dirtBlock.o: ./source/dirtBlock/dirtBlock.cpp ./source/dirtBlock/dirtBlock.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/dirtBlock.o ./source/dirtBlock/dirtBlock.cpp 
+
+build/dVector2d.o: ./source/dVector2d/dVector2d.cpp ./source/dVector2d/dVector2d.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/dVector2d.o ./source/dVector2d/dVector2d.cpp 
+
+build/gun.o: ./source/gun/gun.cpp ./source/gun/gun.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/gun.o ./source/gun/gun.cpp 
+
+build/inventory.o: ./source/inventory/inventory.cpp ./source/inventory/inventory.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/inventory.o ./source/inventory/inventory.cpp 
+
+build/player.o: ./source/player/player.cpp ./source/player/player.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/player.o ./source/player/player.cpp 
+
+build/vector2d.o: ./source/vector2d/vector2d.cpp ./source/vector2d/vector2d.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/vector2d.o ./source/vector2d/vector2d.cpp 
 
 run:
 	./CaffeineWorld
 
 clean:
+	rm ./build/*
 	rm CaffeineWorld
