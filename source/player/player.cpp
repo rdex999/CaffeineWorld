@@ -114,8 +114,7 @@ void player::walk(int direction)
         }
     
         // make starting walking smooth 
-        walkingSlowDown += baseObj->deltaTime * 1.5;
-        walkingSlowDown = std::clamp(walkingSlowDown, 0.2f, 1.f);
+        walkingSlowDown = std::clamp((float)(walkingSlowDown + baseObj->deltaTime * 1.5), 0.2f, 1.f);
     
         // the walking animation
         if(walkStepTime >= 0.4f){
@@ -131,6 +130,9 @@ void player::walk(int direction)
             direction = 0;
         }
 
+        slowDownEndWalk = std::clamp(slowDownEndWalk + baseObj->deltaTime * 1.7, (double)0, (double)1);
+        stoppedWalking = 0;
+
         // set the location
         screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
 }
@@ -142,15 +144,14 @@ void player::tick()
     // slow stop when the player stops walking
     if(stoppedWalking != 0){
         if(slowDownEndWalk <= 0){
-            slowDownEndWalk = 1;
             stoppedWalking = 0;
         }
-        if(stoppedWalking == -1 && blockedRight){
+        if(blockedRight || blockedLeft){
             stoppedWalking = 0;
+            slowDownEndWalk = 0;
         }
 
-        slowDownEndWalk -= baseObj->deltaTime * 1.7;
-        slowDownEndWalk = std::clamp(slowDownEndWalk, 0.f, 1.f);
+        slowDownEndWalk = std::clamp(slowDownEndWalk - baseObj->deltaTime * 1.7, (double)0, (double)1);
         screenLocation.X -= (int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * baseObj->deltaTime);
     }
     

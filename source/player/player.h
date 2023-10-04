@@ -67,7 +67,7 @@ class player
         std::array<SDL_Texture*, 3> textures;
 
         // the slow down speed of stopping to walk
-        float slowDownEndWalk;
+        double slowDownEndWalk;
         
         // walking speed
         float walkingSpeed;
