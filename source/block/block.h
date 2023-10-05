@@ -10,7 +10,7 @@ class block
         // @param {int} blockType
         // blockType = 1: dirt/grass
         // blockType = 2: stone
-        // blockType = 3; wood
+        // blockType = 3: wood
         // @param {SDL_Texture*} texture2
         // optional texture, used for dirt (as there is dirt and grass)
         // @param {int} blockArraySize
@@ -62,5 +62,8 @@ class block
 
         // if this block is above the players head
         bool isAbovePlayer;
+
+        // if the block already checked if there is a block above this one
+        bool aboveCheck;
 
 };

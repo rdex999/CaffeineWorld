@@ -20,41 +20,43 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     // W: 184/3
     // H: 176/3
     vector2d blockLocation(0, baseObj->screenSize.Y/1.064);
-    int blockCounter = 0;
-    for(; blockCounter<30; blockCounter++){
-        switch (blockCounter)
+    blockIndexCounter = 0;
+    for(; blockIndexCounter<30; blockIndexCounter++){
+        switch (blockIndexCounter)
         {
         case 7:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= 176/3; 
             break;
+
+        case 13:
+            blockLocation.Y -= 176/3;
+            break;     
+
+        case 14:
+            blockLocation.Y -= 176/3;
+            break;     
+
+        case 15:
+            blockLocation.Y -= 176/3;
+            break;     
 
         case 16:
             blockLocation.Y -= 176/3;
-            break;
+            break;     
 
         case 17:
-            blockLocation.Y -= 176/3;
+            blockLocation.X += 184/3;
+            blockIndexCounter = spawnRow( &blockLocation, 5, 1, texturesDirtBlock[0], texturesDirtBlock[1], blockIndexCounter);
+            blockLocation.Y += 176/3*4; 
             break;
 
-        case 18:
-            blockLocation.Y -= 176/3;
-            break;
-
-        case 19:
-            blockLocation.Y -= 176/3;
-            break;
-
-        case 25:
-            blockLocation.Y += 176/3 * 4; 
-            break;
 
         default:
-            blockLocation.X += 184/3;
-            break;
-        }
-
-        blockArray[blockCounter] = new block(baseObj, playerObj, &blockLocation, 1,
-            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockCounter, 30);
+            blockLocation.X += 184/3; 
+        } 
+        
+        blockArray[blockIndexCounter] = new block(baseObj, playerObj, &blockLocation, 1,
+            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockIndexCounter, 30);
     }
 }
 
@@ -76,5 +78,23 @@ void blocksHead::tick()
         if(blockArray[i]){
             blockArray[i]->tick();
         }
+    }
+}
+
+int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
+    SDL_Texture* texture1, SDL_Texture* texture2, int fromIndex)
+{
+    vector2d location;
+    for(int i=0; i<blockCount; i++){
+        location = *from + vector2d(i*(184/3), 0);
+        if(fromIndex != -1){
+            blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
+                texture1, texture2, blockArray, i+fromIndex, 30);
+        }
+    }
+    if(fromIndex != -1){
+        return blockIndexCounter + blockCount;
+    }else{
+        return 0;
     }
 }

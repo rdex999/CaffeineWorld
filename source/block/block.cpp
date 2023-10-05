@@ -22,6 +22,8 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
 
     isAbovePlayer = false;
 
+    aboveCheck = false;
+
     currentTextureIndex = 0;
 }
 
@@ -39,12 +41,18 @@ void block::tick()
     if(location.inBox(vector2d(0, 0), baseObj->screenSize)){
         render();
 
-        for(int i=0; i<blockArraySize; i++){
-            if(blockArray[i]->location == location - vector2d(0, location.H)){
-                blockAbove = true;
-                break;
-            }else{
-                blockAbove = false;
+        if(!aboveCheck){
+            aboveCheck = true;
+            // this for loop runs only once
+            for(int i=0; i<blockArraySize; i++){
+                if(blockArray[i]){
+                    if(blockArray[i]->location == location - vector2d(0, location.H)){
+                        blockAbove = true;
+                        break;
+                    }else{
+                        blockAbove = false;
+                    }
+                }
             }
         }
 
