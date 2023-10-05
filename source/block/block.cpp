@@ -38,7 +38,11 @@ block::~block()
 
 void block::tick()
 {
-    if(location.inBox(vector2d(0, 0), baseObj->screenSize)){
+    location += baseObj->screenOffset;
+
+    if(location.inBox(vector2d(0, 0), baseObj->screenSize) || 
+        vector2d(location.X+location.W, location.Y+location.H).inBox(vector2d(0, 0), baseObj->screenSize))
+    {
         render();
 
         if(!aboveCheck){
@@ -73,7 +77,7 @@ void block::tick()
             location.Y + location.H >= playerObj->screenLocation.Y && 
             location.Y + location.H <= playerObj->screenLocation.Y + playerObj->screenLocation.H/5)
         {
-            playerObj->screenLocation.Y += (location.Y+location.H)-playerObj->screenLocation.Y;
+            playerObj->move(vector2d(0, ((location.Y+location.H)-playerObj->screenLocation.Y)*-1));
             playerObj->jump = false;
             playerObj->jumpIntensity = 10;
             isAbovePlayer = true; 
@@ -90,7 +94,7 @@ void block::tick()
         )
         {
             playerObj->blockedRight = true;
-            playerObj->screenLocation.X -= ((playerObj->screenLocation.X+playerObj->screenLocation.W)-location.X);
+            playerObj->move(vector2d((playerObj->screenLocation.X+playerObj->screenLocation.W)-location.X, 0));
         }
 
         // if the player is blocked by a high wall (when the wall is on the left)
@@ -102,7 +106,7 @@ void block::tick()
         )
         {
             playerObj->blockedLeft = true;
-            playerObj->screenLocation.X += (location.X+location.W)-playerObj->screenLocation.X;
+            playerObj->move(vector2d(((location.X+location.W)-playerObj->screenLocation.X)*-1, 0));
         }
 
         // whether the player is standing on the block
@@ -116,8 +120,8 @@ void block::tick()
         {
             playerObj->inAir = false;
             playerObj->gravitySlowDown = 1.f; 
-            playerObj->screenLocation.Y -= ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
-                baseObj->deltaTime * 15;
+            playerObj->move(vector2d(0, ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
+                baseObj->deltaTime * 15));
         }
 
     }

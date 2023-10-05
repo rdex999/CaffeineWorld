@@ -28,6 +28,9 @@ typedef struct base
     // the mouse location on the screen
     vector2d mouseLocation;
 
+    // sets by the player to move all the objects
+    vector2d screenOffset;
+
     // the mouse state 1 = left click, 2 = middle click, 3 = right click
     Uint32 mouseState;
 

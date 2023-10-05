@@ -48,3 +48,6 @@ run:
 clean:
 	rm ./build/*
 	rm CaffeineWorld
+
+all:
+	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld ./source/main.cpp ./source/attackHand/attackHand.cpp ./source/background/background.cpp ./source/base/base.cpp ./source/blocksHead/blocksHead.cpp ./source/bullet/bullet.cpp ./source/coffeeCup/coffeeCup.cpp ./source/block/block.cpp ./source/dVector2d/dVector2d.cpp ./source/gun/gun.cpp ./source/inventory/inventory.cpp ./source/player/player.cpp ./source/vector2d/vector2d.cpp

@@ -30,6 +30,13 @@ class player
 
         void setTextureStand();
 
+        // the box on the screen that the player is in
+        vector2d screenBox;
+
+        // add the vector2d to the players location and does cheking with the screenBox
+        void move(vector2d location);
+        void move(vector2d* location);
+
         vector2d screenLocation;
 
         // sould the texture flip (for walking right or left) 

@@ -148,4 +148,6 @@ void container::runTicks()
     blocksHeadObj->tick();
     inventoryObj->tick();
     SDL_RenderPresent(baseObj->mainRenderer);
+
+    baseObj->screenOffset = vector2d(0, 0);
 }

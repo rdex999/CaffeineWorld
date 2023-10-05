@@ -32,7 +32,11 @@ for i in range(len(groups)):
     writeMakefileStr += f"build/{objFiles[i]}: {fileGroups[i]['cpp']} {fileGroups[i]['header']}\n\t"
     writeMakefileStr += f"g++ -c {flags} -o ./build/{objFiles[i]} {fileGroups[i]['cpp']} \n\r\n"
 
-writeMakefileStr += f"run:\n\t./CaffeineWorld\n\r\nclean:\n\trm ./build/*\n\trm CaffeineWorld\n"
+writeMakefileStr += f"run:\n\t./CaffeineWorld\n\r\nclean:\n\trm ./build/*\n\trm CaffeineWorld\n\n"
+
+writeMakefileStr += f"all:\n\tg++ {flags} -o CaffeineWorld ./source/main.cpp"
+for item in fileGroups:
+    writeMakefileStr += f" {item['cpp']}"
 
 makefile = open("makefile", "w")
 makefile.write(writeMakefileStr)

@@ -3,7 +3,9 @@
 base::base(vector2d *screenSize)
 {
     this->screenSize = *screenSize;
-    
+
+    screenOffset = vector2d(0, 0);
+
     SDL_Init(SDL_INIT_VIDEO);
     TTF_Init();
 

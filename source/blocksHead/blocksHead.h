@@ -35,7 +35,7 @@ class blocksHead
             SDL_Texture* texture1, SDL_Texture* texture2, int fromIndex = -1);
 
         // an array of all dirt blocks in the world
-        block* blockArray[30] = {nullptr};
+        block* blockArray[43] = {nullptr};
 
         // the textures of the dirt blcks.
         // index 0 is dirt texture, index 1 is dirtGrass texture

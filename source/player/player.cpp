@@ -5,6 +5,9 @@ player::player(base *baseObj)
     // store the baseObj pointer
     this->baseObj = baseObj;
 
+    screenBox = vector2d(baseObj->screenSize.X/5, baseObj->screenSize.Y/5,
+        baseObj->screenSize.X - baseObj->screenSize.X/5, baseObj->screenSize.Y - baseObj->screenSize.Y/5);
+
     // set the texture index
     textureIndex = 0;
 
@@ -102,39 +105,50 @@ void player::setTextureStand()
     textureIndex = 0;
 }
 
+void player::move(vector2d location)
+{
+    if((screenLocation - location).inBox(vector2d(screenBox.X, screenBox.Y), vector2d(screenBox.W, screenBox.H))){
+        screenLocation -= location;
+    }else{
+        baseObj->screenOffset += location;
+    }
+}
+
+void player::move(vector2d *location)
+{
+}
+
 void player::walk(int direction)
 {
-        if(direction == -1){
-            flip = true;
-            blockedLeft = false;
-        }
-        if(direction == 1){
-            flip = false;
-            blockedRight = false;
-        }
-    
-        // make starting walking smooth 
-        walkingSlowDown = std::clamp((float)(walkingSlowDown + baseObj->deltaTime * 1.5), 0.2f, 1.f);
-    
-        // the walking animation
-        if(walkStepTime >= 0.4f){
-            walkStepTime = 0.f;
-        }else if(walkStepTime >= 0.2f){
-            textureIndex = 2;
-        }else if(walkStepTime >= 0.f){
-            textureIndex = 1;
-        }
-        walkStepTime += baseObj->deltaTime;
-    
-        if(blockedLeft || blockedRight){
-            direction = 0;
-        }
+    if(direction == -1){
+        flip = true;
+        blockedLeft = false;
+    }
+    if(direction == 1){
+        flip = false;
+        blockedRight = false;
+    }
 
-        slowDownEndWalk = std::clamp(slowDownEndWalk + baseObj->deltaTime * 1.7, (double)0, (double)1);
-        stoppedWalking = 0;
+    // make starting walking smooth 
+    walkingSlowDown = std::clamp((float)(walkingSlowDown + baseObj->deltaTime * 1.5), 0.2f, 1.f);
 
-        // set the location
-        screenLocation.X -= (int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown);
+    // the walking animation
+    if(walkStepTime >= 0.4f){
+        walkStepTime = 0.f;
+    }else if(walkStepTime >= 0.2f){
+        textureIndex = 2;
+    }else if(walkStepTime >= 0.f){
+        textureIndex = 1;
+    }
+    walkStepTime += baseObj->deltaTime;
+
+    if(blockedLeft || blockedRight){
+        direction = 0;
+    }
+    slowDownEndWalk = std::clamp(slowDownEndWalk + baseObj->deltaTime * 1.7, (double)0, (double)1);
+    stoppedWalking = 0;
+    // set the location
+    move(vector2d((int)(baseObj->deltaTime * walkingSpeed * 15 * direction * walkingSlowDown), 0));
 }
 
 void player::tick()
@@ -152,18 +166,18 @@ void player::tick()
         }
 
         slowDownEndWalk = std::clamp(slowDownEndWalk - baseObj->deltaTime * 1.7, (double)0, (double)1);
-        screenLocation.X -= (int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * baseObj->deltaTime);
+        move(vector2d((int)(slowDownEndWalk * stoppedWalking * walkingSpeed * 15 * baseObj->deltaTime), 0));
     }
     
     // if the player is above the floor and hes not jumping then use gravity 
     if(inAir && !jump){
-        screenLocation.Y += baseObj->deltaTime * gravity * std::clamp(gravitySlowDown, 1.f, 15.f) * 4;
+        move(vector2d(0, baseObj->deltaTime * gravity * std::clamp(gravitySlowDown, 1.f, 15.f) * -4));
         gravitySlowDown += baseObj->deltaTime*50;
     }
 
     // if the player wants to jump and he is not in the air then jump
     if(jump){
-        screenLocation.Y -= baseObj->deltaTime * std::clamp(jumpIntensity, -11.f, 10.f) * gravity * 7.5f;
+        move(vector2d(0, baseObj->deltaTime * std::clamp(jumpIntensity, -11.f, 10.f) * gravity * 7.5f));
         jumpIntensity -= baseObj->deltaTime * gravity * 2.f;
         if(!inAir){
             jump = false;

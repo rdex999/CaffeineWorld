@@ -1,5 +1,5 @@
 #include "blocksHead.h"
-
+#define BLOCKS_CAPASITY 43
 blocksHead::blocksHead(base *baseObj, player *playerObj)
 {
     this->baseObj = baseObj;
@@ -21,7 +21,7 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     // H: 176/3
     vector2d blockLocation(0, baseObj->screenSize.Y/1.064);
     blockIndexCounter = 0;
-    for(; blockIndexCounter<30; blockIndexCounter++){
+    for(; blockIndexCounter<BLOCKS_CAPASITY; blockIndexCounter++){
         switch (blockIndexCounter)
         {
         case 7:
@@ -56,13 +56,13 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         } 
         
         blockArray[blockIndexCounter] = new block(baseObj, playerObj, &blockLocation, 1,
-            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockIndexCounter, 30);
+            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockIndexCounter, BLOCKS_CAPASITY);
     }
 }
 
 blocksHead::~blocksHead()
 {
-    for(int i=0;i <30; i++){
+    for(int i=0;i <BLOCKS_CAPASITY; i++){
         if(blockArray[i]){
             delete blockArray[i];
         }
@@ -74,7 +74,7 @@ void blocksHead::tick()
     playerObj->inAir = true;
     playerObj->blockedRight = false;
     playerObj->blockedLeft = false;
-    for(int i=0; i<30; i++){
+    for(int i=0; i<BLOCKS_CAPASITY; i++){
         if(blockArray[i]){
             blockArray[i]->tick();
         }
@@ -89,7 +89,7 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
         location = *from + vector2d(i*(184/3), 0);
         if(fromIndex != -1){
             blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-                texture1, texture2, blockArray, i+fromIndex, 30);
+                texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
         }
     }
     if(fromIndex != -1){
