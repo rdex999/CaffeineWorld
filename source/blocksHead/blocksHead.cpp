@@ -1,5 +1,5 @@
 #include "blocksHead.h"
-#define BLOCKS_CAPASITY 43
+#define BLOCKS_CAPASITY 60
 blocksHead::blocksHead(base *baseObj, player *playerObj)
 {
     this->baseObj = baseObj;
@@ -44,10 +44,20 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
             blockLocation.Y -= 176/3;
             break;     
 
-        case 17:
-            blockLocation.X += 184/3;
-            blockIndexCounter = spawnRow( &blockLocation, 5, 1, texturesDirtBlock[0], texturesDirtBlock[1], blockIndexCounter);
-            blockLocation.Y += 176/3*4; 
+        case 20:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 21:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 22:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 23:
+            blockLocation.Y -= 176/3;
             break;
 
 
@@ -57,6 +67,8 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         
         blockArray[blockIndexCounter] = new block(baseObj, playerObj, &blockLocation, 1,
             texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockIndexCounter, BLOCKS_CAPASITY);
+            
+        //blockIndexCounter = spawnRow( &blockLocation, 5, 1, texturesDirtBlock[0], texturesDirtBlock[1], blockIndexCounter);
     }
 }
 

@@ -57,7 +57,7 @@ player::player(base *baseObj)
     floorLocation = vector2d(0, baseObj->screenSize.Y/1.064);
 
     // set the spawn location on screen
-    screenLocation = baseObj->screenSize / 2;
+    screenLocation = baseObj->screenSize / 2 - vector2d(baseObj->screenSize.X/4, 0);
 
     // set the player skin size
     screenLocation.W = 556/7;
@@ -107,7 +107,9 @@ void player::setTextureStand()
 
 void player::move(vector2d location)
 {
-    if((screenLocation - location).inBox(vector2d(screenBox.X, screenBox.Y), vector2d(screenBox.W, screenBox.H))){
+    if((screenLocation - location).inBox(vector2d(screenBox.X, screenBox.Y), vector2d(screenBox.W, screenBox.H)) &&
+        (screenLocation+vector2d(screenLocation.W, screenLocation.H)-location).inBox(vector2d(screenBox.X, screenBox.Y),
+        vector2d(screenBox.W, screenBox.H))){
         screenLocation -= location;
     }else{
         baseObj->screenOffset += location;
@@ -184,7 +186,29 @@ void player::tick()
             jumpIntensity = 10;
         }
     }
-} 
+
+    // check if the player is outside screenBox and if so then move him out and set screenOffset
+    if(!screenLocation.inBox(vector2d(screenBox.X, screenBox.Y), vector2d(screenBox.W, screenBox.H))){
+        int difference = 0; 
+        if(screenLocation.Y < screenBox.Y){
+            difference = screenBox.Y-screenLocation.Y;
+            screenLocation.Y += difference;
+            baseObj->screenOffset.Y += difference;
+        }else if(screenLocation.Y+screenLocation.H >= screenBox.H){
+            difference = screenLocation.Y+screenLocation.H-screenBox.H;
+            screenLocation.Y -= difference;
+            baseObj->screenOffset.Y -= difference;
+        }else if(screenLocation.X <= screenBox.X){
+            difference =  screenBox.X-screenLocation.X;
+            screenLocation.X += difference;
+            baseObj->screenOffset -= difference;
+        }else if(screenLocation.X+screenLocation.W >= screenBox.W){
+            difference = screenLocation.X+screenLocation.W-screenBox.X;
+            screenLocation.X -= difference;
+            baseObj->screenOffset += difference;
+        }
+    }
+}
 
 void player::render()
 {
