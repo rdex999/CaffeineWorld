@@ -1,7 +1,7 @@
 #pragma once
 #include "../base/base.h"
 #include "../player/player.h"
-#include "../dirtBlock/dirtBlock.h"
+#include "../block/block.h"
 
 class blocksHead
 {
@@ -19,7 +19,7 @@ class blocksHead
         player* playerObj;
 
         // an array of all dirt blocks in the world
-        dirtBlock* dirtBlockArray[25] = {nullptr};
+        block* blockArray[30] = {nullptr};
 
         // the textures of the dirt blcks.
         // index 0 is dirt texture, index 1 is dirtGrass texture

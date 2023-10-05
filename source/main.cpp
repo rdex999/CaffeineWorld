@@ -115,7 +115,7 @@ void container::handleEvent()
 
                     case SDLK_a:
                     case SDLK_LEFT:
-                        playerObj->walkingSlowDown = 0; 
+                        playerObj->walkingSlowDown = 0;
                         playerObj->stoppedWalking = 1;
                         playerObj->setTextureStand();
                         break;

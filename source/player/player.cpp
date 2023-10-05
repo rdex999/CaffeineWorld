@@ -30,7 +30,7 @@ player::player(base *baseObj)
     walkingSlowDown = 0.f;
 
     // the slow down speed of stopping to walk
-    slowDownEndWalk = 1;
+    slowDownEndWalk = 0;
 
     // if the player stopped walking
     stoppedWalking = 0;
@@ -91,7 +91,7 @@ player::~player()
 
 void player::doJump()
 {
-    if(!jump && !inAir && !(blockedLeft || blockedRight)){
+    if(!jump && !inAir){
         jump = true;
         inAir = true;
     }
@@ -165,7 +165,7 @@ void player::tick()
     if(jump){
         screenLocation.Y -= baseObj->deltaTime * std::clamp(jumpIntensity, -11.f, 10.f) * gravity * 7.5f;
         jumpIntensity -= baseObj->deltaTime * gravity * 2.f;
-        if(!inAir || blockedLeft || blockedRight){
+        if(!inAir){
             jump = false;
             jumpIntensity = 10;
         }

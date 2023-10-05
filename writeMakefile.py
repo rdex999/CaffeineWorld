@@ -2,7 +2,7 @@
 
 # each group is a folder, which has two files with the same name as the folder but one is .cpp and one is .h
 groups = ("attackHand", "background", "base", "blocksHead",
-    "bullet", "coffeeCup", "dirtBlock", "dVector2d",
+    "bullet", "coffeeCup", "block", "dVector2d",
     "gun", "inventory", "player", "vector2d")
 
 # the compiler flags. Seperated by a space

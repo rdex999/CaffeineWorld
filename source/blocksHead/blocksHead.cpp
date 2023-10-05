@@ -17,39 +17,48 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     }
 
     // create all the dirt blocks
-    vector2d screenStart(0, baseObj->screenSize.Y/1.064);
-    for(int i=0; i<25; i++){
-        if(i == 10){
-            screenStart.Y -= 176/3;
+    // W: 184/3
+    // H: 176/3
+    vector2d blockLocation(0, baseObj->screenSize.Y/1.064);
+    int blockCounter = 0;
+    for(; blockCounter<30; blockCounter++){
+        switch (blockCounter)
+        {
+        case 7:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 13:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 14:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 15:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 16:
+            blockLocation.Y -= 176/3;
+            break;
+
+        default:
+            blockLocation.X += 184/3;
+            break;
         }
-        if(i == 15){
-            screenStart.Y -= 176/3;
-        }
-        dirtBlockArray[i] = new dirtBlock(baseObj, playerObj, &screenStart, texturesDirtBlock[0], texturesDirtBlock[1],
-            dirtBlockArray, i);
-        screenStart.X += 184/3.1;
-        if(i == 15){
-            screenStart.Y -= 176/3;
-            screenStart.X -= 184/3.1;
-        }
-        if(i == 16){
-            screenStart.Y -= 176/3;
-            screenStart.X -= 184/3.1;
-        }
-        if(i == 17){
-            screenStart.Y += 176;
-        }
-        if(i == 20){
-            screenStart.Y += 176/3;
-        }
+
+        blockArray[blockCounter] = new block(baseObj, playerObj, &blockLocation, 1,
+            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockCounter, 30);
     }
 }
 
 blocksHead::~blocksHead()
 {
-    for(int i=0;i <25; i++){
-        if(dirtBlockArray[i]){
-            delete dirtBlockArray[i];
+    for(int i=0;i <30; i++){
+        if(blockArray[i]){
+            delete blockArray[i];
         }
     }
 }
@@ -59,9 +68,9 @@ void blocksHead::tick()
     playerObj->inAir = true;
     playerObj->blockedRight = false;
     playerObj->blockedLeft = false;
-    for(int i=0; i<25; i++){
-        if(dirtBlockArray[i]){
-            dirtBlockArray[i]->tick();
+    for(int i=0; i<30; i++){
+        if(blockArray[i]){
+            blockArray[i]->tick();
         }
     }
 }
