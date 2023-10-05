@@ -184,7 +184,7 @@ void player::tick()
             jumpIntensity = 10;
         }
     }
-}
+} 
 
 void player::render()
 {
