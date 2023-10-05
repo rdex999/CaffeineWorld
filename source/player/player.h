@@ -52,6 +52,12 @@ class player
         // if the player is blocked by a wall from the left
         bool blockedLeft;
 
+        // if the player should jump
+        bool jump;
+        
+        // jumping intensity
+        float jumpIntensity;
+    
     private: 
 
         // renders the player
@@ -78,11 +84,6 @@ class player
         // the floor location
         vector2d floorLocation;
 
-        // if the player should jump
-        bool jump;
-        
-        // jumping intensity
-        float jumpIntensity;
 
         // the time between each step animation
         double walkStepTime;

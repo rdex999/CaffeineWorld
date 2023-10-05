@@ -60,4 +60,7 @@ class block
         // the length of the blocks array
         int blockArraySize;
 
+        // if this block is above the players head
+        bool isAbovePlayer;
+
 };

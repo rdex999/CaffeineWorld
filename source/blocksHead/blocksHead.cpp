@@ -28,20 +28,24 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
             blockLocation.Y -= 176/3;
             break;
 
-        case 13:
-            blockLocation.Y -= 176/3;
-            break;
-
-        case 14:
-            blockLocation.Y -= 176/3;
-            break;
-
-        case 15:
-            blockLocation.Y -= 176/3;
-            break;
-
         case 16:
             blockLocation.Y -= 176/3;
+            break;
+
+        case 17:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 18:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 19:
+            blockLocation.Y -= 176/3;
+            break;
+
+        case 25:
+            blockLocation.Y += 176/3 * 4; 
             break;
 
         default:

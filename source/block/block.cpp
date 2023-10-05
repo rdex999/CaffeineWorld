@@ -20,6 +20,8 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
 
     blockAbove = false;
 
+    isAbovePlayer = false;
+
     currentTextureIndex = 0;
 }
 
@@ -54,12 +56,29 @@ void block::tick()
         //        
         //  COLLISION SECTION:
         //
+        
+        // if there is a block above the player then block the jump
+        if(((location.X > playerObj->screenLocation.X &&
+            location.X < playerObj->screenLocation.X+playerObj->screenLocation.W) ||
+            (location.X+location.W > playerObj->screenLocation.X &&
+            location.X+location.W < playerObj->screenLocation.X+playerObj->screenLocation.W)) &&
+            location.Y + location.H >= playerObj->screenLocation.Y && 
+            location.Y + location.H <= playerObj->screenLocation.Y + playerObj->screenLocation.H/5)
+        {
+            playerObj->screenLocation.Y += (location.Y+location.H)-playerObj->screenLocation.Y;
+            playerObj->jump = false;
+            playerObj->jumpIntensity = 10;
+            isAbovePlayer = true; 
+        }else{
+            isAbovePlayer = false;
+        }
 
         // if the player is blocked by a high wall (when the wall is on the right)
         if(playerObj->screenLocation.X+playerObj->screenLocation.W >= location.X &&
             playerObj->screenLocation.X+playerObj->screenLocation.W < location.X+location.W &&
             location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2 && 
-            location.Y+location.H >= playerObj->screenLocation.Y
+            location.Y+location.H >= playerObj->screenLocation.Y &&
+            !isAbovePlayer 
         )
         {
             playerObj->blockedRight = true;
@@ -70,7 +89,8 @@ void block::tick()
         if(playerObj->screenLocation.X <= location.X+location.W &&
             playerObj->screenLocation.X > location.X && 
             location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2 && 
-            location.Y+location.H >= playerObj->screenLocation.Y
+            location.Y+location.H >= playerObj->screenLocation.Y &&
+            !isAbovePlayer 
         )
         {
             playerObj->blockedLeft = true;
@@ -91,6 +111,7 @@ void block::tick()
             playerObj->screenLocation.Y -= ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
                 baseObj->deltaTime * 15;
         }
+
     }
 }
 
