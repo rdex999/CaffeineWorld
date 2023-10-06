@@ -1,7 +1,7 @@
 #include "blocksHead.h"
 #define BLOCKS_CAPASITY 60
-#define B_W 184/3
-#define B_H 176/3
+#define B_W 184/4
+#define B_H 176/4
 
 blocksHead::blocksHead(base *baseObj, player *playerObj)
 {

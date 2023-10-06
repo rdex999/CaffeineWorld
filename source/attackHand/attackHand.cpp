@@ -6,7 +6,7 @@ attackHand::attackHand(base *baseObj, player* playerObj)
     this->playerObj = playerObj;
 
     // set the hand size
-    handSize = vector2d(2274, 1034)/25;
+    handSize = vector2d(2274, 1034)/30;
 
     attack = false;
 
@@ -36,7 +36,7 @@ void attackHand::tick()
     }
     if(attack){
         attackSlowDown -= baseObj->deltaTime * 10;
-        attackOffset += baseObj->deltaTime * 230 * attackSlowDown;
+        attackOffset += baseObj->deltaTime * 210 * attackSlowDown;
         if(attackOffset <= 0){
             attack = false;
             attackOffset = 0.f;

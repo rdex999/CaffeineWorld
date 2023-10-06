@@ -19,7 +19,7 @@ gun::gun(base *baseObj, player *playerObj)
 
     gunShot = false;
 
-    gunSize = vector2d(251, 130)/2.5;
+    gunSize = vector2d(251, 130)/3;
     currentBullet = 0;
 }
 

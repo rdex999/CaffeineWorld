@@ -60,8 +60,8 @@ player::player(base *baseObj)
     screenLocation = baseObj->screenSize / 2 - vector2d(baseObj->screenSize.X/4, 0);
 
     // set the player skin size
-    screenLocation.W = 556/7;
-    screenLocation.H = 1030/7;
+    screenLocation.W = 556/9;
+    screenLocation.H = 1030/9;
 
     // load the skin images
     textures[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skin.png");

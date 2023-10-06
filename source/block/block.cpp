@@ -13,8 +13,8 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
     this->blockIndex = blockIndex;
     this->blockArraySize = blockArraySize;
 
-    this->location.W = 184/3;
-    this->location.H = 176/3;
+    this->location.W = 184/4;
+    this->location.H = 176/4;
     
     timeGrassCheck = 0;
 
