@@ -1,4 +1,6 @@
 #include "inventory.h"
+#define ITEM_SIZE 60
+#define BULLETS_FONT_SIZE 18
 
 inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
 {
@@ -12,7 +14,7 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     playerObj->selectedItem = selectedItem;
     
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
-        baseObj->screenSize.Y - baseObj->screenSize.Y/11);
+        baseObj->screenSize.Y - baseObj->screenSize.Y/15);
 
     highlightScreenLocation = firstItemScreenLocation;
 
@@ -37,7 +39,7 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     }
 
     textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-        std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), 20,
+        std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
         &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
     if(!textureBulletsLeft){
         std::cout << "Error: could not create bullets left font texture.\n" << SDL_GetError() << std::endl;
@@ -70,7 +72,7 @@ void inventory::selectItem(int itemNumber)
 void inventory::setBox(int backOrForward)
 {
     // change the highlight texture position.
-    highlightScreenLocation.X = firstItemScreenLocation.X + (85 * (selectedItem - 1)) + backOrForward;
+    highlightScreenLocation.X = firstItemScreenLocation.X + (ITEM_SIZE * (selectedItem - 1)) + backOrForward;
 }
 
 void inventory::tick()
@@ -80,7 +82,7 @@ void inventory::tick()
     if(gunObj->gunShot){
         if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
         textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-            std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), 20,
+            std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
             &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
         
         if(!textureBulletsLeft){
@@ -92,16 +94,16 @@ void inventory::tick()
 
 void inventory::render()
 {
-    SDL_Rect handRect = {(int)firstItemScreenLocation.X, (int)firstItemScreenLocation.Y, 85, 85};
+    SDL_Rect handRect = {(int)firstItemScreenLocation.X, (int)firstItemScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
     SDL_RenderCopy(baseObj->mainRenderer, textureHandItem, NULL, &handRect);
 
-    SDL_Rect gunRect = {(int)firstItemScreenLocation.X + 85 + 10, (int)firstItemScreenLocation.Y, 85, 85};
+    SDL_Rect gunRect = {(int)firstItemScreenLocation.X + ITEM_SIZE + 10, (int)firstItemScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
     SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
-    SDL_Rect bulletsLeftFontRect = {firstItemScreenLocation.X + 85 + 27,
-        int(firstItemScreenLocation.Y + 85 - 85/2.5), bulletsLeftFontSize.X,  bulletsLeftFontSize.Y};
+    SDL_Rect bulletsLeftFontRect = {firstItemScreenLocation.X + ITEM_SIZE + BULLETS_FONT_SIZE,
+        int(firstItemScreenLocation.Y + ITEM_SIZE - ITEM_SIZE/2.3), bulletsLeftFontSize.X,  bulletsLeftFontSize.Y};
     SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftFontRect);
 
-    SDL_Rect highlightRect = {(int)highlightScreenLocation.X, (int)highlightScreenLocation.Y, 85, 85};
+    SDL_Rect highlightRect = {(int)highlightScreenLocation.X, (int)highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
     SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
 }

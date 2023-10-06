@@ -1,5 +1,5 @@
 #include "blocksHead.h"
-#define BLOCKS_CAPASITY 60
+#define BLOCKS_CAPASITY 400
 #define B_W 184/4
 #define B_H 176/4
 
@@ -22,47 +22,14 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     // create all the dirt blocks
     // W: 184/3
     // H: 176/3
-    vector2d blockLocation(0, baseObj->screenSize.Y/1.064);
+    vector2d blockLocation(baseObj->screenSize.X*-3, baseObj->screenSize.Y/1.064);
     blockIndexCounter = 0;
     for(; blockIndexCounter<BLOCKS_CAPASITY; blockIndexCounter++){
         switch (blockIndexCounter)
         {
-        case 7:
-            blockLocation.Y -= B_H; 
-            break;
-
-        case 13:
-            blockLocation.Y -= B_H;
-            break;     
-
-        case 14:
-            blockLocation.Y -= B_H;
-            break;     
-
-        case 15:
-            blockLocation.Y -= B_H;
-            break;     
-
-        case 16:
-            blockLocation.Y -= B_H;
-            break;     
-
-        case 20:
+        case 100:
             blockLocation.Y -= B_H;
             break;
-
-        case 21:
-            blockLocation.Y -= B_H;
-            break;
-
-        case 22:
-            blockLocation.Y -= B_H;
-            break;
-
-        case 23:
-            blockLocation.Y -= B_H;
-            break;
-
 
         default:
             blockLocation.X += B_W; 

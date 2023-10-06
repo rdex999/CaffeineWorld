@@ -40,30 +40,45 @@ void block::tick()
 {
     location += baseObj->screenOffset;
 
+    // everything in this if statement runs only once.
+    // i did this because this code needs to run after all the blocks have been created.
+    if(!aboveCheck){
+        aboveCheck = true;
+        for(int i=0; i<blockArraySize; i++){
+            if(blockArray[i]){
+                if(blockArray[i]->location == location - vector2d(0, location.H)){
+                    blockAbove = true;
+                    break;
+                }else{
+                    blockAbove = false;
+                }
+            }
+        }
+        if(blockType == 1){
+            if(blockAbove){
+                currentTextureIndex = 0;
+            }else{
+                currentTextureIndex = 1;
+            }
+        }
+    }
+
     if(location.inBox(vector2d(0, 0), baseObj->screenSize) || 
         vector2d(location.X+location.W, location.Y+location.H).inBox(vector2d(0, 0), baseObj->screenSize))
     {
         render();
 
-        if(!aboveCheck){
-            aboveCheck = true;
-            // this for loop runs only once
-            for(int i=0; i<blockArraySize; i++){
-                if(blockArray[i]){
-                    if(blockArray[i]->location == location - vector2d(0, location.H)){
-                        blockAbove = true;
-                        break;
-                    }else{
-                        blockAbove = false;
-                    }
+        if(blockType == 1){
+            timeGrassCheck = std::clamp(timeGrassCheck + baseObj->deltaTime, (double)0, (double)10);
+            if(timeGrassCheck >= 3){
+                timeGrassCheck = 0;
+                if(blockAbove){
+                    currentTextureIndex = 0;
+                }else{
+                    currentTextureIndex = 1;
                 }
             }
         }
-
-        if(timeGrassCheck >= 3 && !blockAbove && blockType == 1){
-            currentTextureIndex = 1;
-        }
-        timeGrassCheck = std::clamp(timeGrassCheck + baseObj->deltaTime, (double)0, (double)10);
 
         //        
         //  COLLISION SECTION:
