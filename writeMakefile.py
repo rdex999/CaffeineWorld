@@ -34,7 +34,7 @@ for i in range(len(groups)):
 
 writeMakefileStr += f"run:\n\t./CaffeineWorld\n\r\nclean:\n\trm ./build/*\n\trm CaffeineWorld\n\n"
 
-writeMakefileStr += f"all:\n\tg++ {flags} -o CaffeineWorld ./source/main.cpp"
+writeMakefileStr += f"all:\n\trm ./build/*\n\trm CaffeineWorld\n\tg++ {flags} -o CaffeineWorld ./source/main.cpp"
 for item in fileGroups:
     writeMakefileStr += f" {item['cpp']}"
 

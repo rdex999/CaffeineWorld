@@ -1,5 +1,5 @@
 #include "blocksHead.h"
-#define BLOCKS_CAPASITY 40
+#define BLOCKS_CAPASITY 400
 #define B_W 184/4
 #define B_H 176/4
 
@@ -19,34 +19,13 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         exit(1);
     }
 
-    // create all the dirt blocks
-    // W: 184/3
-    // H: 176/3
-    vector2d blockLocation(0, baseObj->screenSize.Y/1.064);
+    // create all the blocks
+    // W: 184/4
+    // H: 176/4
+    vector2d blockLocation(baseObj->screenSize.X*-2, baseObj->screenSize.Y/1.064);
     blockIndexCounter = 0;
-    for(; blockIndexCounter<BLOCKS_CAPASITY; blockIndexCounter++){
-        switch (blockIndexCounter)
-        {
-        case 10:
-            blockLocation.Y -= B_H;
-            break;
 
-        case 15:
-            blockLocation.Y -= B_H; 
-            blockIndexCounter = spawnRow(&blockLocation, 4, 1,
-                texturesDirtBlock[0], texturesDirtBlock[1], false, blockIndexCounter);
-            blockLocation += vector2d(B_W, B_H);
-            break;
-
-        default:
-            blockLocation.X += B_W; 
-        } 
-        
-        blockArray[blockIndexCounter] = new block(baseObj, playerObj, &blockLocation, 1,
-            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, blockIndexCounter, BLOCKS_CAPASITY);
-            
-        //blockIndexCounter = spawnRow( &blockLocation, 5, 1, texturesDirtBlock[0], texturesDirtBlock[1], blockIndexCounter);
-    }
+    blockIndexCounter = spawnRows(3, 100, &blockLocation, 1, texturesDirtBlock[0], texturesDirtBlock[1], true, blockIndexCounter);
 }
 
 blocksHead::~blocksHead()
@@ -91,4 +70,21 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
     }else{
         return 0;
     }
+}
+
+int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int blockType,
+    SDL_Texture *texture1, SDL_Texture *texture2, bool horizontal, int fromIndex)
+{
+    vector2d rowStart = *from; 
+    int blocks = fromIndex;
+    for(int i=0; i<rowCount; i++){
+        if(horizontal){
+            rowStart = *from + vector2d(0, B_H*i);
+        }else{
+            rowStart = *from + vector2d(B_W*i, 0);
+        }
+        
+        blocks += spawnRow(&rowStart, blocksPerRow, blockType, texture1, texture2, horizontal, blocks);
+    }
+    return blocks;
 }
