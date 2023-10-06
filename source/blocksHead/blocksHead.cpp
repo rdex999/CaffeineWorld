@@ -1,5 +1,8 @@
 #include "blocksHead.h"
 #define BLOCKS_CAPASITY 60
+#define B_W 184/3
+#define B_H 176/3
+
 blocksHead::blocksHead(base *baseObj, player *playerObj)
 {
     this->baseObj = baseObj;
@@ -25,44 +28,44 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         switch (blockIndexCounter)
         {
         case 7:
-            blockLocation.Y -= 176/3; 
+            blockLocation.Y -= B_H; 
             break;
 
         case 13:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;     
 
         case 14:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;     
 
         case 15:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;     
 
         case 16:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;     
 
         case 20:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;
 
         case 21:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;
 
         case 22:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;
 
         case 23:
-            blockLocation.Y -= 176/3;
+            blockLocation.Y -= B_H;
             break;
 
 
         default:
-            blockLocation.X += 184/3; 
+            blockLocation.X += B_W; 
         } 
         
         blockArray[blockIndexCounter] = new block(baseObj, playerObj, &blockLocation, 1,
@@ -98,7 +101,7 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
 {
     vector2d location;
     for(int i=0; i<blockCount; i++){
-        location = *from + vector2d(i*(184/3), 0);
+        location = *from + vector2d(i*(B_W), 0);
         if(fromIndex != -1){
             blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
                 texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
