@@ -1,5 +1,5 @@
 #include "blocksHead.h"
-#define BLOCKS_CAPASITY 400
+#define BLOCKS_CAPASITY 40
 #define B_W 184/4
 #define B_H 176/4
 
@@ -22,13 +22,20 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     // create all the dirt blocks
     // W: 184/3
     // H: 176/3
-    vector2d blockLocation(baseObj->screenSize.X*-3, baseObj->screenSize.Y/1.064);
+    vector2d blockLocation(0, baseObj->screenSize.Y/1.064);
     blockIndexCounter = 0;
     for(; blockIndexCounter<BLOCKS_CAPASITY; blockIndexCounter++){
         switch (blockIndexCounter)
         {
-        case 100:
+        case 10:
             blockLocation.Y -= B_H;
+            break;
+
+        case 15:
+            blockLocation.Y -= B_H; 
+            blockIndexCounter = spawnRow(&blockLocation, 4, 1,
+                texturesDirtBlock[0], texturesDirtBlock[1], false, blockIndexCounter);
+            blockLocation += vector2d(B_W, B_H);
             break;
 
         default:
@@ -64,11 +71,16 @@ void blocksHead::tick()
 }
 
 int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
-    SDL_Texture* texture1, SDL_Texture* texture2, int fromIndex)
+    SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal, int fromIndex)
 {
     vector2d location;
     for(int i=0; i<blockCount; i++){
-        location = *from + vector2d(i*(B_W), 0);
+        if(horizontal){
+            location = *from + vector2d(i*(B_W), 0);
+        }else{
+            location = *from - vector2d(0, i*(B_H));
+        }
+        
         if(fromIndex != -1){
             blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
                 texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);

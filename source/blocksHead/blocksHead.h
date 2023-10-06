@@ -30,12 +30,14 @@ class blocksHead
         // @param {int} fromIndex
         // from where to start spawning blocks in the blocks array
         // if not specified, the function will search for empty spaces in the blocks array and spawn the blocks in them.
+        // @param {bool} horizontal
+        // if false then the Row will be vertical
         // @return index of the first nullptr in blocksArray
         int spawnRow(vector2d* from, int blockCount, int blockType,
-            SDL_Texture* texture1, SDL_Texture* texture2, int fromIndex = -1);
+            SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal = true, int fromIndex = -1);
 
         // an array of all dirt blocks in the world
-        block* blockArray[400] = {nullptr};
+        block* blockArray[40] = {nullptr};
 
         // the textures of the dirt blcks.
         // index 0 is dirt texture, index 1 is dirtGrass texture
