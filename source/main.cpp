@@ -88,12 +88,44 @@ void container::handleEvent()
                         gunObj->reload();
                         break;
 
+                    case SDLK_0:
+                        inventoryObj->selectItem(10);
+                        break;
+
                     case SDLK_1:
                         inventoryObj->selectItem(1);
                         break;
 
                     case SDLK_2:
                         inventoryObj->selectItem(2);
+                        break;
+
+                    case SDLK_3:
+                        inventoryObj->selectItem(3);
+                        break;
+
+                    case SDLK_4:
+                        inventoryObj->selectItem(4);
+                        break;
+
+                    case SDLK_5:
+                        inventoryObj->selectItem(5);
+                        break;
+ 
+                    case SDLK_6:
+                        inventoryObj->selectItem(6);
+                        break;
+
+                    case SDLK_7:
+                        inventoryObj->selectItem(7);
+                        break;
+
+                    case SDLK_8:
+                        inventoryObj->selectItem(8);
+                        break;
+
+                    case SDLK_9:
+                        inventoryObj->selectItem(9);
                         break;
 
                     default:

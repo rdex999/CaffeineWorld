@@ -64,21 +64,9 @@ inventory::~inventory()
 
 void inventory::selectItem(int itemNumber)
 {
-    if(selectedItem < itemNumber){
-        selectedItem = itemNumber;
-        playerObj->selectedItem = selectedItem;
-        setBox(10 * (itemNumber - 1));
-    }else if(selectedItem > itemNumber){
-        selectedItem = itemNumber;
-        playerObj->selectedItem = selectedItem;
-        setBox(0);
-    }
-}
-
-void inventory::setBox(int backOrForward)
-{
-    // change the highlight texture position.
-    highlightScreenLocation.X = firstItemScreenLocation.X + (ITEM_SIZE * (selectedItem - 1)) + backOrForward;
+    highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
+    selectedItem = itemNumber;
+    playerObj->selectedItem = selectedItem;
 }
 
 void inventory::tick()
@@ -136,11 +124,4 @@ void inventory::render()
 
     SDL_Rect highlightRect = {highlightScreenLocation.X, highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
     SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
-
-    //SDL_Rect gunRect = {(int)firstItemScreenLocation.X + ITEM_SIZE + 10, (int)firstItemScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
-    //SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
-//
-    //SDL_Rect bulletsLeftFontRect = {firstItemScreenLocation.X + ITEM_SIZE + BULLETS_FONT_SIZE,
-    //    int(firstItemScreenLocation.Y + ITEM_SIZE - ITEM_SIZE/2.3), bulletsLeftFontSize.X,  bulletsLeftFontSize.Y};
-    //SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftFontRect);
 }

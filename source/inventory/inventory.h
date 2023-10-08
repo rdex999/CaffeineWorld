@@ -34,11 +34,6 @@ class inventory
         // 2 = gun
         int items[10] = {0};
 
-        // updates the the inventory items boxes at the boxes array
-        // backOrForward can only be 10 or 0
-        // 10 is the amount of pixels between each item on the screen
-        void setBox(int backOrForward);
-
         // the location of the first item on the screen
         vector2d firstItemScreenLocation;
 
