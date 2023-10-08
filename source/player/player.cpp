@@ -26,8 +26,8 @@ player::player(base *baseObj)
     // original walking speed
     walkingSpeedOrigin = 37.f;
 
-    // walking speed
-    walkingSpeed = walkingSpeedOrigin;
+    // walking speed (140 for debug)
+    walkingSpeed = 140;
 
     // the slow start/end of walking
     walkingSlowDown = 0.f;

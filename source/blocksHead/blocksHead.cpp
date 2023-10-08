@@ -1,5 +1,5 @@
 #include "blocksHead.h"
-#define BLOCKS_CAPASITY 400
+#define BLOCKS_CAPASITY 1500
 #define B_W 184/4
 #define B_H 176/4
 
@@ -19,13 +19,32 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         exit(1);
     }
 
-    // create all the blocks
-    // W: 184/4
-    // H: 176/4
-    vector2d blockLocation(baseObj->screenSize.X*-2, baseObj->screenSize.Y/1.064);
+    // 
+    // MAP CREATION SECTION
+    //
+
+    vector2d blockLocation(baseObj->screenSize.X*-5, baseObj->screenSize.Y/1.064);
     blockIndexCounter = 0;
 
-    blockIndexCounter = spawnRows(3, 100, &blockLocation, 1, texturesDirtBlock[0], texturesDirtBlock[1], true, blockIndexCounter);
+    blockIndexCounter = spawnRows(2, 500, &blockLocation, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+
+    blockLocation += vector2d(B_W*30, -1*B_H);
+    blockIndexCounter = spawnRow(&blockLocation, 7, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+
+    blockLocation.X += B_W*15;
+    blockIndexCounter = spawnRow(&blockLocation, 2, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1], false);
+
+    blockLocation += vector2d(B_W, -2*B_H);
+    blockIndexCounter = spawnRow(&blockLocation, 1, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+
+    blockLocation += vector2d(B_W, -1*B_H);
+    blockIndexCounter = spawnRow(&blockLocation, 3, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1], false);
+
+    blockLocation += vector2d(B_W, -3*B_H);
+    blockIndexCounter = spawnRow(&blockLocation, 2, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+
+    blockLocation += vector2d(2*B_W, -1*B_H);
+    blockIndexCounter = spawnCrookedRow(&blockLocation, 4, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 }
 
 blocksHead::~blocksHead()
@@ -50,7 +69,7 @@ void blocksHead::tick()
 }
 
 int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
-    SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal, int fromIndex)
+    int fromIndex ,SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal)
 {
     vector2d location;
     for(int i=0; i<blockCount; i++){
@@ -60,20 +79,14 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
             location = *from - vector2d(0, i*(B_H));
         }
         
-        if(fromIndex != -1){
-            blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-                texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
-        }
+        blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
     }
-    if(fromIndex != -1){
-        return blockIndexCounter + blockCount;
-    }else{
-        return 0;
-    }
+    return blockIndexCounter + blockCount;
 }
 
 int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int blockType,
-    SDL_Texture *texture1, SDL_Texture *texture2, bool horizontal, int fromIndex)
+    int fromIndex ,SDL_Texture *texture1, SDL_Texture* texture2, bool horizontal)
 {
     vector2d rowStart = *from; 
     int blocks = fromIndex;
@@ -84,7 +97,19 @@ int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int bl
             rowStart = *from + vector2d(B_W*i, 0);
         }
         
-        blocks += spawnRow(&rowStart, blocksPerRow, blockType, texture1, texture2, horizontal, blocks);
+        blocks += spawnRow(&rowStart, blocksPerRow, blockType, blocks, texture1, texture2, horizontal);
     }
     return blocks;
+}
+
+int blocksHead::spawnCrookedRow(vector2d *from, int blockCount, int blockType, int fromIndex,
+    SDL_Texture *texture1, SDL_Texture *texture2)
+{
+    vector2d location;
+    for(int i=0; i<blockCount; i++){
+        location = *from + vector2d(B_W*i, -1*B_H*i);
+        blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
+    }
+    return blockIndexCounter + blockCount;
 }
