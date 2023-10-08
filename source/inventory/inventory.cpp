@@ -10,6 +10,9 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
 
     selectedItem = 1;
 
+    items[0] = 1;
+    items[1] = 2;
+
     playerObj->selectedItem = selectedItem;
     
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
@@ -17,21 +20,27 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
 
     highlightScreenLocation = firstItemScreenLocation;
 
-    textureHandItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/handItem.png");
-    if(!textureHandItem){
-        std::cout << "Error: could not create the hand inventory frame texture.\n" << SDL_GetError() << std::endl;
+    textureItemFrame = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/itemFrame.png");
+    if(!textureItemFrame){
+        std::cout << "Error: could not create the item frame texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
 
-    textureGunItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem-v1.2.png");
-    if(!textureGunItem){
-        std::cout << "Error: could not create the gun inventory frame texture.\n" << SDL_GetError() << std::endl;
+    textureHandItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/handItem.png");
+    if(!textureHandItem){
+        std::cout << "Error: could not create the hand item texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
- 
+
     selectedItemHighLight = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/itemHighlight.png");
     if(!selectedItemHighLight){
         std::cout << "Error: could not create the item highlight texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    textureGunItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem.png");
+    if(!textureGunItem){
+        std::cout << "Error: could not create the gun item texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
 
@@ -47,10 +56,10 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
 
 inventory::~inventory()
 {
-    if(textureHandItem){SDL_DestroyTexture(textureHandItem);}
     if(selectedItemHighLight){SDL_DestroyTexture(selectedItemHighLight);}
-    if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
     if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
+    if(textureItemFrame){SDL_DestroyTexture(textureItemFrame);}
+    if(textureHandItem){SDL_DestroyTexture(textureHandItem);}
 }
 
 void inventory::selectItem(int itemNumber)
@@ -91,16 +100,47 @@ void inventory::tick()
 
 void inventory::render()
 {
-    SDL_Rect handRect = {(int)firstItemScreenLocation.X, (int)firstItemScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
-    SDL_RenderCopy(baseObj->mainRenderer, textureHandItem, NULL, &handRect);
+    vector2d itemLocation = firstItemScreenLocation;
+    for(int i=0; i<10; i++)
+    {
+        itemLocation.X = firstItemScreenLocation.X + ITEM_SIZE*i + 10*i;
 
-    SDL_Rect gunRect = {(int)firstItemScreenLocation.X + ITEM_SIZE + 10, (int)firstItemScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
-    SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
+        switch (items[i])
+        {
+            case 1:{
+                SDL_Rect handRect {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                SDL_RenderCopy(baseObj->mainRenderer, textureHandItem, NULL, &handRect);
+                break;
+            }
 
-    SDL_Rect bulletsLeftFontRect = {firstItemScreenLocation.X + ITEM_SIZE + BULLETS_FONT_SIZE,
-        int(firstItemScreenLocation.Y + ITEM_SIZE - ITEM_SIZE/2.3), bulletsLeftFontSize.X,  bulletsLeftFontSize.Y};
-    SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftFontRect);
+            case 2:{
+                SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
-    SDL_Rect highlightRect = {(int)highlightScreenLocation.X, (int)highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+bulletsLeftFontSize.X/4.8), 
+                    (int)(itemLocation.Y+bulletsLeftFontSize.Y*1.5),
+                    bulletsLeftFontSize.X, bulletsLeftFontSize.Y};
+                SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftRect);
+                break;
+            }
+
+            default:{
+                break;
+            }
+        }
+        
+        SDL_Rect rect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+        SDL_RenderCopy(baseObj->mainRenderer, textureItemFrame, NULL, &rect);
+
+    }
+
+    SDL_Rect highlightRect = {highlightScreenLocation.X, highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
     SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
+
+    //SDL_Rect gunRect = {(int)firstItemScreenLocation.X + ITEM_SIZE + 10, (int)firstItemScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
+    //SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
+//
+    //SDL_Rect bulletsLeftFontRect = {firstItemScreenLocation.X + ITEM_SIZE + BULLETS_FONT_SIZE,
+    //    int(firstItemScreenLocation.Y + ITEM_SIZE - ITEM_SIZE/2.3), bulletsLeftFontSize.X,  bulletsLeftFontSize.Y};
+    //SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftFontRect);
 }

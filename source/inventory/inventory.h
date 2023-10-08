@@ -28,6 +28,12 @@ class inventory
         // renders all the inventory items
         void render();
 
+        // the array of items
+        // 0 = no item
+        // 1 = hand
+        // 2 = gun
+        int items[10] = {0};
+
         // updates the the inventory items boxes at the boxes array
         // backOrForward can only be 10 or 0
         // 10 is the amount of pixels between each item on the screen
@@ -45,12 +51,16 @@ class inventory
         // the highlight on the selected item
         SDL_Texture* selectedItemHighLight;
 
-        // the hand item texture
-        SDL_Texture* textureHandItem;
+        // the item frame texture
+        SDL_Texture* textureItemFrame;
 
-        // the gun item frame texture
-        SDL_Texture* textureGunItem;
+        // the texture of the hand item
+        SDL_Texture* textureHandItem;
 
         // the bullets left count texture
         SDL_Texture* textureBulletsLeft;
+
+        // the texture of the gun item
+        SDL_Texture* textureGunItem;
+
 };
