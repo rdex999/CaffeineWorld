@@ -14,9 +14,6 @@ class inventory
 
         void selectItem(int itemNumber);
 
-        // the selected item number
-        int selectedItem;
-    
         // runs on every frame
         void tick();
     

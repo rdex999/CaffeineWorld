@@ -8,13 +8,10 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     this->playerObj = playerObj;
     this->gunObj = gunObj;
 
-    selectedItem = 1;
 
     items[0] = 1;
     items[1] = 2;
 
-    playerObj->selectedItem = selectedItem;
-    
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
         baseObj->screenSize.Y - baseObj->screenSize.Y/15);
 
@@ -65,8 +62,7 @@ inventory::~inventory()
 void inventory::selectItem(int itemNumber)
 {
     highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
-    selectedItem = itemNumber;
-    playerObj->selectedItem = selectedItem;
+    playerObj->selectedItem = items[itemNumber-1];
 }
 
 void inventory::tick()

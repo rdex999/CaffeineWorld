@@ -55,12 +55,13 @@ void gun::tick()
     lastGunShotTime += baseObj->deltaTime;
     if(playerObj->selectedItem == 2 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
         bullets[currentBullet] = new bullet(baseObj, &gunLocation, playerObj->flip, textureBullet, bullets, currentBullet);
-
         gunShot = true;
         lastGunShotTime = 0;
-        currentBullet++; 
-        if(currentBullet >= 16)
+        currentBullet++;
+        
+        if(currentBullet > 16){
             reload();
+        }
     }
 }
 
