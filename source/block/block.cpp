@@ -29,9 +29,6 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
 
 block::~block()
 {
-    if(textures[0]){SDL_DestroyTexture(textures[0]);}
-    if(textures[1]){SDL_DestroyTexture(textures[1]);}
-
     if(blockArray)
         blockArray[blockIndex] = nullptr;
 }
@@ -70,7 +67,7 @@ void block::tick()
 
         if(blockType == 1){
             timeGrassCheck = std::clamp(timeGrassCheck + baseObj->deltaTime, (double)0, (double)10);
-            if(timeGrassCheck >= 3){
+            if(timeGrassCheck >= 10){
                 timeGrassCheck = 0;
                 if(blockAbove){
                     currentTextureIndex = 0;
@@ -78,6 +75,42 @@ void block::tick()
                     currentTextureIndex = 1;
                 }
             }
+        }
+
+        switch (blockEvent)
+        {
+        case 1:
+
+            blockEvent = 0; 
+            break;
+
+        case 2:
+
+            blockEvent = 0;
+            break;
+
+        case 3:
+
+            blockEvent = 0;
+            break;
+
+        case 4:
+            blockAbove = false;
+            for(int i=0; i<blockArraySize; i++){
+                if(blockArray[i]){
+                    if(blockArray[i]->location+vector2d(0, location.H) == location){
+                        blockAbove = true;
+                        timeGrassCheck = 0;
+                        break;
+                    }
+                }
+            }
+
+            blockEvent = 0;
+            break;
+
+        default:
+            break;
         }
 
         //        

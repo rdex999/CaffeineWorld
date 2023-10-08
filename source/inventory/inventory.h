@@ -14,9 +14,6 @@ class inventory
 
         void selectItem(int itemNumber);
 
-        // the current amount of items`
-        int itemsCount;
-    
         // the selected item number
         int selectedItem;
     

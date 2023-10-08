@@ -5,8 +5,8 @@ player::player(base *baseObj)
     // store the baseObj pointer
     this->baseObj = baseObj;
 
-    screenBox = vector2d(baseObj->screenSize.X/5, baseObj->screenSize.Y/5,
-        baseObj->screenSize.X - baseObj->screenSize.X/5, baseObj->screenSize.Y - baseObj->screenSize.Y/5);
+    screenBox = vector2d(baseObj->screenSize.X/4, baseObj->screenSize.Y/4,
+        baseObj->screenSize.X - baseObj->screenSize.X/4, baseObj->screenSize.Y - baseObj->screenSize.Y/4);
 
     // set the texture index
     textureIndex = 0;

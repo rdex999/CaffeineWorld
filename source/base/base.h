@@ -31,7 +31,7 @@ typedef struct base
     // sets by the player to move all the objects
     vector2d screenOffset;
 
-    // the mouse state 1 = left click, 2 = middle click, 3 = right click
+    // the mouse state 1 = left click, 2 = middle click, 4/3 = right click
     Uint32 mouseState;
 
     // returns a texture of the text with the given size, color, and font

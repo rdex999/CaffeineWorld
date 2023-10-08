@@ -8,7 +8,6 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     this->playerObj = playerObj;
     this->gunObj = gunObj;
 
-    itemsCount = 0;
     selectedItem = 1;
 
     playerObj->selectedItem = selectedItem;
@@ -23,14 +22,12 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
         std::cout << "Error: could not create the hand inventory frame texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-    itemsCount++;
 
     textureGunItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem-v1.2.png");
     if(!textureGunItem){
         std::cout << "Error: could not create the gun inventory frame texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-    itemsCount++;
  
     selectedItemHighLight = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/itemHighlight.png");
     if(!selectedItemHighLight){

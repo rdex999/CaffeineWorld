@@ -33,7 +33,15 @@ class block
 
         // if there is a block above this one
         bool blockAbove;
-    
+
+        // if there was a block event.
+        // 0 = no block event.
+        // 1 = this block is on the left of a block that was destroyed
+        // 2 = this block is on the right of a block that was destroyed
+        // 3 = this block is above a block that was destroyed
+        // 4 = this block is below a block that was destroyed
+        int blockEvent;
+
     private:
 
         // store baseObj and playerObjpointers

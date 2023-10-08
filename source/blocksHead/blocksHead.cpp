@@ -31,24 +31,16 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     blockLocation += vector2d(B_W*30, -1*B_H);
     blockIndexCounter = spawnRow(&blockLocation, 7, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 
-    blockLocation.X += B_W*15;
-    blockIndexCounter = spawnRow(&blockLocation, 2, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1], false);
+    blockLocation.X += B_W*200;
+    blockIndexCounter = spawnRow(&blockLocation, 30, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 
-    blockLocation += vector2d(B_W, -2*B_H);
-    blockIndexCounter = spawnRow(&blockLocation, 1, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
-
-    blockLocation += vector2d(B_W, -1*B_H);
-    blockIndexCounter = spawnRow(&blockLocation, 3, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1], false);
-
-    blockLocation += vector2d(B_W, -3*B_H);
-    blockIndexCounter = spawnRow(&blockLocation, 2, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
-
-    blockLocation += vector2d(2*B_W, -1*B_H);
-    blockIndexCounter = spawnCrookedRow(&blockLocation, 4, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 }
 
 blocksHead::~blocksHead()
 {
+    if(texturesDirtBlock[0]){SDL_DestroyTexture(texturesDirtBlock[0]);}
+    if(texturesDirtBlock[1]){SDL_DestroyTexture(texturesDirtBlock[1]);}
+
     for(int i=0;i <BLOCKS_CAPASITY; i++){
         if(blockArray[i]){
             delete blockArray[i];
@@ -64,6 +56,27 @@ void blocksHead::tick()
     for(int i=0; i<BLOCKS_CAPASITY; i++){
         if(blockArray[i]){
             blockArray[i]->tick();
+
+            // if the players wants to destroy a block
+            if(baseObj->mouseLocation.inBox(blockArray[i]->location, blockArray[i]->location+vector2d(B_W, B_H)) &&
+                (baseObj->mouseState == 3 || baseObj->mouseState == 4))
+            {
+                for(int j=0; j<BLOCKS_CAPASITY; j++){
+                    if(blockArray[j]){
+                        if(blockArray[j]->location+vector2d(B_W, 0) == blockArray[i]->location){
+                            blockArray[j]->blockEvent = 1;
+                        }else if(blockArray[j]->location == blockArray[i]->location+vector2d(B_W, 0)){
+                            blockArray[j]->blockEvent = 2;
+                        }else if(blockArray[j]->location+vector2d(0, B_H) == blockArray[i]->location){
+                            blockArray[j]->blockEvent = 3;
+                        }else if(blockArray[j]->location == blockArray[i]->location+vector2d(0, B_H)){
+                            blockArray[j]->blockEvent = 4;
+                        }
+                    }
+                }
+           
+                delete blockArray[i];
+            }
         }
     }
 }
@@ -72,7 +85,9 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
     int fromIndex ,SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal)
 {
     vector2d location;
+    int blocks = fromIndex; 
     for(int i=0; i<blockCount; i++){
+        blocks++;
         if(horizontal){
             location = *from + vector2d(i*(B_W), 0);
         }else{
@@ -82,7 +97,7 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
             texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
     }
-    return blockIndexCounter + blockCount;
+    return blocks;
 }
 
 int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int blockType,
@@ -97,7 +112,7 @@ int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int bl
             rowStart = *from + vector2d(B_W*i, 0);
         }
         
-        blocks += spawnRow(&rowStart, blocksPerRow, blockType, blocks, texture1, texture2, horizontal);
+        blocks = spawnRow(&rowStart, blocksPerRow, blockType, blocks, texture1, texture2, horizontal);
     }
     return blocks;
 }
