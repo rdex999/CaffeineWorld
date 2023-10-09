@@ -6,7 +6,7 @@ attackHand::attackHand(base *baseObj, player* playerObj)
     this->playerObj = playerObj;
 
     // set the hand size
-    handSize = vector2d(2274, 1034)/30;
+    handSize = vector2d(2274, 1034)/38;
 
     attack = false;
 
@@ -31,29 +31,35 @@ void attackHand::tick()
 {
     render();
 
-    if((playerObj->selectedItem == 0 || playerObj->selectedItem == -1) && baseObj->mouseState == 1){
+    if((playerObj->selectedItem == 0 || playerObj->selectedItem == -1) && baseObj->mouseState == 1 && !attack){
         attack = true;
+        rotation = baseObj->rotationPlayerToMouse;
+        direction = dVector2d(0, 0);
     }
     if(attack){
-        attackSlowDown -= baseObj->deltaTime * 10;
-        attackOffset += baseObj->deltaTime * 210 * attackSlowDown;
+        attackSlowDown -= baseObj->deltaTime * 15;
+        attackOffset += baseObj->deltaTime * 1510 * attackSlowDown;
         if(attackOffset <= 0){
             attack = false;
             attackOffset = 0.f;
             attackSlowDown = 3.f;
         }
         if(playerObj->flip){
-            screenLocation = playerObj->screenLocation + vector2d(attackOffset, playerObj->screenLocation.H/2.7);
+            direction += dVector2d(std::cos(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown,
+                std::sin(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown);
         }else{
-            screenLocation = playerObj->screenLocation + vector2d(-1*attackOffset, playerObj->screenLocation.H/2.7);
+            direction -= dVector2d(std::cos(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown,
+                std::sin(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown);
         }
+        screenLocation = playerObj->screenLocation + vector2d(direction.X, direction.Y + playerObj->screenLocation.H/2.7);
     }
+
 }
 
 void attackHand::render()
 {
     if(attack){
         SDL_Rect rect = {screenLocation.X, screenLocation.Y, handSize.X, handSize.Y};
-        SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect, 0, NULL, SDL_RendererFlip(playerObj->flip));
+        SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect, rotation, NULL, SDL_RendererFlip(playerObj->flip));
     }
 }

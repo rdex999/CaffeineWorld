@@ -38,4 +38,9 @@ class attackHand
 
         // the slow down at the end of the attack
         double attackSlowDown;
+
+        // the rotation of the hand
+        double rotation;
+
+        dVector2d direction;
 };

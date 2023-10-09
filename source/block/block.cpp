@@ -129,7 +129,7 @@ void block::tick()
 
         // if the players wants to destroy a block
         if(baseObj->mouseLocation.inBox(location, location+vector2d(location.W, location.H)) &&
-            baseObj->mouseState == 1 && timeLastHit >= 0.2)
+            baseObj->mouseState == 1 && timeLastHit >= 0.39)
         {
             timeLastHit = 0;
             switch (playerObj->selectedItem)
@@ -164,7 +164,7 @@ void block::tick()
         }
 
         // regenerate block health 
-        if(timeLastHit >= 3){
+        if(timeLastHit >= 4.1){
             blockLife = std::clamp(blockLife+3, 0, maxBlockLife);
         }
         //        
