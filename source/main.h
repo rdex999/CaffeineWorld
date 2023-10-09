@@ -6,6 +6,7 @@
 #include "gun/gun.h"
 #include "attackHand/attackHand.h"
 #include "blocksHead/blocksHead.h"
+#include "itemsHead/itemsHead.h"
 
 // container for all of the components
 typedef struct container
@@ -16,6 +17,7 @@ typedef struct container
     base* baseObj;
     background* backgroundObj;
     player* playerObj;
+    itemsHead* itemsHeadObj; 
     inventory* inventoryObj;
     gun* gunObj;
     attackHand* attackHandObj;

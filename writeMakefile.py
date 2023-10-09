@@ -3,7 +3,7 @@
 # each group is a folder, which has two files with the same name as the folder but one is .cpp and one is .h
 groups = ("attackHand", "background", "base", "blocksHead",
     "bullet", "coffeeCup", "block", "dVector2d",
-    "gun", "inventory", "player", "vector2d")
+    "gun", "inventory", "player", "vector2d", "pickaxe", "itemsHead")
 
 # the compiler flags. Seperated by a space
 flags = "-std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf"
