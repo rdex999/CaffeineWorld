@@ -53,7 +53,8 @@ void gun::tick()
 
     // handle shooting with the gun
     lastGunShotTime += baseObj->deltaTime;
-    if(playerObj->selectedItem == 2 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
+    gunShot = false;
+    if(playerObj->selectedItem == 10 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
         bullets[currentBullet] = new bullet(baseObj, &gunLocation, playerObj->flip, textureBullet, bullets, currentBullet);
         gunShot = true;
         lastGunShotTime = 0;
@@ -72,7 +73,7 @@ void gun::render()
             bullets[i]->tick();
         } 
     }
-    if(playerObj->selectedItem == 2){
+    if(playerObj->selectedItem == 10){
 
         SDL_Rect playerRect = {(int)playerObj->screenLocation.X,
             (int)(playerObj->screenLocation.Y+playerObj->screenLocation.H/2.7), (int)gunSize.X, (int)gunSize.Y};

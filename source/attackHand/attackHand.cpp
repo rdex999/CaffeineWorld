@@ -31,7 +31,7 @@ void attackHand::tick()
 {
     render();
 
-    if(playerObj->selectedItem == 1 && baseObj->mouseState == 1){
+    if((playerObj->selectedItem == 0 || playerObj->selectedItem == -1) && baseObj->mouseState == 1){
         attack = true;
     }
     if(attack){

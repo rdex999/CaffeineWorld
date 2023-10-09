@@ -56,27 +56,6 @@ void blocksHead::tick()
     for(int i=0; i<BLOCKS_CAPASITY; i++){
         if(blockArray[i]){
             blockArray[i]->tick();
-
-            // if the players wants to destroy a block
-            if(baseObj->mouseLocation.inBox(blockArray[i]->location, blockArray[i]->location+vector2d(B_W, B_H)) &&
-                (baseObj->mouseState == 3 || baseObj->mouseState == 4))
-            {
-                for(int j=0; j<BLOCKS_CAPASITY; j++){
-                    if(blockArray[j]){
-                        if(blockArray[j]->location+vector2d(B_W, 0) == blockArray[i]->location){
-                            blockArray[j]->blockEvent = 1;
-                        }else if(blockArray[j]->location == blockArray[i]->location+vector2d(B_W, 0)){
-                            blockArray[j]->blockEvent = 2;
-                        }else if(blockArray[j]->location+vector2d(0, B_H) == blockArray[i]->location){
-                            blockArray[j]->blockEvent = 3;
-                        }else if(blockArray[j]->location == blockArray[i]->location+vector2d(0, B_H)){
-                            blockArray[j]->blockEvent = 4;
-                        }
-                    }
-                }
-           
-                delete blockArray[i];
-            }
         }
     }
 }

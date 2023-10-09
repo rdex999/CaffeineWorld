@@ -9,7 +9,7 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     this->gunObj = gunObj;
 
     items[0] = 1;
-    items[1] = 2;
+    items[1] = 10;
     
     selectedItemIndex = 0;
     playerObj->selectedItem = items[0];
@@ -26,8 +26,8 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
         exit(1);
     }
 
-    textureHandItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/handItem.png");
-    if(!textureHandItem){
+    textureWoodenPickaxeItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/woodenPickaxeItem.png");
+    if(!textureWoodenPickaxeItem){
         std::cout << "Error: could not create the hand item texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
@@ -59,15 +59,21 @@ inventory::~inventory()
     if(selectedItemHighLight){SDL_DestroyTexture(selectedItemHighLight);}
     if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
     if(textureItemFrame){SDL_DestroyTexture(textureItemFrame);}
-    if(textureHandItem){SDL_DestroyTexture(textureHandItem);}
+    if(textureWoodenPickaxeItem){SDL_DestroyTexture(textureWoodenPickaxeItem);}
     if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
 }
 
 void inventory::selectItem(int itemNumber)
 {
-    highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
-    playerObj->selectedItem = items[itemNumber-1];
-    selectedItemIndex = itemNumber-1;
+    //if the player selects the same item, then unselect 
+    if(itemNumber == selectedItemIndex+1){
+        playerObj->selectedItem = -1;
+        selectedItemIndex = -1; 
+    }else{
+        highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
+        playerObj->selectedItem = items[itemNumber-1];
+        selectedItemIndex = itemNumber-1;
+    }
 }
 
 void inventory::selectItemOffset(int offset)
@@ -96,6 +102,7 @@ void inventory::tick()
             std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
             exit(1);
         }
+        std::cout << gunObj->gunShot << std::endl;
     }
 }
 
@@ -109,12 +116,12 @@ void inventory::render()
         switch (items[i])
         {
             case 1:{
-                SDL_Rect handRect {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, textureHandItem, NULL, &handRect);
+                SDL_Rect woodenPickaxeRect {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                SDL_RenderCopy(baseObj->mainRenderer, textureWoodenPickaxeItem, NULL, &woodenPickaxeRect);
                 break;
             }
 
-            case 2:{
+            case 10:{
                 SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
@@ -129,12 +136,13 @@ void inventory::render()
                 break;
             }
         }
-        
+
         SDL_Rect rect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
         SDL_RenderCopy(baseObj->mainRenderer, textureItemFrame, NULL, &rect);
-
     }
 
-    SDL_Rect highlightRect = {highlightScreenLocation.X, highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
-    SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
+    if(selectedItemIndex != -1){
+        SDL_Rect highlightRect = {highlightScreenLocation.X, highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
+        SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
+    }
 }

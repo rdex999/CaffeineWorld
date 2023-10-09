@@ -42,6 +42,7 @@ class block
         // 4 = this block is below a block that was destroyed
         int blockEvent;
 
+    
     private:
 
         // store baseObj and playerObjpointers
@@ -74,4 +75,12 @@ class block
         // if the block already checked if there is a block above this one
         bool aboveCheck;
 
+        double timeLastHit;
+
+        // basicly the blocks HP
+        // when the player hits the block the blocks hp goes down
+        int blockLife;
+
+        // the max block life. the normal block life can change, this is kind of a constant
+        int maxBlockLife;
 };

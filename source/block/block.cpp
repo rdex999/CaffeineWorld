@@ -25,6 +25,18 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
     aboveCheck = false;
 
     currentTextureIndex = 0;
+
+    switch (blockType)
+    {
+    case 1:
+        blockLife = 15; 
+        break;
+    
+    default:
+        break;
+    }
+    maxBlockLife = blockLife;
+
 }
 
 block::~block()
@@ -113,6 +125,48 @@ void block::tick()
             break;
         }
 
+        timeLastHit = std::clamp(timeLastHit + baseObj->deltaTime, (double)0, (double)5);
+
+        // if the players wants to destroy a block
+        if(baseObj->mouseLocation.inBox(location, location+vector2d(location.W, location.H)) &&
+            baseObj->mouseState == 1 && timeLastHit >= 0.2)
+        {
+            timeLastHit = 0;
+            switch (playerObj->selectedItem)
+            {
+            case 1:
+                blockLife -= 6;
+                break;
+            
+            default:
+                if(playerObj->selectedItem != 10){
+                    blockLife -= 3;
+                }
+                break;
+            }
+            if(blockLife <= 0){
+                for(int j=0; j<blockArraySize; j++){
+                    if(blockArray[j]){
+                        if(blockArray[j]->location+vector2d(location.W, 0) == location){
+                            blockArray[j]->blockEvent = 1;
+                        }else if(blockArray[j]->location == location+vector2d(location.W, 0)){
+                            blockArray[j]->blockEvent = 2;
+                        }else if(blockArray[j]->location+vector2d(0, location.H) == location){
+                            blockArray[j]->blockEvent = 3;
+                        }else if(blockArray[j]->location == location+vector2d(0, location.H)){
+                            blockArray[j]->blockEvent = 4;
+                        }
+                    }
+                }
+                delete this;
+            }
+        
+        }
+
+        // regenerate block health 
+        if(timeLastHit >= 3){
+            blockLife = std::clamp(blockLife+3, 0, maxBlockLife);
+        }
         //        
         //  COLLISION SECTION:
         //
