@@ -6,7 +6,7 @@ attackHand::attackHand(base *baseObj, player* playerObj)
     this->playerObj = playerObj;
 
     // set the hand size
-    handSize = vector2d(2274, 1034)/38;
+    handSize = vector2d(371, 168)/6;
 
     attack = false;
 
@@ -14,7 +14,7 @@ attackHand::attackHand(base *baseObj, player* playerObj)
 
     attackSlowDown = 3.f;
 
-    texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/attackHand/attackHand.png");
+    texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/attackHand/attackHand-v1.2.png");
     if(!texture){
         std::cout << "Error: could not create attackHand texture.\n" << SDL_GetError() << std::endl;
         exit(1);
