@@ -25,6 +25,10 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
     aboveCheck = false;
 
     currentTextureIndex = 0;
+    
+    playerZone = playerObj->screenLocation - playerObj->screenLocation.W;
+    playerZone.W = playerObj->screenLocation.W*3;
+    playerZone.H = playerObj->screenLocation.W*2 + playerObj->screenLocation.H;
 
     switch (blockType)
     {
@@ -76,6 +80,11 @@ void block::tick()
         vector2d(location.X+location.W, location.Y+location.H).inBox(vector2d(0, 0), baseObj->screenSize))
     {
         render();
+
+        // update the playerZone
+        playerZone = playerObj->screenLocation - playerObj->screenLocation.W;
+        playerZone.W = playerObj->screenLocation.W*3;
+        playerZone.H = playerObj->screenLocation.W*2 + playerObj->screenLocation.H;
 
         if(blockType == 1){
             timeGrassCheck = std::clamp(timeGrassCheck + baseObj->deltaTime, (double)0, (double)10);
@@ -129,7 +138,9 @@ void block::tick()
 
         // if the players wants to destroy a block
         if(baseObj->mouseLocation.inBox(location, location+vector2d(location.W, location.H)) &&
-            baseObj->mouseState == 1 && timeLastHit >= 0.39)
+            baseObj->mouseState == 1 && timeLastHit >= 0.39 &&
+            (location.inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H)) ||
+            (location+vector2d(location.W, location.H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
         {
             timeLastHit = 0;
             switch (playerObj->selectedItem)

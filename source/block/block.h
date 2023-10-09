@@ -83,4 +83,6 @@ class block
 
         // the max block life. the normal block life can change, this is kind of a constant
         int maxBlockLife;
+
+        vector2d playerZone;
 };
