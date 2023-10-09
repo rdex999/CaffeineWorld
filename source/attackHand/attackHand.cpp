@@ -31,7 +31,7 @@ void attackHand::tick()
 {
     render();
 
-    if((playerObj->selectedItem == 0 || playerObj->selectedItem == -1) && baseObj->mouseState == 1 && !attack){
+    if(baseObj->mouseState == 1 && !attack){
         attack = true;
         rotation = baseObj->rotationPlayerToMouse;
         direction = dVector2d(0, 0);

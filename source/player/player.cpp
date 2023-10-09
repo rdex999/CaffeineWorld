@@ -157,6 +157,16 @@ void player::tick()
 {
     render();
 
+    if(flip){
+        baseObj->rotationPlayerToMouse = atan2(baseObj->mouseLocation.Y -
+            (int)(screenLocation.Y+screenLocation.H/2.7),
+            baseObj->mouseLocation.X - screenLocation.X)*180/M_PI;
+    }else{
+        baseObj->rotationPlayerToMouse = atan2(baseObj->mouseLocation.Y*-1 -
+            (int)(screenLocation.Y+screenLocation.H/2.7)*-1,
+            baseObj->mouseLocation.X*-1 - screenLocation.X*-1)*180/M_PI;
+    }
+
     // slow stop when the player stops walking
     if(stoppedWalking != 0){
         if(slowDownEndWalk <= 0){

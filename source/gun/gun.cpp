@@ -38,16 +38,6 @@ void gun::tick()
 {
     render();
 
-    if(playerObj->flip){
-        baseObj->rotationPlayerToMouse = atan2(baseObj->mouseLocation.Y -
-            (int)(playerObj->screenLocation.Y+playerObj->screenLocation.H/2.7),
-            baseObj->mouseLocation.X - playerObj->screenLocation.X)*180/M_PI;
-    }else{
-        baseObj->rotationPlayerToMouse = atan2(baseObj->mouseLocation.Y*-1 -
-            (int)(playerObj->screenLocation.Y+playerObj->screenLocation.H/2.7)*-1,
-            baseObj->mouseLocation.X*-1 - playerObj->screenLocation.X*-1)*180/M_PI;
-    }
-
     vector2d gunLocation(playerObj->screenLocation.X,
         playerObj->screenLocation.Y + playerObj->screenLocation.H/2.7 + gunSize.Y/3);
 

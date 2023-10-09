@@ -138,7 +138,7 @@ void block::tick()
 
         // if the players wants to destroy a block
         if(baseObj->mouseLocation.inBox(location, location+vector2d(location.W, location.H)) &&
-            baseObj->mouseState == 1 && timeLastHit >= 0.39 &&
+            baseObj->mouseState == 1 && timeLastHit >= 0.33 &&
             (location.inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H)) ||
             (location+vector2d(location.W, location.H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
         {

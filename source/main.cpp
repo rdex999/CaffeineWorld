@@ -29,9 +29,8 @@ container::container()
     backgroundObj = new background(baseObj);
     playerObj = new player(baseObj);
     itemsHeadObj = new itemsHead(baseObj, playerObj);
-    gunObj = new gun(baseObj, playerObj);
     blocksHeadObj = new blocksHead(baseObj, playerObj);
-    inventoryObj = new inventory(baseObj, playerObj, gunObj);
+    inventoryObj = new inventory(baseObj, playerObj, itemsHeadObj);
 }
 
 container::~container()
@@ -40,7 +39,6 @@ container::~container()
     if(inventoryObj){delete inventoryObj;}
     if(playerObj){delete playerObj;}
     if(itemsHeadObj){delete itemsHeadObj;}
-    if(gunObj){delete gunObj;}
     if(blocksHeadObj){delete blocksHeadObj;}
 
     if(baseObj){delete baseObj;}
@@ -93,7 +91,7 @@ void container::handleEvent()
                         break;
 
                     case SDLK_r:
-                        gunObj->reload();
+                        itemsHeadObj->gunObj->reload();
                         break;
 
                     case SDLK_0:
@@ -184,7 +182,6 @@ void container::runTicks()
     backgroundObj->tick();
     playerObj->tick();
     itemsHeadObj->tick();
-    gunObj->tick();
     blocksHeadObj->tick();
     inventoryObj->tick();
     SDL_RenderPresent(baseObj->mainRenderer);

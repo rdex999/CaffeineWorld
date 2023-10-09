@@ -6,7 +6,8 @@ itemsHead::itemsHead(base *baseObj, player *playerObj)
     this->playerObj = playerObj;
 
     attackHandObj = new attackHand(baseObj, playerObj);
-
+    pickaxeObj = new pickaxe(baseObj, playerObj, 1);
+    gunObj = new gun(baseObj, playerObj);
 }
 
 itemsHead::~itemsHead()
@@ -24,9 +25,14 @@ void itemsHead::tick()
         attackHandObj->tick();
         break;
 
-
+    case 1:
+        pickaxeObj->tick();
+        break;
 
     default:
         break;
     }
+
+    // allways run it because of the bullets
+    gunObj->tick();
 }

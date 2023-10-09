@@ -12,15 +12,16 @@ class itemsHead
         // runs every frame
         void tick();
 
+        // store item pointers 
+        pickaxe* pickaxeObj;
+        attackHand* attackHandObj;
+        gun* gunObj;
+    
     private:
 
         // store baseObj and playerObj pointers
         base* baseObj;
         player* playerObj;
 
-        // store item pointers 
-        pickaxe* pickaxeObj;
-        attackHand* attackHandObj;
-        gun* gunObj;
 
 };

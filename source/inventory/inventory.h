@@ -2,14 +2,12 @@
 #include <format>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
-#include "../base/base.h"
-#include "../player/player.h"
-#include "../gun/gun.h"
+#include "../itemsHead/itemsHead.h"
 
 class inventory
 {
     public:
-        inventory(base* baseObj, player* playerObj, gun* gunObj);
+        inventory(base* baseObj, player* playerObj, itemsHead* itemsHeadObj);
         ~inventory();
 
         // selects an item from the inventory
@@ -27,7 +25,7 @@ class inventory
     private:
         base* baseObj;
         player* playerObj;
-        gun* gunObj;
+        itemsHead* itemsHeadObj;
 
         // renders all the inventory items
         void render();

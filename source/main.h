@@ -19,8 +19,6 @@ typedef struct container
     player* playerObj;
     itemsHead* itemsHeadObj; 
     inventory* inventoryObj;
-    gun* gunObj;
-    attackHand* attackHandObj;
     blocksHead* blocksHeadObj;
 
     // handle keyboard

@@ -2,11 +2,11 @@
 #define ITEM_SIZE 60
 #define BULLETS_FONT_SIZE 18
 
-inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
+inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
-    this->gunObj = gunObj;
+    this->itemsHeadObj = itemsHeadObj;
 
     items[0] = 1;
     items[1] = 10;
@@ -45,7 +45,7 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     }
 
     textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-        std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+        std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
         &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
     if(!textureBulletsLeft){
         std::cout << "Error: could not create bullets left font texture.\n" << SDL_GetError() << std::endl;
@@ -92,17 +92,16 @@ void inventory::tick()
 {
     render();
 
-    if(gunObj->gunShot){
+    if(itemsHeadObj->gunObj->gunShot){
         if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
         textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-            std::format("{}/16", 16-gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+            std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
             &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
         
         if(!textureBulletsLeft){
             std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
             exit(1);
         }
-        std::cout << gunObj->gunShot << std::endl;
     }
 }
 
