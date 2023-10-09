@@ -8,9 +8,12 @@ inventory::inventory(base *baseObj, player* playerObj, gun* gunObj)
     this->playerObj = playerObj;
     this->gunObj = gunObj;
 
-
     items[0] = 1;
     items[1] = 2;
+    
+    selectedItemIndex = 0;
+    playerObj->selectedItem = items[0];
+
 
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
         baseObj->screenSize.Y - baseObj->screenSize.Y/15);
@@ -57,12 +60,26 @@ inventory::~inventory()
     if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
     if(textureItemFrame){SDL_DestroyTexture(textureItemFrame);}
     if(textureHandItem){SDL_DestroyTexture(textureHandItem);}
+    if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
 }
 
 void inventory::selectItem(int itemNumber)
 {
     highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
     playerObj->selectedItem = items[itemNumber-1];
+    selectedItemIndex = itemNumber-1;
+}
+
+void inventory::selectItemOffset(int offset)
+{
+    if(selectedItemIndex+offset+1 > 10){
+        selectItem(1);
+    }else if(selectedItemIndex+offset+1 < 1){
+        selectItem(10);
+    }else{
+        // +1 because the index starts from zero and itemNumber(the argument) starts from 1
+        selectItem(selectedItemIndex+offset+1);
+    }
 }
 
 void inventory::tick()

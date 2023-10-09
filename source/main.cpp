@@ -70,6 +70,14 @@ void container::handleEvent()
                 baseObj->run = false; 
                 break;
 
+            case SDL_MOUSEWHEEL:
+
+                // if the player scolls their mouse 
+                if(event.wheel.y != 0){
+                    inventoryObj->selectItemOffset(event.wheel.y*-1);
+                }
+                break;
+
             case SDL_KEYDOWN:
             {
                 switch(event.key.keysym.sym)

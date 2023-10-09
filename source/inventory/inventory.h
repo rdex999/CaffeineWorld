@@ -12,8 +12,15 @@ class inventory
         inventory(base* baseObj, player* playerObj, gun* gunObj);
         ~inventory();
 
+        // selects an item from the inventory
         void selectItem(int itemNumber);
 
+        // offset can be 1 or -1
+        void selectItemOffset(int offset);
+
+        // the index of the selected item in the items array
+        int selectedItemIndex; 
+        
         // runs on every frame
         void tick();
     
