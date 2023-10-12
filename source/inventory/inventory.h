@@ -30,13 +30,6 @@ class inventory
         // renders all the inventory items
         void render();
 
-        // the array of items
-        // 0 = no item
-        // -1/0 = hand
-        // 10 = gun
-        // 1 pickaxe
-        int items[10] = {0};
-
         // the location of the first item on the screen
         vector2d firstItemScreenLocation;
 
@@ -60,5 +53,7 @@ class inventory
 
         // the texture of the gun item
         SDL_Texture* textureGunItem;
+
+        SDL_Texture* textureGrassBlockItem;
 
 };

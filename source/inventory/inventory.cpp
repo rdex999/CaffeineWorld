@@ -8,11 +8,11 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
     this->playerObj = playerObj;
     this->itemsHeadObj = itemsHeadObj;
 
-    items[0] = 1;
-    items[1] = 10;
+    playerObj->items[0] = 1;
+    playerObj->items[1] = 10;
     
     selectedItemIndex = 0;
-    playerObj->selectedItem = items[0];
+    playerObj->selectedItem = playerObj->items[0];
 
 
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
@@ -44,6 +44,12 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
         exit(1);
     }
 
+    textureGrassBlockItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/grassBlockItem.png");
+    if(!textureGrassBlockItem){
+        std::cout << "Error: could not create the grass block item texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
     textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
         std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
         &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
@@ -71,7 +77,7 @@ void inventory::selectItem(int itemNumber)
         selectedItemIndex = -1; 
     }else{
         highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
-        playerObj->selectedItem = items[itemNumber-1];
+        playerObj->selectedItem = playerObj->items[itemNumber-1];
         selectedItemIndex = itemNumber-1;
     }
 }
@@ -112,14 +118,16 @@ void inventory::render()
     {
         itemLocation.X = firstItemScreenLocation.X + ITEM_SIZE*i + 10*i;
 
-        switch (items[i])
+        switch (playerObj->items[i])
         {
+            // wooden pickaxe 
             case 1:{
                 SDL_Rect woodenPickaxeRect {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureWoodenPickaxeItem, NULL, &woodenPickaxeRect);
                 break;
             }
 
+            // gun
             case 10:{
                 SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
@@ -128,6 +136,13 @@ void inventory::render()
                     (int)(itemLocation.Y+bulletsLeftFontSize.Y*1.5),
                     bulletsLeftFontSize.X, bulletsLeftFontSize.Y};
                 SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftRect);
+                break;
+            }
+
+            // dirt/grass block item
+            case 11:{
+                SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockItem, NULL, &dirtItemRect);
                 break;
             }
 

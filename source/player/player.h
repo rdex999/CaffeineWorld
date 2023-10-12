@@ -64,7 +64,14 @@ class player
         
         // jumping intensity
         float jumpIntensity;
-    
+
+        // the items array. each item has an item id (int)
+        // 0 = no item
+        // -1/0 = hand
+        // 10 = gun
+        // 1 pickaxe  
+        int items[10] = {0};
+
     private: 
 
         // renders the player

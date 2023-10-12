@@ -169,6 +169,14 @@ void block::tick()
                         }
                     }
                 }
+
+                for(int i=0; i<10; i++){
+                    if(playerObj->items[i] == 0){
+                        playerObj->items[i] = blockType+10;
+                        break;
+                    }
+                }
+
                 delete this;
             }
         
