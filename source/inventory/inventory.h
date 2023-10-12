@@ -54,6 +54,9 @@ class inventory
         // the texture of the gun item
         SDL_Texture* textureGunItem;
 
+        // the texture of the grass block item
         SDL_Texture* textureGrassBlockItem;
 
+        // the texture of the text that shows how many blocks
+        SDL_Texture* textureGrassBlockCount = nullptr;
 };

@@ -69,6 +69,7 @@ inventory::~inventory()
     if(textureWoodenPickaxeItem){SDL_DestroyTexture(textureWoodenPickaxeItem);}
     if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
     if(textureGrassBlockItem){SDL_DestroyTexture(textureGrassBlockItem);}
+    if(textureGrassBlockCount){SDL_DestroyTexture(textureGrassBlockCount);}
 }
 
 void inventory::selectItem(int itemNumber)
@@ -133,9 +134,9 @@ void inventory::render()
                 SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
-                SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+bulletsLeftFontSize.X/4.8), 
-                    (int)(itemLocation.Y+bulletsLeftFontSize.Y*1.5),
-                    bulletsLeftFontSize.X, bulletsLeftFontSize.Y};
+                SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+ITEM_SIZE/2-bulletsLeftFontSize.X/2),
+                    (int)(itemLocation.Y+ITEM_SIZE/1.8), bulletsLeftFontSize.X, bulletsLeftFontSize.Y};
+
                 SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftRect);
                 break;
             }
@@ -143,6 +144,29 @@ void inventory::render()
             case ITEM_GRASS_BLOCK:{
                 SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockItem, NULL, &dirtItemRect);
+
+                SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2), (int)(itemLocation.Y+ITEM_SIZE/1.8), 0, 0};
+
+                if(textureGrassBlockCount){SDL_DestroyTexture(textureGrassBlockCount);}
+
+                int w, h;
+                textureGrassBlockCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                    std::format("{}", playerObj->items[i].count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+                    &w, &h);
+                
+                grassCountRect.x -= w/2;
+                grassCountRect.y -= h/2;
+
+                grassCountRect.w = w;
+                grassCountRect.h = h;
+
+                if(!textureGrassBlockCount){
+                    std::cout << "Error: could not create the grass item count texture.\n" << SDL_GetError() << std::endl;
+                    exit(1);
+                }
+
+                SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockCount, NULL, &grassCountRect);
+
                 break;
             }
 
