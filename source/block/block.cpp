@@ -173,7 +173,7 @@ void block::tick()
 
                 // if there is no item with the same blockType, then add it
                 if(searchPlayerItem(blockType, true) == -1){
-                    for(int i=0; i<10; i++){
+                    for(int i=0; i<INVENTORY_CAPACITY; i++){
                         if(playerObj->items[i].itemId == 0){
                             playerObj->items[i] = (item){blockType+10, 1, true};
                             break;
@@ -260,7 +260,7 @@ void block::render()
 
 int block::searchPlayerItem(int type, bool increase)
 {
-    for(int i=0; i<10; i++){
+    for(int i=0; i<INVENTORY_CAPACITY; i++){
         if(playerObj->items[i].itemId == type+10){
             if(increase){
                 playerObj->items[i].count += 1;

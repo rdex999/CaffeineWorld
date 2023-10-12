@@ -6,6 +6,7 @@
 #include <functional>
 #include "../base/base.h"
 #include "../dVector2d/dVector2d.h"
+#include "../hashDefine/items.h"
 
 class player
 {
@@ -66,7 +67,7 @@ class player
         float jumpIntensity;
 
         // the items array. each item has an item id (int)
-        item items[10] = {0, 0, true};
+        item items[INVENTORY_CAPACITY] = {0, 0, true};
 
     private: 
 

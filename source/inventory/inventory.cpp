@@ -87,10 +87,10 @@ void inventory::selectItem(int itemNumber)
 
 void inventory::selectItemOffset(int offset)
 {
-    if(selectedItemIndex+offset+1 > 10){
+    if(selectedItemIndex+offset+1 > ITEM_BAR_CAPACITY){
         selectItem(1);
     }else if(selectedItemIndex+offset+1 < 1){
-        selectItem(10);
+        selectItem(ITEM_BAR_CAPACITY);
     }else{
         // +1 because the index starts from zero and itemNumber(the argument) starts from 1
         selectItem(selectedItemIndex+offset+1);
@@ -118,7 +118,7 @@ void inventory::tick()
 void inventory::render()
 {
     vector2d itemLocation = firstItemScreenLocation;
-    for(int i=0; i<10; i++)
+    for(int i=0; i<ITEM_BAR_CAPACITY; i++)
     {
         itemLocation.X = firstItemScreenLocation.X + ITEM_SIZE*i + 10*i;
 
