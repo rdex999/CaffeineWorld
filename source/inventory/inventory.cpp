@@ -50,21 +50,11 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
         std::cout << "Error: could not create the grass block item texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-
-    textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-        std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
-        &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
-    if(!textureBulletsLeft){
-        std::cout << "Error: could not create bullets left font texture.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
-    
 }
 
 inventory::~inventory()
 {
     if(selectedItemHighLight){SDL_DestroyTexture(selectedItemHighLight);}
-    if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
     if(textureItemFrame){SDL_DestroyTexture(textureItemFrame);}
     if(textureWoodenPickaxeItem){SDL_DestroyTexture(textureWoodenPickaxeItem);}
     if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
@@ -100,18 +90,7 @@ void inventory::tick()
 {
     render();
 
-    if(itemsHeadObj->gunObj->gunShot){
-        itemsHeadObj->gunObj->gunShot = false; 
-        if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
-        textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-            std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
-            &bulletsLeftFontSize.X, &bulletsLeftFontSize.Y);
-        
-        if(!textureBulletsLeft){
-            std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
-            exit(1);
-        }
-    }
+    
 }
 
 void inventory::render()
@@ -124,19 +103,33 @@ void inventory::render()
         switch (playerObj->items[i].itemId)
         {
             case ITEM_WOODEN_PICKAXE:{
-                SDL_Rect woodenPickaxeRect {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                SDL_Rect woodenPickaxeRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureWoodenPickaxeItem, NULL, &woodenPickaxeRect);
                 break;
             }
 
             case ITEM_GUN:{
+                if(itemsHeadObj->gunObj->gunShot || playerObj->items[i].textureCount == nullptr){
+                    itemsHeadObj->gunObj->gunShot = false; 
+
+                    if(playerObj->items[i].textureCount){SDL_DestroyTexture(playerObj->items[i].textureCount);}
+
+                    playerObj->items[i].textureCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                        std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+                        &playerObj->items[i].countSize.X, &playerObj->items[i].countSize.Y);
+
+                    if(!playerObj->items[i].textureCount){
+                        std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
+                        exit(1);
+                    }
+                }
                 SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
-                SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+ITEM_SIZE/2-bulletsLeftFontSize.X/2),
-                    (int)(itemLocation.Y+ITEM_SIZE/1.8), bulletsLeftFontSize.X, bulletsLeftFontSize.Y};
+                SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i].countSize.X/2),
+                    (int)(itemLocation.Y+ITEM_SIZE/1.8), playerObj->items[i].countSize.X, playerObj->items[i].countSize.Y};
 
-                SDL_RenderCopy(baseObj->mainRenderer, textureBulletsLeft, NULL, &bulletsLeftRect);
+                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].textureCount, NULL, &bulletsLeftRect);
                 break;
             }
 

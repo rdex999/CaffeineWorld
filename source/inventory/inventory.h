@@ -36,9 +36,6 @@ class inventory
         // the highlight texture screen location
         vector2d highlightScreenLocation;
 
-        // the width and height of the bullets left font texture
-        vector2d bulletsLeftFontSize;
-
         // the highlight on the selected item
         SDL_Texture* selectedItemHighLight;
 
@@ -47,9 +44,6 @@ class inventory
 
         // the texture of the hand item
         SDL_Texture* textureWoodenPickaxeItem;
-
-        // the bullets left count texture
-        SDL_Texture* textureBulletsLeft;
 
         // the texture of the gun item
         SDL_Texture* textureGunItem;

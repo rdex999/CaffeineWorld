@@ -27,7 +27,7 @@ player::player(base *baseObj)
     walkingSpeedOrigin = 37.f;
 
     // walking speed (140 for debug)
-    walkingSpeed = 140;
+    walkingSpeed = walkingSpeedOrigin;
 
     // the slow start/end of walking
     walkingSlowDown = 0.f;
@@ -88,6 +88,12 @@ player::~player()
     for(SDL_Texture* texture: textures){
         if(texture){
             SDL_DestroyTexture(texture);
+        }
+    }
+
+    for(int i=0; i<ITEM_BAR_CAPACITY; i++){
+        if(items[i].textureCount){
+            SDL_DestroyTexture(items[i].textureCount);
         }
     }
 }
