@@ -175,7 +175,7 @@ void block::tick()
                 if(searchPlayerItem(blockType, true) == -1){
                     for(int i=0; i<10; i++){
                         if(playerObj->items[i].itemId == 0){
-                            playerObj->items[i] = (item){blockType+10, 1};
+                            playerObj->items[i] = (item){blockType+10, 1, true};
                             break;
                         }
                     }
@@ -264,6 +264,7 @@ int block::searchPlayerItem(int type, bool increase)
         if(playerObj->items[i].itemId == type+10){
             if(increase){
                 playerObj->items[i].count += 1;
+                playerObj->items[i].countEvent = true;
             }
             return i;
         }

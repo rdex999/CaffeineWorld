@@ -37,7 +37,10 @@ class inventory
         vector2d highlightScreenLocation;
 
         // the width and height of the bullets left font texture
-        vector2d bulletsLeftFontSize; 
+        vector2d bulletsLeftFontSize;
+
+        // the width and the height of the text of the grass block count
+        vector2d grassBlockCountFontSize;
         
         // the highlight on the selected item
         SDL_Texture* selectedItemHighLight;

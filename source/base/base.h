@@ -46,4 +46,5 @@ typedef struct item
 {
     int itemId;
     int count;
+    bool countEvent;
 }item;

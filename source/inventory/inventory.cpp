@@ -145,25 +145,24 @@ void inventory::render()
                 SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockItem, NULL, &dirtItemRect);
 
-                SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2), (int)(itemLocation.Y+ITEM_SIZE/1.8), 0, 0};
+                if(playerObj->items[i].countEvent){
+                    playerObj->items[i].countEvent = false;
 
-                if(textureGrassBlockCount){SDL_DestroyTexture(textureGrassBlockCount);}
-
-                int w, h;
-                textureGrassBlockCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-                    std::format("{}", playerObj->items[i].count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
-                    &w, &h);
-                
-                grassCountRect.x -= w/2;
-                grassCountRect.y -= h/2;
-
-                grassCountRect.w = w;
-                grassCountRect.h = h;
-
-                if(!textureGrassBlockCount){
-                    std::cout << "Error: could not create the grass item count texture.\n" << SDL_GetError() << std::endl;
-                    exit(1);
+                    if(textureGrassBlockCount){SDL_DestroyTexture(textureGrassBlockCount);}
+    
+                    textureGrassBlockCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                        std::format("{}", playerObj->items[i].count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+                        &grassBlockCountFontSize.X, &grassBlockCountFontSize.Y);
+                    
+                    if(!textureGrassBlockCount){
+                        std::cout << "Error: could not create the grass item count texture.\n" << SDL_GetError() << std::endl;
+                        exit(1);
+                    }
                 }
+
+                SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2-grassBlockCountFontSize.X/2),
+                    (int)(itemLocation.Y+ITEM_SIZE/1.35-grassBlockCountFontSize.Y/2),
+                    grassBlockCountFontSize.X, grassBlockCountFontSize.Y};
 
                 SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockCount, NULL, &grassCountRect);
 
