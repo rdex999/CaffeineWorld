@@ -91,7 +91,7 @@ player::~player()
         }
     }
 
-    for(int i=0; i<ITEM_BAR_CAPACITY; i++){
+    for(int i=0; i<INVENTORY_CAPACITY; i++){
         if(items[i].textureCount){
             SDL_DestroyTexture(items[i].textureCount);
         }
