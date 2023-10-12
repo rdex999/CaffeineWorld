@@ -8,11 +8,11 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
     this->playerObj = playerObj;
     this->itemsHeadObj = itemsHeadObj;
 
-    playerObj->items[0] = 1;
-    playerObj->items[1] = 10;
+    playerObj->items[0].itemId = 1;
+    playerObj->items[1].itemId = 10;
     
     selectedItemIndex = 0;
-    playerObj->selectedItem = playerObj->items[0];
+    playerObj->selectedItem = playerObj->items[0].itemId;
 
 
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
@@ -77,7 +77,7 @@ void inventory::selectItem(int itemNumber)
         selectedItemIndex = -1; 
     }else{
         highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
-        playerObj->selectedItem = playerObj->items[itemNumber-1];
+        playerObj->selectedItem = playerObj->items[itemNumber-1].itemId;
         selectedItemIndex = itemNumber-1;
     }
 }
@@ -118,7 +118,7 @@ void inventory::render()
     {
         itemLocation.X = firstItemScreenLocation.X + ITEM_SIZE*i + 10*i;
 
-        switch (playerObj->items[i])
+        switch (playerObj->items[i].itemId)
         {
             // wooden pickaxe 
             case 1:{

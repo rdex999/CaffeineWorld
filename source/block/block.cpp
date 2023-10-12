@@ -171,8 +171,8 @@ void block::tick()
                 }
 
                 for(int i=0; i<10; i++){
-                    if(playerObj->items[i] == 0){
-                        playerObj->items[i] = blockType+10;
+                    if(playerObj->items[i].itemId == 0){
+                        playerObj->items[i] = (item){blockType+10, 1};
                         break;
                     }
                 }

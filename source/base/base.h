@@ -41,3 +41,9 @@ typedef struct base
     int randomRange(int min, int max);
 
 } base;
+
+typedef struct item
+{
+    int itemId;
+    int count;
+}item;

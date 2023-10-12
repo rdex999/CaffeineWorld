@@ -70,7 +70,7 @@ class player
         // -1/0 = hand
         // 10 = gun
         // 1 pickaxe  
-        int items[10] = {0};
+        item items[10] = {0, 0};
 
     private: 
 
