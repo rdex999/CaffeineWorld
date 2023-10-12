@@ -1,7 +1,7 @@
 #!/bin/python3
 
 # each group is a folder, which has two files with the same name as the folder but one is .cpp and one is .h
-groups = ("attackHand", "background", "base", "blocksHead",
+groups = ("main", "attackHand", "background", "base", "blocksHead",
     "bullet", "coffeeCup", "block", "dVector2d",
     "gun", "inventory", "player", "vector2d", "pickaxe", "itemsHead")
 
@@ -18,15 +18,11 @@ for group in groups:
 writeMakefileStr = "objFiles = "
 for item in objFiles:
     writeMakefileStr += f"./build/{item} "
-writeMakefileStr += "./build/main.o "
 
 writeMakefileStr += "\n\r\n"
 
 writeMakefileStr += "CaffeineWorld: $(objFiles)\n\t"
 writeMakefileStr += f"g++ {flags} -o CaffeineWorld $(objFiles)\n\r\n"
-
-writeMakefileStr += f"build/main.o: ./source/main.cpp ./source/main.h\n\t"
-writeMakefileStr += f"g++ -c {flags} -o ./build/main.o ./source/main.cpp\n\r\n"
 
 for i in range(len(groups)):
     writeMakefileStr += f"build/{objFiles[i]}: {fileGroups[i]['cpp']} {fileGroups[i]['header']}\n\t"
@@ -34,7 +30,7 @@ for i in range(len(groups)):
 
 writeMakefileStr += f"run:\n\t./CaffeineWorld\n\r\nclean:\n\trm ./build/*\n\trm CaffeineWorld\n\n"
 
-writeMakefileStr += f"all:\n\trm ./build/*\n\trm CaffeineWorld\n\tg++ {flags} -o CaffeineWorld ./source/main.cpp"
+writeMakefileStr += f"all:\n\trm ./build/*\n\trm CaffeineWorld\n\tg++ {flags} -o CaffeineWorld"
 for item in fileGroups:
     writeMakefileStr += f" {item['cpp']}"
 

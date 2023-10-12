@@ -1,12 +1,12 @@
 #pragma once
-#include "base/base.h"
-#include "background/background.h"
-#include "player/player.h"
-#include "inventory/inventory.h"
-#include "gun/gun.h"
-#include "attackHand/attackHand.h"
-#include "blocksHead/blocksHead.h"
-#include "itemsHead/itemsHead.h"
+#include "../base/base.h"
+#include "../background/background.h"
+#include "../player/player.h"
+#include "../inventory/inventory.h"
+#include "../gun/gun.h"
+#include "../attackHand/attackHand.h"
+#include "../blocksHead/blocksHead.h"
+#include "../itemsHead/itemsHead.h"
 
 // container for all of the components
 typedef struct container
