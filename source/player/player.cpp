@@ -95,6 +95,9 @@ player::~player()
         if(items[i].textureCount){
             SDL_DestroyTexture(items[i].textureCount);
         }
+        if(items[i].texture){
+            SDL_DestroyTexture(items[i].texture);
+        }
     }
 }
 

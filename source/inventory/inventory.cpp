@@ -27,27 +27,9 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
         exit(1);
     }
 
-    textureWoodenPickaxeItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/woodenPickaxeItem.png");
-    if(!textureWoodenPickaxeItem){
-        std::cout << "Error: could not create the hand item texture.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
     selectedItemHighLight = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/itemHighlight.png");
     if(!selectedItemHighLight){
         std::cout << "Error: could not create the item highlight texture.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    textureGunItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem.png");
-    if(!textureGunItem){
-        std::cout << "Error: could not create the gun item texture.\n" << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    textureGrassBlockItem = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/grassBlockItem.png");
-    if(!textureGrassBlockItem){
-        std::cout << "Error: could not create the grass block item texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
 }
@@ -56,9 +38,6 @@ inventory::~inventory()
 {
     if(selectedItemHighLight){SDL_DestroyTexture(selectedItemHighLight);}
     if(textureItemFrame){SDL_DestroyTexture(textureItemFrame);}
-    if(textureWoodenPickaxeItem){SDL_DestroyTexture(textureWoodenPickaxeItem);}
-    if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
-    if(textureGrassBlockItem){SDL_DestroyTexture(textureGrassBlockItem);}
 }
 
 void inventory::selectItem(int itemNumber)
@@ -89,8 +68,6 @@ void inventory::selectItemOffset(int offset)
 void inventory::tick()
 {
     render();
-
-    
 }
 
 void inventory::render()
@@ -103,8 +80,16 @@ void inventory::render()
         switch (playerObj->items[i].itemId)
         {
             case ITEM_WOODEN_PICKAXE:{
+                if(!playerObj->items[i].texture){
+                    playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/woodenPickaxeItem.png");
+                    if(!playerObj->items[i].texture){
+                        std::cout << "Error: could not create the hand item texture.\n" << SDL_GetError() << std::endl;
+                        exit(1);
+                    }
+                }
+
                 SDL_Rect woodenPickaxeRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, textureWoodenPickaxeItem, NULL, &woodenPickaxeRect);
+                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].texture, NULL, &woodenPickaxeRect);
                 break;
             }
 
@@ -123,8 +108,16 @@ void inventory::render()
                         exit(1);
                     }
                 }
+                if(!playerObj->items[i].texture){
+                    playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem.png");
+                    if(!playerObj->items[i].texture){
+                        std::cout << "Error: could not create the gun item texture.\n" << SDL_GetError() << std::endl;
+                        exit(1);
+                    }
+                }
+
                 SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
+                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].texture, NULL, &gunRect);
 
                 SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i].countSize.X/2),
                     (int)(itemLocation.Y+ITEM_SIZE/1.8), playerObj->items[i].countSize.X, playerObj->items[i].countSize.Y};
@@ -134,8 +127,17 @@ void inventory::render()
             }
 
             case ITEM_GRASS_BLOCK:{
+
+                if(!playerObj->items[i].texture){
+                    playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/grassBlockItem.png");
+                    if(!playerObj->items[i].texture){
+                        std::cout << "Error: could not create the grass item texture.\n" << SDL_GetError() << std::endl;
+                        exit(1);
+                    }
+                }
+
                 SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockItem, NULL, &dirtItemRect);
+                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].texture, NULL, &dirtItemRect);
 
                 if(playerObj->items[i].countEvent){
                     playerObj->items[i].countEvent = false;

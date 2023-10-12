@@ -41,13 +41,4 @@ class inventory
 
         // the item frame texture
         SDL_Texture* textureItemFrame;
-
-        // the texture of the hand item
-        SDL_Texture* textureWoodenPickaxeItem;
-
-        // the texture of the gun item
-        SDL_Texture* textureGunItem;
-
-        // the texture of the grass block item
-        SDL_Texture* textureGrassBlockItem;
 };
