@@ -47,4 +47,6 @@ typedef struct item
     int itemId;
     int count;
     bool countEvent;
+    SDL_Texture* textureCount = nullptr;
+    vector2d countSize = vector2d(0, 0);
 }item;

@@ -69,7 +69,6 @@ inventory::~inventory()
     if(textureWoodenPickaxeItem){SDL_DestroyTexture(textureWoodenPickaxeItem);}
     if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
     if(textureGrassBlockItem){SDL_DestroyTexture(textureGrassBlockItem);}
-    if(textureGrassBlockCount){SDL_DestroyTexture(textureGrassBlockCount);}
 }
 
 void inventory::selectItem(int itemNumber)
@@ -148,23 +147,23 @@ void inventory::render()
                 if(playerObj->items[i].countEvent){
                     playerObj->items[i].countEvent = false;
 
-                    if(textureGrassBlockCount){SDL_DestroyTexture(textureGrassBlockCount);}
+                    if(playerObj->items[i].textureCount){SDL_DestroyTexture(playerObj->items[i].textureCount);}
     
-                    textureGrassBlockCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                    playerObj->items[i].textureCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
                         std::format("{}", playerObj->items[i].count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
-                        &grassBlockCountFontSize.X, &grassBlockCountFontSize.Y);
+                        &playerObj->items[i].countSize.X, &playerObj->items[i].countSize.Y);
                     
-                    if(!textureGrassBlockCount){
+                    if(!playerObj->items[i].textureCount){
                         std::cout << "Error: could not create the grass item count texture.\n" << SDL_GetError() << std::endl;
                         exit(1);
                     }
                 }
 
-                SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2-grassBlockCountFontSize.X/2),
-                    (int)(itemLocation.Y+ITEM_SIZE/1.35-grassBlockCountFontSize.Y/2),
-                    grassBlockCountFontSize.X, grassBlockCountFontSize.Y};
+                SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i].countSize.X/2),
+                    (int)(itemLocation.Y+ITEM_SIZE/1.35-playerObj->items[i].countSize.Y/2),
+                    playerObj->items[i].countSize.X, playerObj->items[i].countSize.Y};
 
-                SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockCount, NULL, &grassCountRect);
+                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].textureCount, NULL, &grassCountRect);
 
                 break;
             }

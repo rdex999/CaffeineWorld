@@ -39,9 +39,6 @@ class inventory
         // the width and height of the bullets left font texture
         vector2d bulletsLeftFontSize;
 
-        // the width and the height of the text of the grass block count
-        vector2d grassBlockCountFontSize;
-        
         // the highlight on the selected item
         SDL_Texture* selectedItemHighLight;
 
@@ -59,7 +56,4 @@ class inventory
 
         // the texture of the grass block item
         SDL_Texture* textureGrassBlockItem;
-
-        // the texture of the text that shows how many blocks
-        SDL_Texture* textureGrassBlockCount = nullptr;
 };
