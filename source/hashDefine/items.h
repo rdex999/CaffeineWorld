@@ -1,0 +1,4 @@
+#define ITEM_EMPTY 0
+#define ITEM_GUN 10
+#define ITEM_WOODEN_PICKAXE 1
+#define ITEM_GRASS_BLOCK 11

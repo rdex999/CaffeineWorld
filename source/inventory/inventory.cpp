@@ -1,4 +1,5 @@
 #include "inventory.h"
+#include "../hashDefine/items.h"
 #define ITEM_SIZE 60
 #define BULLETS_FONT_SIZE 18
 
@@ -8,8 +9,8 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
     this->playerObj = playerObj;
     this->itemsHeadObj = itemsHeadObj;
 
-    playerObj->items[0].itemId = 1;
-    playerObj->items[1].itemId = 10;
+    playerObj->items[0].itemId = ITEM_WOODEN_PICKAXE;
+    playerObj->items[1].itemId = ITEM_GUN;
     
     selectedItemIndex = 0;
     playerObj->selectedItem = playerObj->items[0].itemId;
@@ -67,6 +68,7 @@ inventory::~inventory()
     if(textureItemFrame){SDL_DestroyTexture(textureItemFrame);}
     if(textureWoodenPickaxeItem){SDL_DestroyTexture(textureWoodenPickaxeItem);}
     if(textureGunItem){SDL_DestroyTexture(textureGunItem);}
+    if(textureGrassBlockItem){SDL_DestroyTexture(textureGrassBlockItem);}
 }
 
 void inventory::selectItem(int itemNumber)
@@ -99,6 +101,7 @@ void inventory::tick()
     render();
 
     if(itemsHeadObj->gunObj->gunShot){
+        itemsHeadObj->gunObj->gunShot = false; 
         if(textureBulletsLeft){SDL_DestroyTexture(textureBulletsLeft);}
         textureBulletsLeft = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
             std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
@@ -120,15 +123,13 @@ void inventory::render()
 
         switch (playerObj->items[i].itemId)
         {
-            // wooden pickaxe 
-            case 1:{
+            case ITEM_WOODEN_PICKAXE:{
                 SDL_Rect woodenPickaxeRect {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureWoodenPickaxeItem, NULL, &woodenPickaxeRect);
                 break;
             }
 
-            // gun
-            case 10:{
+            case ITEM_GUN:{
                 SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGunItem, NULL, &gunRect);
 
@@ -139,8 +140,7 @@ void inventory::render()
                 break;
             }
 
-            // dirt/grass block item
-            case 11:{
+            case ITEM_GRASS_BLOCK:{
                 SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
                 SDL_RenderCopy(baseObj->mainRenderer, textureGrassBlockItem, NULL, &dirtItemRect);
                 break;

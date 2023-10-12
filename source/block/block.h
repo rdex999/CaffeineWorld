@@ -85,4 +85,11 @@ class block
         int maxBlockLife;
 
         vector2d playerZone;
+
+        // searchs the player items array for an item that is a
+        // block with the same block type as the argument
+        // @param {int} the block type to find
+        // @param {bool} if the block is found, increase the count by 1
+        // @returns {int} the index, or -1 if not found
+        int searchPlayerItem(int type, bool increase);
 };

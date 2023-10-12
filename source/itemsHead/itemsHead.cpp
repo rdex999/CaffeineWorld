@@ -1,4 +1,5 @@
 #include "itemsHead.h"
+#include "../hashDefine/items.h"
 
 itemsHead::itemsHead(base *baseObj, player *playerObj)
 {
@@ -21,11 +22,11 @@ void itemsHead::tick()
     switch (playerObj->selectedItem)
     {
     case -1:
-    case 0:
+    case ITEM_EMPTY:
         attackHandObj->tick();
         break;
 
-    case 1:
+    case ITEM_WOODEN_PICKAXE:
         pickaxeObj->tick();
         break;
 

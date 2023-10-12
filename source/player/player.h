@@ -66,10 +66,6 @@ class player
         float jumpIntensity;
 
         // the items array. each item has an item id (int)
-        // 0 = no item
-        // -1/0 = hand
-        // 10 = gun
-        // 1 pickaxe  
         item items[10] = {0, 0};
 
     private: 

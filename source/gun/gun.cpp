@@ -32,6 +32,7 @@ gun::~gun()
 void gun::reload()
 {
     currentBullet = 0;
+    gunShot = true;
 }
 
 void gun::tick()
@@ -43,7 +44,6 @@ void gun::tick()
 
     // handle shooting with the gun
     lastGunShotTime += baseObj->deltaTime;
-    gunShot = false;
     if(playerObj->selectedItem == 10 && baseObj->mouseState == 1 && lastGunShotTime >= 0.2){
         bullets[currentBullet] = new bullet(baseObj, &gunLocation, playerObj->flip, textureBullet, bullets, currentBullet);
         gunShot = true;

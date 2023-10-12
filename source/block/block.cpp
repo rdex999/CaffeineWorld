@@ -1,4 +1,5 @@
 #include "block.h"
+#include "../hashDefine/items.h"
 
 block::block(base *baseObj, player* playerObj, vector2d *location, int blockType, SDL_Texture *texture, SDL_Texture *texture2,
     block** blockArray, int blockIndex, int blockArraySize)
@@ -150,7 +151,7 @@ void block::tick()
                 break;
             
             default:
-                if(playerObj->selectedItem != 10){
+                if(playerObj->selectedItem != ITEM_GUN){
                     blockLife -= 3;
                 }
                 break;
@@ -170,10 +171,13 @@ void block::tick()
                     }
                 }
 
-                for(int i=0; i<10; i++){
-                    if(playerObj->items[i].itemId == 0){
-                        playerObj->items[i] = (item){blockType+10, 1};
-                        break;
+                // if there is no item with the same blockType, then add it
+                if(searchPlayerItem(blockType, true) == -1){
+                    for(int i=0; i<10; i++){
+                        if(playerObj->items[i].itemId == 0){
+                            playerObj->items[i] = (item){blockType+10, 1};
+                            break;
+                        }
                     }
                 }
 
@@ -252,4 +256,17 @@ void block::render()
 {
     SDL_Rect rect = {location.X, location.Y, location.W, location.H};
     SDL_RenderCopy(baseObj->mainRenderer, textures[currentTextureIndex], NULL, &rect);
+}
+
+int block::searchPlayerItem(int type, bool increase)
+{
+    for(int i=0; i<10; i++){
+        if(playerObj->items[i].itemId == type+10){
+            if(increase){
+                playerObj->items[i].count += 1;
+            }
+            return i;
+        }
+    }
+    return -1;
 }

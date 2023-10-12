@@ -1,4 +1,5 @@
 #include "pickaxe.h"
+#include "../hashDefine/items.h"
 
 pickaxe::pickaxe(base *baseObj, player *playerObj, int itemNum)
 {
@@ -18,7 +19,7 @@ pickaxe::pickaxe(base *baseObj, player *playerObj, int itemNum)
 
     switch (itemNum)
     {
-    case 1:
+    case ITEM_WOODEN_PICKAXE:
         texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/pickaxe/woodenPickaxe.png");
         pickaxeLife = 60;
         pickaxePower = 6;
