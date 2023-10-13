@@ -1,4 +1,6 @@
 #include "block.h"
+#define B_W 184/4
+#define B_H 176/4
 
 block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockType, SDL_Texture *texture, SDL_Texture *texture2,
     block** blockArray, int blockIndex, int blockArraySize)
@@ -57,13 +59,35 @@ void block::tick()
     // i did this because this code needs to run after all the blocks have been created.
     if(!aboveCheck){
         aboveCheck = true;
+        bool leftCheck = false;
+        bool belowCheck = false;
         for(int i=0; i<blockArraySize; i++){
             if(blockArray[i]){
-                if(blockArray[i]->location == location - vector2d(0, location.H)){
+                
+                // if there is a block above this one
+                if(blockArray[i]->location == location - vector2d(0, B_H)){
                     blockAbove = true;
-                    break;
-                }else{
-                    blockAbove = false;
+                    if(leftCheck && belowCheck){
+                        break;
+                    }
+                }
+
+                // if this block is on the right of blockArray[i]
+                if(location + vector2d(B_W, 0) == blockArray[i]->location){
+                    leftCheck = true;
+                    location.W *= 1.5;
+                    if(blockAbove && belowCheck){
+                        break;
+                    }
+                }
+                
+                // if this block is above a block
+                if(location + vector2d(0, B_H) == blockArray[i]->location){
+                    belowCheck = true;
+                    location.H *= 1.5;
+                    if(blockAbove && leftCheck){
+                        break;
+                    }
                 }
             }
         }
@@ -101,8 +125,8 @@ void block::tick()
         switch (blockEvent)
         {
         case 1:
-
-            blockEvent = 0; 
+            location.W /= 1.5;
+            blockEvent = 0;
             break;
 
         case 2:
@@ -111,7 +135,7 @@ void block::tick()
             break;
 
         case 3:
-
+            location.H /= 1.5;
             blockEvent = 0;
             break;
 
@@ -119,13 +143,13 @@ void block::tick()
             blockAbove = false;
             for(int i=0; i<blockArraySize; i++){
                 if(blockArray[i]){
-                    if(blockArray[i]->location+vector2d(0, location.H) == location){
+                    if(blockArray[i]->location+vector2d(0, B_H) == location){
                         blockAbove = true;
-                        timeGrassCheck = 0;
                         break;
                     }
                 }
             }
+            timeGrassCheck = 0;
 
             blockEvent = 0;
             break;
@@ -158,13 +182,13 @@ void block::tick()
             if(blockLife <= 0){
                 for(int j=0; j<blockArraySize; j++){
                     if(blockArray[j]){
-                        if(blockArray[j]->location+vector2d(location.W, 0) == location){
+                        if(blockArray[j]->location+vector2d(B_W, 0) == location){
                             blockArray[j]->blockEvent = 1;
-                        }else if(blockArray[j]->location == location+vector2d(location.W, 0)){
+                        }else if(blockArray[j]->location == location+vector2d(B_W, 0)){
                             blockArray[j]->blockEvent = 2;
-                        }else if(blockArray[j]->location+vector2d(0, location.H) == location){
+                        }else if(blockArray[j]->location+vector2d(0, B_H) == location){
                             blockArray[j]->blockEvent = 3;
-                        }else if(blockArray[j]->location == location+vector2d(0, location.H)){
+                        }else if(blockArray[j]->location == location+vector2d(0, B_H)){
                             blockArray[j]->blockEvent = 4;
                         }
                     }

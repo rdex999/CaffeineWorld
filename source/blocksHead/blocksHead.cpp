@@ -8,12 +8,12 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     this->baseObj = baseObj;
     this->playerObj = playerObj;  
     
-    texturesDirtBlock[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtBlock-v1.1.png");
+    texturesDirtBlock[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtBlock-v1.2.png");
     if(!texturesDirtBlock[0]){
         std::cout << "Error: could not create dirtBlock texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-    texturesDirtBlock[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtGrassBlock-v1.1.png");
+    texturesDirtBlock[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtGrassBlock-v1.3.png");
     if(!texturesDirtBlock[1]){
         std::cout << "Error: could not create dirtGrassBlock texture.\n" << SDL_GetError() << std::endl;
         exit(1);
