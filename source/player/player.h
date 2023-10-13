@@ -44,7 +44,7 @@ class player
         bool flip;
 
         // the selected item 
-        int selectedItem;
+        unsigned char selectedItem;
         
         // function that runs on every frame
         void tick();

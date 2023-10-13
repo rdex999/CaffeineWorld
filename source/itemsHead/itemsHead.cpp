@@ -20,7 +20,6 @@ void itemsHead::tick()
 {
     switch (playerObj->selectedItem)
     {
-    case -1:
     case ITEM_EMPTY:
         attackHandObj->tick();
         break;

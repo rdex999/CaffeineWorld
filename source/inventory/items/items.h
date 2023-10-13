@@ -1,6 +1,6 @@
 #pragma once
 
-enum itemId: int
+enum itemId: unsigned char
 {
     itemWoodenPickaxe = 1,
     itemGun,

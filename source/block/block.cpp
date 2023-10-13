@@ -15,8 +15,8 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
     this->blockIndex = blockIndex;
     this->blockArraySize = blockArraySize;
 
-    this->location.W = 184/4;
-    this->location.H = 176/4;
+    this->location.W = B_W;
+    this->location.H = B_H;
     
     timeGrassCheck = 0;
 
@@ -161,10 +161,10 @@ void block::tick()
         timeLastHit = std::clamp(timeLastHit + baseObj->deltaTime, (double)0, (double)5);
 
         // if the players wants to destroy a block
-        if(baseObj->mouseLocation.inBox(location, location+vector2d(location.W, location.H)) &&
+        if(baseObj->mouseLocation.inBox(location, location+vector2d(B_W, B_H)) &&
             baseObj->mouseState == 1 && timeLastHit >= 0.33 &&
             (location.inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H)) ||
-            (location+vector2d(location.W, location.H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
+            (location+vector2d(B_W, B_H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
         {
             timeLastHit = 0;
             switch (playerObj->selectedItem)
