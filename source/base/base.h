@@ -44,7 +44,7 @@ typedef struct base
 
 typedef struct item
 {
-    int itemId;
+    int itemID;
     int count;
     bool countEvent;
     SDL_Texture* texture = nullptr;

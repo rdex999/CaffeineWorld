@@ -1,6 +1,7 @@
 #pragma once
 #include "../base/base.h"
 #include "../player/player.h"
+#include "../inventory/items/items.h"
 
 class block
 {
@@ -15,15 +16,13 @@ class block
         // optional texture, used for dirt (as there is dirt and grass)
         // @param {int} blockArraySize
         // the size you gave the blocks array. (not the index of the last element)
-        block(base* baseObj, player* playerObj, vector2d *location, int blockType, SDL_Texture* texture, SDL_Texture* texture2,
+        block(base* baseObj, player* playerObj, vector2d *location, itemId blockType,
+            SDL_Texture* texture, SDL_Texture* texture2,
             block** blockArray, int blockIndex, int blockArraySize);
         ~block();
 
         // the type of the block
-        // 1: dirt/grass
-        // 2: stone
-        // 3: wood
-        int blockType;
+        itemId blockType;
 
         // runs every frame
         void tick();
@@ -91,5 +90,5 @@ class block
         // @param {int} the block type to find
         // @param {bool} if the block is found, increase the count by 1
         // @returns {int} the index, or -1 if not found
-        int searchPlayerItem(int type, bool increase);
+        int searchPlayerItem(itemId type, bool increase);
 };

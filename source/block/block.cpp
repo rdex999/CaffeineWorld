@@ -1,7 +1,6 @@
 #include "block.h"
-#include "../hashDefine/items.h"
 
-block::block(base *baseObj, player* playerObj, vector2d *location, int blockType, SDL_Texture *texture, SDL_Texture *texture2,
+block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockType, SDL_Texture *texture, SDL_Texture *texture2,
     block** blockArray, int blockIndex, int blockArraySize)
 {
     this->baseObj = baseObj;
@@ -33,7 +32,7 @@ block::block(base *baseObj, player* playerObj, vector2d *location, int blockType
 
     switch (blockType)
     {
-    case 1:
+    case itemGrassBlock:
         blockLife = 15; 
         break;
     
@@ -68,7 +67,7 @@ void block::tick()
                 }
             }
         }
-        if(blockType == 1){
+        if(blockType == itemGrassBlock){
             if(blockAbove){
                 currentTextureIndex = 0;
             }else{
@@ -87,7 +86,7 @@ void block::tick()
         playerZone.W = playerObj->screenLocation.W*3;
         playerZone.H = playerObj->screenLocation.W*2 + playerObj->screenLocation.H;
 
-        if(blockType == 1){
+        if(blockType == itemGrassBlock){
             timeGrassCheck = std::clamp(timeGrassCheck + baseObj->deltaTime, (double)0, (double)10);
             if(timeGrassCheck >= 10){
                 timeGrassCheck = 0;
@@ -146,12 +145,12 @@ void block::tick()
             timeLastHit = 0;
             switch (playerObj->selectedItem)
             {
-            case 1:
+            case itemWoodenPickaxe:
                 blockLife -= 6;
                 break;
             
             default:
-                if(playerObj->selectedItem != ITEM_GUN){
+                if(playerObj->selectedItem != itemGun){
                     blockLife -= 3;
                 }
                 break;
@@ -174,8 +173,8 @@ void block::tick()
                 // if there is no item with the same blockType, then add it
                 if(searchPlayerItem(blockType, true) == -1){
                     for(int i=0; i<INVENTORY_CAPACITY; i++){
-                        if(playerObj->items[i].itemId == 0){
-                            playerObj->items[i] = (item){blockType+10, 1, true};
+                        if(playerObj->items[i].itemID == ITEM_EMPTY){
+                            playerObj->items[i] = (item){blockType, 1, true};
                             break;
                         }
                     }
@@ -258,10 +257,10 @@ void block::render()
     SDL_RenderCopy(baseObj->mainRenderer, textures[currentTextureIndex], NULL, &rect);
 }
 
-int block::searchPlayerItem(int type, bool increase)
+int block::searchPlayerItem(itemId type, bool increase)
 {
     for(int i=0; i<INVENTORY_CAPACITY; i++){
-        if(playerObj->items[i].itemId == type+10){
+        if(playerObj->items[i].itemID == type){
             if(increase){
                 playerObj->items[i].count += 1;
                 playerObj->items[i].countEvent = true;

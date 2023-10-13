@@ -33,7 +33,7 @@ class blocksHead
         // @param {bool} horizontal
         // if false then the Row will be vertical
         // @return index of the first nullptr in blocksArray
-        int spawnRow(vector2d* from, int blockCount, int blockType,
+        int spawnRow(vector2d* from, int blockCount, itemId blockType,
             int fromIndex, SDL_Texture* texture1, SDL_Texture* texture2 = nullptr, bool horizontal = true);
 
         // Spawns multible rows
@@ -55,7 +55,7 @@ class blocksHead
         // @param {bool} horizontal
         // if false then the Row will be vertical
         // @return index of the first nullptr in blocksArray
-        int spawnRows(int rowCount, int blocksPerRow, vector2d* from, int blockType,
+        int spawnRows(int rowCount, int blocksPerRow, vector2d* from, itemId blockType,
             int fromIndex, SDL_Texture* texture1, SDL_Texture* texture2 = nullptr, bool horizontal = true);
 
         // Spawns a crooked row of blocks from a given location.
@@ -71,7 +71,7 @@ class blocksHead
         // from where to start spawning blocks in the blocks array
         // if not specified, the function will search for empty spaces in the blocks array and spawn the blocks in them.
         // @return index of the first nullptr in blocksArray
-        int spawnCrookedRow(vector2d* from, int blockCount, int blockType,
+        int spawnCrookedRow(vector2d* from, int blockCount, itemId blockType,
             int fromIndex, SDL_Texture* texture1, SDL_Texture* texture2 = nullptr);
 
         // an array of all dirt blocks in the world

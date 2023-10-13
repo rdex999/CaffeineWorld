@@ -2,6 +2,7 @@
 #include "../attackHand/attackHand.h"
 #include "../pickaxe/pickaxe.h"
 #include "../gun/gun.h"
+#include "../inventory/items/items.h"
 
 class itemsHead
 {

@@ -1,11 +1,12 @@
 #pragma once
 #include "../base/base.h"
 #include "../player/player.h"
+#include "../inventory/items/items.h"
 
 class pickaxe
 {
     public:
-        pickaxe(base* baseObj, player* playerObj, int itemNum);
+        pickaxe(base* baseObj, player* playerObj, itemId itemNum);
         ~pickaxe();
 
         // runs every frame
@@ -36,7 +37,7 @@ class pickaxe
         // since this is a pickaxe it can only be
         // 1 = wooden pickaxe
         // (add in future)
-        int itemNum;
+        itemId itemNum;
 
         // the pickaxe durability
         int pickaxeLife;

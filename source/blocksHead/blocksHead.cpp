@@ -26,13 +26,13 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
     vector2d blockLocation(baseObj->screenSize.X*-5, baseObj->screenSize.Y/1.064);
     blockIndexCounter = 0;
 
-    blockIndexCounter = spawnRows(2, 500, &blockLocation, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+    blockIndexCounter = spawnRows(2, 500, &blockLocation, itemGrassBlock, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 
     blockLocation += vector2d(B_W*30, -1*B_H);
-    blockIndexCounter = spawnRow(&blockLocation, 7, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+    blockIndexCounter = spawnRow(&blockLocation, 7, itemGrassBlock, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 
     blockLocation.X += B_W*200;
-    blockIndexCounter = spawnRow(&blockLocation, 30, 1, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
+    blockIndexCounter = spawnRow(&blockLocation, 30, itemGrassBlock, blockIndexCounter, texturesDirtBlock[0], texturesDirtBlock[1]);
 
 }
 
@@ -60,7 +60,7 @@ void blocksHead::tick()
     }
 }
 
-int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
+int blocksHead::spawnRow(vector2d* from, int blockCount, itemId blockType,
     int fromIndex ,SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal)
 {
     vector2d location;
@@ -79,7 +79,7 @@ int blocksHead::spawnRow(vector2d* from, int blockCount, int blockType,
     return blocks;
 }
 
-int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int blockType,
+int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, itemId blockType,
     int fromIndex ,SDL_Texture *texture1, SDL_Texture* texture2, bool horizontal)
 {
     vector2d rowStart = *from; 
@@ -96,7 +96,7 @@ int blocksHead::spawnRows(int rowCount, int blocksPerRow, vector2d *from, int bl
     return blocks;
 }
 
-int blocksHead::spawnCrookedRow(vector2d *from, int blockCount, int blockType, int fromIndex,
+int blocksHead::spawnCrookedRow(vector2d *from, int blockCount, itemId blockType, int fromIndex,
     SDL_Texture *texture1, SDL_Texture *texture2)
 {
     vector2d location;

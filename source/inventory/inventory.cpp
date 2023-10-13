@@ -1,5 +1,4 @@
 #include "inventory.h"
-#include "../hashDefine/items.h"
 #define ITEM_SIZE 60
 #define BULLETS_FONT_SIZE 18
 
@@ -9,11 +8,11 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
     this->playerObj = playerObj;
     this->itemsHeadObj = itemsHeadObj;
 
-    playerObj->items[0].itemId = ITEM_WOODEN_PICKAXE;
-    playerObj->items[1].itemId = ITEM_GUN;
+    playerObj->items[0].itemID = itemWoodenPickaxe;
+    playerObj->items[1].itemID = itemGun;
     
     selectedItemIndex = 0;
-    playerObj->selectedItem = playerObj->items[0].itemId;
+    playerObj->selectedItem = playerObj->items[0].itemID;
 
 
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
@@ -48,7 +47,7 @@ void inventory::selectItem(int itemNumber)
         selectedItemIndex = -1; 
     }else{
         highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
-        playerObj->selectedItem = playerObj->items[itemNumber-1].itemId;
+        playerObj->selectedItem = playerObj->items[itemNumber-1].itemID;
         selectedItemIndex = itemNumber-1;
     }
 }
@@ -77,9 +76,9 @@ void inventory::render()
     {
         itemLocation.X = firstItemScreenLocation.X + ITEM_SIZE*i + 10*i;
 
-        switch (playerObj->items[i].itemId)
+        switch (playerObj->items[i].itemID)
         {
-            case ITEM_WOODEN_PICKAXE:{
+            case itemWoodenPickaxe:{
                 if(!playerObj->items[i].texture){
                     playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/woodenPickaxeItem.png");
                     if(!playerObj->items[i].texture){
@@ -93,7 +92,7 @@ void inventory::render()
                 break;
             }
 
-            case ITEM_GUN:{
+            case itemGun:{
                 if(itemsHeadObj->gunObj->gunShot || playerObj->items[i].textureCount == nullptr){
                     itemsHeadObj->gunObj->gunShot = false; 
 
@@ -126,7 +125,7 @@ void inventory::render()
                 break;
             }
 
-            case ITEM_GRASS_BLOCK:{
+            case itemGrassBlock:{
 
                 if(!playerObj->items[i].texture){
                     playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/grassBlockItem.png");

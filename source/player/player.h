@@ -6,7 +6,7 @@
 #include <functional>
 #include "../base/base.h"
 #include "../dVector2d/dVector2d.h"
-#include "../hashDefine/items.h"
+#include "../inventory/items/items.h"
 
 class player
 {
@@ -45,6 +45,7 @@ class player
 
         // the selected item 
         int selectedItem;
+        
         // function that runs on every frame
         void tick();
     

@@ -1,5 +1,4 @@
 #include "itemsHead.h"
-#include "../hashDefine/items.h"
 
 itemsHead::itemsHead(base *baseObj, player *playerObj)
 {
@@ -7,7 +6,7 @@ itemsHead::itemsHead(base *baseObj, player *playerObj)
     this->playerObj = playerObj;
 
     attackHandObj = new attackHand(baseObj, playerObj);
-    pickaxeObj = new pickaxe(baseObj, playerObj, 1);
+    pickaxeObj = new pickaxe(baseObj, playerObj, itemWoodenPickaxe);
     gunObj = new gun(baseObj, playerObj);
 }
 
@@ -26,7 +25,7 @@ void itemsHead::tick()
         attackHandObj->tick();
         break;
 
-    case ITEM_WOODEN_PICKAXE:
+    case itemWoodenPickaxe:
         pickaxeObj->tick();
         break;
 
