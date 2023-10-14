@@ -18,6 +18,18 @@ class blocksHead
         base* baseObj;
         player* playerObj;
 
+        // the area that the player can build in
+        vector2d playerBuildZone;
+
+        // time since the last build event.
+        double timeBuild;
+
+        // finds a location that a block can be spawned on
+        // (relative to player->standingBlock)
+        // @param {vector2d*} where to find the location
+        // @returns {vector2d} a location that you can spawn a block in
+        vector2d findBlockSpawn(vector2d* near);
+
         // Spawns a row of block from a given location.
         // @param {vector2d} from
         // from where to start the row

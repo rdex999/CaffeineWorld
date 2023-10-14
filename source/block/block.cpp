@@ -268,6 +268,7 @@ void block::tick()
         {
             playerObj->inAir = false;
             playerObj->gravitySlowDown = 1.f; 
+            playerObj->standingBlock = location;
             playerObj->screenLocation.Y -= ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
                 baseObj->deltaTime * 15; 
         }

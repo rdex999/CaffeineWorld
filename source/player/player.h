@@ -70,6 +70,9 @@ class player
         // the items array. each item has an item id (int)
         item items[INVENTORY_CAPACITY] = {0, 0, true};
 
+        // the block that the player stands on
+        vector2d standingBlock;
+
     private: 
 
         // renders the player

@@ -19,6 +19,10 @@ class vector2d
         // prints the vector to the terminal
         void printVec();
 
+        // returns the distance from this to 'to'
+        double distance(vector2d to);
+        double distance(vector2d *to);
+
         void operator += (const vector2d& vec);
         void operator -= (const vector2d& vec);
         void operator *= (const vector2d& vec);

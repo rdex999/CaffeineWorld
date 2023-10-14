@@ -7,7 +7,9 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;  
-    
+
+    timeBuild = 0;
+
     texturesDirtBlock[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtBlock-v1.2.png");
     if(!texturesDirtBlock[0]){
         std::cout << "Error: could not create dirtBlock texture.\n" << SDL_GetError() << std::endl;
@@ -50,6 +52,41 @@ blocksHead::~blocksHead()
 
 void blocksHead::tick()
 {
+    playerBuildZone = playerObj->screenLocation - playerObj->screenLocation.W*5;
+    playerBuildZone.W = playerObj->screenLocation.W*11;
+    playerBuildZone.H = playerObj->screenLocation.W*11;
+
+    timeBuild = std::clamp(timeBuild+baseObj->deltaTime, (double)0, (double)10);
+    
+    if(baseObj->mouseLocation.inBox(playerBuildZone, playerBuildZone+vector2d(playerBuildZone.W, playerBuildZone.W)) &&
+        baseObj->mouseState == 4 && timeBuild >= 0.3 &&
+        /* there will be more blocks in the future, this just checks if the selected item is a block */ 
+        playerObj->selectedItem >= itemGrassBlock && playerObj->selectedItem <= itemGrassBlock)
+                  
+    {
+        timeBuild = 0;
+        for(int i=0; i<BLOCKS_CAPASITY; i++){
+            if(blockArray[i] == nullptr){
+                vector2d blockLoc = findBlockSpawn(&baseObj->mouseLocation);
+
+                // switch on the block type. 
+                switch (playerObj->selectedItem)
+                {
+                case itemGrassBlock:
+                    blockArray[i] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
+                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, i, BLOCKS_CAPASITY);
+                    break;
+                
+                default:
+                    break;
+                }
+
+                break;
+            }
+        }
+
+    }
+
     playerObj->inAir = true;
     playerObj->blockedRight = false;
     playerObj->blockedLeft = false;
@@ -60,8 +97,37 @@ void blocksHead::tick()
     }
 }
 
-int blocksHead::spawnRow(vector2d* from, int blockCount, itemId blockType,
-    int fromIndex ,SDL_Texture* texture1, SDL_Texture* texture2, bool horizontal)
+vector2d blocksHead::findBlockSpawn(vector2d* near)
+{
+    vector2d closest = playerObj->standingBlock;
+
+    if(closest.X < near->X){
+        while(closest.X + B_W < near->X){
+            closest.X += B_W;
+        }
+    }else{
+        while(closest.X > near->X){
+            closest.X -= B_W;
+        }
+ 
+    }
+
+    if(closest.Y > near->Y){
+        while (closest.Y > near->Y){
+            closest.Y -= B_H;
+        }
+    }else{
+        while (closest.Y + B_H < near->Y){
+            closest.Y += B_H;
+        }
+        
+    }
+
+    return closest;
+}
+
+int blocksHead::spawnRow(vector2d *from, int blockCount, itemId blockType,
+    int fromIndex, SDL_Texture *texture1, SDL_Texture *texture2, bool horizontal)
 {
     vector2d location;
     int blocks = fromIndex; 

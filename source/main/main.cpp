@@ -3,21 +3,20 @@
 int main()
 {
     srand(time(NULL));
-    container* containerObj = new container;
+    container containerObj;
 
     Uint64 deltaTimeNow = SDL_GetPerformanceCounter();
     Uint64 deltaTimeLast = 0;
-    while(containerObj->baseObj->run)
+    while(containerObj.baseObj->run)
     {
         deltaTimeLast = deltaTimeNow;
         deltaTimeNow = SDL_GetPerformanceCounter();
-        containerObj->baseObj->deltaTime = ((deltaTimeNow - deltaTimeLast)*1000 / (double)SDL_GetPerformanceFrequency())*0.001;
+        containerObj.baseObj->deltaTime = ((deltaTimeNow - deltaTimeLast)*1000 / (double)SDL_GetPerformanceFrequency())*0.001;
 
-        containerObj->handleEvent();
-        containerObj->runTicks();
+        containerObj.handleEvent();
+        containerObj.runTicks();
     }
 
-    delete containerObj; 
     return 0;
 }
 

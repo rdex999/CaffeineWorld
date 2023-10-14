@@ -37,6 +37,16 @@ void vector2d::printVec()
     std::cout << "Vector: (" << this->X << ", " << this->Y << ")" << std::endl;
 }
 
+double vector2d::distance(vector2d to)
+{
+    return std::sqrt(std::pow(this->X - to.X, 2) + std::pow(this->Y - to.Y, 2));
+}
+
+double vector2d::distance(vector2d *to)
+{
+    return std::sqrt(std::pow(this->X - to->X, 2) + std::pow(this->Y - to->Y, 2));
+}
+
 void vector2d::operator+=(const vector2d &vec)
 {
     this->X += vec.X;
