@@ -73,13 +73,38 @@ void blocksHead::tick()
         // as blockLoc and cannot spawn a new one here. 
         int nullIdx = -1;
 
+        // the index of the block that is on the left of the new one
+        // -1 if none
+        int leftIndex = -1;
+
+        // the index of the block that is below the new one
+        // -1 if none
+        int belowIndex = -1;
+
+        // the index of the block that is above the new one
+        // -1 if none
+        int aboveIndex = -1;
+
         for(int i=0; i<BLOCKS_CAPASITY; i++){
             if(blockArray[i] == nullptr && nullIdx == -1){
                 nullIdx = i;
             }
+
             if(blockArray[i] && blockArray[i]->location == blockLoc){
                 nullIdx = -1;
                 break;
+            }
+
+            if(blockArray[i] && blockArray[i]->location + vector2d(B_W, 0) == blockLoc){
+                leftIndex = i;
+            }
+
+            if(blockArray[i] && blockArray[i]->location == blockLoc + vector2d(0, B_H)){
+                belowIndex = i;
+            }
+
+            if(blockArray[i] && blockArray[i]->location + vector2d(0, B_H) == blockLoc){
+                aboveIndex = i;
             }
         }
 
@@ -105,6 +130,18 @@ void blocksHead::tick()
                     playerObj->items[playerObj->selectedItemIndex].itemID = 0;
                 }
                 playerObj->items[playerObj->selectedItemIndex].countEvent = true;
+
+                if(leftIndex != -1){
+                    blockArray[leftIndex]->blockEvent = 5;
+                }
+
+                if(belowIndex != -1){
+                    blockArray[belowIndex]->blockEvent = 8;
+                }
+
+                if(aboveIndex != -1){
+                    blockArray[aboveIndex]->blockEvent = 7;
+                }
             }
         }
     }

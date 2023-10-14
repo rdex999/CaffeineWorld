@@ -154,6 +154,32 @@ void block::tick()
             blockEvent = 0;
             break;
 
+        case 5:
+            location.W *= 1.5;
+
+            blockEvent = 0;
+            break;
+
+        case 6:
+
+            blockEvent = 0;
+            break;
+
+        case 7:
+            location.H *= 1.5;
+
+            blockEvent = 0;
+            break;
+
+        case 8:
+            blockAbove = true;
+            if(blockType == itemGrassBlock){
+                currentTextureIndex = 0;
+            }
+
+            blockEvent = 0;
+            break;
+
         default:
             break;
         }

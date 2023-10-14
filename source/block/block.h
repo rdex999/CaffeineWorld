@@ -39,6 +39,10 @@ class block
         // 2 = this block is on the right of a block that was destroyed
         // 3 = this block is above a block that was destroyed
         // 4 = this block is below a block that was destroyed
+        // 5 = this block is on the left of a new block
+        // 6 = this block is on the right of a new block
+        // 7 = this block is above a new block
+        // 8 = this block is below a new block
         int blockEvent;
 
     
