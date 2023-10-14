@@ -44,11 +44,13 @@ void inventory::selectItem(int itemNumber)
     //if the player selects the same item, then unselect 
     if(itemNumber == selectedItemIndex+1){
         playerObj->selectedItem = 0;
+        playerObj->selectedItemIndex = -1;
         selectedItemIndex = -1; 
     }else{
         highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
         playerObj->selectedItem = playerObj->items[itemNumber-1].itemID;
         selectedItemIndex = itemNumber-1;
+        playerObj->selectedItemIndex = selectedItemIndex;
     }
 }
 

@@ -45,6 +45,9 @@ class player
 
         // the selected item 
         unsigned char selectedItem;
+
+        // the index of the selected item in the itemArray
+        int selectedItemIndex;
         
         // function that runs on every frame
         void tick();

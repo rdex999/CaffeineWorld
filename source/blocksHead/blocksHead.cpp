@@ -64,27 +64,49 @@ void blocksHead::tick()
         playerObj->selectedItem >= itemGrassBlock && playerObj->selectedItem <= itemGrassBlock)
                   
     {
-        timeBuild = 0;
+
+        // the location of the block to spawn
+        vector2d blockLoc = findBlockSpawn(&baseObj->mouseLocation);
+    
+        // the index of a block that is nullptr.
+        // if still -1 after the loop then there is already a block
+        // as blockLoc and cannot spawn a new one here. 
+        int nullIdx = -1;
+
         for(int i=0; i<BLOCKS_CAPASITY; i++){
-            if(blockArray[i] == nullptr){
-                vector2d blockLoc = findBlockSpawn(&baseObj->mouseLocation);
-
-                // switch on the block type. 
-                switch (playerObj->selectedItem)
-                {
-                case itemGrassBlock:
-                    blockArray[i] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
-                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, i, BLOCKS_CAPASITY);
-                    break;
-                
-                default:
-                    break;
-                }
-
+            if(blockArray[i] == nullptr && nullIdx == -1){
+                nullIdx = i;
+            }
+            if(blockArray[i] && blockArray[i]->location == blockLoc){
+                nullIdx = -1;
                 break;
             }
         }
 
+        if(nullIdx != -1 && playerObj->items[playerObj->selectedItemIndex].count >= 1){
+            timeBuild = 0;
+            if(blockArray[nullIdx] == nullptr){
+            
+                // switch on the block type. 
+                switch (playerObj->selectedItem)
+                {
+                case itemGrassBlock:
+                    blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
+                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY);
+                    
+                    break;
+
+                default:
+                    break;
+                }
+
+                playerObj->items[playerObj->selectedItemIndex].count -= 1;
+                if(playerObj->items[playerObj->selectedItemIndex].count <= 0){
+                    playerObj->items[playerObj->selectedItemIndex].itemID = 0;
+                }
+                playerObj->items[playerObj->selectedItemIndex].countEvent = true;
+            }
+        }
     }
 
     playerObj->inAir = true;
