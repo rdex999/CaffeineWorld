@@ -102,7 +102,6 @@ class player
         // the floor location
         vector2d floorLocation;
 
-
         // the time between each step animation
         double walkStepTime;
 };

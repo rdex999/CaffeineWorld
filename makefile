@@ -1,4 +1,4 @@
-objFiles = ./build/main.o ./build/attackHand.o ./build/background.o ./build/base.o ./build/blocksHead.o ./build/bullet.o ./build/coffeeCup.o ./build/block.o ./build/dVector2d.o ./build/gun.o ./build/inventory.o ./build/player.o ./build/vector2d.o ./build/pickaxe.o ./build/itemsHead.o 
+objFiles = ./build/main.o ./build/attackHand.o ./build/background.o ./build/base.o ./build/blocksHead.o ./build/bullet.o ./build/coffeeCup.o ./build/block.o ./build/dVector2d.o ./build/gun.o ./build/inventory.o ./build/player.o ./build/vector2d.o ./build/pickaxe.o ./build/itemsHead.o ./build/entity.o 
 
 CaffeineWorld: $(objFiles)
 	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld $(objFiles)
@@ -48,6 +48,9 @@ build/pickaxe.o: ./source/pickaxe/pickaxe.cpp ./source/pickaxe/pickaxe.h
 build/itemsHead.o: ./source/itemsHead/itemsHead.cpp ./source/itemsHead/itemsHead.h
 	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/itemsHead.o ./source/itemsHead/itemsHead.cpp 
 
+build/entity.o: ./source/entity/entity.cpp ./source/entity/entity.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/entity.o ./source/entity/entity.cpp 
+
 run:
 	./CaffeineWorld
 
@@ -58,4 +61,4 @@ clean:
 all:
 	rm ./build/*
 	rm CaffeineWorld
-	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld ./source/main/main.cpp ./source/attackHand/attackHand.cpp ./source/background/background.cpp ./source/base/base.cpp ./source/blocksHead/blocksHead.cpp ./source/bullet/bullet.cpp ./source/coffeeCup/coffeeCup.cpp ./source/block/block.cpp ./source/dVector2d/dVector2d.cpp ./source/gun/gun.cpp ./source/inventory/inventory.cpp ./source/player/player.cpp ./source/vector2d/vector2d.cpp ./source/pickaxe/pickaxe.cpp ./source/itemsHead/itemsHead.cpp
+	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld ./source/main/main.cpp ./source/attackHand/attackHand.cpp ./source/background/background.cpp ./source/base/base.cpp ./source/blocksHead/blocksHead.cpp ./source/bullet/bullet.cpp ./source/coffeeCup/coffeeCup.cpp ./source/block/block.cpp ./source/dVector2d/dVector2d.cpp ./source/gun/gun.cpp ./source/inventory/inventory.cpp ./source/player/player.cpp ./source/vector2d/vector2d.cpp ./source/pickaxe/pickaxe.cpp ./source/itemsHead/itemsHead.cpp ./source/entity/entity.cpp
