@@ -28,6 +28,7 @@ container::container()
     backgroundObj = new background(baseObj);
     playerObj = new player(baseObj);
     itemsHeadObj = new itemsHead(baseObj, playerObj);
+    entitysHeadObj = new entitysHead(baseObj, playerObj);
     blocksHeadObj = new blocksHead(baseObj, playerObj);
     inventoryObj = new inventory(baseObj, playerObj, itemsHeadObj);
 }
@@ -35,10 +36,11 @@ container::container()
 container::~container()
 {
     if(backgroundObj){delete backgroundObj;}
-    if(inventoryObj){delete inventoryObj;}
     if(playerObj){delete playerObj;}
     if(itemsHeadObj){delete itemsHeadObj;}
+    if(entitysHeadObj){delete entitysHeadObj;}
     if(blocksHeadObj){delete blocksHeadObj;}
+    if(inventoryObj){delete inventoryObj;}
 
     if(baseObj){delete baseObj;}
     SDL_Quit();
@@ -181,6 +183,7 @@ void container::runTicks()
     backgroundObj->tick();
     playerObj->tick();
     itemsHeadObj->tick();
+    entitysHeadObj->tick();
     blocksHeadObj->tick();
     inventoryObj->tick();
     SDL_RenderPresent(baseObj->mainRenderer);

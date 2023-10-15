@@ -15,8 +15,11 @@ zombie::zombie(base *baseObj, player* playerObj, zombie** zombiesArray, int zomb
     this->textures[1] = textures[1];
     this->textures[2] = textures[2];
 
+    currentTextureIndex = 0;
+    flip = false;
+
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
-        baseObj->screenSize.Y/3, 0, 0);
+        baseObj->screenSize.Y/3, 100, 100);
 }
 
 zombie::~zombie()
