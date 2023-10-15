@@ -25,6 +25,15 @@ class entity
         // if the entity is blocked by a wall from the left
         bool blockedLeft;
 
+        // if the entity should jump
+        bool jump;
+
+        // jumping intensity
+        float jumpIntensity;
+
+        // the slow falling when starting to fall
+        float gravitySlowDown;
+
     protected:
 
         // allways store base pointer

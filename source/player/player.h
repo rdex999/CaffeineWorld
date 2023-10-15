@@ -47,15 +47,6 @@ class player : public entity
         // function that runs on every frame
         void tick() override;
     
-        // the slow gravity at the start of falling
-        float gravitySlowDown;
-
-        // if the player should jump
-        bool jump;
-        
-        // jumping intensity
-        float jumpIntensity;
-
         // the items array. each item has an item id (int)
         item items[INVENTORY_CAPACITY] = {0, 0, true};
 

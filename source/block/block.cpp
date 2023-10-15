@@ -3,7 +3,8 @@
 #define B_H 176/4
 
 block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockType, SDL_Texture *texture, SDL_Texture *texture2,
-    block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking)
+    block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking,
+    entity** entityArray, int entityArrayLength)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
@@ -15,7 +16,8 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
     this->blockIndex = blockIndex;
     this->blockArraySize = blockArraySize;
     this->texturesBlockBreaking = texturesBlockBreaking;
-
+    this->entityArray = entityArray;
+    this->entityArrayLength = entityArrayLength;
     this->location.W = B_W;
     this->location.H = B_H;
     
@@ -259,63 +261,11 @@ void block::tick()
         //        
         //  COLLISION SECTION:
         //
-        
-        // if there is a block above the player then block the jump
-        if(((location.X > playerObj->location.X &&
-            location.X < playerObj->location.X+playerObj->location.W) ||
-            (location.X+location.W > playerObj->location.X &&
-            location.X+location.W < playerObj->location.X+playerObj->location.W)) &&
-            location.Y + location.H >= playerObj->location.Y && 
-            location.Y + location.H <= playerObj->location.Y + playerObj->location.H/5)
-        {
-            playerObj->location.Y += (location.Y+location.H)-playerObj->location.Y;
-            playerObj->jump = false;
-            playerObj->jumpIntensity = 10;
-            isAbovePlayer = true; 
-        }else{
-            isAbovePlayer = false;
-        }
+        playerCollision();
 
-        // if the player is blocked by a high wall (when the wall is on the right)
-        if(playerObj->location.X+playerObj->location.W >= location.X &&
-            playerObj->location.X+playerObj->location.W < location.X+location.W &&
-            location.Y < playerObj->location.Y + playerObj->location.H/2 && 
-            location.Y+location.H >= playerObj->location.Y &&
-            !isAbovePlayer 
-        )
-        {
-            playerObj->blockedRight = true;
-            playerObj->location.X -= (playerObj->location.X+playerObj->location.W)-location.X;
-        }
-
-        // if the player is blocked by a high wall (when the wall is on the left)
-        if(playerObj->location.X <= location.X+location.W &&
-            playerObj->location.X > location.X && 
-            location.Y < playerObj->location.Y + playerObj->location.H/2 && 
-            location.Y+location.H >= playerObj->location.Y &&
-            !isAbovePlayer 
-        )
-        {
-            playerObj->blockedLeft = true;
-            playerObj->location.X += (location.X+location.W)-playerObj->location.X;
-        }
-
-        // whether the player is standing on the block
-        if(((location.X <= playerObj->location.X+playerObj->location.W &&
-            location.X >= playerObj->location.X) || 
-            (location.X+location.W <= playerObj->location.X+playerObj->location.W &&
-            location.X+location.W >= playerObj->location.X))&&
-            location.Y <= playerObj->location.Y+playerObj->location.H &&
-            location.Y > playerObj->location.Y + playerObj->location.H/2 && 
-            !blockAbove)
-        {
-            playerObj->inAir = false;
-            playerObj->gravitySlowDown = 1.f; 
-            playerObj->standingBlock = location;
-            playerObj->location.Y -= ((playerObj->location.Y+playerObj->location.H)-location.Y)*
-                baseObj->deltaTime * 15; 
-        }
-
+        if(entityArray){
+            entityCollision();
+        } 
     }
 }
 
@@ -341,4 +291,122 @@ int block::searchPlayerItem(itemId type, bool increase)
         }
     }
     return -1;
+}
+
+void block::entityCollision()
+{
+    for(int i=0; i<entityArrayLength; i++){
+        if(entityArray[i] && entityArray[i]->location.inBox(vector2d(0, 0), baseObj->screenSize))
+        {
+            // if there is a block above the player then block the jump
+            if(((location.X > entityArray[i]->location.X &&
+                location.X < entityArray[i]->location.X+entityArray[i]->location.W) ||
+                (location.X+location.W > entityArray[i]->location.X &&
+                location.X+location.W < entityArray[i]->location.X+entityArray[i]->location.W)) &&
+                location.Y + location.H >= entityArray[i]->location.Y && 
+                location.Y + location.H <= entityArray[i]->location.Y + entityArray[i]->location.H/5)
+            {
+                entityArray[i]->location.Y += (location.Y+location.H)-entityArray[i]->location.Y;
+                entityArray[i]->jump = false;
+                entityArray[i]->jumpIntensity = 10;
+            }else{
+            }
+
+            // if the player is blocked by a high wall (when the wall is on the right)
+            if(entityArray[i]->location.X+entityArray[i]->location.W >= location.X &&
+                entityArray[i]->location.X+entityArray[i]->location.W < location.X+location.W &&
+                location.Y < entityArray[i]->location.Y + entityArray[i]->location.H/2 && 
+                location.Y+location.H >= entityArray[i]->location.Y
+            )
+            {
+                entityArray[i]->blockedRight = true;
+                entityArray[i]->location.X -= (entityArray[i]->location.X+entityArray[i]->location.W)-location.X;
+            }
+
+            // if the player is blocked by a high wall (when the wall is on the left)
+            if(entityArray[i]->location.X <= location.X+location.W &&
+                entityArray[i]->location.X > location.X && 
+                location.Y < entityArray[i]->location.Y + entityArray[i]->location.H/2 && 
+                location.Y+location.H >= entityArray[i]->location.Y
+            )
+            {
+                entityArray[i]->blockedLeft = true;
+                entityArray[i]->location.X += (location.X+location.W)-entityArray[i]->location.X;
+            }
+
+            // whether the player is standing on the block
+            if(((location.X <= entityArray[i]->location.X+entityArray[i]->location.W &&
+                location.X >= entityArray[i]->location.X) || 
+                (location.X+location.W <= entityArray[i]->location.X+entityArray[i]->location.W &&
+                location.X+location.W >= entityArray[i]->location.X))&&
+                location.Y <= entityArray[i]->location.Y+entityArray[i]->location.H &&
+                location.Y > entityArray[i]->location.Y + entityArray[i]->location.H/2 && 
+                !blockAbove)
+            {
+                entityArray[i]->inAir = false;
+                entityArray[i]->gravitySlowDown = 1.f; 
+                entityArray[i]->location.Y -= ((entityArray[i]->location.Y+entityArray[i]->location.H)-location.Y)*
+                    baseObj->deltaTime * 15; 
+            }
+        }
+    }
+}
+
+void block::playerCollision()
+{
+    // if there is a block above the player then block the jump
+    if(((location.X > playerObj->location.X &&
+        location.X < playerObj->location.X+playerObj->location.W) ||
+        (location.X+location.W > playerObj->location.X &&
+        location.X+location.W < playerObj->location.X+playerObj->location.W)) &&
+        location.Y + location.H >= playerObj->location.Y && 
+        location.Y + location.H <= playerObj->location.Y + playerObj->location.H/5)
+    {
+        playerObj->location.Y += (location.Y+location.H)-playerObj->location.Y;
+        playerObj->jump = false;
+        playerObj->jumpIntensity = 10;
+        isAbovePlayer = true; 
+    }else{
+        isAbovePlayer = false;
+    }
+
+    // if the player is blocked by a high wall (when the wall is on the right)
+    if(playerObj->location.X+playerObj->location.W >= location.X &&
+        playerObj->location.X+playerObj->location.W < location.X+location.W &&
+        location.Y < playerObj->location.Y + playerObj->location.H/2 && 
+        location.Y+location.H >= playerObj->location.Y &&
+        !isAbovePlayer 
+    )
+    {
+        playerObj->blockedRight = true;
+        playerObj->location.X -= (playerObj->location.X+playerObj->location.W)-location.X;
+    }
+
+    // if the player is blocked by a high wall (when the wall is on the left)
+    if(playerObj->location.X <= location.X+location.W &&
+        playerObj->location.X > location.X && 
+        location.Y < playerObj->location.Y + playerObj->location.H/2 && 
+        location.Y+location.H >= playerObj->location.Y &&
+        !isAbovePlayer 
+    )
+    {
+        playerObj->blockedLeft = true;
+        playerObj->location.X += (location.X+location.W)-playerObj->location.X;
+    }
+
+    // whether the player is standing on the block
+    if(((location.X <= playerObj->location.X+playerObj->location.W &&
+        location.X >= playerObj->location.X) || 
+        (location.X+location.W <= playerObj->location.X+playerObj->location.W &&
+        location.X+location.W >= playerObj->location.X))&&
+        location.Y <= playerObj->location.Y+playerObj->location.H &&
+        location.Y > playerObj->location.Y + playerObj->location.H/2 && 
+        !blockAbove)
+    {
+        playerObj->inAir = false;
+        playerObj->gravitySlowDown = 1.f; 
+        playerObj->standingBlock = location;
+        playerObj->location.Y -= ((playerObj->location.Y+playerObj->location.H)-location.Y)*
+            baseObj->deltaTime * 15; 
+    }
 }

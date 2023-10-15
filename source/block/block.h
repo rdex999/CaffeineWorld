@@ -15,10 +15,18 @@ class block
         // @param {SDL_Texture*} texture2
         // optional texture, used for dirt (as there is dirt and grass)
         // @param {int} blockArraySize
+        // @param {SDL_Texture**} texturesBlockBreaking
+        // a texture array of the block cracks (size is allways 3)
+        // @param {entity**} entityArray
+        // an array of entity pointers to handle collision on. (dont include the playerObj in it)
+        // @param {int} entityArrayLength
+        // the length of the entity array
         // the size you gave the blocks array. (not the index of the last element)
         block(base* baseObj, player* playerObj, vector2d *location, itemId blockType,
             SDL_Texture* texture, SDL_Texture* texture2,
-            block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking);
+            block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking,
+            entity** entityArray = nullptr, int entityArrayLength = -1);
+
         ~block();
 
         // the type of the block
@@ -64,6 +72,12 @@ class block
         // if there is a block array, then the dirt block can destroy itself and mark as nullptr in the array
         block** blockArray;
 
+        // the entity array for collision
+        entity** entityArray;
+
+        // the length of the entity array.
+        int entityArrayLength;
+
         // the index of the dirt block in the blockArray (if there is one)
         int blockIndex;
 
@@ -101,4 +115,10 @@ class block
         // @param {bool} if the block is found, increase the count by 1
         // @returns {int} the index, or -1 if not found
         int searchPlayerItem(itemId type, bool increase);
+
+        // handles collision for all entitys in the entitys array
+        void entityCollision();
+
+        // specific collision for the player
+        void playerCollision();
 };
