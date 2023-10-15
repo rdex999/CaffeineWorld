@@ -8,8 +8,8 @@ pickaxe::pickaxe(base *baseObj, player *playerObj, itemId itemNum)
 
     rotation = 70;
 
-    screenLocation = vector2d(playerObj->screenLocation.X + playerObj->screenLocation.W/2,
-        playerObj->screenLocation.Y+playerObj->screenLocation.H/2.7);
+    screenLocation = vector2d(playerObj->location.X + playerObj->location.W/2,
+        playerObj->location.Y+playerObj->location.H/2.7);
 
     screenLocation.W = 499/7.5;
     screenLocation.H = 633/7.5;
@@ -48,14 +48,14 @@ void pickaxe::tick()
         rotation = 70;
     }
 
-    screenLocation.Y = playerObj->screenLocation.Y+playerObj->screenLocation.H/2.7 - screenLocation.H/1.3;
+    screenLocation.Y = playerObj->location.Y+playerObj->location.H/2.7 - screenLocation.H/1.3;
     if(playerObj->flip){
         rotation = std::abs(rotation);
     
-        screenLocation.X = playerObj->screenLocation.X + playerObj->screenLocation.W - screenLocation.W;
+        screenLocation.X = playerObj->location.X + playerObj->location.W - screenLocation.W;
     }else{
         rotation = -std::abs(rotation);
-        screenLocation.X = playerObj->screenLocation.X + playerObj->screenLocation.W - screenLocation.W/1.1;
+        screenLocation.X = playerObj->location.X + playerObj->location.W - screenLocation.W/1.1;
     }
 
     if(mined){

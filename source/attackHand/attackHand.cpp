@@ -51,7 +51,7 @@ void attackHand::tick()
             direction -= dVector2d(std::cos(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown,
                 std::sin(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown);
         }
-        screenLocation = playerObj->screenLocation + vector2d(direction.X, direction.Y + playerObj->screenLocation.H/2.7);
+        screenLocation = playerObj->location + vector2d(direction.X, direction.Y + playerObj->location.H/2.7);
     }
 
 }

@@ -4,11 +4,11 @@
 #include <iostream>
 #include <array>
 #include <functional>
-#include "../base/base.h"
+#include "../entity/entity.h"
 #include "../dVector2d/dVector2d.h"
 #include "../inventory/items/items.h"
 
-class player
+class player : public entity
 {
     public:
         player(base* baseObj);
@@ -38,11 +38,6 @@ class player
         void move(vector2d location);
         void move(vector2d* location);
 
-        vector2d screenLocation;
-
-        // sould the texture flip (for walking right or left) 
-        bool flip;
-
         // the selected item 
         unsigned char selectedItem;
 
@@ -50,19 +45,10 @@ class player
         int selectedItemIndex;
         
         // function that runs on every frame
-        void tick();
+        void tick() override;
     
-        // whether the player is in the air or not
-        bool inAir;
-
         // the slow gravity at the start of falling
         float gravitySlowDown;
-
-        // if the player is blocked by a wall from the right
-        bool blockedRight;
-
-        // if the player is blocked by a wall from the left
-        bool blockedLeft;
 
         // if the player should jump
         bool jump;
@@ -79,10 +65,7 @@ class player
     private: 
 
         // renders the player
-        void render();
-
-        // baseObj pointer 
-        base* baseObj;
+        void render() override;
 
         // the texture index to render
         int textureIndex;

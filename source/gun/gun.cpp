@@ -39,8 +39,8 @@ void gun::tick()
 {
     render();
 
-    vector2d gunLocation(playerObj->screenLocation.X,
-        playerObj->screenLocation.Y + playerObj->screenLocation.H/2.7 + gunSize.Y/3);
+    vector2d gunLocation(playerObj->location.X,
+        playerObj->location.Y + playerObj->location.H/2.7 + gunSize.Y/3);
 
     // handle shooting with the gun
     lastGunShotTime += baseObj->deltaTime;
@@ -65,8 +65,8 @@ void gun::render()
     }
     if(playerObj->selectedItem == itemGun){
 
-        SDL_Rect playerRect = {(int)playerObj->screenLocation.X,
-            (int)(playerObj->screenLocation.Y+playerObj->screenLocation.H/2.7), (int)gunSize.X, (int)gunSize.Y};
+        SDL_Rect playerRect = {(int)playerObj->location.X,
+            (int)(playerObj->location.Y+playerObj->location.H/2.7), (int)gunSize.X, (int)gunSize.Y};
 
         SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &playerRect,
             baseObj->rotationPlayerToMouse, NULL, SDL_RendererFlip(playerObj->flip));

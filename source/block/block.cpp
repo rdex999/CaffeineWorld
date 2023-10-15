@@ -31,9 +31,9 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
 
     blockBreakingIndex = -1;
     
-    playerZone = playerObj->screenLocation - playerObj->screenLocation.W;
-    playerZone.W = playerObj->screenLocation.W*3;
-    playerZone.H = playerObj->screenLocation.W*2 + playerObj->screenLocation.H;
+    playerZone = playerObj->location - playerObj->location.W;
+    playerZone.W = playerObj->location.W*3;
+    playerZone.H = playerObj->location.W*2 + playerObj->location.H;
 
     switch (blockType)
     {
@@ -109,9 +109,9 @@ void block::tick()
         render();
 
         // update the playerZone
-        playerZone = playerObj->screenLocation - playerObj->screenLocation.W;
-        playerZone.W = playerObj->screenLocation.W*3;
-        playerZone.H = playerObj->screenLocation.W*2 + playerObj->screenLocation.H;
+        playerZone = playerObj->location - playerObj->location.W;
+        playerZone.W = playerObj->location.W*3;
+        playerZone.H = playerObj->location.W*2 + playerObj->location.H;
 
         if(blockType == itemGrassBlock){
             timeGrassCheck = std::clamp(timeGrassCheck + baseObj->deltaTime, (double)0, (double)10);
@@ -261,14 +261,14 @@ void block::tick()
         //
         
         // if there is a block above the player then block the jump
-        if(((location.X > playerObj->screenLocation.X &&
-            location.X < playerObj->screenLocation.X+playerObj->screenLocation.W) ||
-            (location.X+location.W > playerObj->screenLocation.X &&
-            location.X+location.W < playerObj->screenLocation.X+playerObj->screenLocation.W)) &&
-            location.Y + location.H >= playerObj->screenLocation.Y && 
-            location.Y + location.H <= playerObj->screenLocation.Y + playerObj->screenLocation.H/5)
+        if(((location.X > playerObj->location.X &&
+            location.X < playerObj->location.X+playerObj->location.W) ||
+            (location.X+location.W > playerObj->location.X &&
+            location.X+location.W < playerObj->location.X+playerObj->location.W)) &&
+            location.Y + location.H >= playerObj->location.Y && 
+            location.Y + location.H <= playerObj->location.Y + playerObj->location.H/5)
         {
-            playerObj->screenLocation.Y += (location.Y+location.H)-playerObj->screenLocation.Y;
+            playerObj->location.Y += (location.Y+location.H)-playerObj->location.Y;
             playerObj->jump = false;
             playerObj->jumpIntensity = 10;
             isAbovePlayer = true; 
@@ -277,42 +277,42 @@ void block::tick()
         }
 
         // if the player is blocked by a high wall (when the wall is on the right)
-        if(playerObj->screenLocation.X+playerObj->screenLocation.W >= location.X &&
-            playerObj->screenLocation.X+playerObj->screenLocation.W < location.X+location.W &&
-            location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2 && 
-            location.Y+location.H >= playerObj->screenLocation.Y &&
+        if(playerObj->location.X+playerObj->location.W >= location.X &&
+            playerObj->location.X+playerObj->location.W < location.X+location.W &&
+            location.Y < playerObj->location.Y + playerObj->location.H/2 && 
+            location.Y+location.H >= playerObj->location.Y &&
             !isAbovePlayer 
         )
         {
             playerObj->blockedRight = true;
-            playerObj->screenLocation.X -= (playerObj->screenLocation.X+playerObj->screenLocation.W)-location.X;
+            playerObj->location.X -= (playerObj->location.X+playerObj->location.W)-location.X;
         }
 
         // if the player is blocked by a high wall (when the wall is on the left)
-        if(playerObj->screenLocation.X <= location.X+location.W &&
-            playerObj->screenLocation.X > location.X && 
-            location.Y < playerObj->screenLocation.Y + playerObj->screenLocation.H/2 && 
-            location.Y+location.H >= playerObj->screenLocation.Y &&
+        if(playerObj->location.X <= location.X+location.W &&
+            playerObj->location.X > location.X && 
+            location.Y < playerObj->location.Y + playerObj->location.H/2 && 
+            location.Y+location.H >= playerObj->location.Y &&
             !isAbovePlayer 
         )
         {
             playerObj->blockedLeft = true;
-            playerObj->screenLocation.X += (location.X+location.W)-playerObj->screenLocation.X;
+            playerObj->location.X += (location.X+location.W)-playerObj->location.X;
         }
 
         // whether the player is standing on the block
-        if(((location.X <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
-            location.X >= playerObj->screenLocation.X) || 
-            (location.X+location.W <= playerObj->screenLocation.X+playerObj->screenLocation.W &&
-            location.X+location.W >= playerObj->screenLocation.X))&&
-            location.Y <= playerObj->screenLocation.Y+playerObj->screenLocation.H &&
-            location.Y > playerObj->screenLocation.Y + playerObj->screenLocation.H/2 && 
+        if(((location.X <= playerObj->location.X+playerObj->location.W &&
+            location.X >= playerObj->location.X) || 
+            (location.X+location.W <= playerObj->location.X+playerObj->location.W &&
+            location.X+location.W >= playerObj->location.X))&&
+            location.Y <= playerObj->location.Y+playerObj->location.H &&
+            location.Y > playerObj->location.Y + playerObj->location.H/2 && 
             !blockAbove)
         {
             playerObj->inAir = false;
             playerObj->gravitySlowDown = 1.f; 
             playerObj->standingBlock = location;
-            playerObj->screenLocation.Y -= ((playerObj->screenLocation.Y+playerObj->screenLocation.H)-location.Y)*
+            playerObj->location.Y -= ((playerObj->location.Y+playerObj->location.H)-location.Y)*
                 baseObj->deltaTime * 15; 
         }
 

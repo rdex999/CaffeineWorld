@@ -73,9 +73,9 @@ blocksHead::~blocksHead()
 
 void blocksHead::tick()
 {
-    playerBuildZone = playerObj->screenLocation - playerObj->screenLocation.W*5;
-    playerBuildZone.W = playerObj->screenLocation.W*11;
-    playerBuildZone.H = playerObj->screenLocation.W*11;
+    playerBuildZone = playerObj->location - playerObj->location.W*5;
+    playerBuildZone.W = playerObj->location.W*11;
+    playerBuildZone.H = playerObj->location.W*11;
 
     timeBuild = std::clamp(timeBuild+baseObj->deltaTime, (double)0, (double)10);
     
