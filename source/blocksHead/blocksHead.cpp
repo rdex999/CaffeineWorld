@@ -15,9 +15,26 @@ blocksHead::blocksHead(base *baseObj, player *playerObj)
         std::cout << "Error: could not create dirtBlock texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-    texturesDirtBlock[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtGrassBlock-v1.3.png");
+    texturesDirtBlock[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/dirtBlock/dirtGrassBlock-v1.4.png");
     if(!texturesDirtBlock[1]){
         std::cout << "Error: could not create dirtGrassBlock texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    texturesBlockBreaking[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/blockBreaking/blockBreaking1-v1.0.png");
+    if(!texturesBlockBreaking[0]){
+        std::cout << "Error: could not create block breaking 1 texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+    texturesBlockBreaking[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/blockBreaking/blockBreaking2-v1.0.png");
+    if(!texturesBlockBreaking[1]){
+        std::cout << "Error: could not create block breaking 2 texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    texturesBlockBreaking[2] = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/blockBreaking/blockBreaking3-v1.0.png");
+    if(!texturesBlockBreaking[2]){
+        std::cout << "Error: could not create block breaking 3 texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
 
@@ -42,6 +59,10 @@ blocksHead::~blocksHead()
 {
     if(texturesDirtBlock[0]){SDL_DestroyTexture(texturesDirtBlock[0]);}
     if(texturesDirtBlock[1]){SDL_DestroyTexture(texturesDirtBlock[1]);}
+    
+    if(texturesBlockBreaking[0]){SDL_DestroyTexture(texturesBlockBreaking[0]);}
+    if(texturesBlockBreaking[1]){SDL_DestroyTexture(texturesBlockBreaking[1]);}
+    if(texturesBlockBreaking[2]){SDL_DestroyTexture(texturesBlockBreaking[2]);}
 
     for(int i=0;i <BLOCKS_CAPASITY; i++){
         if(blockArray[i]){
@@ -117,7 +138,7 @@ void blocksHead::tick()
                 {
                 case itemGrassBlock:
                     blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
-                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY);
+                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY, texturesBlockBreaking);
                     
                     break;
 
@@ -199,7 +220,7 @@ int blocksHead::spawnRow(vector2d *from, int blockCount, itemId blockType,
         }
         
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking);
     }
     return blocks;
 }
@@ -228,7 +249,7 @@ int blocksHead::spawnCrookedRow(vector2d *from, int blockCount, itemId blockType
     for(int i=0; i<blockCount; i++){
         location = *from + vector2d(B_W*i, -1*B_H*i);
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY);
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking);
     }
     return blockIndexCounter + blockCount;
 }

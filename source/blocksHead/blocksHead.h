@@ -24,6 +24,19 @@ class blocksHead
         // time since the last build event.
         double timeBuild;
 
+        // an array of all dirt blocks in the world
+        block* blockArray[1500] = {nullptr};
+
+        // the textures of the dirt blcks.
+        // index 0 is dirt texture, index 1 is dirtGrass texture
+        SDL_Texture* texturesDirtBlock[2];
+
+        // the textures of the block breaking
+        SDL_Texture* texturesBlockBreaking[3];
+
+        // keep track of the next block index in the blocks array
+        int blockIndexCounter;
+
         // finds a location that a block can be spawned on
         // (relative to player->standingBlock)
         // @param {vector2d*} where to find the location
@@ -85,14 +98,4 @@ class blocksHead
         // @return index of the first nullptr in blocksArray
         int spawnCrookedRow(vector2d* from, int blockCount, itemId blockType,
             int fromIndex, SDL_Texture* texture1, SDL_Texture* texture2 = nullptr);
-
-        // an array of all dirt blocks in the world
-        block* blockArray[1500] = {nullptr};
-
-        // the textures of the dirt blcks.
-        // index 0 is dirt texture, index 1 is dirtGrass texture
-        SDL_Texture* texturesDirtBlock[2];
-
-        // keep track of the next block index in the blocks array
-        int blockIndexCounter;
 };

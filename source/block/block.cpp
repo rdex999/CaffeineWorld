@@ -3,7 +3,7 @@
 #define B_H 176/4
 
 block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockType, SDL_Texture *texture, SDL_Texture *texture2,
-    block** blockArray, int blockIndex, int blockArraySize)
+    block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
@@ -14,6 +14,7 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
     this->blockArray = blockArray;
     this->blockIndex = blockIndex;
     this->blockArraySize = blockArraySize;
+    this->texturesBlockBreaking = texturesBlockBreaking;
 
     this->location.W = B_W;
     this->location.H = B_H;
@@ -27,6 +28,8 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
     aboveCheck = false;
 
     currentTextureIndex = 0;
+
+    blockBreakingIndex = -1;
     
     playerZone = playerObj->screenLocation - playerObj->screenLocation.W;
     playerZone.W = playerObj->screenLocation.W*3;
@@ -239,6 +242,20 @@ void block::tick()
         if(timeLastHit >= 4.1){
             blockLife = std::clamp(blockLife+3, 0, maxBlockLife);
         }
+
+        if((float)blockLife / (float)maxBlockLife <= 0.3){
+            blockBreakingIndex = 2; 
+       
+        }else if((float)blockLife / (float)maxBlockLife <= 0.6){
+            blockBreakingIndex = 1; 
+        
+        }else if((float)blockLife / (float)maxBlockLife <= 0.9){
+            blockBreakingIndex = 0; 
+        
+        }else{
+            blockBreakingIndex = -1;
+        }
+
         //        
         //  COLLISION SECTION:
         //
@@ -306,6 +323,10 @@ void block::render()
 {
     SDL_Rect rect = {location.X, location.Y, location.W, location.H};
     SDL_RenderCopy(baseObj->mainRenderer, textures[currentTextureIndex], NULL, &rect);
+
+    if(blockBreakingIndex != -1){
+        SDL_RenderCopy(baseObj->mainRenderer, texturesBlockBreaking[blockBreakingIndex], NULL, &rect);
+    }
 }
 
 int block::searchPlayerItem(itemId type, bool increase)

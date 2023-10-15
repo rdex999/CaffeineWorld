@@ -18,7 +18,7 @@ class block
         // the size you gave the blocks array. (not the index of the last element)
         block(base* baseObj, player* playerObj, vector2d *location, itemId blockType,
             SDL_Texture* texture, SDL_Texture* texture2,
-            block** blockArray, int blockIndex, int blockArraySize);
+            block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking);
         ~block();
 
         // the type of the block
@@ -58,11 +58,17 @@ class block
         // there are two textures for the dirt block, one is dirt, and one is dirtGrass 
         SDL_Texture* textures[2];
 
+        // the textures of the block breaking
+        SDL_Texture** texturesBlockBreaking;
+
         // if there is a block array, then the dirt block can destroy itself and mark as nullptr in the array
         block** blockArray;
 
         // the index of the dirt block in the blockArray (if there is one)
         int blockIndex;
+
+        // index of the currect texture to render in the texturesBlockBreaking array
+        int blockBreakingIndex;
 
         double timeGrassCheck;
 
