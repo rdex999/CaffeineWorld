@@ -12,7 +12,7 @@ class player : public entity
 {
     public:
         player(base* baseObj);
-        ~player();
+        ~player() override;
 
         // function for walking. direction = -1 for right and direction = 1 for left 
         void walk(int direction);
