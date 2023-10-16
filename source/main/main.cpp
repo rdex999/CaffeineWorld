@@ -29,7 +29,7 @@ container::container()
     playerObj = new player(baseObj);
     itemsHeadObj = new itemsHead(baseObj, playerObj);
     entitysHeadObj = new entitysHead(baseObj, playerObj);
-    blocksHeadObj = new blocksHead(baseObj, playerObj);
+    blocksHeadObj = new blocksHead(baseObj, playerObj, entitysHeadObj);
     inventoryObj = new inventory(baseObj, playerObj, itemsHeadObj);
 }
 

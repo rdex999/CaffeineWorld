@@ -2,11 +2,13 @@
 #define BLOCKS_CAPASITY 1500
 #define B_W 184/4
 #define B_H 176/4
+#define MAX_ENTITYS 10
 
-blocksHead::blocksHead(base *baseObj, player *playerObj)
+blocksHead::blocksHead(base *baseObj, player *playerObj, entitysHead* entitysHeadObj)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;  
+    this->entitysHeadObj = entitysHeadObj;
 
     timeBuild = 0;
 
@@ -138,7 +140,8 @@ void blocksHead::tick()
                 {
                 case itemGrassBlock:
                     blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
-                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY, texturesBlockBreaking);
+                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY, texturesBlockBreaking,
+                        entitysHeadObj->entityArray, MAX_ENTITYS);
                     
                     break;
 
@@ -220,7 +223,8 @@ int blocksHead::spawnRow(vector2d *from, int blockCount, itemId blockType,
         }
         
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking);
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking,
+            entitysHeadObj->entityArray, MAX_ENTITYS);
     }
     return blocks;
 }
@@ -249,7 +253,8 @@ int blocksHead::spawnCrookedRow(vector2d *from, int blockCount, itemId blockType
     for(int i=0; i<blockCount; i++){
         location = *from + vector2d(B_W*i, -1*B_H*i);
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking);
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking,
+            entitysHeadObj->entityArray, MAX_ENTITYS);
     }
     return blockIndexCounter + blockCount;
 }

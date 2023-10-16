@@ -1,6 +1,12 @@
 #pragma once
 #include "../base/base.h"
 
+enum entityId: unsigned char
+{
+    entityPlayer,
+    entityZombie
+};
+
 class entity
 {
     public:
@@ -33,6 +39,10 @@ class entity
 
         // the slow falling when starting to fall
         float gravitySlowDown;
+
+        // the type of entity
+        // (see the entityId enum below)
+        entityId entityID;
 
     protected:
 

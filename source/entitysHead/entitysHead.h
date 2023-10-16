@@ -10,13 +10,14 @@ class entitysHead
         // runs every frame
         void tick();
 
+        // an array of entity pointers 
+        entity* entityArray[10] = {nullptr};
+    
     private:
 
         base* baseObj;
         player* playerObj;
 
-        // the zombies array
-        zombie* zombiesArray[10] = {nullptr};
 
         // an array of texture pointers for the zombies
         SDL_Texture* texturesZombie[3];

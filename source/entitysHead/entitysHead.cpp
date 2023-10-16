@@ -1,5 +1,5 @@
 #include "entitysHead.h"
-#define MAX_ZOMBIES 10
+#define MAX_ENTITYS 10
 
 entitysHead::entitysHead(base* baseObj, player* playerObj)
 {
@@ -26,7 +26,7 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
         exit(1);
     }
 
-    zombiesArray[0] = new zombie(baseObj, playerObj, zombiesArray, MAX_ZOMBIES, 0, texturesZombie);
+    entityArray[0] = (entity*)(new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, 0, texturesZombie));
 }
 
 entitysHead::~entitysHead()
@@ -37,18 +37,18 @@ entitysHead::~entitysHead()
         }
     }
 
-    for(int i=0; i<MAX_ZOMBIES; i++){
-        if(zombiesArray[i]){
-            delete zombiesArray[i];
+    for(int i=0; i<MAX_ENTITYS; i++){
+        if(entityArray[i]){
+            delete entityArray[i];
         }
     }
 }
 
 void entitysHead::tick()
 {
-    for(int i=0; i<MAX_ZOMBIES; i++){
-        if(zombiesArray[i] && zombiesArray[i]->location.inBox(vector2d(0, 0), baseObj->screenSize)){
-            zombiesArray[i]->tick();
+    for(int i=0; i<MAX_ENTITYS; i++){
+        if(entityArray[i] && entityArray[i]->location.inBox(vector2d(0, 0), baseObj->screenSize)){
+            entityArray[i]->tick();
         }
     }
 }

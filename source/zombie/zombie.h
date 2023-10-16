@@ -5,7 +5,7 @@
 class zombie : public entity
 {
     public:
-        zombie(base* baseObj, player* playerObj, zombie** zombiesArray, int zombiesArrayLength,
+        zombie(base* baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
             int zombieArrayIndex, SDL_Texture** textures);
 
         ~zombie() override;
@@ -21,6 +21,8 @@ class zombie : public entity
         // renders the zombie to the screen 
         void render() override;
 
+        void doJump();
+
         // an array of textures pointers
         // index 0: standing texture
         // index 1: walking 1
@@ -31,7 +33,7 @@ class zombie : public entity
         int currentTextureIndex;
 
         // the zombies array
-        zombie** zombiesArray;
+        entity** entityArray;
 
         // the length of the zombies array
         int zombiesArrayLength;
