@@ -63,6 +63,10 @@ player::player(base *baseObj)
     location.W = 556/9;
     location.H = 1030/9;
 
+    // for the player-v3.0 
+    //location.W = 240/3.85;
+    //location.H = 435/3.85;
+
     // load the skin images
     textures[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skin.png");
     if(!textures[0]){

@@ -26,7 +26,10 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     jumpIntensity = 10;
 
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
-        baseObj->screenSize.Y/3, 100, 100);
+        baseObj->screenSize.Y/3);
+
+    location.W = 556/9;
+    location.H = 1030/9;
 }
 
 zombie::~zombie()
