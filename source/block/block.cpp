@@ -296,7 +296,7 @@ int block::searchPlayerItem(itemId type, bool increase)
 void block::entityCollision()
 {
     for(int i=0; i<entityArrayLength; i++){
-        if(entityArray[i] && entityArray[i]->location.inBox(vector2d(0, 0), baseObj->screenSize))
+        if(entityArray[i])
         {
             // if there is a block above the player then block the jump
             if(((location.X > entityArray[i]->location.X &&

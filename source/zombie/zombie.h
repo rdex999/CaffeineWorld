@@ -23,6 +23,9 @@ class zombie : public entity
 
         void doJump();
 
+        // -1 for right 1 for left
+        void walk(int direction);
+
         // an array of textures pointers
         // index 0: standing texture
         // index 1: walking 1
@@ -41,4 +44,6 @@ class zombie : public entity
         // the index of this zombie in the zombies array
         int zombieArrayIndex;
 
+        // time between each step
+        double walkStepTime;
 };

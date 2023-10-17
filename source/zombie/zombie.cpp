@@ -24,12 +24,13 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     inAir = true;
     jump = false;
     jumpIntensity = 10;
+    walkStepTime = 0;
 
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
         baseObj->screenSize.Y/3);
 
-    location.W = 556/9;
-    location.H = 1030/9;
+    location.W = 154/3;
+    location.H = 350/3;
 }
 
 zombie::~zombie()
@@ -46,7 +47,6 @@ zombie::~zombie()
 void zombie::tick()
 {
     render();
-    location += baseObj->screenOffset;
 
     // if the zombie is above the floor and hes not jumping then use gravity 
     if(inAir && !jump){
@@ -63,8 +63,11 @@ void zombie::tick()
         }
     }
 
+    walk(1);
 
     inAir = true;
+    blockedLeft = false;
+    blockedRight = false;
 }
 
 void zombie::render()
@@ -79,4 +82,33 @@ void zombie::doJump()
         jump = true;
         inAir = true;
     }
+}
+
+void zombie::walk(int direction)
+{
+    if(direction == -1){
+        flip = true;
+        blockedLeft = false;
+    }
+    if(direction == 1){
+        flip = false;
+        blockedRight = false;
+    }
+
+    // the walking animation
+    if(walkStepTime >= 0.4f){
+        walkStepTime = 0.f;
+    }else if(walkStepTime >= 0.2f){
+        currentTextureIndex = 2;
+    }else if(walkStepTime >= 0.f){
+        currentTextureIndex = 1;
+    }
+    walkStepTime += baseObj->deltaTime;
+
+    if(blockedLeft || blockedRight){
+        direction = 0;
+    }
+    
+    // set the location
+    location.X -= baseObj->deltaTime * 15 * 15 * direction;
 }
