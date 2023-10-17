@@ -206,6 +206,8 @@ vector2d blocksHead::findBlockSpawn(vector2d* near)
         
     }
 
+    closest += baseObj->screenOffset;
+
     return closest;
 }
 

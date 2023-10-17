@@ -23,7 +23,7 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     gravitySlowDown = 1.f;
     inAir = true;
     jump = false;
-    jumpIntensity = 10;
+    jumpIntensity = 8;
     walkStepTime = 0;
 
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
@@ -55,16 +55,26 @@ void zombie::tick()
     }
 
     if(jump){
-        location.Y -= baseObj->deltaTime * std::clamp(jumpIntensity, -11.f, 10.f) * GRAVITY * 7.5f;
-        jumpIntensity -= baseObj->deltaTime * GRAVITY * 2.f;
+        location.Y -= baseObj->deltaTime * std::clamp(jumpIntensity, -9.f, 8.f) * GRAVITY * 3.5f;
+        jumpIntensity -= baseObj->deltaTime * GRAVITY * 3.f;
         if(!inAir){
             jump = false;
             jumpIntensity = 10;
         }
     }
 
-    walk(1);
+    if(playerObj->location.X - location.X > -3 && playerObj->location.X - location.X < 3){
+        currentTextureIndex = 0;
+    }else if(playerObj->location.X - location.X > -3){
+        walk(-1);
+    }else if(playerObj->location.X - location.X < 3){
+        walk(1);
+    }
 
+    if(blockedLeft || blockedRight){
+        doJump();
+    }
+    
     inAir = true;
     blockedLeft = false;
     blockedRight = false;
