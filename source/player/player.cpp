@@ -212,24 +212,17 @@ void player::tick()
     }
 
     // check if the player is outside screenBox and if so then move him out and set screenOffset
-    if(!location.inBox(vector2d(screenBox.X, screenBox.Y), vector2d(screenBox.W, screenBox.H))){
-        int difference = 0; 
+    if(!location.inBox(screenBox, vector2d(screenBox.W, screenBox.H)) ||
+        !(location + vector2d(location.W, location.H)).inBox(screenBox, vector2d(screenBox.W, screenBox.H)))
+    {
         if(location.Y < screenBox.Y){
-            difference = screenBox.Y-location.Y;
-            location.Y += difference;
-            baseObj->screenOffset.Y += difference;
+            location.Y += screenBox.Y-location.Y;
         }else if(location.Y+location.H >= screenBox.H){
-            difference = location.Y+location.H-screenBox.H;
-            location.Y -= difference;
-            baseObj->screenOffset.Y -= difference;
+            location.Y -= location.Y+location.H-screenBox.H;
         }else if(location.X <= screenBox.X){
-            difference =  screenBox.X-location.X;
-            location.X += difference;
-            baseObj->screenOffset -= difference;
+            location.X += screenBox.X-location.X;
         }else if(location.X+location.W >= screenBox.W){
-            difference = location.X+location.W-screenBox.X;
-            location.X -= difference;
-            baseObj->screenOffset += difference;
+            location.X -= location.X+location.W-screenBox.W;
         }
     }
 }

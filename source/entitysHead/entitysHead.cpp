@@ -49,6 +49,7 @@ void entitysHead::tick()
     for(int i=0; i<MAX_ENTITYS; i++){
         if(entityArray[i]){
             entityArray[i]->location += baseObj->screenOffset;
+
             if(entityArray[i]->location.inBox(vector2d(0, 0), baseObj->screenSize) ||
                 (entityArray[i]->location+vector2d(entityArray[i]->location.W, entityArray[i]->location.H)).
                 inBox(vector2d(0, 0), baseObj->screenSize))
