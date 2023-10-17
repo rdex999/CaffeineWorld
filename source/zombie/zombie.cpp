@@ -74,10 +74,6 @@ void zombie::tick()
     if(blockedLeft || blockedRight){
         doJump();
     }
-    
-    inAir = true;
-    blockedLeft = false;
-    blockedRight = false;
 }
 
 void zombie::render()

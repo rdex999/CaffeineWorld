@@ -55,7 +55,11 @@ void entitysHead::tick()
                 inBox(vector2d(0, 0), baseObj->screenSize))
             {
                 entityArray[i]->tick();
-            } 
+            }
+
+            entityArray[i]->inAir = true;
+            entityArray[i]->blockedLeft = false;
+            entityArray[i]->blockedRight = false;
         }
     }
 }

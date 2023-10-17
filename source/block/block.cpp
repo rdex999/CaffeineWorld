@@ -105,8 +105,11 @@ void block::tick()
         }
     }
 
-    if(location.inBox(vector2d(0, 0), baseObj->screenSize) || 
-        vector2d(location.X+location.W, location.Y+location.H).inBox(vector2d(0, 0), baseObj->screenSize))
+    if(location.inBox(vector2d(-baseObj->screenSize.W, -baseObj->screenSize.W),
+        baseObj->screenSize + baseObj->screenSize.W) || 
+        vector2d(location.X+location.W, location.Y+location.H).
+        inBox(vector2d(-baseObj->screenSize.W, -baseObj->screenSize.W),
+        baseObj->screenSize + baseObj->screenSize.W))
     {
         render();
 

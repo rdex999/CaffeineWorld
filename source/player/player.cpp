@@ -197,8 +197,8 @@ void player::tick()
     
     // if the player is above the floor and hes not jumping then use gravity 
     if(inAir && !jump){
-        move(vector2d(0, baseObj->deltaTime * gravity * std::clamp(gravitySlowDown, 1.f, 15.f) * -4));
-        gravitySlowDown += baseObj->deltaTime*50;
+        move(vector2d(0, baseObj->deltaTime * gravity * std::clamp(gravitySlowDown, 1.f, 11.f) * -7.5));
+        gravitySlowDown += baseObj->deltaTime * gravity * 2.f;
     }
 
     // if the player wants to jump and he is not in the air then jump
