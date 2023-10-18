@@ -8,6 +8,7 @@
 #include "../blocksHead/blocksHead.h"
 #include "../itemsHead/itemsHead.h"
 #include "../entitysHead/entitysHead.h"
+#include "../worldUI/worldUI.h"
 
 // container for all of the components
 typedef struct container
@@ -22,6 +23,7 @@ typedef struct container
     entitysHead* entitysHeadObj;
     inventory* inventoryObj;
     blocksHead* blocksHeadObj;
+    worldUI* worldUiObj;
 
     // handle keyboard
     void handleEvent();

@@ -31,6 +31,7 @@ container::container()
     entitysHeadObj = new entitysHead(baseObj, playerObj);
     blocksHeadObj = new blocksHead(baseObj, playerObj, entitysHeadObj);
     inventoryObj = new inventory(baseObj, playerObj, itemsHeadObj);
+    worldUiObj = new worldUI(baseObj, playerObj);
 }
 
 container::~container()
@@ -41,6 +42,7 @@ container::~container()
     if(entitysHeadObj){delete entitysHeadObj;}
     if(blocksHeadObj){delete blocksHeadObj;}
     if(inventoryObj){delete inventoryObj;}
+    if(worldUiObj){delete worldUiObj;}
 
     if(baseObj){delete baseObj;}
     SDL_Quit();
@@ -186,6 +188,8 @@ void container::runTicks()
     entitysHeadObj->tick();
     blocksHeadObj->tick();
     inventoryObj->tick();
+    worldUiObj->tick();
+
     SDL_RenderPresent(baseObj->mainRenderer);
 
     baseObj->screenOffset = vector2d(0, 0);

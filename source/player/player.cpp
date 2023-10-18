@@ -53,6 +53,12 @@ player::player(base *baseObj)
     // the jumping intensity
     jumpIntensity = 10;
 
+    // the hp of the player
+    life = 2;
+
+    // the max hp of the player
+    maxLife = 10;
+
     // the location of the floor in the background 
     floorLocation = vector2d(0, baseObj->screenSize.Y/1.064);
 

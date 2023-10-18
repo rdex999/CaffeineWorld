@@ -44,6 +44,12 @@ class entity
         // (see the entityId enum below)
         entityId entityID;
 
+        // the hp of the entity
+        float life;
+
+        // the max hp of the entity
+        float maxLife;
+
     protected:
 
         // allways store base pointer
