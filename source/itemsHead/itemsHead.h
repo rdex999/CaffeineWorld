@@ -23,6 +23,4 @@ class itemsHead
         // store baseObj and playerObj pointers
         base* baseObj;
         player* playerObj;
-
-
 };

@@ -33,6 +33,8 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
     }
 
     entityArray[0] = (entity*)(new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, 0, texturesZombie, textureMobLifeBar));
+    baseObj->entityArray = entityArray;
+    baseObj->entityArrayLength = MAX_ENTITYS;
 }
 
 entitysHead::~entitysHead()

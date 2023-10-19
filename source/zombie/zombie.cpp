@@ -33,8 +33,8 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     jumpIntensity = 8;
     walkStepTime = 0;
     lastHitTime = 0;
-    life = 2;
-    maxLife = 10;
+    life = 10;
+    maxLife = life;
     wasHit = false;
     deltaHealthTime = 0;
 
@@ -94,13 +94,12 @@ void zombie::tick()
         (location + vector2d(location.W, location.H/2)).inBox(playerObj->location, playerObj->location.getWH())) &&
         lastHitTime >= 1)
     {
-        playerObj->life -= HIT_POWER;
         lastHitTime = 0;
-        playerObj->hasHit = true;
-        playerObj->deltaHealthTime = 0;
+        playerObj->takeDemage(HIT_POWER);
     }
 
     deltaHealthTime = std::clamp((double)0, (double)10, deltaHealthTime + baseObj->deltaTime);
+    tookHitTime = std::clamp((double)0, (double)5, tookHitTime + baseObj->deltaTime);
 
     // if 5 seconds have passed since the zombie has taken a hit
     if(wasHit && deltaHealthTime >= LIFE_REGEN_TIME){
@@ -119,6 +118,16 @@ void zombie::tick()
     }else if(life < maxLife && deltaHealthTime >= LIFE_REGEM_NORM_TIME && !wasHit){
         deltaHealthTime = 0;
         life += maxLife - life;
+    }
+}
+
+void zombie::takeDemage(float demageAmount)
+{
+    if(tookHitTime >= 0.5){
+        life = life - demageAmount > 0 ? life - demageAmount : 0;
+        wasHit = true;
+        deltaHealthTime = 0;
+        tookHitTime = 0;
     }
 }
 

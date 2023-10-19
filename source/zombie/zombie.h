@@ -13,6 +13,9 @@ class zombie : public entity
         // runs every frame
         void tick() override;
 
+        // deals demage to the zombie
+        void takeDemage(float demageAmount) override;
+
     private:
 
         // store playerObj pointer
@@ -58,4 +61,7 @@ class zombie : public entity
 
         // time between each health regeneration
         double deltaHealthTime;
+
+        // time since the last time the zombie has taken a hit
+        double tookHitTime;
 };

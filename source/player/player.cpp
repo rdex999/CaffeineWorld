@@ -96,6 +96,13 @@ void player::setTextureStand()
     textureIndex = 0;
 }
 
+void player::takeDemage(float demageAmount)
+{
+    life -= demageAmount;
+    hasHit = true;
+    deltaHealthTime = 0;
+}
+
 void player::move(vector2d location)
 {
     if((this->location - location).inBox(vector2d(screenBox.X, screenBox.Y), vector2d(screenBox.W, screenBox.H)) &&

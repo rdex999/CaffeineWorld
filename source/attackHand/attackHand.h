@@ -27,9 +27,6 @@ class attackHand
         // the hand location on the screen
         vector2d screenLocation;
 
-        // the hand texture size
-        vector2d handSize;
-
         // if the player is currently attacking (with the hand) 
         bool attack;
 

@@ -3,3 +3,8 @@
 entity::~entity()
 {
 }
+
+void entity::takeDemage(float demageAmount)
+{
+    life -= demageAmount;
+}

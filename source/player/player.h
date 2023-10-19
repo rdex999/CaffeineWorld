@@ -29,7 +29,11 @@ class player : public entity
         // checks if the player is in the air and if he is not then jump 
         void doJump();
 
+        // sents the current texture to the standing texture
         void setTextureStand();
+
+        // deals demage to the player
+        void takeDemage(float demageAmount) override;
 
         // the box on the screen that the player is in
         vector2d screenBox;

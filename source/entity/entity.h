@@ -16,6 +16,8 @@ class entity
 
         virtual ~entity();
 
+        virtual void takeDemage(float demageAmount);
+
         // the location of the entity on the screen
         vector2d location;
 

@@ -1,4 +1,7 @@
 #include "attackHand.h"
+#define HAND_DEMAGE 1
+#define HAND_W 371/6
+#define HAND_H 168/6
 
 attackHand::attackHand(base *baseObj, player* playerObj)
 {
@@ -6,7 +9,7 @@ attackHand::attackHand(base *baseObj, player* playerObj)
     this->playerObj = playerObj;
 
     // set the hand size
-    handSize = vector2d(371, 168)/6;
+    screenLocation = vector2d(0, 0, HAND_W, HAND_H);
 
     attack = false;
 
@@ -52,6 +55,24 @@ void attackHand::tick()
                 std::sin(rotation*(M_PI/180)) * baseObj->deltaTime * attackOffset * attackSlowDown);
         }
         screenLocation = playerObj->location + vector2d(direction.X, direction.Y + playerObj->location.H/2.7);
+        screenLocation.W = HAND_W;
+        screenLocation.H = HAND_H;
+
+        if(baseObj->entityArray){
+            for(int i=0; i<baseObj->entityArrayLength; i++){
+                if(baseObj->entityArray[i]){
+                    
+                    // if the hand is touching an entity
+                    if(screenLocation.inBox(baseObj->entityArray[i]->location,
+                        baseObj->entityArray[i]->location.getWH()) ||
+                        screenLocation.getWH().inBox(baseObj->entityArray[i]->location,
+                        baseObj->entityArray[i]->location.getWH()))
+                    {
+                        baseObj->entityArray[i]->takeDemage(HAND_DEMAGE);
+                    }
+                }
+            }
+        }
     }
 
 }
@@ -59,7 +80,7 @@ void attackHand::tick()
 void attackHand::render()
 {
     if(attack){
-        SDL_Rect rect = {screenLocation.X, screenLocation.Y, handSize.X, handSize.Y};
+        SDL_Rect rect = {screenLocation.X, screenLocation.Y, screenLocation.W, screenLocation.H};
         SDL_RenderCopyEx(baseObj->mainRenderer, texture, NULL, &rect, rotation, NULL, SDL_RendererFlip(playerObj->flip));
     }
 }

@@ -34,6 +34,13 @@ typedef struct base
     // the mouse state 1 = left click, 2 = middle click, 4/3 = right click
     Uint32 mouseState;
 
+    // a list of entity pointers.
+    // this is for dealing demage to enemies
+    class entity** entityArray;
+
+    // the length of the entity array (not the index of the last item)
+    int entityArrayLength;
+
     // returns a texture of the text with the given size, color, and font
     SDL_Texture* createTextTexture(const char* fontPath, const char* text, SDL_Color color, int fontSize, int* width, int* height);
 
