@@ -52,4 +52,10 @@ class zombie : public entity
 
         // time since the last zombie hit
         double lastHitTime;
+
+        // if the zombie has taken a hit
+        bool wasHit;
+
+        // time between each health regeneration
+        double deltaHealthTime;
 };

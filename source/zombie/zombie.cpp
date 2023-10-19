@@ -3,6 +3,9 @@
 #define HIT_POWER 1.5
 #define LIFEBAR_W (int)(87/1.3)
 #define LIFEBAR_H (int)(18/1.3)
+#define LIFE_REGEN 0.5
+#define LIFE_REGEM_NORM_TIME 2 
+#define LIFE_REGEN_TIME 5
 
 zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
     int zombieArrayIndex, SDL_Texture** textures, SDL_Texture* textureLifeBar)
@@ -30,8 +33,10 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     jumpIntensity = 8;
     walkStepTime = 0;
     lastHitTime = 0;
-    life = 8;
+    life = 2;
     maxLife = 10;
+    wasHit = false;
+    deltaHealthTime = 0;
 
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
         baseObj->screenSize.Y/3);
@@ -94,6 +99,27 @@ void zombie::tick()
         playerObj->hasHit = true;
         playerObj->deltaHealthTime = 0;
     }
+
+    deltaHealthTime = std::clamp((double)0, (double)10, deltaHealthTime + baseObj->deltaTime);
+
+    // if 5 seconds have passed since the zombie has taken a hit
+    if(wasHit && deltaHealthTime >= LIFE_REGEN_TIME){
+        wasHit = false;
+        deltaHealthTime = 0;
+        if(life <= maxLife - LIFE_REGEN){
+            life += LIFE_REGEN;
+        }else if(life < maxLife){
+            life += maxLife - life; 
+        }
+    }
+
+    if(life <= maxLife - LIFE_REGEN && deltaHealthTime >= LIFE_REGEM_NORM_TIME && !wasHit){
+        deltaHealthTime = 0;
+        life += LIFE_REGEN;
+    }else if(life < maxLife && deltaHealthTime >= LIFE_REGEM_NORM_TIME && !wasHit){
+        deltaHealthTime = 0;
+        life += maxLife - life;
+    }
 }
 
 void zombie::doJump()
@@ -145,7 +171,16 @@ void zombie::render()
         SDL_Rect lifeBarRect = {location.X - location.W/5 + LIFEBAR_W/12, location.Y - location.H/5 + LIFEBAR_H / 3,
             (int)((LIFEBAR_W - (int)(LIFEBAR_W/6.5)) * (life / maxLife)), LIFEBAR_H - 2*(LIFEBAR_H/3)};
 
-        SDL_SetRenderDrawColor(baseObj->mainRenderer, 200, 0, 0, 0);
+        if(life / maxLife < 0.3){
+            SDL_SetRenderDrawColor(baseObj->mainRenderer, 200, 0, 0, 0);
+        }else if(life / maxLife < 0.5){
+            SDL_SetRenderDrawColor(baseObj->mainRenderer, 200, 120, 0, 0);
+        }else if(life / maxLife < 0.7){
+            SDL_SetRenderDrawColor(baseObj->mainRenderer, 200, 200, 0, 0);
+        }else if(life / maxLife < 0.9){
+            SDL_SetRenderDrawColor(baseObj->mainRenderer, 0, 200, 0, 0);
+        }
+
         SDL_RenderFillRect(baseObj->mainRenderer, &lifeBarRect);
     }
 }
