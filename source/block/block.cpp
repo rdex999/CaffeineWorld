@@ -3,8 +3,7 @@
 #define B_H 176/4
 
 block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockType, SDL_Texture *texture, SDL_Texture *texture2,
-    block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking,
-    entity** entityArray, int entityArrayLength)
+    block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
@@ -16,8 +15,6 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
     this->blockIndex = blockIndex;
     this->blockArraySize = blockArraySize;
     this->texturesBlockBreaking = texturesBlockBreaking;
-    this->entityArray = entityArray;
-    this->entityArrayLength = entityArrayLength;
     this->location.W = B_W;
     this->location.H = B_H;
     
@@ -266,7 +263,7 @@ void block::tick()
         //
         playerCollision();
 
-        if(entityArray){
+        if(baseObj->entityArray){
             entityCollision();
         } 
     }
@@ -298,57 +295,59 @@ int block::searchPlayerItem(itemId type, bool increase)
 
 void block::entityCollision()
 {
-    for(int i=0; i<entityArrayLength; i++){
-        if(entityArray[i])
+    for(int i=0; i<baseObj->entityArrayLength; i++){
+        if(baseObj->entityArray[i])
         {
             // if there is a block above the player then block the jump
-            if(((location.X > entityArray[i]->location.X &&
-                location.X < entityArray[i]->location.X+entityArray[i]->location.W) ||
-                (location.X+B_W > entityArray[i]->location.X &&
-                location.X+B_W < entityArray[i]->location.X+entityArray[i]->location.W)) &&
-                location.Y + B_H >= entityArray[i]->location.Y && 
-                location.Y + B_H <= entityArray[i]->location.Y + entityArray[i]->location.H/5)
+            if(((location.X > baseObj->entityArray[i]->location.X &&
+                location.X < baseObj->entityArray[i]->location.X+baseObj->entityArray[i]->location.W) ||
+                (location.X+B_W > baseObj->entityArray[i]->location.X &&
+                location.X+B_W < baseObj->entityArray[i]->location.X+baseObj->entityArray[i]->location.W)) &&
+                location.Y + B_H >= baseObj->entityArray[i]->location.Y && 
+                location.Y + B_H <= baseObj->entityArray[i]->location.Y + baseObj->entityArray[i]->location.H/5)
             {
-                entityArray[i]->location.Y += (location.Y+B_H)-entityArray[i]->location.Y;
-                entityArray[i]->jump = false;
-                entityArray[i]->jumpIntensity = 10;
+                baseObj->entityArray[i]->location.Y += (location.Y+B_H)-baseObj->entityArray[i]->location.Y;
+                baseObj->entityArray[i]->jump = false;
+                baseObj->entityArray[i]->jumpIntensity = 10;
             }else{
             }
 
             // if the player is blocked by a high wall (when the wall is on the right)
-            if(entityArray[i]->location.X+entityArray[i]->location.W >= location.X &&
-                entityArray[i]->location.X+entityArray[i]->location.W < location.X+B_W &&
-                location.Y < entityArray[i]->location.Y + entityArray[i]->location.H/2 && 
-                location.Y+B_H >= entityArray[i]->location.Y
+            if(baseObj->entityArray[i]->location.X+baseObj->entityArray[i]->location.W >= location.X &&
+                baseObj->entityArray[i]->location.X+baseObj->entityArray[i]->location.W < location.X+B_W &&
+                location.Y < baseObj->entityArray[i]->location.Y + baseObj->entityArray[i]->location.H/2 && 
+                location.Y+B_H >= baseObj->entityArray[i]->location.Y
             )
             {
-                entityArray[i]->blockedRight = true;
-                entityArray[i]->location.X -= (entityArray[i]->location.X+entityArray[i]->location.W)-location.X;
+                baseObj->entityArray[i]->blockedRight = true;
+                baseObj->entityArray[i]->location.X -= (baseObj->entityArray[i]->location.X+
+                    baseObj->entityArray[i]->location.W)-location.X;
             }
 
             // if the player is blocked by a high wall (when the wall is on the left)
-            if(entityArray[i]->location.X <= location.X+B_W &&
-                entityArray[i]->location.X > location.X && 
-                location.Y < entityArray[i]->location.Y + entityArray[i]->location.H/2 && 
-                location.Y+B_H >= entityArray[i]->location.Y
+            if(baseObj->entityArray[i]->location.X <= location.X+B_W &&
+                baseObj->entityArray[i]->location.X > location.X && 
+                location.Y < baseObj->entityArray[i]->location.Y + baseObj->entityArray[i]->location.H/2 && 
+                location.Y+B_H >= baseObj->entityArray[i]->location.Y
             )
             {
-                entityArray[i]->blockedLeft = true;
-                entityArray[i]->location.X += (location.X+B_W)-entityArray[i]->location.X;
+                baseObj->entityArray[i]->blockedLeft = true;
+                baseObj->entityArray[i]->location.X += (location.X+B_W)-baseObj->entityArray[i]->location.X;
             }
 
             // whether the player is standing on the block
-            if(((location.X <= entityArray[i]->location.X+entityArray[i]->location.W &&
-                location.X >= entityArray[i]->location.X) || 
-                (location.X+B_W <= entityArray[i]->location.X+entityArray[i]->location.W &&
-                location.X+B_W >= entityArray[i]->location.X))&&
-                location.Y <= entityArray[i]->location.Y+entityArray[i]->location.H &&
-                location.Y > entityArray[i]->location.Y + entityArray[i]->location.H/2 && 
+            if(((location.X <= baseObj->entityArray[i]->location.X+baseObj->entityArray[i]->location.W &&
+                location.X >= baseObj->entityArray[i]->location.X) || 
+                (location.X+B_W <= baseObj->entityArray[i]->location.X+baseObj->entityArray[i]->location.W &&
+                location.X+B_W >= baseObj->entityArray[i]->location.X))&&
+                location.Y <= baseObj->entityArray[i]->location.Y+baseObj->entityArray[i]->location.H &&
+                location.Y > baseObj->entityArray[i]->location.Y + baseObj->entityArray[i]->location.H/2 && 
                 !blockAbove)
             {
-                entityArray[i]->inAir = false;
-                entityArray[i]->gravitySlowDown = 1.f; 
-                entityArray[i]->location.Y -= ((entityArray[i]->location.Y+entityArray[i]->location.H)-location.Y)*
+                baseObj->entityArray[i]->inAir = false;
+                baseObj->entityArray[i]->gravitySlowDown = 1.f; 
+                baseObj->entityArray[i]->location.Y -= ((baseObj->entityArray[i]->location.Y+
+                    baseObj->entityArray[i]->location.H)-location.Y)*
                     baseObj->deltaTime * 15; 
             }
         }

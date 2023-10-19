@@ -2,12 +2,11 @@
 #include "../base/base.h"
 #include "../player/player.h"
 #include "../block/block.h"
-#include "../entitysHead/entitysHead.h"
 
 class blocksHead
 {
     public:
-        blocksHead(base* baseObj, player* playerObj, entitysHead* entitysHeadObj);
+        blocksHead(base* baseObj, player* playerObj);
         ~blocksHead();
 
         // runs every frame
@@ -18,7 +17,6 @@ class blocksHead
         // store baseObj and playerObj pointers
         base* baseObj;
         player* playerObj;
-        entitysHead* entitysHeadObj;
 
         // the area that the player can build in
         vector2d playerBuildZone;

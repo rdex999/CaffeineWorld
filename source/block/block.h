@@ -24,8 +24,7 @@ class block
         // the size you gave the blocks array. (not the index of the last element)
         block(base* baseObj, player* playerObj, vector2d *location, itemId blockType,
             SDL_Texture* texture, SDL_Texture* texture2,
-            block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking,
-            entity** entityArray = nullptr, int entityArrayLength = -1);
+            block** blockArray, int blockIndex, int blockArraySize, SDL_Texture** texturesBlockBreaking);
 
         ~block();
 
@@ -71,12 +70,6 @@ class block
 
         // if there is a block array, then the dirt block can destroy itself and mark as nullptr in the array
         block** blockArray;
-
-        // the entity array for collision
-        entity** entityArray;
-
-        // the length of the entity array.
-        int entityArrayLength;
 
         // the index of the dirt block in the blockArray (if there is one)
         int blockIndex;

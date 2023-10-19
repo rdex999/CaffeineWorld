@@ -4,11 +4,10 @@
 #define B_H 176/4
 #define MAX_ENTITYS 10
 
-blocksHead::blocksHead(base *baseObj, player *playerObj, entitysHead* entitysHeadObj)
+blocksHead::blocksHead(base *baseObj, player *playerObj)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;  
-    this->entitysHeadObj = entitysHeadObj;
 
     timeBuild = 0;
 
@@ -140,8 +139,7 @@ void blocksHead::tick()
                 {
                 case itemGrassBlock:
                     blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
-                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY, texturesBlockBreaking,
-                        entitysHeadObj->entityArray, MAX_ENTITYS);
+                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx, BLOCKS_CAPASITY, texturesBlockBreaking);
                     
                     break;
 
@@ -225,8 +223,7 @@ int blocksHead::spawnRow(vector2d *from, int blockCount, itemId blockType,
         }
         
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking,
-            entitysHeadObj->entityArray, MAX_ENTITYS);
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking);
     }
     return blocks;
 }
@@ -255,8 +252,7 @@ int blocksHead::spawnCrookedRow(vector2d *from, int blockCount, itemId blockType
     for(int i=0; i<blockCount; i++){
         location = *from + vector2d(B_W*i, -1*B_H*i);
         blockArray[i + fromIndex] = new block(baseObj, playerObj, &location, blockType,
-            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking,
-            entitysHeadObj->entityArray, MAX_ENTITYS);
+            texture1, texture2, blockArray, i+fromIndex, BLOCKS_CAPASITY, texturesBlockBreaking);
     }
     return blockIndexCounter + blockCount;
 }
