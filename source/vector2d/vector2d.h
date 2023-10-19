@@ -23,6 +23,9 @@ class vector2d
         double distance(vector2d to);
         double distance(vector2d *to);
 
+        // @returns {vector2d} vector of X+W, Y+H
+        vector2d getWH();
+
         void operator += (const vector2d& vec);
         void operator -= (const vector2d& vec);
         void operator *= (const vector2d& vec);

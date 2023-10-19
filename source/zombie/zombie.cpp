@@ -1,5 +1,6 @@
 #include "zombie.h"
 #define GRAVITY 9.80665
+#define HIT_POWER 1.5
 
 zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
     int zombieArrayIndex, SDL_Texture** textures)
@@ -25,6 +26,7 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     jump = false;
     jumpIntensity = 8;
     walkStepTime = 0;
+    lastHitTime = 0;
 
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
         baseObj->screenSize.Y/3);
@@ -73,6 +75,19 @@ void zombie::tick()
 
     if(blockedLeft || blockedRight){
         doJump();
+    }
+
+    lastHitTime += std::clamp((double)0, (double)10, baseObj->deltaTime);
+
+    // if the hand of the zombie touches the player
+    if(((location + vector2d(0, location.H/2)).inBox(playerObj->location, playerObj->location.getWH()) ||
+        (location + vector2d(location.W, location.H/2)).inBox(playerObj->location, playerObj->location.getWH())) &&
+        lastHitTime >= 1)
+    {
+        playerObj->life -= HIT_POWER;
+        lastHitTime = 0;
+        playerObj->hasHit = true;
+        playerObj->deltaHealthTime = 0;
     }
 }
 

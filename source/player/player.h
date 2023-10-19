@@ -53,6 +53,12 @@ class player : public entity
         // the block that the player stands on
         vector2d standingBlock;
 
+        // if the player was hit (by a zombie or something)
+        bool hasHit;
+
+        // time between each health regeneration
+        double deltaHealthTime;
+
     private: 
 
         // renders the player

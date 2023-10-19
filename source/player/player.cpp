@@ -1,4 +1,7 @@
 #include "player.h"
+#define LIFE_REGEN 0.5
+#define LIFE_REGEM_NORM_TIME 2 
+#define LIFE_REGEN_TIME 5
 
 player::player(base *baseObj)
 {
@@ -8,56 +11,25 @@ player::player(base *baseObj)
     screenBox = vector2d(baseObj->screenSize.X/4, baseObj->screenSize.Y/4,
         baseObj->screenSize.X - baseObj->screenSize.X/4, baseObj->screenSize.Y - baseObj->screenSize.Y/4);
 
-    // set the texture index
     textureIndex = 0;
-
-    // if the player is blocked by a wall from the right
     blockedRight = false;
-
-    // if the plaer is blocked by a wall from the left
     blockedLeft = false;
-
-    // whether the player is in the air or not
     inAir = true;
-
-    // sould the texture flip (for walking right or left)
     flip = false;
-
-    // original walking speed
     walkingSpeedOrigin = 37.f;
-
-    // walking speed (140 for debug)
     walkingSpeed = walkingSpeedOrigin;
-
-    // the slow start/end of walking
     walkingSlowDown = 0.f;
-
-    // the slow down speed of stopping to walk
     slowDownEndWalk = 0;
-
-    // if the player stopped walking
     stoppedWalking = 0;
-
-    // the time between each step animation
     walkStepTime = 0.f;
-
-    // the gravity intensity on earth (from wikipedia)
     gravity = 9.80665;
-
-    // the slow gravity at the start of falling
     gravitySlowDown = 1.f;
-
-    // if the player should jump
     jump = false;
-
-    // the jumping intensity
     jumpIntensity = 10;
-
-    // the hp of the player
-    life = 2;
-
-    // the max hp of the player
+    life = 10;
     maxLife = 10;
+    hasHit = false;
+    deltaHealthTime = 0;
 
     // the location of the floor in the background 
     floorLocation = vector2d(0, baseObj->screenSize.Y/1.064);
@@ -215,6 +187,27 @@ void player::tick()
             jump = false;
             jumpIntensity = 10;
         }
+    }
+
+    deltaHealthTime = std::clamp((double)0, (double)10, deltaHealthTime + baseObj->deltaTime);
+
+    // if the player was hit, and three seconds have passed since
+    if(hasHit && deltaHealthTime >= LIFE_REGEN_TIME){
+        hasHit = false;
+        deltaHealthTime = 0;
+        if(life <= maxLife - LIFE_REGEN){
+            life += LIFE_REGEN;
+        }else if(life < maxLife){
+            life += maxLife - life; 
+        }
+    }
+
+    if(life <= maxLife - LIFE_REGEN && deltaHealthTime >= LIFE_REGEM_NORM_TIME && !hasHit){
+        deltaHealthTime = 0;
+        life += LIFE_REGEN;
+    }else if(life < maxLife && deltaHealthTime >= LIFE_REGEM_NORM_TIME && !hasHit){
+        deltaHealthTime = 0;
+        life += maxLife - life;
     }
 
     // check if the player is outside screenBox and if so then move him out and set screenOffset

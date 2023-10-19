@@ -47,6 +47,11 @@ double vector2d::distance(vector2d *to)
     return std::sqrt(std::pow(this->X - to->X, 2) + std::pow(this->Y - to->Y, 2));
 }
 
+vector2d vector2d::getWH()
+{
+    return vector2d(X+W, Y+H);
+}
+
 void vector2d::operator+=(const vector2d &vec)
 {
     this->X += vec.X;

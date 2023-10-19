@@ -44,21 +44,16 @@ void worldUI::render()
     for(int i=0; i<10; i++){
         SDL_RenderCopy(baseObj->mainRenderer, textureHeartEmpty, NULL, &heartEmptyRect);
         heartEmptyRect.x += HEART_W + 10;
-
-        if(playerObj->life - i > 0){
-            SDL_RenderCopy(baseObj->mainRenderer, textureHeartFull, NULL, &heartEmptyRect);
-        }
     }
 
     SDL_Rect heartFullRect = {baseObj->screenSize.X/20, baseObj->screenSize.Y - baseObj->screenSize.Y/19, HEART_W, HEART_H};
-    for(int i=0; i<playerObj->life; i++){
+    for(int i=1; i<=playerObj->life; i++){
         SDL_RenderCopy(baseObj->mainRenderer, textureHeartFull, NULL, &heartFullRect);
         heartFullRect.x += HEART_W + 10;
 
         if(playerObj->life - i == 0.5){
             heartFullRect.w /= 2; 
             SDL_RenderCopy(baseObj->mainRenderer, textureHeartFullHalf, NULL, &heartFullRect);
-
         }
     }
 

@@ -46,4 +46,7 @@ class zombie : public entity
 
         // time between each step
         double walkStepTime;
+
+        // time since the last zombie hit
+        double lastHitTime;
 };
