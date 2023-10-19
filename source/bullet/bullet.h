@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include "../base/base.h"
 #include "../dVector2d/dVector2d.h"
+#include "../entity/entity.h"
 
 class bullet
 {
@@ -27,9 +28,6 @@ class bullet
 
         // bullet texture
         SDL_Texture* texture;
-
-        // the size of the bullet image 
-        vector2d size;
 
         // the bullet rotation on the screen (radians)
         double rotation;

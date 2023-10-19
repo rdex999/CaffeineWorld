@@ -12,6 +12,14 @@ dVector2d::dVector2d(double X, double Y)
     this->Y = Y;
 }
 
+dVector2d::dVector2d(double X, double Y, double W, double H)
+{
+    this->X = X;
+    this->Y = Y;
+    this->W = W;
+    this->H = H;
+}
+
 dVector2d dVector2d::norm()
 {
     double mag = std::sqrt(this->X * this->X + this->Y * this->Y);
@@ -27,6 +35,21 @@ bool dVector2d::inBox(dVector2d point1, dVector2d point2)
 void dVector2d::printVec()
 {
     std::cout << "Vector: (" << this->X << ", " << this->Y << ")" << std::endl;
+}
+
+double dVector2d::distance(dVector2d to)
+{
+    return std::sqrt(std::pow(this->X - to.X, 2) + std::pow(this->Y - to.Y, 2));
+}
+
+double dVector2d::distance(dVector2d *to)
+{
+    return std::sqrt(std::pow(this->X - to->X, 2) + std::pow(this->Y - to->Y, 2));
+}
+
+dVector2d dVector2d::getWH()
+{
+    return dVector2d(X+W, Y+H);
 }
 
 void dVector2d::operator+=(const dVector2d &vec)

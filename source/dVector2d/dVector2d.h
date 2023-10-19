@@ -8,8 +8,10 @@ class dVector2d
 {
     public:
         double X, Y;
+        double W, H;
         dVector2d();
         dVector2d(double X, double Y);
+        dVector2d(double X, double Y, double W, double H);
 
         dVector2d norm();
 
@@ -18,6 +20,13 @@ class dVector2d
 
         // prints the vector to the terminal
         void printVec();
+        
+        // returns the distance from this to 'to'
+        double distance(dVector2d to);
+        double distance(dVector2d *to);
+
+        // @returns {vector2d} vector of X+W, Y+H
+        dVector2d getWH();
 
         void operator += (const dVector2d& vec);
         void operator -= (const dVector2d& vec);
