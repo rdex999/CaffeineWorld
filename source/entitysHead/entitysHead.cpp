@@ -26,7 +26,13 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
         exit(1);
     }
 
-    entityArray[0] = (entity*)(new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, 0, texturesZombie));
+    textureMobLifeBar = IMG_LoadTexture(baseObj->mainRenderer, "./images/mobs/mobLifeBar/mobLifeBar-v1.1.png");
+    if(!textureMobLifeBar){
+        std::cout << "Error: could not create mob life bar texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    entityArray[0] = (entity*)(new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, 0, texturesZombie, textureMobLifeBar));
 }
 
 entitysHead::~entitysHead()
@@ -42,6 +48,8 @@ entitysHead::~entitysHead()
             delete entityArray[i];
         }
     }
+
+    if(textureMobLifeBar){SDL_DestroyTexture(textureMobLifeBar);}
 }
 
 void entitysHead::tick()

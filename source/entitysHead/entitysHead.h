@@ -22,4 +22,7 @@ class entitysHead
         // an array of texture pointers for the zombies
         SDL_Texture* texturesZombie[3];
 
+        // the texture of the hp bar above the mobs
+        SDL_Texture* textureMobLifeBar;
+
 };

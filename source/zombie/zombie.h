@@ -6,7 +6,7 @@ class zombie : public entity
 {
     public:
         zombie(base* baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
-            int zombieArrayIndex, SDL_Texture** textures);
+            int zombieArrayIndex, SDL_Texture** textures, SDL_Texture* textureLifeBar);
 
         ~zombie() override;
 
@@ -31,6 +31,9 @@ class zombie : public entity
         // index 1: walking 1
         // index 2: walking 2
         SDL_Texture* textures[3];
+
+        // the texture of the life bar
+        SDL_Texture* textureLifeBar;
 
         // the index of the texture to render
         int currentTextureIndex;

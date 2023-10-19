@@ -1,16 +1,19 @@
 #include "zombie.h"
 #define GRAVITY 9.80665
 #define HIT_POWER 1.5
+#define LIFEBAR_W (int)(87/1.3)
+#define LIFEBAR_H (int)(18/1.3)
 
 zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
-    int zombieArrayIndex, SDL_Texture** textures)
+    int zombieArrayIndex, SDL_Texture** textures, SDL_Texture* textureLifeBar)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
     this->entityArray = entityArray;
     this->zombiesArrayLength = zombiesArrayLength;
     this->zombieArrayIndex = zombieArrayIndex;
-    
+    this->textureLifeBar = textureLifeBar;
+
     // for some reasone the c++ compiler wont let me do
     // this->textures = textures;
     this->textures[0] = textures[0];
@@ -27,6 +30,8 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
     jumpIntensity = 8;
     walkStepTime = 0;
     lastHitTime = 0;
+    life = 8;
+    maxLife = 10;
 
     location = vector2d(baseObj->screenSize.X - baseObj->screenSize.X/4,
         baseObj->screenSize.Y/3);
@@ -91,12 +96,6 @@ void zombie::tick()
     }
 }
 
-void zombie::render()
-{
-    SDL_Rect rect = {location.X, location.Y, location.W, location.H};
-    SDL_RenderCopyEx(baseObj->mainRenderer, textures[currentTextureIndex], NULL, &rect, 0, nullptr, SDL_RendererFlip(flip));
-}
-
 void zombie::doJump()
 {
     if(!jump && !inAir){
@@ -132,4 +131,21 @@ void zombie::walk(int direction)
     
     // set the location
     location.X -= baseObj->deltaTime * 15 * 15 * direction;
+}
+
+void zombie::render()
+{
+    SDL_Rect rect = {location.X, location.Y, location.W, location.H};
+    SDL_RenderCopyEx(baseObj->mainRenderer, textures[currentTextureIndex], NULL, &rect, 0, nullptr, SDL_RendererFlip(flip));
+
+    if(life < maxLife){
+        SDL_Rect lifeBarEmptyRect = {location.X - location.W/5, location.Y - location.H/5, LIFEBAR_W, LIFEBAR_H};
+        SDL_RenderCopy(baseObj->mainRenderer, textureLifeBar, NULL, &lifeBarEmptyRect);
+        
+        SDL_Rect lifeBarRect = {location.X - location.W/5 + LIFEBAR_W/12, location.Y - location.H/5 + LIFEBAR_H / 3,
+            (int)((LIFEBAR_W - (int)(LIFEBAR_W/6.5)) * (life / maxLife)), LIFEBAR_H - 2*(LIFEBAR_H/3)};
+
+        SDL_SetRenderDrawColor(baseObj->mainRenderer, 200, 0, 0, 0);
+        SDL_RenderFillRect(baseObj->mainRenderer, &lifeBarRect);
+    }
 }
