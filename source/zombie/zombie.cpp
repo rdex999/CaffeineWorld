@@ -37,6 +37,7 @@ zombie::zombie(base *baseObj, player* playerObj, int zombieArrayIndex, vector2d*
     maxLife = life;
     wasHit = false;
     deltaHealthTime = 0;
+    tookHitTime = 0;
 
     location = *spawnLocation;
 

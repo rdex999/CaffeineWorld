@@ -98,7 +98,8 @@ void player::setTextureStand()
 
 void player::takeDemage(float demageAmount)
 {
-    life -= demageAmount;
+
+    life = life - demageAmount > 0 ? life - demageAmount : 0;
     hasHit = true;
     deltaHealthTime = 0;
 }
