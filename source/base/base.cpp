@@ -29,18 +29,29 @@ SDL_Texture *base::createTextTexture(const char *fontPath, const char *text, SDL
 {
     TTF_Font* font = TTF_OpenFont(fontPath, fontSize);
     if(!font){
-        std::cout << "Error: could not open font \"" << fontPath << "\".\n" << SDL_GetError() << std::endl;
+        std::cout << "Error: could not open font \"" << fontPath << "\".\n" << TTF_GetError() << std::endl;
         exit(1);
     }
+ 
     SDL_Surface* tempFontSurface = TTF_RenderText_Solid(font, text, color);
     if(!tempFontSurface){
-        std::cout << "Error: could create font surface.\n" << SDL_GetError() << std::endl;
+        std::cout << "Error: could create font surface.\n" << TTF_GetError() << std::endl;
         exit(1);
     }
+
     *width = tempFontSurface->w;
     *height = tempFontSurface->h;
     TTF_CloseFont(font);
-    return SDL_CreateTextureFromSurface(mainRenderer, tempFontSurface);
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(mainRenderer, tempFontSurface);
+    if(!texture){
+        std::cout << "Error: could not create text texture.\n" << SDL_GetError() << std::endl;
+        exit(1);
+    }
+
+    SDL_FreeSurface(tempFontSurface);
+
+    return texture;
 }
 
 int base::randomRange(int min, int max)
