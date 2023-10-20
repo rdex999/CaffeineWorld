@@ -6,8 +6,6 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
     this->baseObj = baseObj;
     this->playerObj = playerObj;
 
-    // THE PLAYER TEXTURE IS JUST FOR DEVELOPMENT.
-    // I WILL ADD A ZOMBIE TEXTURE IN THE FUTURE. 
     texturesZombie[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonStand-v3.0.png");
     if(!texturesZombie[0]){
         std::cout << "Error: could not create zombie texture.\n" << SDL_GetError() << std::endl;
@@ -32,7 +30,15 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
         exit(1);
     }
 
-    entityArray[0] = (entity*)(new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, 0, texturesZombie, textureMobLifeBar));
+    // spawns the zombies
+    // i will change this in the future
+    vector2d zombieSpawnLoc = vector2d(0, 500);
+    for(int i=0; i<MAX_ENTITYS; i++){
+        entityArray[i] = (entity*) (new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, i, &zombieSpawnLoc, texturesZombie,
+            textureMobLifeBar));
+    
+        zombieSpawnLoc.X += 400; 
+    }
     baseObj->entityArray = entityArray;
     baseObj->entityArrayLength = MAX_ENTITYS;
 }

@@ -6,7 +6,7 @@ class zombie : public entity
 {
     public:
         zombie(base* baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
-            int zombieArrayIndex, SDL_Texture** textures, SDL_Texture* textureLifeBar);
+            int zombieArrayIndex, vector2d* spawnLocation, SDL_Texture** textures, SDL_Texture* textureLifeBar);
 
         ~zombie() override;
 
