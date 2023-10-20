@@ -1,4 +1,5 @@
 #pragma once
+#include "format"
 #include "../player/player.h"
 
 class zombie : public entity
@@ -16,6 +17,17 @@ class zombie : public entity
         void takeDemage(float demageAmount) override;
 
     private:
+
+        typedef struct demageNumDetail
+        {
+            // the texture of the number that shows up when the player hits the zombie
+            SDL_Texture* texture;
+            vector2d location;  
+            double rotation;
+            double time; 
+            bool direction; // true for right false for left
+            int offset;
+        } demageNumDetail;
 
         // store playerObj pointer
         player* playerObj;
@@ -37,8 +49,8 @@ class zombie : public entity
         // the texture of the life bar
         SDL_Texture* textureLifeBar;
 
-        // the texture of the number that shows up when the player hits the zombie
-        SDL_Texture* textureDemageNum;
+        // for displaying the hit demage on the screen
+        demageNumDetail demageNums[4] = {nullptr, vector2d(0, 0), 0, 0, false, 0};
 
         // the index of the texture to render
         int currentTextureIndex;
