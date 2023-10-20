@@ -7,13 +7,11 @@
 #define LIFE_REGEM_NORM_TIME 2 
 #define LIFE_REGEN_TIME 5
 
-zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
-    int zombieArrayIndex, vector2d* spawnLocation, SDL_Texture** textures, SDL_Texture* textureLifeBar)
+zombie::zombie(base *baseObj, player* playerObj, int zombieArrayIndex, vector2d* spawnLocation,
+    SDL_Texture** textures, SDL_Texture* textureLifeBar)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
-    this->entityArray = entityArray;
-    this->zombiesArrayLength = zombiesArrayLength;
     this->zombieArrayIndex = zombieArrayIndex;
     this->textureLifeBar = textureLifeBar;
 
@@ -46,7 +44,9 @@ zombie::zombie(base *baseObj, player* playerObj, entity** entityArray, int zombi
 
 zombie::~zombie()
 {
-    entityArray[zombieArrayIndex] = nullptr;
+    if(baseObj->entityArray){
+        baseObj->entityArray[zombieArrayIndex] = nullptr;
+    }
 }
 
 void zombie::tick()
@@ -117,7 +117,7 @@ void zombie::tick()
 void zombie::takeDemage(float demageAmount)
 {
     if(tookHitTime >= 0.17){
-        life = life - demageAmount > 0 ? life - demageAmount : 0;
+        life -= demageAmount;
         wasHit = true;
         deltaHealthTime = 0;
         tookHitTime = 0;

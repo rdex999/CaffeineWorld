@@ -34,8 +34,7 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
     // i will change this in the future
     vector2d zombieSpawnLoc = vector2d(0, 500);
     for(int i=0; i<MAX_ENTITYS; i++){
-        entityArray[i] = (entity*) (new zombie(baseObj, playerObj, entityArray, MAX_ENTITYS, i, &zombieSpawnLoc, texturesZombie,
-            textureMobLifeBar));
+        entityArray[i] = (entity*) (new zombie(baseObj, playerObj, i, &zombieSpawnLoc, texturesZombie, textureMobLifeBar));
     
         zombieSpawnLoc.X += 400; 
     }

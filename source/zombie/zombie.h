@@ -1,12 +1,11 @@
 #pragma once
-#include "../entity/entity.h"
 #include "../player/player.h"
 
 class zombie : public entity
 {
     public:
-        zombie(base* baseObj, player* playerObj, entity** entityArray, int zombiesArrayLength,
-            int zombieArrayIndex, vector2d* spawnLocation, SDL_Texture** textures, SDL_Texture* textureLifeBar);
+        zombie(base* baseObj, player* playerObj, int zombieArrayIndex, vector2d* spawnLocation,
+            SDL_Texture** textures, SDL_Texture* textureLifeBar);
 
         ~zombie() override;
 
@@ -38,14 +37,11 @@ class zombie : public entity
         // the texture of the life bar
         SDL_Texture* textureLifeBar;
 
+        // the texture of the number that shows up when the player hits the zombie
+        SDL_Texture* textureDemageNum;
+
         // the index of the texture to render
         int currentTextureIndex;
-
-        // the zombies array
-        entity** entityArray;
-
-        // the length of the zombies array
-        int zombiesArrayLength;
 
         // the index of this zombie in the zombies array
         int zombieArrayIndex;
