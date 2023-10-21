@@ -27,6 +27,12 @@ gun::~gun()
 {
     if(texture){SDL_DestroyTexture(texture);}
     if(textureBullet){SDL_DestroyTexture(textureBullet);}
+    
+    for(int i=0; i<16; i++){
+        if(bullets[i]){
+            delete bullets[i];
+        }
+    }
 }
 
 void gun::reload()

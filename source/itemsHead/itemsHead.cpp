@@ -13,6 +13,7 @@ itemsHead::itemsHead(base *baseObj, player *playerObj)
 itemsHead::~itemsHead()
 {
     if(attackHandObj){delete attackHandObj;}
+    if(pickaxeObj){delete pickaxeObj;}
     if(gunObj){delete gunObj;}
 }
 
