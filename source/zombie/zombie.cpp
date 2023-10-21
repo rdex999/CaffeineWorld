@@ -140,9 +140,10 @@ void zombie::takeDemage(float demageAmount)
         //    std::format("-{}", (int)(demageAmount)).c_str(), SDL_Color(200, 0, 0), 30, nullptr, nullptr);
         for(int i=0; i<DEMAGENUM_C; i++){
             if(!(demageNums[i].texture)){
+
                 demageNums[i].texture = baseObj->createTextOutlineTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
                     std::format("-{}", (int)demageAmount).c_str(),
-                    SDL_Color(200, 0, 0), SDL_Color(0, 0, 0), 40, 5, &demageNums[i].location.W, &demageNums[i].location.H);
+                    SDL_Color(200, 0, 0), SDL_Color(50, 50, 50), 40, 3, &demageNums[i].location.W, &demageNums[i].location.H);
 
                 demageNums[i].rotation = 0;
                 demageNums[i].time = 0;

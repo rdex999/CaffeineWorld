@@ -45,6 +45,8 @@ container::~container()
     if(worldUiObj){delete worldUiObj;}
 
     if(baseObj){delete baseObj;}
+
+    TTF_Quit();
     SDL_Quit();
 }
 
