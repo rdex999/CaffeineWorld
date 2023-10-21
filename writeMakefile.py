@@ -4,7 +4,7 @@
 groups = ("main", "attackHand", "background", "base", "blocksHead",
     "bullet", "coffeeCup", "block", "dVector2d",
     "gun", "inventory", "player", "vector2d", "pickaxe", "itemsHead",
-    "entity", "entitysHead", "zombie", "worldUI")
+    "entity", "entitysHead", "zombie", "worldUI", "text")
 
 # the compiler flags. Seperated by a space
 flags = "-std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf"

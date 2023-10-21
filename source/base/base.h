@@ -41,12 +41,6 @@ typedef struct base
     // the length of the entity array (not the index of the last item)
     int entityArrayLength;
 
-    // returns a texture of the text with the given size, color, and font
-    SDL_Texture* createTextTexture(const char* fontPath, const char* text, SDL_Color color, int fontSize, int* width, int* height);
-
-    SDL_Texture* createTextOutlineTexture(const char* fontPath, const char* text,
-        SDL_Color color, SDL_Color outlineColor, int fontSize, int outlineSize, int* width, int* height);
-
     // returns a random number between min and max
     int randomRange(int min, int max);
 

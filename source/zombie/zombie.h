@@ -1,6 +1,7 @@
 #pragma once
 #include "format"
 #include "../player/player.h"
+#include "../text/text.h"
 
 class zombie : public entity
 {

@@ -136,14 +136,14 @@ void zombie::takeDemage(float demageAmount)
             delete this;
         }
     
-        //textureDemageNum = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-        //    std::format("-{}", (int)(demageAmount)).c_str(), SDL_Color(200, 0, 0), 30, nullptr, nullptr);
         for(int i=0; i<DEMAGENUM_C; i++){
             if(!(demageNums[i].texture)){
 
-                demageNums[i].texture = baseObj->createTextOutlineTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                demageNums[i].texture = text::createTextOutlineTexture(baseObj->mainRenderer,
+                    "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
                     std::format("-{}", (int)demageAmount).c_str(),
-                    SDL_Color(200, 0, 0), SDL_Color(50, 50, 50), 40, 3, &demageNums[i].location.W, &demageNums[i].location.H);
+                    SDL_Color(200, 0, 0), SDL_Color(50, 50, 50), 40, 3,
+                    &demageNums[i].location.W, &demageNums[i].location.H);
 
                 demageNums[i].rotation = 0;
                 demageNums[i].time = 0;
@@ -218,29 +218,31 @@ void zombie::render()
         SDL_RenderFillRect(baseObj->mainRenderer, &lifeBarRect);
     
         for(int i=0; i<DEMAGENUM_C; i++){
+            demageNums[i].time += baseObj->deltaTime;
+ 
+            if(demageNums[i].time >= DEMAGENUM_TIME){
+                SDL_DestroyTexture(demageNums[i].texture);
+                demageNums[i].texture = nullptr;
+            }
+
             if(demageNums[i].texture){
-                if(demageNums[i].time >= DEMAGENUM_TIME){
-                    SDL_DestroyTexture(demageNums[i].texture);
-                    demageNums[i].texture = nullptr;
+
+                SDL_Rect demageRect = {0, (int)(location.Y - demageNums[i].location.H*1.5),
+                    demageNums[i].location.W, demageNums[i].location.H};
+                
+                if(demageNums[i].direction){
+                    demageNums[i].rotation -= baseObj->deltaTime * 100;
+                    demageRect.x = location.X + location.W/2 - demageNums[i].location.W/2 - demageNums[i].offset;
                 }else{
-                    SDL_Rect demageRect = {0, (int)(location.Y - demageNums[i].location.H*1.5),
-                        demageNums[i].location.W, demageNums[i].location.H};
-
-                    if(demageNums[i].direction){
-                        demageNums[i].rotation -= baseObj->deltaTime * 100;
-                        demageRect.x = location.X + location.W/2 - demageNums[i].location.W/2 - demageNums[i].offset;
-                    }else{
-                        demageNums[i].rotation += baseObj->deltaTime * 100;
-                        demageRect.x = location.X + location.W/2 - demageNums[i].location.W/2 + demageNums[i].offset;
-                    }
-                    
-                    SDL_RenderCopyEx(baseObj->mainRenderer, demageNums[i].texture, NULL, &demageRect,
-                        demageNums[i].rotation, NULL, SDL_RendererFlip(false));
-
-                    demageNums[i].time += baseObj->deltaTime;
-                    demageNums[i].offset += baseObj->deltaTime * 100;
-
+                    demageNums[i].rotation += baseObj->deltaTime * 100;
+                    demageRect.x = location.X + location.W/2 - demageNums[i].location.W/2 + demageNums[i].offset;
                 }
+                
+                SDL_RenderCopyEx(baseObj->mainRenderer, demageNums[i].texture, NULL, &demageRect,
+                    demageNums[i].rotation, NULL, SDL_RendererFlip(false));
+                
+                demageNums[i].offset += baseObj->deltaTime * 100;
+
             }
         }
     }

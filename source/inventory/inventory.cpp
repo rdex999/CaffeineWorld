@@ -103,8 +103,10 @@ void inventory::render()
                         playerObj->items[i].textureCount = nullptr;
                     }
 
-                    playerObj->items[i].textureCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-                        std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+                    playerObj->items[i].textureCount = text::createTextTexture(baseObj->mainRenderer,
+                        "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                        std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(),
+                        SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
                         &playerObj->items[i].countSize.X, &playerObj->items[i].countSize.Y);
 
                     if(!playerObj->items[i].textureCount){
@@ -151,7 +153,8 @@ void inventory::render()
                         playerObj->items[i].textureCount = nullptr; 
                     }
     
-                    playerObj->items[i].textureCount = baseObj->createTextTexture("./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                    playerObj->items[i].textureCount = text::createTextTexture(baseObj->mainRenderer,
+                        "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
                         std::format("{}", playerObj->items[i].count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
                         &playerObj->items[i].countSize.X, &playerObj->items[i].countSize.Y);
                     

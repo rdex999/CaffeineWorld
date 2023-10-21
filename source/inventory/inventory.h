@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include "../itemsHead/itemsHead.h"
 #include "items/items.h"
+#include "../text/text.h"
 
 class inventory
 {

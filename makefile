@@ -1,4 +1,4 @@
-objFiles = ./build/main.o ./build/attackHand.o ./build/background.o ./build/base.o ./build/blocksHead.o ./build/bullet.o ./build/coffeeCup.o ./build/block.o ./build/dVector2d.o ./build/gun.o ./build/inventory.o ./build/player.o ./build/vector2d.o ./build/pickaxe.o ./build/itemsHead.o ./build/entity.o ./build/entitysHead.o ./build/zombie.o ./build/worldUI.o 
+objFiles = ./build/main.o ./build/attackHand.o ./build/background.o ./build/base.o ./build/blocksHead.o ./build/bullet.o ./build/coffeeCup.o ./build/block.o ./build/dVector2d.o ./build/gun.o ./build/inventory.o ./build/player.o ./build/vector2d.o ./build/pickaxe.o ./build/itemsHead.o ./build/entity.o ./build/entitysHead.o ./build/zombie.o ./build/worldUI.o ./build/text.o 
 
 CaffeineWorld: $(objFiles)
 	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld $(objFiles)
@@ -60,6 +60,9 @@ build/zombie.o: ./source/zombie/zombie.cpp ./source/zombie/zombie.h
 build/worldUI.o: ./source/worldUI/worldUI.cpp ./source/worldUI/worldUI.h
 	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/worldUI.o ./source/worldUI/worldUI.cpp 
 
+build/text.o: ./source/text/text.cpp ./source/text/text.h
+	g++ -c -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o ./build/text.o ./source/text/text.cpp 
+
 run:
 	./CaffeineWorld
 
@@ -70,4 +73,4 @@ clean:
 all:
 	rm ./build/*
 	rm CaffeineWorld
-	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld ./source/main/main.cpp ./source/attackHand/attackHand.cpp ./source/background/background.cpp ./source/base/base.cpp ./source/blocksHead/blocksHead.cpp ./source/bullet/bullet.cpp ./source/coffeeCup/coffeeCup.cpp ./source/block/block.cpp ./source/dVector2d/dVector2d.cpp ./source/gun/gun.cpp ./source/inventory/inventory.cpp ./source/player/player.cpp ./source/vector2d/vector2d.cpp ./source/pickaxe/pickaxe.cpp ./source/itemsHead/itemsHead.cpp ./source/entity/entity.cpp ./source/entitysHead/entitysHead.cpp ./source/zombie/zombie.cpp ./source/worldUI/worldUI.cpp
+	g++ -std=c++23 -Wall `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -o CaffeineWorld ./source/main/main.cpp ./source/attackHand/attackHand.cpp ./source/background/background.cpp ./source/base/base.cpp ./source/blocksHead/blocksHead.cpp ./source/bullet/bullet.cpp ./source/coffeeCup/coffeeCup.cpp ./source/block/block.cpp ./source/dVector2d/dVector2d.cpp ./source/gun/gun.cpp ./source/inventory/inventory.cpp ./source/player/player.cpp ./source/vector2d/vector2d.cpp ./source/pickaxe/pickaxe.cpp ./source/itemsHead/itemsHead.cpp ./source/entity/entity.cpp ./source/entitysHead/entitysHead.cpp ./source/zombie/zombie.cpp ./source/worldUI/worldUI.cpp ./source/text/text.cpp
