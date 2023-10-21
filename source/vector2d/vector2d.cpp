@@ -32,6 +32,24 @@ bool vector2d::inBox(vector2d point1, vector2d point2)
         (this->Y >= point1.Y && this->Y <= point2.Y);
 }
 
+bool vector2d::inBoxRel(vector2d p)
+{
+    return (this->X >= p.X && this->X <= (p.X + p.W)) &&
+        (this->Y >= p.Y && this->Y <= (p.Y + p.H));
+}
+
+bool vector2d::inBoxRel(vector2d *p)
+{
+    return (this->X >= p->X && this->X <= (p->X + p->W)) &&
+        (this->Y >= p->Y && this->Y <= (p->Y + p->H));
+}
+
+bool vector2d::inBoxRel(vector2d p1, vector2d p2)
+{
+    return (this->X >= p1.X && this->X <= (p1.X + p2.X)) &&
+        (this->Y >= p1.Y && this->Y <= (p1.Y + p2.Y));
+}
+
 void vector2d::printVec()
 {
     std::cout << "Vector: (" << this->X << ", " << this->Y << ")" << std::endl;

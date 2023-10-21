@@ -16,6 +16,13 @@ class vector2d
         // returns whether this vector is in a box defined by two vectors 
         bool inBox(vector2d point1, vector2d point2);
 
+        // same as inBox, but this takes a vector with x, y, w, h. which w and h are relative to x and y.
+        bool inBoxRel(vector2d p);
+        bool inBoxRel(vector2d* p);
+
+        // in this version of inBoxRel the W and H are the X and Y of p2
+        bool inBoxRel(vector2d p1, vector2d p2);
+
         // prints the vector to the terminal
         void printVec();
 

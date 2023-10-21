@@ -407,7 +407,6 @@ void block::playerCollision()
     {
         playerObj->inAir = false;
         playerObj->gravitySlowDown = 1.f; 
-        playerObj->standingBlock = location;
         playerObj->location.Y -= ((playerObj->location.Y+playerObj->location.H)-location.Y)*
             baseObj->deltaTime * 15; 
     }
