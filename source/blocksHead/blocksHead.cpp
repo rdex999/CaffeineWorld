@@ -190,7 +190,7 @@ vector2d blocksHead::findBlockSpawn(vector2d* near)
             // if near is above blockArray[i] 
             if(near->inBoxRel(blockArray[i]->location - vector2d(0, B_H), vector2d(B_W, B_H))){
                 return blockArray[i]->location - vector2d(0, B_H) + baseObj->screenOffset;
-            }else
+            }
 
             // if near on the top right of blockArray[i]
             if(near->inBoxRel(blockArray[i]->location + vector2d(B_W, -B_H), vector2d(B_W, B_H))){
