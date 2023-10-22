@@ -8,13 +8,6 @@ inventory::inventory(base *baseObj, player* playerObj, itemsHead* itemsHeadObj)
     this->playerObj = playerObj;
     this->itemsHeadObj = itemsHeadObj;
 
-    playerObj->items[0].itemID = itemWoodenPickaxe;
-    playerObj->items[1].itemID = itemGun;
-    
-    selectedItemIndex = 0;
-    playerObj->selectedItem = playerObj->items[0].itemID;
-
-
     firstItemScreenLocation = vector2d(baseObj->screenSize.X/2 - (baseObj->screenSize.X/3)/2,
         baseObj->screenSize.Y - baseObj->screenSize.Y/15);
 

@@ -11,6 +11,11 @@ player::player(base *baseObj)
     screenBox = vector2d(baseObj->screenSize.X/4, baseObj->screenSize.Y/4,
         baseObj->screenSize.X - baseObj->screenSize.X/4, baseObj->screenSize.Y - baseObj->screenSize.Y/4);
 
+    items[0].itemID = itemWoodenPickaxe;
+    items[1].itemID = itemGun;
+    selectedItem = items[0].itemID;
+    selectedItemIndex = 0;
+
     textureIndex = 0;
     blockedRight = false;
     blockedLeft = false;

@@ -6,8 +6,22 @@ itemsHead::itemsHead(base *baseObj, player *playerObj)
     this->playerObj = playerObj;
 
     attackHandObj = new attackHand(baseObj, playerObj);
-    pickaxeObj = new pickaxe(baseObj, playerObj, itemWoodenPickaxe);
-    gunObj = new gun(baseObj, playerObj);
+
+    for(int i=0; i<INVENTORY_CAPACITY; i++){
+        switch ((itemId)playerObj->items[i].itemID)
+        {
+        case itemWoodenPickaxe:
+            pickaxeObj = new pickaxe(baseObj, playerObj, (itemId)playerObj->items[i].itemID);
+            break;
+
+        case itemGun:
+            gunObj = new gun(baseObj, playerObj);
+            break;
+
+        default:
+            break;
+        }
+    }
 }
 
 itemsHead::~itemsHead()
@@ -22,17 +36,30 @@ void itemsHead::tick()
     switch (playerObj->selectedItem)
     {
     case ITEM_EMPTY:
-        attackHandObj->tick();
+        if(attackHandObj){
+            attackHandObj->tick();
+        }else{
+            attackHandObj = new attackHand(baseObj, playerObj);
+        }
         break;
 
     case itemWoodenPickaxe:
-        pickaxeObj->tick();
+        if(pickaxeObj){
+            pickaxeObj->tick();
+        }else{
+            pickaxeObj = new pickaxe(baseObj, playerObj, (itemId)playerObj->selectedItem);
+        }
         break;
+
+    case itemGun:
+        if(gunObj){
+            gunObj->tick();
+        }else{
+            gunObj = new gun(baseObj, playerObj);
+        }
 
     default:
         break;
     }
 
-    // allways run it because of the bullets
-    gunObj->tick();
 }

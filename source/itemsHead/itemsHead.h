@@ -14,9 +14,9 @@ class itemsHead
         void tick();
 
         // store item pointers 
-        pickaxe* pickaxeObj;
-        attackHand* attackHandObj;
-        gun* gunObj;
+        pickaxe* pickaxeObj = nullptr;
+        attackHand* attackHandObj = nullptr;
+        gun* gunObj = nullptr;
     
     private:
 
