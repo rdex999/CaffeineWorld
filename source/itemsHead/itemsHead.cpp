@@ -33,33 +33,41 @@ itemsHead::~itemsHead()
 
 void itemsHead::tick()
 {
-    switch (playerObj->selectedItem)
+    if(playerObj->selectedItemIndex != -1){
+    switch (playerObj->items[playerObj->selectedItemIndex].itemID)
     {
-    case ITEM_EMPTY:
+        case ITEM_EMPTY:
+            if(attackHandObj){
+                attackHandObj->tick();
+            }else{
+                attackHandObj = new attackHand(baseObj, playerObj);
+            }
+            break;
+
+        case itemWoodenPickaxe:
+            if(pickaxeObj){
+                pickaxeObj->tick();
+            }else{
+                pickaxeObj = new pickaxe(baseObj, playerObj, (itemId)playerObj->items[playerObj->selectedItemIndex].itemID);
+            }
+            break;
+
+        case itemGun:
+            if(gunObj){
+                gunObj->tick();
+            }else{
+                gunObj = new gun(baseObj, playerObj);
+            }
+
+        default:
+            break;
+        }
+
+    }else{
         if(attackHandObj){
             attackHandObj->tick();
         }else{
             attackHandObj = new attackHand(baseObj, playerObj);
         }
-        break;
-
-    case itemWoodenPickaxe:
-        if(pickaxeObj){
-            pickaxeObj->tick();
-        }else{
-            pickaxeObj = new pickaxe(baseObj, playerObj, (itemId)playerObj->selectedItem);
-        }
-        break;
-
-    case itemGun:
-        if(gunObj){
-            gunObj->tick();
-        }else{
-            gunObj = new gun(baseObj, playerObj);
-        }
-
-    default:
-        break;
     }
-
 }

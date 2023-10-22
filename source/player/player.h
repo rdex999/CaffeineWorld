@@ -42,9 +42,6 @@ class player : public entity
         void move(vector2d location);
         void move(vector2d* location);
 
-        // the selected item 
-        unsigned char selectedItem;
-
         // the index of the selected item in the itemArray
         int selectedItemIndex;
         

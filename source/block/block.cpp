@@ -198,14 +198,14 @@ void block::tick()
             (location+vector2d(B_W, B_H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
         {
             timeLastHit = 0;
-            switch (playerObj->selectedItem)
+            switch (playerObj->items[playerObj->selectedItemIndex].itemID)
             {
             case itemWoodenPickaxe:
                 blockLife -= 6;
                 break;
             
             default:
-                if(playerObj->selectedItem != itemGun){
+                if(playerObj->items[playerObj->selectedItemIndex].itemID != itemGun){
                     blockLife -= 3;
                 }
                 break;

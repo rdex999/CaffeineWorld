@@ -13,7 +13,6 @@ player::player(base *baseObj)
 
     items[0].itemID = itemWoodenPickaxe;
     items[1].itemID = itemGun;
-    selectedItem = items[0].itemID;
     selectedItemIndex = 0;
 
     textureIndex = 0;

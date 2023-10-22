@@ -83,7 +83,8 @@ void blocksHead::tick()
     if(baseObj->mouseLocation.inBox(playerBuildZone, playerBuildZone+vector2d(playerBuildZone.W, playerBuildZone.W)) &&
         baseObj->mouseState == 4 && timeBuild >= 0.3 &&
         /* there will be more blocks in the future, this just checks if the selected item is a block */ 
-        playerObj->selectedItem >= itemGrassBlock && playerObj->selectedItem <= itemGrassBlock)
+        playerObj->items[playerObj->selectedItemIndex].itemID >= itemGrassBlock &&
+        playerObj->items[playerObj->selectedItemIndex].itemID <= itemGrassBlock)
                   
     {
 
@@ -137,7 +138,7 @@ void blocksHead::tick()
                 
                     // switch on the block type. 
                     // should change to just spawning a block with playerObj->selectedItem 
-                    switch (playerObj->selectedItem)
+                    switch (playerObj->items[playerObj->selectedItemIndex].itemID)
                     {
                     case itemGrassBlock:
                         blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,

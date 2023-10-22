@@ -18,9 +18,6 @@ class inventory
         // offset can be 1 or -1
         void selectItemOffset(int offset);
 
-        // the index of the selected item in the items array
-        int selectedItemIndex; 
-        
         // runs on every frame
         void tick();
     

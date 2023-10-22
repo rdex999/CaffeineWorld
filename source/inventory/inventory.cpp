@@ -35,27 +35,23 @@ inventory::~inventory()
 void inventory::selectItem(int itemNumber)
 {
     //if the player selects the same item, then unselect 
-    if(itemNumber == selectedItemIndex+1){
-        playerObj->selectedItem = 0;
+    if(itemNumber == playerObj->selectedItemIndex+1){
         playerObj->selectedItemIndex = -1;
-        selectedItemIndex = -1; 
     }else{
         highlightScreenLocation.X = firstItemScreenLocation.X + ITEM_SIZE*(itemNumber-1) + 10*(itemNumber-1);
-        playerObj->selectedItem = playerObj->items[itemNumber-1].itemID;
-        selectedItemIndex = itemNumber-1;
-        playerObj->selectedItemIndex = selectedItemIndex;
+        playerObj->selectedItemIndex = itemNumber-1;
     }
 }
 
 void inventory::selectItemOffset(int offset)
 {
-    if(selectedItemIndex+offset+1 > ITEM_BAR_CAPACITY){
+    if(playerObj->selectedItemIndex+offset+1 > ITEM_BAR_CAPACITY){
         selectItem(1);
-    }else if(selectedItemIndex+offset+1 < 1){
+    }else if(playerObj->selectedItemIndex+offset+1 < 1){
         selectItem(ITEM_BAR_CAPACITY);
     }else{
         // +1 because the index starts from zero and itemNumber(the argument) starts from 1
-        selectItem(selectedItemIndex+offset+1);
+        selectItem(playerObj->selectedItemIndex+offset+1);
     }
 }
 
@@ -175,7 +171,7 @@ void inventory::render()
         SDL_RenderCopy(baseObj->mainRenderer, textureItemFrame, NULL, &rect);
     }
 
-    if(selectedItemIndex != -1){
+    if(playerObj->selectedItemIndex != -1){
         SDL_Rect highlightRect = {highlightScreenLocation.X, highlightScreenLocation.Y, ITEM_SIZE, ITEM_SIZE};
         SDL_RenderCopy(baseObj->mainRenderer, selectedItemHighLight, NULL, &highlightRect);
     }
