@@ -6,19 +6,19 @@ entitysHead::entitysHead(base* baseObj, player* playerObj)
     this->baseObj = baseObj;
     this->playerObj = playerObj;
 
-    texturesZombie[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonStand-v3.0.png");
+    texturesZombie[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonStand-v3.1.png");
     if(!texturesZombie[0]){
         std::cout << "Error: could not create zombie texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
     
-    texturesZombie[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonWalking1-v3.0.png");
+    texturesZombie[1] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonWalking1-v3.1.png");
     if(!texturesZombie[1]){
         std::cout << "Error: could not create zombie walking 1 texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
     
-    texturesZombie[2] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonWalking1-v3.0.png");
+    texturesZombie[2] = IMG_LoadTexture(baseObj->mainRenderer, "./images/zombie/zombieSkeletonWalking1-v3.1.png");
     if(!texturesZombie[2]){
         std::cout << "Error: could not create zombie walking 2 texture.\n" << SDL_GetError() << std::endl;
         exit(1);
