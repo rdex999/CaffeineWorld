@@ -136,20 +136,10 @@ void blocksHead::tick()
                 timeBuild = 0;
                 if(blockArray[nullIdx] == nullptr){
                 
-                    // switch on the block type. 
-                    // should change to just spawning a block with playerObj->selectedItem 
-                    switch (playerObj->items[playerObj->selectedItemIndex].itemID)
-                    {
-                    case itemGrassBlock:
-                        blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc, itemGrassBlock,
-                            texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx,
-                            BLOCKS_CAPASITY, texturesBlockBreaking);
-
-                        break;
-
-                    default:
-                        break;
-                    }
+                    blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc,
+                        (itemId)playerObj->items[playerObj->selectedItemIndex].itemID,
+                        texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx,
+                        BLOCKS_CAPASITY, texturesBlockBreaking);
 
                     playerObj->items[playerObj->selectedItemIndex].count -= 1;
                     if(playerObj->items[playerObj->selectedItemIndex].count <= 0){
