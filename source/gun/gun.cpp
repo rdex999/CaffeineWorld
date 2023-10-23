@@ -9,8 +9,6 @@ gun::gun(base *baseObj, player *playerObj)
     countEvent = true;
     gunSize = vector2d(251, 130)/3;
     count = 0;
-    textureCount = nullptr;
-    textureLogo = nullptr;
 
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/gun/gun.png");
     if(!texture){
@@ -55,14 +53,14 @@ void gun::tick()
         playerObj->items[playerObj->selectedItemIndex]->itemID == itemGun &&
         baseObj->mouseState == 1 && lastGunShotTime >= 0.2)
     {
-        bullets[count] = bullet(baseObj, &gunLocation, playerObj->flip, textureBullet);
-        countEvent = true;
-        lastGunShotTime = 0;
-        count++;
-        
-        if(count > 16){
+        if(count >= 16){
             reload();
+        }else{
+            bullets[count] = bullet(baseObj, &gunLocation, playerObj->flip, textureBullet);
+            countEvent = true;
+            count++;
         }
+        lastGunShotTime = 0;
     }
 }
 
