@@ -66,104 +66,105 @@ void inventory::render()
     for(int i=0; i<ITEM_BAR_CAPACITY; i++)
     {
         itemLocation.X = firstItemScreenLocation.X + ITEM_SIZE*i + 10*i;
-
-        switch (playerObj->items[i].itemID)
-        {
-            case itemWoodenPickaxe:{
-                if(!playerObj->items[i].texture){
-                    playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/woodenPickaxeItem.png");
-                    if(!playerObj->items[i].texture){
-                        std::cout << "Error: could not create the hand item texture.\n" << SDL_GetError() << std::endl;
-                        exit(1);
+        if(playerObj->items[i]){
+            switch (playerObj->items[i]->itemID)
+            {
+                case itemWoodenPickaxe:{
+                    if(!playerObj->items[i]->textureLogo){
+                        playerObj->items[i]->textureLogo = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/woodenPickaxeItem.png");
+                        if(!playerObj->items[i]->textureLogo){
+                            std::cout << "Error: could not create the hand item texture.\n" << SDL_GetError() << std::endl;
+                            exit(1);
+                        }
                     }
+
+                    SDL_Rect woodenPickaxeRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                    SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i]->textureLogo, NULL, &woodenPickaxeRect);
+                    break;
                 }
 
-                SDL_Rect woodenPickaxeRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].texture, NULL, &woodenPickaxeRect);
-                break;
-            }
+                case itemGun:{
+                    if(playerObj->items[i]->countEvent){
+                        playerObj->items[i]->countEvent = false;
 
-            case itemGun:{
-                if(itemsHeadObj->gunObj->gunShot || playerObj->items[i].textureCount == nullptr){
-                    itemsHeadObj->gunObj->gunShot = false; 
+                        if(playerObj->items[i]->textureCount){
+                            SDL_DestroyTexture(playerObj->items[i]->textureCount);
+                            playerObj->items[i]->textureCount = nullptr;
+                        }
 
-                    if(playerObj->items[i].textureCount){
-                        SDL_DestroyTexture(playerObj->items[i].textureCount);
-                        playerObj->items[i].textureCount = nullptr;
+                        playerObj->items[i]->textureCount = text::createTextTexture(baseObj->mainRenderer,
+                            "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                            std::format("{}/16", 16-playerObj->items[i]->count).c_str(),
+                            SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+                            &playerObj->items[i]->countSize.X, &playerObj->items[i]->countSize.Y);
+
+                        if(!playerObj->items[i]->textureCount){
+                            std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
+                            exit(1);
+                        }
+                    }
+                    if(!playerObj->items[i]->textureLogo){
+                        playerObj->items[i]->textureLogo = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem.png");
+                        if(!playerObj->items[i]->textureLogo){
+                            std::cout << "Error: could not create the gun item texture.\n" << SDL_GetError() << std::endl;
+                            exit(1);
+                        }
                     }
 
-                    playerObj->items[i].textureCount = text::createTextTexture(baseObj->mainRenderer,
-                        "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-                        std::format("{}/16", 16-itemsHeadObj->gunObj->currentBullet).c_str(),
-                        SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
-                        &playerObj->items[i].countSize.X, &playerObj->items[i].countSize.Y);
+                    SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                    SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i]->textureLogo, NULL, &gunRect);
 
-                    if(!playerObj->items[i].textureCount){
-                        std::cout << "Error: could not update the bullets left font texture.\n" << SDL_GetError() << std::endl;
-                        exit(1);
-                    }
-                }
-                if(!playerObj->items[i].texture){
-                    playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/gunItem.png");
-                    if(!playerObj->items[i].texture){
-                        std::cout << "Error: could not create the gun item texture.\n" << SDL_GetError() << std::endl;
-                        exit(1);
-                    }
-                }
+                    SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i]->countSize.X/2),
+                        (int)(itemLocation.Y+ITEM_SIZE/1.8), playerObj->items[i]->countSize.X, playerObj->items[i]->countSize.Y};
 
-                SDL_Rect gunRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].texture, NULL, &gunRect);
-
-                SDL_Rect bulletsLeftRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i].countSize.X/2),
-                    (int)(itemLocation.Y+ITEM_SIZE/1.8), playerObj->items[i].countSize.X, playerObj->items[i].countSize.Y};
-
-                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].textureCount, NULL, &bulletsLeftRect);
-                break;
-            }
-
-            case itemGrassBlock:{
-
-                if(!playerObj->items[i].texture){
-                    playerObj->items[i].texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/grassBlockItem.png");
-                    if(!playerObj->items[i].texture){
-                        std::cout << "Error: could not create the grass item texture.\n" << SDL_GetError() << std::endl;
-                        exit(1);
-                    }
+                    SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i]->textureCount, NULL, &bulletsLeftRect);
+                    break;
                 }
 
-                SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
-                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].texture, NULL, &dirtItemRect);
+                case itemGrassBlock:{
 
-                if(playerObj->items[i].countEvent){
-                    playerObj->items[i].countEvent = false;
+                    if(!playerObj->items[i]->textureLogo){
+                        playerObj->items[i]->textureLogo = IMG_LoadTexture(baseObj->mainRenderer, "./images/inventory/grassBlockItem.png");
+                        if(!playerObj->items[i]->textureLogo){
+                            std::cout << "Error: could not create the grass item texture.\n" << SDL_GetError() << std::endl;
+                            exit(1);
+                        }
+                    }
 
-                    if(playerObj->items[i].textureCount){
-                        SDL_DestroyTexture(playerObj->items[i].textureCount);
-                        playerObj->items[i].textureCount = nullptr; 
+                    SDL_Rect dirtItemRect = {itemLocation.X, itemLocation.Y, ITEM_SIZE, ITEM_SIZE};
+                    SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i]->textureLogo, NULL, &dirtItemRect);
+
+                    if(playerObj->items[i]->countEvent){
+                        playerObj->items[i]->countEvent = false;
+
+                        if(playerObj->items[i]->textureCount){
+                            SDL_DestroyTexture(playerObj->items[i]->textureCount);
+                            playerObj->items[i]->textureCount = nullptr; 
+                        }
+
+                        playerObj->items[i]->textureCount = text::createTextTexture(baseObj->mainRenderer,
+                            "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
+                            std::format("{}", playerObj->items[i]->count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
+                            &playerObj->items[i]->countSize.X, &playerObj->items[i]->countSize.Y);
+
+                        if(!playerObj->items[i]->textureCount){
+                            std::cout << "Error: could not create the grass item count texture.\n" << SDL_GetError() << std::endl;
+                            exit(1);
+                        }
                     }
-    
-                    playerObj->items[i].textureCount = text::createTextTexture(baseObj->mainRenderer,
-                        "./fonts/Tilt_Warp/TiltWarp-Regular-VariableFont_XROT,YROT.ttf",
-                        std::format("{}", playerObj->items[i].count).c_str(), SDL_Color(255, 255, 255), BULLETS_FONT_SIZE,
-                        &playerObj->items[i].countSize.X, &playerObj->items[i].countSize.Y);
-                    
-                    if(!playerObj->items[i].textureCount){
-                        std::cout << "Error: could not create the grass item count texture.\n" << SDL_GetError() << std::endl;
-                        exit(1);
-                    }
+
+                    SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i]->countSize.X/2),
+                        (int)(itemLocation.Y+ITEM_SIZE/1.35-playerObj->items[i]->countSize.Y/2),
+                        playerObj->items[i]->countSize.X, playerObj->items[i]->countSize.Y};
+
+                    SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i]->textureCount, NULL, &grassCountRect);
+
+                    break;
                 }
 
-                SDL_Rect grassCountRect = {(int)(itemLocation.X+ITEM_SIZE/2-playerObj->items[i].countSize.X/2),
-                    (int)(itemLocation.Y+ITEM_SIZE/1.35-playerObj->items[i].countSize.Y/2),
-                    playerObj->items[i].countSize.X, playerObj->items[i].countSize.Y};
-
-                SDL_RenderCopy(baseObj->mainRenderer, playerObj->items[i].textureCount, NULL, &grassCountRect);
-
-                break;
-            }
-
-            default:{
-                break;
+                default:{
+                    break;
+                }
             }
         }
 

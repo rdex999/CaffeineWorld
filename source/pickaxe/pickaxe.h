@@ -1,16 +1,15 @@
 #pragma once
-#include "../base/base.h"
 #include "../player/player.h"
-#include "../inventory/items/items.h"
+#include "../item/item.h"
 
-class pickaxe
+class pickaxe : public item
 {
     public:
-        pickaxe(base* baseObj, player* playerObj, itemId itemNum);
-        ~pickaxe();
+        pickaxe(base* baseObj, player* playerObj, itemId itemID);
+        ~pickaxe() override;
 
         // runs every frame
-        void tick();
+        void tick() override;
 
     private:
 
@@ -32,12 +31,6 @@ class pickaxe
 
         // if the player 'mined' (left click while the pickaxe is selected)
         bool mined;
-
-        // the item number of the pickaxe.
-        // since this is a pickaxe it can only be
-        // 1 = wooden pickaxe
-        // (add in future)
-        itemId itemNum;
 
         // the pickaxe durability
         int pickaxeLife;

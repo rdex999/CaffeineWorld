@@ -197,18 +197,24 @@ void block::tick()
             (location.inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H)) ||
             (location+vector2d(B_W, B_H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
         {
-            timeLastHit = 0;
-            switch (playerObj->items[playerObj->selectedItemIndex].itemID)
-            {
-            case itemWoodenPickaxe:
-                blockLife -= 6;
-                break;
-            
-            default:
-                if(playerObj->items[playerObj->selectedItemIndex].itemID != itemGun){
-                    blockLife -= 3;
+
+            // will change this in the future
+            if(playerObj->selectedItemIndex != -1){
+                timeLastHit = 0;
+                switch (playerObj->items[playerObj->selectedItemIndex]->itemID)
+                {
+                case itemWoodenPickaxe:
+                    blockLife -= 6;
+                    break;
+
+                default:
+                    if(playerObj->items[playerObj->selectedItemIndex]->itemID != itemGun){
+                        blockLife -= 3;
+                    }
+                    break;
                 }
-                break;
+            }else{
+                blockLife -= 3;
             }
             if(blockLife <= 0){
                 for(int j=0; j<blockArraySize; j++){
@@ -228,8 +234,8 @@ void block::tick()
                 // if there is no item with the same blockType, then add it
                 if(searchPlayerItem(blockType, true) == -1){
                     for(int i=0; i<INVENTORY_CAPACITY; i++){
-                        if(playerObj->items[i].itemID == ITEM_EMPTY){
-                            playerObj->items[i] = (item){blockType, 1, true};
+                        if(!playerObj->items[i]){
+                            playerObj->items[i] = new item(blockType, 1, true);
                             break;
                         }
                     }
@@ -282,10 +288,10 @@ void block::render()
 int block::searchPlayerItem(itemId type, bool increase)
 {
     for(int i=0; i<INVENTORY_CAPACITY; i++){
-        if(playerObj->items[i].itemID == type){
+        if(playerObj->items[i] && playerObj->items[i]->itemID == type){
             if(increase){
-                playerObj->items[i].count += 1;
-                playerObj->items[i].countEvent = true;
+                playerObj->items[i]->count += 1;
+                playerObj->items[i]->countEvent = true;
             }
             return i;
         }

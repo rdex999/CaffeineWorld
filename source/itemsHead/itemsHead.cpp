@@ -7,62 +7,27 @@ itemsHead::itemsHead(base *baseObj, player *playerObj)
 
     attackHandObj = new attackHand(baseObj, playerObj);
 
-    for(int i=0; i<INVENTORY_CAPACITY; i++){
-        switch ((itemId)playerObj->items[i].itemID)
-        {
-        case itemWoodenPickaxe:
-            pickaxeObj = new pickaxe(baseObj, playerObj, (itemId)playerObj->items[i].itemID);
-            break;
-
-        case itemGun:
-            gunObj = new gun(baseObj, playerObj);
-            break;
-
-        default:
-            break;
-        }
-    }
+    playerObj->items[0] = new pickaxe(baseObj, playerObj, itemWoodenPickaxe);
+    playerObj->items[1] = new gun(baseObj, playerObj);
 }
 
 itemsHead::~itemsHead()
 {
     if(attackHandObj){delete attackHandObj;}
-    if(pickaxeObj){delete pickaxeObj;}
-    if(gunObj){delete gunObj;}
 }
 
 void itemsHead::tick()
 {
     if(playerObj->selectedItemIndex != -1){
-    switch (playerObj->items[playerObj->selectedItemIndex].itemID)
-    {
-        case ITEM_EMPTY:
+        if(playerObj->items[playerObj->selectedItemIndex]){
+            playerObj->items[playerObj->selectedItemIndex]->tick();
+        }else{
             if(attackHandObj){
                 attackHandObj->tick();
             }else{
                 attackHandObj = new attackHand(baseObj, playerObj);
-            }
-            break;
-
-        case itemWoodenPickaxe:
-            if(pickaxeObj){
-                pickaxeObj->tick();
-            }else{
-                pickaxeObj = new pickaxe(baseObj, playerObj, (itemId)playerObj->items[playerObj->selectedItemIndex].itemID);
-            }
-            break;
-
-        case itemGun:
-            if(gunObj){
-                gunObj->tick();
-            }else{
-                gunObj = new gun(baseObj, playerObj);
-            }
-
-        default:
-            break;
+            }    
         }
-
     }else{
         if(attackHandObj){
             attackHandObj->tick();

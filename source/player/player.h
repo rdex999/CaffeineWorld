@@ -7,6 +7,7 @@
 #include "../entity/entity.h"
 #include "../dVector2d/dVector2d.h"
 #include "../inventory/items/items.h"
+#include "../item/item.h"
 
 class player : public entity
 {
@@ -49,13 +50,15 @@ class player : public entity
         void tick() override;
     
         // the items array. each item has an item id (int)
-        item items[INVENTORY_CAPACITY] = {0, 0, true};
+        item* items[INVENTORY_CAPACITY] = {nullptr};
 
         // if the player was hit (by a zombie or something)
         bool hasHit;
 
         // time between each health regeneration
         double deltaHealthTime;
+
+        bool shouldReload;
 
     private: 
 

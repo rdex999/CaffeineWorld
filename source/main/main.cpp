@@ -96,7 +96,7 @@ void container::handleEvent()
                         break;
 
                     case SDLK_r:
-                        itemsHeadObj->gunObj->reload();
+                        playerObj->shouldReload = true;
                         break;
 
                     case SDLK_0:

@@ -13,10 +13,8 @@ class itemsHead
         // runs every frame
         void tick();
 
-        // store item pointers 
-        pickaxe* pickaxeObj = nullptr;
+        // store attack hand pointer
         attackHand* attackHandObj = nullptr;
-        gun* gunObj = nullptr;
     
     private:
 

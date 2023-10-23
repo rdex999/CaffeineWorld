@@ -1,14 +1,14 @@
 #pragma once
 #include <array>
-#include "../base/base.h"
 #include "../player/player.h"
 #include "../bullet/bullet.h"
+#include "../item/item.h"
 
-class gun
+class gun : public item
 {
     public:
         gun(base* baseObj, player* playerObj);
-        ~gun();
+        ~gun() override;
 
         // an array of bullet pointers
         bullet* bullets[16] = {nullptr};
@@ -16,16 +16,8 @@ class gun
         // reload the gun
         void reload();
 
-        // if there was a gun shot.
-        // for the invenvtory class.
-        // sets to true every time the player shoots, and sets to false from the inventory class. 
-        bool gunShot;
-
-        // the current bullet in the bullets array
-        int currentBullet;
-    
         // runs every frame 
-        void tick();
+        void tick() override;
     
     private:
 

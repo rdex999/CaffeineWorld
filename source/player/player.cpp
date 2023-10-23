@@ -11,8 +11,6 @@ player::player(base *baseObj)
     screenBox = vector2d(baseObj->screenSize.X/4, baseObj->screenSize.Y/4,
         baseObj->screenSize.X - baseObj->screenSize.X/4, baseObj->screenSize.Y - baseObj->screenSize.Y/4);
 
-    items[0].itemID = itemWoodenPickaxe;
-    items[1].itemID = itemGun;
     selectedItemIndex = 0;
 
     textureIndex = 0;
@@ -34,6 +32,7 @@ player::player(base *baseObj)
     maxLife = 10;
     hasHit = false;
     deltaHealthTime = 0;
+    shouldReload = false;
 
     // the location of the floor in the background 
     floorLocation = vector2d(0, baseObj->screenSize.Y/1.064);
@@ -78,11 +77,8 @@ player::~player()
     }
 
     for(int i=0; i<INVENTORY_CAPACITY; i++){
-        if(items[i].textureCount){
-            SDL_DestroyTexture(items[i].textureCount);
-        }
-        if(items[i].texture){
-            SDL_DestroyTexture(items[i].texture);
+        if(items[i]){
+            delete items[i];
         }
     }
 }

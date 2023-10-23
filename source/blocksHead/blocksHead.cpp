@@ -81,10 +81,11 @@ void blocksHead::tick()
     timeBuild = std::clamp(timeBuild+baseObj->deltaTime, (double)0, (double)10);
     
     if(baseObj->mouseLocation.inBox(playerBuildZone, playerBuildZone+vector2d(playerBuildZone.W, playerBuildZone.W)) &&
-        baseObj->mouseState == 4 && timeBuild >= 0.3 &&
+        baseObj->mouseState == 4 && timeBuild >= 0.3 && playerObj->selectedItemIndex != -1 &&
+        playerObj->items[playerObj->selectedItemIndex] &&
         /* there will be more blocks in the future, this just checks if the selected item is a block */ 
-        playerObj->items[playerObj->selectedItemIndex].itemID >= itemGrassBlock &&
-        playerObj->items[playerObj->selectedItemIndex].itemID <= itemGrassBlock)
+        playerObj->items[playerObj->selectedItemIndex]->itemID >= itemGrassBlock &&
+        playerObj->items[playerObj->selectedItemIndex]->itemID <= itemGrassBlock)
                   
     {
 
@@ -132,20 +133,21 @@ void blocksHead::tick()
                 }
             }
 
-            if(nullIdx != -1 && playerObj->items[playerObj->selectedItemIndex].count >= 1){
+            if(nullIdx != -1 && playerObj->items[playerObj->selectedItemIndex]->count >= 1){
                 timeBuild = 0;
                 if(blockArray[nullIdx] == nullptr){
                 
                     blockArray[nullIdx] = new block(baseObj, playerObj, &blockLoc,
-                        (itemId)playerObj->items[playerObj->selectedItemIndex].itemID,
+                        (itemId)playerObj->items[playerObj->selectedItemIndex]->itemID,
                         texturesDirtBlock[0], texturesDirtBlock[1], blockArray, nullIdx,
                         BLOCKS_CAPASITY, texturesBlockBreaking);
 
-                    playerObj->items[playerObj->selectedItemIndex].count -= 1;
-                    if(playerObj->items[playerObj->selectedItemIndex].count <= 0){
-                        playerObj->items[playerObj->selectedItemIndex].itemID = 0;
+                    playerObj->items[playerObj->selectedItemIndex]->count -= 1;
+                    playerObj->items[playerObj->selectedItemIndex]->countEvent = true;
+                    if(playerObj->items[playerObj->selectedItemIndex]->count <= 0){
+                        delete playerObj->items[playerObj->selectedItemIndex];
+                        playerObj->items[playerObj->selectedItemIndex] = nullptr;
                     }
-                    playerObj->items[playerObj->selectedItemIndex].countEvent = true;
 
                     if(leftIndex != -1){
                         blockArray[leftIndex]->blockEvent = 5;

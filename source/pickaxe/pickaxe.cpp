@@ -1,10 +1,10 @@
 #include "pickaxe.h"
 
-pickaxe::pickaxe(base *baseObj, player *playerObj, itemId itemNum)
+pickaxe::pickaxe(base *baseObj, player *playerObj, itemId itemID)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
-    this->itemNum = itemNum;
+    this->itemID = itemID;
 
     rotation = 70;
 
@@ -16,7 +16,7 @@ pickaxe::pickaxe(base *baseObj, player *playerObj, itemId itemNum)
 
     mined = false;
 
-    switch (itemNum)
+    switch (itemID)
     {
     case itemWoodenPickaxe:
         texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/pickaxe/woodenPickaxe.png");
