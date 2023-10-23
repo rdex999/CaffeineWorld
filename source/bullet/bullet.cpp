@@ -1,7 +1,7 @@
 #include "bullet.h"
 #define BULLET_DEMAGE 4
 
-bullet::bullet(base *baseObj, vector2d *shootFrom, bool flip, SDL_Texture* texture, bullet** bullets, int bulletIndex)
+bullet::bullet(base* baseObj, vector2d *shootFrom, bool flip, SDL_Texture* texture)
 {
     this->baseObj = baseObj;
 
@@ -13,18 +13,14 @@ bullet::bullet(base *baseObj, vector2d *shootFrom, bool flip, SDL_Texture* textu
 
     speed = 110.f;
 
-    this->bullets = bullets;
-
-    this->bulletIndex = bulletIndex;
-
     this->texture = texture;
+
+    isActive = true;
 }
 
 bullet::~bullet()
 {
-    if(bullets){
-        bullets[bulletIndex] = nullptr;
-    }
+    isActive = false;
 }
 
 void bullet::tick()
@@ -39,7 +35,7 @@ void bullet::tick()
             std::sin(rotation) * baseObj->deltaTime * speed * 15);
     } 
     if(!shootFrom.inBox(dVector2d(0, 0), dVector2d(baseObj->screenSize.X, baseObj->screenSize.Y))){
-        delete this;
+        this->~bullet();
     }
 
     if(baseObj->entityArray){
@@ -53,7 +49,7 @@ void bullet::tick()
                     dVector2d(baseObj->entityArray[i]->location.getWH().X, baseObj->entityArray[i]->location.getWH().Y)))
                 {
                     baseObj->entityArray[i]->takeDemage(BULLET_DEMAGE);
-                    delete this;
+                    this->~bullet();
                 }
             }
         }

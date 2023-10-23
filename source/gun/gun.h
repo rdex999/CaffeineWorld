@@ -11,7 +11,7 @@ class gun : public item
         ~gun() override;
 
         // an array of bullet pointers
-        bullet* bullets[16] = {nullptr};
+        bullet bullets[16];
 
         // reload the gun
         void reload();

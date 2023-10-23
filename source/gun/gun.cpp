@@ -29,12 +29,6 @@ gun::~gun()
 {
     if(texture){SDL_DestroyTexture(texture);}
     if(textureBullet){SDL_DestroyTexture(textureBullet);}
-    
-    for(int i=0; i<16; i++){
-        if(bullets[i]){
-            delete bullets[i];
-        }
-    }
 }
 
 void gun::reload()
@@ -61,7 +55,7 @@ void gun::tick()
         playerObj->items[playerObj->selectedItemIndex]->itemID == itemGun &&
         baseObj->mouseState == 1 && lastGunShotTime >= 0.2)
     {
-        bullets[count] = new bullet(baseObj, &gunLocation, playerObj->flip, textureBullet, bullets, count);
+        bullets[count] = bullet(baseObj, &gunLocation, playerObj->flip, textureBullet);
         countEvent = true;
         lastGunShotTime = 0;
         count++;
@@ -75,8 +69,8 @@ void gun::tick()
 void gun::render()
 {
     for(int i=0; i<16; i++){
-        if(bullets[i]){
-            bullets[i]->tick();
+        if(bullets[i].isActive){
+            bullets[i].tick();
         } 
     }
     if(playerObj->items[playerObj->selectedItemIndex] &&

@@ -7,9 +7,12 @@
 class bullet
 {
     public:
-        bullet(base* baseObj, vector2d *shootFrom, bool flip, SDL_Texture* texture,
-            bullet** bullets = nullptr, int bulletIndex = 0);
+        bullet(base* baseObj, vector2d *shootFrom, bool flip, SDL_Texture* texture);
+        bullet() = default;
         ~bullet();
+
+        // if the bullet is active
+        bool isActive = false;
 
         // from where the bullet was shot,
         // and also the bullets location on the screen
@@ -37,10 +40,4 @@ class bullet
 
         // the bullet speed
         float speed;
-
-        // this bullets index in the bullets array
-        int bulletIndex;
-        
-        // the bullets array pointer. 
-        bullet** bullets;
 };
