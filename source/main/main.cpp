@@ -27,6 +27,7 @@ container::container()
     baseObj = new base(&screenSize);
     backgroundObj = new background(baseObj);
     playerObj = new player(baseObj);
+    treesHeadObj = new treesHead(baseObj, playerObj);
     itemsHeadObj = new itemsHead(baseObj, playerObj);
     entitysHeadObj = new entitysHead(baseObj, playerObj);
     blocksHeadObj = new blocksHead(baseObj, playerObj);
@@ -38,6 +39,7 @@ container::~container()
 {
     if(backgroundObj){delete backgroundObj;}
     if(playerObj){delete playerObj;}
+    if(treesHeadObj){delete treesHeadObj;}
     if(itemsHeadObj){delete itemsHeadObj;}
     if(entitysHeadObj){delete entitysHeadObj;}
     if(blocksHeadObj){delete blocksHeadObj;}
@@ -185,6 +187,7 @@ void container::handleEvent()
 void container::runTicks()
 {
     backgroundObj->tick();
+    treesHeadObj->tick();
     playerObj->tick();
     itemsHeadObj->tick();
     entitysHeadObj->tick();
@@ -192,7 +195,18 @@ void container::runTicks()
     inventoryObj->tick();
     worldUiObj->tick();
 
+    addOffset();
+
     SDL_RenderPresent(baseObj->mainRenderer);
 
     baseObj->screenOffset = vector2d(0, 0);
+}
+
+void container::addOffset()
+{
+    for(int i=0; i<300; i++){
+        if(treesHeadObj->trees[i]){
+            treesHeadObj->trees[i]->location += baseObj->screenOffset;
+        }
+    }
 }
