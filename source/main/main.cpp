@@ -204,9 +204,9 @@ void container::runTicks()
 
 void container::addOffset()
 {
-    for(int i=0; i<300; i++){
-        if(treesHeadObj->trees[i]){
-            treesHeadObj->trees[i]->location += baseObj->screenOffset;
+    for(int i=0; i<baseObj->treeArrayLength; i++){
+        if(baseObj->trees[i]){
+            baseObj->trees[i]->location += baseObj->screenOffset;
         }
     }
 }

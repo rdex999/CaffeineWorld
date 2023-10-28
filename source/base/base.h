@@ -41,6 +41,9 @@ typedef struct base
     // the length of the entity array (not the index of the last item)
     int entityArrayLength;
 
+    class tree** trees = nullptr;
+    int treeArrayLength;
+
     // returns a random number between min and max
     int randomRange(int min, int max);
 

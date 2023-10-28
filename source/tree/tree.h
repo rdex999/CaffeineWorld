@@ -5,7 +5,7 @@ class tree
 {
     public:
         tree(base* baseObj, player* playerObj, SDL_Texture* texture,
-            const vector2d* location, tree** treeArray, int treeArrayIdx);
+            const vector2d* location, int treeArrayIdx);
         
         ~tree();
 
@@ -27,9 +27,6 @@ class tree
         // the texture that will render to the screen
         SDL_Texture* texture;
         
-        // an array of tree pointers 
-        tree** treeArray;
-
         // the index of this tree in the trees array
         int treeArrayIdx;
 

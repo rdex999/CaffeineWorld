@@ -19,17 +19,13 @@ block::block(base *baseObj, player* playerObj, vector2d *location, itemId blockT
     this->location.H = B_H;
     
     timeGrassCheck = 0;
-
     blockAbove = false;
-
     isAbovePlayer = false;
-
     aboveCheck = false;
-
     currentTextureIndex = 0;
-
     blockBreakingIndex = -1;
-    
+    treeAbove = false;
+
     playerZone = playerObj->location - playerObj->location.W;
     playerZone.W = playerObj->location.W*3;
     playerZone.H = playerObj->location.W*2 + playerObj->location.H;
@@ -190,29 +186,18 @@ void block::tick()
         }
 
         timeLastHit = std::clamp(timeLastHit + baseObj->deltaTime, (double)0, (double)5);
+        treeCollision();
 
         // if the players wants to destroy a block
         if(baseObj->mouseLocation.inBox(location, location+vector2d(B_W, B_H)) &&
-            baseObj->mouseState == 1 && timeLastHit >= 0.33 &&
+            baseObj->mouseState == 1 && timeLastHit >= 0.33 && !treeAbove &&
             (location.inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H)) ||
             (location+vector2d(B_W, B_H)).inBox(playerZone, playerZone+vector2d(playerZone.W, playerZone.H))))
         {
+            timeLastHit = 0; 
 
-            // will change this in the future
-            if(playerObj->selectedItemIndex != -1){
-                timeLastHit = 0;
-                switch (playerObj->items[playerObj->selectedItemIndex]->itemID)
-                {
-                case itemWoodenPickaxe:
-                    blockLife -= 6;
-                    break;
-
-                default:
-                    if(playerObj->items[playerObj->selectedItemIndex]->itemID != itemGun){
-                        blockLife -= 3;
-                    }
-                    break;
-                }
+            if(playerObj->selectedItemIndex != -1 && playerObj->items[playerObj->selectedItemIndex]){
+                blockLife -= playerObj->items[playerObj->selectedItemIndex]->blockDemage;
             }else{
                 blockLife -= 3;
             }
@@ -415,5 +400,22 @@ void block::playerCollision()
         playerObj->gravitySlowDown = 1.f; 
         playerObj->location.Y -= ((playerObj->location.Y+playerObj->location.H)-location.Y)*
             baseObj->deltaTime * 15; 
+    }
+}
+
+void block::treeCollision()
+{
+    treeAbove = false;
+    if(blockAbove){
+        return;
+    }
+
+    for(int i=0; i<baseObj->treeArrayLength; i++){
+        if(baseObj->trees[i]){
+            if(location.inBoxRel(baseObj->trees[i]->location)){
+                treeAbove = true;
+                return;
+            }
+        }
     }
 }

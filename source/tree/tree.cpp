@@ -1,13 +1,12 @@
 #include "tree.h"
 
 tree::tree(base *baseObj, player *playerObj, SDL_Texture *texture,
-    const vector2d* location, tree** treeArray, int treeArrayIdx)
+    const vector2d* location, int treeArrayIdx)
 {
     this->baseObj = baseObj;
     this->playerObj = playerObj;
     this->texture = texture;
     this->location = *location;
-    this->treeArray = treeArray;
     this->treeArrayIdx = treeArrayIdx;
 
     this->location.W = 396/1.3;
@@ -16,8 +15,8 @@ tree::tree(base *baseObj, player *playerObj, SDL_Texture *texture,
 
 tree::~tree()
 {
-    if(treeArray){
-        treeArray[treeArrayIdx] = nullptr;
+    if(baseObj->trees){
+        baseObj->trees[treeArrayIdx] = nullptr;
     }
 }
 

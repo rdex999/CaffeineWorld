@@ -9,6 +9,7 @@ gun::gun(base *baseObj, player *playerObj)
     countEvent = true;
     gunSize = vector2d(251, 130)/3;
     count = 0;
+    blockDemage = 0;
 
     texture = IMG_LoadTexture(baseObj->mainRenderer, "./images/gun/gun.png");
     if(!texture){

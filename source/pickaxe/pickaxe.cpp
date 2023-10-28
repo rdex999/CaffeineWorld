@@ -15,6 +15,7 @@ pickaxe::pickaxe(base *baseObj, player *playerObj, itemId itemID)
     screenLocation.H = 633/7.5;
 
     mined = false;
+    blockDemage = 6;
 
     switch (itemID)
     {

@@ -2,6 +2,7 @@
 #include "../base/base.h"
 #include "../player/player.h"
 #include "../inventory/items/items.h"
+#include "../tree/tree.h"
 
 class block
 {
@@ -114,4 +115,8 @@ class block
 
         // specific collision for the player
         void playerCollision();
+
+        void treeCollision();
+
+        bool treeAbove;
 };

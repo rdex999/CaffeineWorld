@@ -14,13 +14,15 @@ class item
         // the id of the item 
         itemId itemID;
         
+        int blockDemage;
+
         // the amount of this item 
         int count;
         
         // if there was a change in the 'count' variable.
         // used to determin whether to update textureCount 
         bool countEvent;
-        
+
         // the texture of the item in the inventory 
         SDL_Texture* textureLogo = nullptr;
         
