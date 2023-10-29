@@ -413,7 +413,9 @@ void block::treeCollision()
     for(int i=0; i<baseObj->treeArrayLength; i++){
         if(baseObj->trees[i]){
             baseObj->trees[i]->inAir = true; 
-            if(location.inBoxRel(baseObj->trees[i]->location)){
+            if(location.inBox(baseObj->trees[i]->location + baseObj->trees[i]->location.W/4.8,
+                baseObj->trees[i]->location.getWH() - vector2d(baseObj->trees[i]->location.W/2.5, 0)))
+            {
                 treeAbove = true;
                 baseObj->trees[i]->inAir = false; 
                 baseObj->trees[i]->location.Y -= baseObj->trees[i]->location.getWH().Y - location.Y;

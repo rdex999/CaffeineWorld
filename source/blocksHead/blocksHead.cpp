@@ -133,6 +133,17 @@ void blocksHead::tick()
                 }
             }
 
+            for(int i=0; i<baseObj->treeArrayLength; i++){
+                if(baseObj->trees[i]){
+                    if(blockLoc.inBox(baseObj->trees[i]->location + baseObj->trees[i]->location.W/4.8,
+                        baseObj->trees[i]->location.getWH() - vector2d(baseObj->trees[i]->location.W/2.5, 0)))
+                    {
+                        nullIdx = -1;
+                        break;
+                    }
+                }
+            }
+
             if(nullIdx != -1 && playerObj->items[playerObj->selectedItemIndex]->count >= 1){
                 timeBuild = 0;
                 if(blockArray[nullIdx] == nullptr){
