@@ -59,11 +59,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/blocksHead/cmake_install.cmake")
 endif()
 
@@ -79,17 +74,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/dVector2d/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -104,12 +94,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item/cmake_install.cmake")
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead/cmake_install.cmake")
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -119,12 +109,37 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player/cmake_install.cmake")
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/text/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -135,21 +150,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/treesHead/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

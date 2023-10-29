@@ -25,12 +25,6 @@
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/block/CMakeFiles/block.dir/block.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/block.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/block.cpp",
-  "output": "source/block/CMakeFiles/block.dir/block.cpp.o"
-},
-{
-  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
   "command": "/usr/bin/g++ -g -std=gnu++23 -o source/blocksHead/CMakeFiles/blocksHead.dir/blocksHead.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/blocksHead/blocksHead.cpp",
   "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/blocksHead/blocksHead.cpp",
   "output": "source/blocksHead/CMakeFiles/blocksHead.dir/blocksHead.cpp.o"
@@ -49,21 +43,15 @@
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/block/CMakeFiles/block.dir/block.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/block.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/block.cpp",
+  "output": "source/block/CMakeFiles/block.dir/block.cpp.o"
+},
+{
+  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
   "command": "/usr/bin/g++ -g -std=gnu++23 -o source/dVector2d/CMakeFiles/dVector2d.dir/dVector2d.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/dVector2d/dVector2d.cpp",
   "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/dVector2d/dVector2d.cpp",
   "output": "source/dVector2d/CMakeFiles/dVector2d.dir/dVector2d.cpp.o"
-},
-{
-  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/entity/CMakeFiles/entity.dir/entity.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/entity.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/entity.cpp",
-  "output": "source/entity/CMakeFiles/entity.dir/entity.cpp.o"
-},
-{
-  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/entitysHead.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/entitysHead.cpp",
-  "output": "source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o"
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
@@ -79,15 +67,15 @@
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/item/CMakeFiles/item.dir/item.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/item.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/item.cpp",
-  "output": "source/item/CMakeFiles/item.dir/item.cpp.o"
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/player/CMakeFiles/player.dir/player.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/player.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/player.cpp",
+  "output": "source/player/CMakeFiles/player.dir/player.cpp.o"
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/itemsHead.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/itemsHead.cpp",
-  "output": "source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o"
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/vector2d.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/vector2d.cpp",
+  "output": "source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o"
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
@@ -97,15 +85,45 @@
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/player/CMakeFiles/player.dir/player.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/player.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/player.cpp",
-  "output": "source/player/CMakeFiles/player.dir/player.cpp.o"
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/itemsHead.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/itemsHead.cpp",
+  "output": "source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o"
+},
+{
+  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/entity/CMakeFiles/entity.dir/entity.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/entity.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/entity.cpp",
+  "output": "source/entity/CMakeFiles/entity.dir/entity.cpp.o"
+},
+{
+  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/entitysHead.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/entitysHead.cpp",
+  "output": "source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o"
+},
+{
+  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/zombie.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/zombie.cpp",
+  "output": "source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o"
+},
+{
+  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/worldUI.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/worldUI.cpp",
+  "output": "source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o"
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
   "command": "/usr/bin/g++ -g -std=gnu++23 -o source/text/CMakeFiles/text.dir/text.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/text/text.cpp",
   "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/text/text.cpp",
   "output": "source/text/CMakeFiles/text.dir/text.cpp.o"
+},
+{
+  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/item/CMakeFiles/item.dir/item.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/item.cpp",
+  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/item.cpp",
+  "output": "source/item/CMakeFiles/item.dir/item.cpp.o"
 },
 {
   "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
@@ -118,23 +136,5 @@
   "command": "/usr/bin/g++ -g -std=gnu++23 -o source/treesHead/CMakeFiles/treesHead.dir/treesHead.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/treesHead/treesHead.cpp",
   "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/treesHead/treesHead.cpp",
   "output": "source/treesHead/CMakeFiles/treesHead.dir/treesHead.cpp.o"
-},
-{
-  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/vector2d.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/vector2d.cpp",
-  "output": "source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o"
-},
-{
-  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/worldUI.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/worldUI.cpp",
-  "output": "source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o"
-},
-{
-  "directory": "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
-  "command": "/usr/bin/g++ -g -std=gnu++23 -o source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o -c /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/zombie.cpp",
-  "file": "/home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/zombie.cpp",
-  "output": "source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o"
 }
 ]

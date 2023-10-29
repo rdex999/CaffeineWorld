@@ -1,0 +1,119 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "source/attackHand/libattackHand.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"source/attackHand/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++23"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "23"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "base::@a8dba3ab701526c2a1fe"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "dVector2d::@055c5ea145b3fd020de6"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "player::@840060ee628cb5b6a062"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "vector2d::@d1a58593a3baf91bb040"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "entity::@7cc99c334c5439bcdc68"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "item::@048069c576f371c35852"
+		}
+	],
+	"id" : "attackHand::@ec1b706a4e031f55036f",
+	"name" : "attackHand",
+	"nameOnDisk" : "libattackHand.a",
+	"paths" : 
+	{
+		"build" : "source/attackHand",
+		"source" : "source/attackHand"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/attackHand/attackHand.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

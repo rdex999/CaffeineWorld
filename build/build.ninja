@@ -231,9 +231,9 @@ build CMakeFiles/CaffeineWorld.dir/source/main/main.cpp.o: CXX_COMPILER__Caffein
 #############################################
 # Link the executable /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld
 
-build /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld: CXX_EXECUTABLE_LINKER__CaffeineWorld_Debug CMakeFiles/CaffeineWorld.dir/source/main/main.cpp.o | source/attackHand/libattackHand.a source/background/libbackground.a source/base/libbase.a source/block/libblock.a source/blocksHead/libblocksHead.a source/bullet/libbullet.a source/coffeeCup/libcoffeeCup.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/entitysHead/libentitysHead.a source/gun/libgun.a source/inventory/libinventory.a source/item/libitem.a source/itemsHead/libitemsHead.a source/pickaxe/libpickaxe.a source/player/libplayer.a source/text/libtext.a source/tree/libtree.a source/treesHead/libtreesHead.a source/vector2d/libvector2d.a source/worldUI/libworldUI.a source/zombie/libzombie.a source/block/libblock.a source/attackHand/libattackHand.a source/gun/libgun.a source/bullet/libbullet.a source/text/libtext.a source/tree/libtree.a source/player/libplayer.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/base/libbase.a source/vector2d/libvector2d.a source/item/libitem.a || source/attackHand/libattackHand.a source/background/libbackground.a source/base/libbase.a source/block/libblock.a source/blocksHead/libblocksHead.a source/bullet/libbullet.a source/coffeeCup/libcoffeeCup.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/entitysHead/libentitysHead.a source/gun/libgun.a source/inventory/libinventory.a source/item/libitem.a source/itemsHead/libitemsHead.a source/pickaxe/libpickaxe.a source/player/libplayer.a source/text/libtext.a source/tree/libtree.a source/treesHead/libtreesHead.a source/vector2d/libvector2d.a source/worldUI/libworldUI.a source/zombie/libzombie.a
+build /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld: CXX_EXECUTABLE_LINKER__CaffeineWorld_Debug CMakeFiles/CaffeineWorld.dir/source/main/main.cpp.o | source/attackHand/libattackHand.a source/background/libbackground.a source/base/libbase.a source/blocksHead/libblocksHead.a source/bullet/libbullet.a source/coffeeCup/libcoffeeCup.a source/block/libblock.a source/dVector2d/libdVector2d.a source/gun/libgun.a source/inventory/libinventory.a source/player/libplayer.a source/vector2d/libvector2d.a source/pickaxe/libpickaxe.a source/itemsHead/libitemsHead.a source/entity/libentity.a source/entitysHead/libentitysHead.a source/zombie/libzombie.a source/worldUI/libworldUI.a source/text/libtext.a source/item/libitem.a source/tree/libtree.a source/treesHead/libtreesHead.a source/attackHand/libattackHand.a source/gun/libgun.a source/bullet/libbullet.a source/pickaxe/libpickaxe.a source/tree/libtree.a source/player/libplayer.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/base/libbase.a source/vector2d/libvector2d.a source/item/libitem.a || source/attackHand/libattackHand.a source/background/libbackground.a source/base/libbase.a source/block/libblock.a source/blocksHead/libblocksHead.a source/bullet/libbullet.a source/coffeeCup/libcoffeeCup.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/entitysHead/libentitysHead.a source/gun/libgun.a source/inventory/libinventory.a source/item/libitem.a source/itemsHead/libitemsHead.a source/pickaxe/libpickaxe.a source/player/libplayer.a source/text/libtext.a source/tree/libtree.a source/treesHead/libtreesHead.a source/vector2d/libvector2d.a source/worldUI/libworldUI.a source/zombie/libzombie.a
   FLAGS = -g
-  LINK_LIBRARIES = -lSDL2  -lSDL2main  -lSDL2_ttf  -lSDL2_image  source/attackHand/libattackHand.a  source/background/libbackground.a  source/base/libbase.a  source/block/libblock.a  source/blocksHead/libblocksHead.a  source/bullet/libbullet.a  source/coffeeCup/libcoffeeCup.a  source/dVector2d/libdVector2d.a  source/entity/libentity.a  source/entitysHead/libentitysHead.a  source/gun/libgun.a  source/inventory/libinventory.a  source/item/libitem.a  source/itemsHead/libitemsHead.a  source/pickaxe/libpickaxe.a  source/player/libplayer.a  source/text/libtext.a  source/tree/libtree.a  source/treesHead/libtreesHead.a  source/vector2d/libvector2d.a  source/worldUI/libworldUI.a  source/zombie/libzombie.a  source/block/libblock.a  source/attackHand/libattackHand.a  source/gun/libgun.a  source/bullet/libbullet.a  source/text/libtext.a  source/tree/libtree.a  source/player/libplayer.a  source/dVector2d/libdVector2d.a  source/entity/libentity.a  source/base/libbase.a  source/vector2d/libvector2d.a  source/item/libitem.a  -lSDL2  -lSDL2main  -lSDL2_ttf  -lSDL2_image
+  LINK_LIBRARIES = source/attackHand/libattackHand.a  source/background/libbackground.a  source/base/libbase.a  source/blocksHead/libblocksHead.a  source/bullet/libbullet.a  source/coffeeCup/libcoffeeCup.a  source/block/libblock.a  source/dVector2d/libdVector2d.a  source/gun/libgun.a  source/inventory/libinventory.a  source/player/libplayer.a  source/vector2d/libvector2d.a  source/pickaxe/libpickaxe.a  source/itemsHead/libitemsHead.a  source/entity/libentity.a  source/entitysHead/libentitysHead.a  source/zombie/libzombie.a  source/worldUI/libworldUI.a  source/text/libtext.a  source/item/libitem.a  source/tree/libtree.a  source/treesHead/libtreesHead.a  source/attackHand/libattackHand.a  source/gun/libgun.a  source/bullet/libbullet.a  source/pickaxe/libpickaxe.a  source/tree/libtree.a  source/player/libplayer.a  source/dVector2d/libdVector2d.a  source/entity/libentity.a  source/base/libbase.a  source/vector2d/libvector2d.a  source/item/libitem.a  -lSDL2  -lSDL2main  -lSDL2_ttf  -lSDL2_image
   OBJECT_DIR = CMakeFiles/CaffeineWorld.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -818,102 +818,6 @@ build source/base/rebuild_cache: phony source/base/CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target block
-
-
-#############################################
-# Order-only phony target for block
-
-build cmake_object_order_depends_target_block: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_tree cmake_object_order_depends_target_vector2d
-
-build source/block/CMakeFiles/block.dir/block.cpp.o: CXX_COMPILER__block_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/block.cpp || cmake_object_order_depends_target_block
-  DEP_FILE = source/block/CMakeFiles/block.dir/block.cpp.o.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/block/CMakeFiles/block.dir
-  OBJECT_FILE_DIR = source/block/CMakeFiles/block.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target block
-
-
-#############################################
-# Link the static library source/block/libblock.a
-
-build source/block/libblock.a: CXX_STATIC_LIBRARY_LINKER__block_Debug source/block/CMakeFiles/block.dir/block.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/tree/libtree.a source/vector2d/libvector2d.a
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/block/CMakeFiles/block.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = source/block/libblock.a
-  TARGET_PDB = block.a.dbg
-
-
-#############################################
-# Utility command for package
-
-build source/block/CMakeFiles/package.util: CUSTOM_COMMAND source/block/all
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build source/block/package: phony source/block/CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build source/block/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build source/block/package_source: phony source/block/CMakeFiles/package_source.util
-
-
-#############################################
-# Utility command for test
-
-build source/block/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block && /usr/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build source/block/test: phony source/block/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build source/block/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build source/block/edit_cache: phony source/block/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build source/block/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build source/block/rebuild_cache: phony source/block/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
 # Object build statements for STATIC_LIBRARY target blocksHead
 
 
@@ -1202,6 +1106,102 @@ build source/coffeeCup/rebuild_cache: phony source/coffeeCup/CMakeFiles/rebuild_
 # =============================================================================
 
 # =============================================================================
+# Object build statements for STATIC_LIBRARY target block
+
+
+#############################################
+# Order-only phony target for block
+
+build cmake_object_order_depends_target_block: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_tree cmake_object_order_depends_target_vector2d
+
+build source/block/CMakeFiles/block.dir/block.cpp.o: CXX_COMPILER__block_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/block.cpp || cmake_object_order_depends_target_block
+  DEP_FILE = source/block/CMakeFiles/block.dir/block.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = source/block/CMakeFiles/block.dir
+  OBJECT_FILE_DIR = source/block/CMakeFiles/block.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target block
+
+
+#############################################
+# Link the static library source/block/libblock.a
+
+build source/block/libblock.a: CXX_STATIC_LIBRARY_LINKER__block_Debug source/block/CMakeFiles/block.dir/block.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/tree/libtree.a source/vector2d/libvector2d.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = source/block/CMakeFiles/block.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = source/block/libblock.a
+  TARGET_PDB = block.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build source/block/CMakeFiles/package.util: CUSTOM_COMMAND source/block/all
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build source/block/package: phony source/block/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build source/block/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build source/block/package_source: phony source/block/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for test
+
+build source/block/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block && /usr/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build source/block/test: phony source/block/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build source/block/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build source/block/edit_cache: phony source/block/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build source/block/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/block && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build source/block/rebuild_cache: phony source/block/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
 # Object build statements for STATIC_LIBRARY target dVector2d
 
 
@@ -1291,198 +1291,6 @@ build source/dVector2d/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
   restat = 1
 
 build source/dVector2d/rebuild_cache: phony source/dVector2d/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target entity
-
-
-#############################################
-# Order-only phony target for entity
-
-build cmake_object_order_depends_target_entity: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_vector2d
-
-build source/entity/CMakeFiles/entity.dir/entity.cpp.o: CXX_COMPILER__entity_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/entity.cpp || cmake_object_order_depends_target_entity
-  DEP_FILE = source/entity/CMakeFiles/entity.dir/entity.cpp.o.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/entity/CMakeFiles/entity.dir
-  OBJECT_FILE_DIR = source/entity/CMakeFiles/entity.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target entity
-
-
-#############################################
-# Link the static library source/entity/libentity.a
-
-build source/entity/libentity.a: CXX_STATIC_LIBRARY_LINKER__entity_Debug source/entity/CMakeFiles/entity.dir/entity.cpp.o || source/base/libbase.a source/vector2d/libvector2d.a
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/entity/CMakeFiles/entity.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = source/entity/libentity.a
-  TARGET_PDB = entity.a.dbg
-
-
-#############################################
-# Utility command for package
-
-build source/entity/CMakeFiles/package.util: CUSTOM_COMMAND source/entity/all
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build source/entity/package: phony source/entity/CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build source/entity/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build source/entity/package_source: phony source/entity/CMakeFiles/package_source.util
-
-
-#############################################
-# Utility command for test
-
-build source/entity/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity && /usr/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build source/entity/test: phony source/entity/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build source/entity/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build source/entity/edit_cache: phony source/entity/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build source/entity/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build source/entity/rebuild_cache: phony source/entity/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target entitysHead
-
-
-#############################################
-# Order-only phony target for entitysHead
-
-build cmake_object_order_depends_target_entitysHead: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_text cmake_object_order_depends_target_vector2d cmake_object_order_depends_target_zombie
-
-build source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o: CXX_COMPILER__entitysHead_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/entitysHead.cpp || cmake_object_order_depends_target_entitysHead
-  DEP_FILE = source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
-  OBJECT_FILE_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target entitysHead
-
-
-#############################################
-# Link the static library source/entitysHead/libentitysHead.a
-
-build source/entitysHead/libentitysHead.a: CXX_STATIC_LIBRARY_LINKER__entitysHead_Debug source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/text/libtext.a source/vector2d/libvector2d.a source/zombie/libzombie.a
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = source/entitysHead/libentitysHead.a
-  TARGET_PDB = entitysHead.a.dbg
-
-
-#############################################
-# Utility command for package
-
-build source/entitysHead/CMakeFiles/package.util: CUSTOM_COMMAND source/entitysHead/all
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build source/entitysHead/package: phony source/entitysHead/CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build source/entitysHead/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build source/entitysHead/package_source: phony source/entitysHead/CMakeFiles/package_source.util
-
-
-#############################################
-# Utility command for test
-
-build source/entitysHead/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead && /usr/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build source/entitysHead/test: phony source/entitysHead/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build source/entitysHead/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build source/entitysHead/edit_cache: phony source/entitysHead/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build source/entitysHead/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build source/entitysHead/rebuild_cache: phony source/entitysHead/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1682,95 +1490,95 @@ build source/inventory/rebuild_cache: phony source/inventory/CMakeFiles/rebuild_
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target item
+# Object build statements for STATIC_LIBRARY target player
 
 
 #############################################
-# Order-only phony target for item
+# Order-only phony target for player
 
-build cmake_object_order_depends_target_item: phony || source/item/CMakeFiles/item.dir
+build cmake_object_order_depends_target_player: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_vector2d
 
-build source/item/CMakeFiles/item.dir/item.cpp.o: CXX_COMPILER__item_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/item.cpp || cmake_object_order_depends_target_item
-  DEP_FILE = source/item/CMakeFiles/item.dir/item.cpp.o.d
+build source/player/CMakeFiles/player.dir/player.cpp.o: CXX_COMPILER__player_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/player.cpp || cmake_object_order_depends_target_player
+  DEP_FILE = source/player/CMakeFiles/player.dir/player.cpp.o.d
   FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/item/CMakeFiles/item.dir
-  OBJECT_FILE_DIR = source/item/CMakeFiles/item.dir
+  OBJECT_DIR = source/player/CMakeFiles/player.dir
+  OBJECT_FILE_DIR = source/player/CMakeFiles/player.dir
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target item
+# Link build statements for STATIC_LIBRARY target player
 
 
 #############################################
-# Link the static library source/item/libitem.a
+# Link the static library source/player/libplayer.a
 
-build source/item/libitem.a: CXX_STATIC_LIBRARY_LINKER__item_Debug source/item/CMakeFiles/item.dir/item.cpp.o
+build source/player/libplayer.a: CXX_STATIC_LIBRARY_LINKER__player_Debug source/player/CMakeFiles/player.dir/player.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/vector2d/libvector2d.a
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/item/CMakeFiles/item.dir
+  OBJECT_DIR = source/player/CMakeFiles/player.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = source/item/libitem.a
-  TARGET_PDB = item.a.dbg
+  TARGET_FILE = source/player/libplayer.a
+  TARGET_PDB = player.a.dbg
 
 
 #############################################
 # Utility command for package
 
-build source/item/CMakeFiles/package.util: CUSTOM_COMMAND source/item/all
+build source/player/CMakeFiles/package.util: CUSTOM_COMMAND source/player/all
   COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
 
-build source/item/package: phony source/item/CMakeFiles/package.util
+build source/player/package: phony source/player/CMakeFiles/package.util
 
 
 #############################################
 # Utility command for package_source
 
-build source/item/CMakeFiles/package_source.util: CUSTOM_COMMAND
+build source/player/CMakeFiles/package_source.util: CUSTOM_COMMAND
   COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
 
-build source/item/package_source: phony source/item/CMakeFiles/package_source.util
+build source/player/package_source: phony source/player/CMakeFiles/package_source.util
 
 
 #############################################
 # Utility command for test
 
-build source/item/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item && /usr/bin/ctest --force-new-ctest-process
+build source/player/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player && /usr/bin/ctest --force-new-ctest-process
   DESC = Running tests...
   pool = console
   restat = 1
 
-build source/item/test: phony source/item/CMakeFiles/test.util
+build source/player/test: phony source/player/CMakeFiles/test.util
 
 
 #############################################
 # Utility command for edit_cache
 
-build source/item/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+build source/player/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
 
-build source/item/edit_cache: phony source/item/CMakeFiles/edit_cache.util
+build source/player/edit_cache: phony source/player/CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build source/item/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+build source/player/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build source/item/rebuild_cache: phony source/item/CMakeFiles/rebuild_cache.util
+build source/player/rebuild_cache: phony source/player/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1778,95 +1586,95 @@ build source/item/rebuild_cache: phony source/item/CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target itemsHead
+# Object build statements for STATIC_LIBRARY target vector2d
 
 
 #############################################
-# Order-only phony target for itemsHead
+# Order-only phony target for vector2d
 
-build cmake_object_order_depends_target_itemsHead: phony || cmake_object_order_depends_target_attackHand cmake_object_order_depends_target_base cmake_object_order_depends_target_bullet cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_gun cmake_object_order_depends_target_item cmake_object_order_depends_target_pickaxe cmake_object_order_depends_target_player cmake_object_order_depends_target_vector2d
+build cmake_object_order_depends_target_vector2d: phony || source/vector2d/CMakeFiles/vector2d.dir
 
-build source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o: CXX_COMPILER__itemsHead_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/itemsHead.cpp || cmake_object_order_depends_target_itemsHead
-  DEP_FILE = source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o.d
+build source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o: CXX_COMPILER__vector2d_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/vector2d.cpp || cmake_object_order_depends_target_vector2d
+  DEP_FILE = source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o.d
   FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
-  OBJECT_FILE_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
+  OBJECT_DIR = source/vector2d/CMakeFiles/vector2d.dir
+  OBJECT_FILE_DIR = source/vector2d/CMakeFiles/vector2d.dir
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target itemsHead
+# Link build statements for STATIC_LIBRARY target vector2d
 
 
 #############################################
-# Link the static library source/itemsHead/libitemsHead.a
+# Link the static library source/vector2d/libvector2d.a
 
-build source/itemsHead/libitemsHead.a: CXX_STATIC_LIBRARY_LINKER__itemsHead_Debug source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o || source/attackHand/libattackHand.a source/base/libbase.a source/bullet/libbullet.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/gun/libgun.a source/item/libitem.a source/pickaxe/libpickaxe.a source/player/libplayer.a source/vector2d/libvector2d.a
+build source/vector2d/libvector2d.a: CXX_STATIC_LIBRARY_LINKER__vector2d_Debug source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
+  OBJECT_DIR = source/vector2d/CMakeFiles/vector2d.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = source/itemsHead/libitemsHead.a
-  TARGET_PDB = itemsHead.a.dbg
+  TARGET_FILE = source/vector2d/libvector2d.a
+  TARGET_PDB = vector2d.a.dbg
 
 
 #############################################
 # Utility command for package
 
-build source/itemsHead/CMakeFiles/package.util: CUSTOM_COMMAND source/itemsHead/all
+build source/vector2d/CMakeFiles/package.util: CUSTOM_COMMAND source/vector2d/all
   COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
 
-build source/itemsHead/package: phony source/itemsHead/CMakeFiles/package.util
+build source/vector2d/package: phony source/vector2d/CMakeFiles/package.util
 
 
 #############################################
 # Utility command for package_source
 
-build source/itemsHead/CMakeFiles/package_source.util: CUSTOM_COMMAND
+build source/vector2d/CMakeFiles/package_source.util: CUSTOM_COMMAND
   COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
 
-build source/itemsHead/package_source: phony source/itemsHead/CMakeFiles/package_source.util
+build source/vector2d/package_source: phony source/vector2d/CMakeFiles/package_source.util
 
 
 #############################################
 # Utility command for test
 
-build source/itemsHead/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead && /usr/bin/ctest --force-new-ctest-process
+build source/vector2d/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d && /usr/bin/ctest --force-new-ctest-process
   DESC = Running tests...
   pool = console
   restat = 1
 
-build source/itemsHead/test: phony source/itemsHead/CMakeFiles/test.util
+build source/vector2d/test: phony source/vector2d/CMakeFiles/test.util
 
 
 #############################################
 # Utility command for edit_cache
 
-build source/itemsHead/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+build source/vector2d/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
 
-build source/itemsHead/edit_cache: phony source/itemsHead/CMakeFiles/edit_cache.util
+build source/vector2d/edit_cache: phony source/vector2d/CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build source/itemsHead/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+build source/vector2d/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build source/itemsHead/rebuild_cache: phony source/itemsHead/CMakeFiles/rebuild_cache.util
+build source/vector2d/rebuild_cache: phony source/vector2d/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1970,95 +1778,479 @@ build source/pickaxe/rebuild_cache: phony source/pickaxe/CMakeFiles/rebuild_cach
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target player
+# Object build statements for STATIC_LIBRARY target itemsHead
 
 
 #############################################
-# Order-only phony target for player
+# Order-only phony target for itemsHead
 
-build cmake_object_order_depends_target_player: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_vector2d
+build cmake_object_order_depends_target_itemsHead: phony || cmake_object_order_depends_target_attackHand cmake_object_order_depends_target_base cmake_object_order_depends_target_bullet cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_gun cmake_object_order_depends_target_item cmake_object_order_depends_target_pickaxe cmake_object_order_depends_target_player cmake_object_order_depends_target_vector2d
 
-build source/player/CMakeFiles/player.dir/player.cpp.o: CXX_COMPILER__player_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/player.cpp || cmake_object_order_depends_target_player
-  DEP_FILE = source/player/CMakeFiles/player.dir/player.cpp.o.d
+build source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o: CXX_COMPILER__itemsHead_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/itemsHead.cpp || cmake_object_order_depends_target_itemsHead
+  DEP_FILE = source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o.d
   FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/player/CMakeFiles/player.dir
-  OBJECT_FILE_DIR = source/player/CMakeFiles/player.dir
+  OBJECT_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
+  OBJECT_FILE_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target player
+# Link build statements for STATIC_LIBRARY target itemsHead
 
 
 #############################################
-# Link the static library source/player/libplayer.a
+# Link the static library source/itemsHead/libitemsHead.a
 
-build source/player/libplayer.a: CXX_STATIC_LIBRARY_LINKER__player_Debug source/player/CMakeFiles/player.dir/player.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/vector2d/libvector2d.a
+build source/itemsHead/libitemsHead.a: CXX_STATIC_LIBRARY_LINKER__itemsHead_Debug source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o || source/attackHand/libattackHand.a source/base/libbase.a source/bullet/libbullet.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/gun/libgun.a source/item/libitem.a source/pickaxe/libpickaxe.a source/player/libplayer.a source/vector2d/libvector2d.a
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/player/CMakeFiles/player.dir
+  OBJECT_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = source/player/libplayer.a
-  TARGET_PDB = player.a.dbg
+  TARGET_FILE = source/itemsHead/libitemsHead.a
+  TARGET_PDB = itemsHead.a.dbg
 
 
 #############################################
 # Utility command for package
 
-build source/player/CMakeFiles/package.util: CUSTOM_COMMAND source/player/all
+build source/itemsHead/CMakeFiles/package.util: CUSTOM_COMMAND source/itemsHead/all
   COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
 
-build source/player/package: phony source/player/CMakeFiles/package.util
+build source/itemsHead/package: phony source/itemsHead/CMakeFiles/package.util
 
 
 #############################################
 # Utility command for package_source
 
-build source/player/CMakeFiles/package_source.util: CUSTOM_COMMAND
+build source/itemsHead/CMakeFiles/package_source.util: CUSTOM_COMMAND
   COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
 
-build source/player/package_source: phony source/player/CMakeFiles/package_source.util
+build source/itemsHead/package_source: phony source/itemsHead/CMakeFiles/package_source.util
 
 
 #############################################
 # Utility command for test
 
-build source/player/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player && /usr/bin/ctest --force-new-ctest-process
+build source/itemsHead/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead && /usr/bin/ctest --force-new-ctest-process
   DESC = Running tests...
   pool = console
   restat = 1
 
-build source/player/test: phony source/player/CMakeFiles/test.util
+build source/itemsHead/test: phony source/itemsHead/CMakeFiles/test.util
 
 
 #############################################
 # Utility command for edit_cache
 
-build source/player/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+build source/itemsHead/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
 
-build source/player/edit_cache: phony source/player/CMakeFiles/edit_cache.util
+build source/itemsHead/edit_cache: phony source/itemsHead/CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build source/player/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/player && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+build source/itemsHead/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/itemsHead && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build source/player/rebuild_cache: phony source/player/CMakeFiles/rebuild_cache.util
+build source/itemsHead/rebuild_cache: phony source/itemsHead/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target entity
+
+
+#############################################
+# Order-only phony target for entity
+
+build cmake_object_order_depends_target_entity: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_vector2d
+
+build source/entity/CMakeFiles/entity.dir/entity.cpp.o: CXX_COMPILER__entity_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/entity.cpp || cmake_object_order_depends_target_entity
+  DEP_FILE = source/entity/CMakeFiles/entity.dir/entity.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = source/entity/CMakeFiles/entity.dir
+  OBJECT_FILE_DIR = source/entity/CMakeFiles/entity.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target entity
+
+
+#############################################
+# Link the static library source/entity/libentity.a
+
+build source/entity/libentity.a: CXX_STATIC_LIBRARY_LINKER__entity_Debug source/entity/CMakeFiles/entity.dir/entity.cpp.o || source/base/libbase.a source/vector2d/libvector2d.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = source/entity/CMakeFiles/entity.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = source/entity/libentity.a
+  TARGET_PDB = entity.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build source/entity/CMakeFiles/package.util: CUSTOM_COMMAND source/entity/all
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build source/entity/package: phony source/entity/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build source/entity/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build source/entity/package_source: phony source/entity/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for test
+
+build source/entity/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity && /usr/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build source/entity/test: phony source/entity/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build source/entity/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build source/entity/edit_cache: phony source/entity/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build source/entity/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entity && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build source/entity/rebuild_cache: phony source/entity/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target entitysHead
+
+
+#############################################
+# Order-only phony target for entitysHead
+
+build cmake_object_order_depends_target_entitysHead: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_text cmake_object_order_depends_target_vector2d cmake_object_order_depends_target_zombie
+
+build source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o: CXX_COMPILER__entitysHead_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/entitysHead.cpp || cmake_object_order_depends_target_entitysHead
+  DEP_FILE = source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
+  OBJECT_FILE_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target entitysHead
+
+
+#############################################
+# Link the static library source/entitysHead/libentitysHead.a
+
+build source/entitysHead/libentitysHead.a: CXX_STATIC_LIBRARY_LINKER__entitysHead_Debug source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/text/libtext.a source/vector2d/libvector2d.a source/zombie/libzombie.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = source/entitysHead/libentitysHead.a
+  TARGET_PDB = entitysHead.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build source/entitysHead/CMakeFiles/package.util: CUSTOM_COMMAND source/entitysHead/all
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build source/entitysHead/package: phony source/entitysHead/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build source/entitysHead/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build source/entitysHead/package_source: phony source/entitysHead/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for test
+
+build source/entitysHead/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead && /usr/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build source/entitysHead/test: phony source/entitysHead/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build source/entitysHead/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build source/entitysHead/edit_cache: phony source/entitysHead/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build source/entitysHead/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/entitysHead && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build source/entitysHead/rebuild_cache: phony source/entitysHead/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target zombie
+
+
+#############################################
+# Order-only phony target for zombie
+
+build cmake_object_order_depends_target_zombie: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_text cmake_object_order_depends_target_vector2d
+
+build source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o: CXX_COMPILER__zombie_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/zombie.cpp || cmake_object_order_depends_target_zombie
+  DEP_FILE = source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = source/zombie/CMakeFiles/zombie.dir
+  OBJECT_FILE_DIR = source/zombie/CMakeFiles/zombie.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target zombie
+
+
+#############################################
+# Link the static library source/zombie/libzombie.a
+
+build source/zombie/libzombie.a: CXX_STATIC_LIBRARY_LINKER__zombie_Debug source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/text/libtext.a source/vector2d/libvector2d.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = source/zombie/CMakeFiles/zombie.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = source/zombie/libzombie.a
+  TARGET_PDB = zombie.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build source/zombie/CMakeFiles/package.util: CUSTOM_COMMAND source/zombie/all
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build source/zombie/package: phony source/zombie/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build source/zombie/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build source/zombie/package_source: phony source/zombie/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for test
+
+build source/zombie/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie && /usr/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build source/zombie/test: phony source/zombie/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build source/zombie/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build source/zombie/edit_cache: phony source/zombie/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build source/zombie/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build source/zombie/rebuild_cache: phony source/zombie/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target worldUI
+
+
+#############################################
+# Order-only phony target for worldUI
+
+build cmake_object_order_depends_target_worldUI: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_vector2d
+
+build source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o: CXX_COMPILER__worldUI_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/worldUI.cpp || cmake_object_order_depends_target_worldUI
+  DEP_FILE = source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = source/worldUI/CMakeFiles/worldUI.dir
+  OBJECT_FILE_DIR = source/worldUI/CMakeFiles/worldUI.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target worldUI
+
+
+#############################################
+# Link the static library source/worldUI/libworldUI.a
+
+build source/worldUI/libworldUI.a: CXX_STATIC_LIBRARY_LINKER__worldUI_Debug source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/vector2d/libvector2d.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = source/worldUI/CMakeFiles/worldUI.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = source/worldUI/libworldUI.a
+  TARGET_PDB = worldUI.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build source/worldUI/CMakeFiles/package.util: CUSTOM_COMMAND source/worldUI/all
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build source/worldUI/package: phony source/worldUI/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build source/worldUI/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build source/worldUI/package_source: phony source/worldUI/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for test
+
+build source/worldUI/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI && /usr/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build source/worldUI/test: phony source/worldUI/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build source/worldUI/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build source/worldUI/edit_cache: phony source/worldUI/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build source/worldUI/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build source/worldUI/rebuild_cache: phony source/worldUI/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -2155,6 +2347,102 @@ build source/text/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
   restat = 1
 
 build source/text/rebuild_cache: phony source/text/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target item
+
+
+#############################################
+# Order-only phony target for item
+
+build cmake_object_order_depends_target_item: phony || source/item/CMakeFiles/item.dir
+
+build source/item/CMakeFiles/item.dir/item.cpp.o: CXX_COMPILER__item_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/item.cpp || cmake_object_order_depends_target_item
+  DEP_FILE = source/item/CMakeFiles/item.dir/item.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = source/item/CMakeFiles/item.dir
+  OBJECT_FILE_DIR = source/item/CMakeFiles/item.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target item
+
+
+#############################################
+# Link the static library source/item/libitem.a
+
+build source/item/libitem.a: CXX_STATIC_LIBRARY_LINKER__item_Debug source/item/CMakeFiles/item.dir/item.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = source/item/CMakeFiles/item.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = source/item/libitem.a
+  TARGET_PDB = item.a.dbg
+
+
+#############################################
+# Utility command for package
+
+build source/item/CMakeFiles/package.util: CUSTOM_COMMAND source/item/all
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build source/item/package: phony source/item/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build source/item/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build source/item/package_source: phony source/item/CMakeFiles/package_source.util
+
+
+#############################################
+# Utility command for test
+
+build source/item/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item && /usr/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build source/item/test: phony source/item/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build source/item/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build source/item/edit_cache: phony source/item/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build source/item/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/item && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build source/item/rebuild_cache: phony source/item/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -2349,294 +2637,6 @@ build source/treesHead/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build source/treesHead/rebuild_cache: phony source/treesHead/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target vector2d
-
-
-#############################################
-# Order-only phony target for vector2d
-
-build cmake_object_order_depends_target_vector2d: phony || source/vector2d/CMakeFiles/vector2d.dir
-
-build source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o: CXX_COMPILER__vector2d_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/vector2d.cpp || cmake_object_order_depends_target_vector2d
-  DEP_FILE = source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/vector2d/CMakeFiles/vector2d.dir
-  OBJECT_FILE_DIR = source/vector2d/CMakeFiles/vector2d.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target vector2d
-
-
-#############################################
-# Link the static library source/vector2d/libvector2d.a
-
-build source/vector2d/libvector2d.a: CXX_STATIC_LIBRARY_LINKER__vector2d_Debug source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/vector2d/CMakeFiles/vector2d.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = source/vector2d/libvector2d.a
-  TARGET_PDB = vector2d.a.dbg
-
-
-#############################################
-# Utility command for package
-
-build source/vector2d/CMakeFiles/package.util: CUSTOM_COMMAND source/vector2d/all
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build source/vector2d/package: phony source/vector2d/CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build source/vector2d/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build source/vector2d/package_source: phony source/vector2d/CMakeFiles/package_source.util
-
-
-#############################################
-# Utility command for test
-
-build source/vector2d/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d && /usr/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build source/vector2d/test: phony source/vector2d/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build source/vector2d/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build source/vector2d/edit_cache: phony source/vector2d/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build source/vector2d/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/vector2d && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build source/vector2d/rebuild_cache: phony source/vector2d/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target worldUI
-
-
-#############################################
-# Order-only phony target for worldUI
-
-build cmake_object_order_depends_target_worldUI: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_vector2d
-
-build source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o: CXX_COMPILER__worldUI_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/worldUI.cpp || cmake_object_order_depends_target_worldUI
-  DEP_FILE = source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/worldUI/CMakeFiles/worldUI.dir
-  OBJECT_FILE_DIR = source/worldUI/CMakeFiles/worldUI.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target worldUI
-
-
-#############################################
-# Link the static library source/worldUI/libworldUI.a
-
-build source/worldUI/libworldUI.a: CXX_STATIC_LIBRARY_LINKER__worldUI_Debug source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/vector2d/libvector2d.a
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/worldUI/CMakeFiles/worldUI.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = source/worldUI/libworldUI.a
-  TARGET_PDB = worldUI.a.dbg
-
-
-#############################################
-# Utility command for package
-
-build source/worldUI/CMakeFiles/package.util: CUSTOM_COMMAND source/worldUI/all
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build source/worldUI/package: phony source/worldUI/CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build source/worldUI/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build source/worldUI/package_source: phony source/worldUI/CMakeFiles/package_source.util
-
-
-#############################################
-# Utility command for test
-
-build source/worldUI/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI && /usr/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build source/worldUI/test: phony source/worldUI/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build source/worldUI/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build source/worldUI/edit_cache: phony source/worldUI/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build source/worldUI/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/worldUI && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build source/worldUI/rebuild_cache: phony source/worldUI/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target zombie
-
-
-#############################################
-# Order-only phony target for zombie
-
-build cmake_object_order_depends_target_zombie: phony || cmake_object_order_depends_target_base cmake_object_order_depends_target_dVector2d cmake_object_order_depends_target_entity cmake_object_order_depends_target_item cmake_object_order_depends_target_player cmake_object_order_depends_target_text cmake_object_order_depends_target_vector2d
-
-build source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o: CXX_COMPILER__zombie_unscanned_Debug /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/zombie.cpp || cmake_object_order_depends_target_zombie
-  DEP_FILE = source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = source/zombie/CMakeFiles/zombie.dir
-  OBJECT_FILE_DIR = source/zombie/CMakeFiles/zombie.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target zombie
-
-
-#############################################
-# Link the static library source/zombie/libzombie.a
-
-build source/zombie/libzombie.a: CXX_STATIC_LIBRARY_LINKER__zombie_Debug source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o || source/base/libbase.a source/dVector2d/libdVector2d.a source/entity/libentity.a source/item/libitem.a source/player/libplayer.a source/text/libtext.a source/vector2d/libvector2d.a
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = source/zombie/CMakeFiles/zombie.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = source/zombie/libzombie.a
-  TARGET_PDB = zombie.a.dbg
-
-
-#############################################
-# Utility command for package
-
-build source/zombie/CMakeFiles/package.util: CUSTOM_COMMAND source/zombie/all
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackConfig.cmake
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build source/zombie/package: phony source/zombie/CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build source/zombie/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rdex999/Documents/cppScripts/CaffeineWorld/build/CPackSourceConfig.cmake
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build source/zombie/package_source: phony source/zombie/CMakeFiles/package_source.util
-
-
-#############################################
-# Utility command for test
-
-build source/zombie/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie && /usr/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build source/zombie/test: phony source/zombie/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build source/zombie/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie && /usr/bin/ccmake -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build source/zombie/edit_cache: phony source/zombie/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build source/zombie/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/rdex999/Documents/cppScripts/CaffeineWorld/build/source/zombie && /usr/bin/cmake --regenerate-during-build -S/home/rdex999/Documents/cppScripts/CaffeineWorld -B/home/rdex999/Documents/cppScripts/CaffeineWorld/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build source/zombie/rebuild_cache: phony source/zombie/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
 # Target aliases.
 
 build CaffeineWorld: phony /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld
@@ -2737,7 +2737,7 @@ build zombie: phony source/zombie/libzombie.a
 #############################################
 # Folder: /home/rdex999/Documents/cppScripts/CaffeineWorld/build
 
-build all: phony /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld source/attackHand/all source/background/all source/base/all source/block/all source/blocksHead/all source/bullet/all source/coffeeCup/all source/dVector2d/all source/entity/all source/entitysHead/all source/gun/all source/inventory/all source/item/all source/itemsHead/all source/pickaxe/all source/player/all source/text/all source/tree/all source/treesHead/all source/vector2d/all source/worldUI/all source/zombie/all
+build all: phony /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld source/attackHand/all source/background/all source/base/all source/blocksHead/all source/bullet/all source/coffeeCup/all source/block/all source/dVector2d/all source/gun/all source/inventory/all source/player/all source/vector2d/all source/pickaxe/all source/itemsHead/all source/entity/all source/entitysHead/all source/zombie/all source/worldUI/all source/text/all source/item/all source/tree/all source/treesHead/all
 
 # =============================================================================
 

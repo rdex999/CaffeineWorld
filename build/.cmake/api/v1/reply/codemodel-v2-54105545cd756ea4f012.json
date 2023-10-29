@@ -1,0 +1,865 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28
+					]
+				},
+				{
+					"build" : "source/attackHand",
+					"jsonFile" : "directory-source.attackHand-Debug-b928a769746f8a766fae.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/attackHand",
+					"targetIndexes" : 
+					[
+						29
+					]
+				},
+				{
+					"build" : "source/background",
+					"jsonFile" : "directory-source.background-Debug-78e2cdb840acb1bb2792.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/background",
+					"targetIndexes" : 
+					[
+						30
+					]
+				},
+				{
+					"build" : "source/base",
+					"jsonFile" : "directory-source.base-Debug-d77b0e11040e2c4d8750.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/base",
+					"targetIndexes" : 
+					[
+						31
+					]
+				},
+				{
+					"build" : "source/blocksHead",
+					"jsonFile" : "directory-source.blocksHead-Debug-f5f4e5a6fc2abe1b641f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/blocksHead",
+					"targetIndexes" : 
+					[
+						33
+					]
+				},
+				{
+					"build" : "source/bullet",
+					"jsonFile" : "directory-source.bullet-Debug-ad08041d95fc5e7d96ed.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/bullet",
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"build" : "source/coffeeCup",
+					"jsonFile" : "directory-source.coffeeCup-Debug-8247ce8a26bb5556b921.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/coffeeCup",
+					"targetIndexes" : 
+					[
+						35
+					]
+				},
+				{
+					"build" : "source/block",
+					"jsonFile" : "directory-source.block-Debug-83615857226c3aec7b6b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/block",
+					"targetIndexes" : 
+					[
+						32
+					]
+				},
+				{
+					"build" : "source/dVector2d",
+					"jsonFile" : "directory-source.dVector2d-Debug-35d8e9f338c3bce14e97.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/dVector2d",
+					"targetIndexes" : 
+					[
+						36
+					]
+				},
+				{
+					"build" : "source/gun",
+					"jsonFile" : "directory-source.gun-Debug-814f81a322ddd70476de.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/gun",
+					"targetIndexes" : 
+					[
+						39
+					]
+				},
+				{
+					"build" : "source/inventory",
+					"jsonFile" : "directory-source.inventory-Debug-a2e58f814dd95a1014ba.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/inventory",
+					"targetIndexes" : 
+					[
+						40
+					]
+				},
+				{
+					"build" : "source/player",
+					"jsonFile" : "directory-source.player-Debug-9511f1d1924ab1340610.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/player",
+					"targetIndexes" : 
+					[
+						44
+					]
+				},
+				{
+					"build" : "source/vector2d",
+					"jsonFile" : "directory-source.vector2d-Debug-4d0e3a2df283fafd5c3e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/vector2d",
+					"targetIndexes" : 
+					[
+						48
+					]
+				},
+				{
+					"build" : "source/pickaxe",
+					"jsonFile" : "directory-source.pickaxe-Debug-ce46f4e04b3ecfd19c23.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/pickaxe",
+					"targetIndexes" : 
+					[
+						43
+					]
+				},
+				{
+					"build" : "source/itemsHead",
+					"jsonFile" : "directory-source.itemsHead-Debug-ac9060192d0f26221fa8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/itemsHead",
+					"targetIndexes" : 
+					[
+						42
+					]
+				},
+				{
+					"build" : "source/entity",
+					"jsonFile" : "directory-source.entity-Debug-b9544898845155f96f4a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/entity",
+					"targetIndexes" : 
+					[
+						37
+					]
+				},
+				{
+					"build" : "source/entitysHead",
+					"jsonFile" : "directory-source.entitysHead-Debug-653c7b06315c216f25f0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/entitysHead",
+					"targetIndexes" : 
+					[
+						38
+					]
+				},
+				{
+					"build" : "source/zombie",
+					"jsonFile" : "directory-source.zombie-Debug-165cb62d1c8c0e011ba1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/zombie",
+					"targetIndexes" : 
+					[
+						50
+					]
+				},
+				{
+					"build" : "source/worldUI",
+					"jsonFile" : "directory-source.worldUI-Debug-5841aceeeaca1dfcf011.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/worldUI",
+					"targetIndexes" : 
+					[
+						49
+					]
+				},
+				{
+					"build" : "source/text",
+					"jsonFile" : "directory-source.text-Debug-23c96f077f1f9a5de3a6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/text",
+					"targetIndexes" : 
+					[
+						45
+					]
+				},
+				{
+					"build" : "source/item",
+					"jsonFile" : "directory-source.item-Debug-303422e94eddb94ecc35.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/item",
+					"targetIndexes" : 
+					[
+						41
+					]
+				},
+				{
+					"build" : "source/tree",
+					"jsonFile" : "directory-source.tree-Debug-8c9342e15331fe01753a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/tree",
+					"targetIndexes" : 
+					[
+						46
+					]
+				},
+				{
+					"build" : "source/treesHead",
+					"jsonFile" : "directory-source.treesHead-Debug-66b5627d67b67d79c3f5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27.7"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source/treesHead",
+					"targetIndexes" : 
+					[
+						47
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22
+					],
+					"name" : "CaffeineWorld",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35,
+						36,
+						37,
+						38,
+						39,
+						40,
+						41,
+						42,
+						43,
+						44,
+						45,
+						46,
+						47,
+						48,
+						49,
+						50
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CaffeineWorld::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CaffeineWorld-Debug-e5e569e2eba6f95c64a7.json",
+					"name" : "CaffeineWorld",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Continuous::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Continuous-Debug-e25a459ea7237d2c62b7.json",
+					"name" : "Continuous",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousBuild::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousBuild-Debug-0ba3e1abd9a550b69ef8.json",
+					"name" : "ContinuousBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousConfigure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousConfigure-Debug-94dc82c693a936bf93df.json",
+					"name" : "ContinuousConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousCoverage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousCoverage-Debug-72f8b73d9bff30cdebc3.json",
+					"name" : "ContinuousCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousMemCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousMemCheck-Debug-67a29a14d4c178586923.json",
+					"name" : "ContinuousMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousStart::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousStart-Debug-090b0ad510b2be411537.json",
+					"name" : "ContinuousStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousSubmit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousSubmit-Debug-dbd7dbccd9d7bd938477.json",
+					"name" : "ContinuousSubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousTest-Debug-34d6762a78a7f9c4103a.json",
+					"name" : "ContinuousTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ContinuousUpdate::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ContinuousUpdate-Debug-9c4bdc86adcd98ff7bdb.json",
+					"name" : "ContinuousUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Experimental::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Experimental-Debug-2b7d4d68b60142ccadfa.json",
+					"name" : "Experimental",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalBuild::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalBuild-Debug-a5691b420668025484e0.json",
+					"name" : "ExperimentalBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalConfigure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalConfigure-Debug-965ade396d071e12eb09.json",
+					"name" : "ExperimentalConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalCoverage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalCoverage-Debug-d880f366109558fa8d23.json",
+					"name" : "ExperimentalCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalMemCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalMemCheck-Debug-3adb810275073a81a718.json",
+					"name" : "ExperimentalMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalStart::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalStart-Debug-9be029dacc0558d16bf8.json",
+					"name" : "ExperimentalStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalSubmit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalSubmit-Debug-7b8b6e17d5cadc59cf96.json",
+					"name" : "ExperimentalSubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalTest-Debug-4a8864e7764784783430.json",
+					"name" : "ExperimentalTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExperimentalUpdate::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExperimentalUpdate-Debug-792e9c271dacd1a5998d.json",
+					"name" : "ExperimentalUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Nightly::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Nightly-Debug-257d97d8df404d7f1bb5.json",
+					"name" : "Nightly",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyBuild::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyBuild-Debug-cbeece24bb30b6633901.json",
+					"name" : "NightlyBuild",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyConfigure::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyConfigure-Debug-4514ca56890372865cbd.json",
+					"name" : "NightlyConfigure",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyCoverage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyCoverage-Debug-e6c05bb26d9ae7d02b3a.json",
+					"name" : "NightlyCoverage",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemCheck-Debug-21faf69d549b615d7db9.json",
+					"name" : "NightlyMemCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyMemoryCheck::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-9254d7fc284dd7b6274e.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyStart::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyStart-Debug-43593fc0492dc56a3ab5.json",
+					"name" : "NightlyStart",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlySubmit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlySubmit-Debug-fa0c4f491f244fdc02d0.json",
+					"name" : "NightlySubmit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyTest-Debug-c939e87a947a4614d018.json",
+					"name" : "NightlyTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "NightlyUpdate::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-NightlyUpdate-Debug-8b597f0008f47dfa8dec.json",
+					"name" : "NightlyUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "attackHand::@ec1b706a4e031f55036f",
+					"jsonFile" : "target-attackHand-Debug-d64e4d25ff5d2775ca40.json",
+					"name" : "attackHand",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "background::@c5ae520f2d272f26820f",
+					"jsonFile" : "target-background-Debug-84d0eef96bd68eb934ef.json",
+					"name" : "background",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "base::@a8dba3ab701526c2a1fe",
+					"jsonFile" : "target-base-Debug-09cee40f8c590aa3e196.json",
+					"name" : "base",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "block::@f4a3a4c726ae6d48838e",
+					"jsonFile" : "target-block-Debug-81255d369e79c8db74fb.json",
+					"name" : "block",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "blocksHead::@d26407c802720e990316",
+					"jsonFile" : "target-blocksHead-Debug-d14c5e49e0a16b764e0f.json",
+					"name" : "blocksHead",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "bullet::@6c2b2ed6ea05a2d7175f",
+					"jsonFile" : "target-bullet-Debug-4aedc44c618880a78623.json",
+					"name" : "bullet",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "coffeeCup::@49064f7d45bf7d2161ea",
+					"jsonFile" : "target-coffeeCup-Debug-73b26668fcbcda22f784.json",
+					"name" : "coffeeCup",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "dVector2d::@055c5ea145b3fd020de6",
+					"jsonFile" : "target-dVector2d-Debug-34805fa3da9911e9b9ac.json",
+					"name" : "dVector2d",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "entity::@7cc99c334c5439bcdc68",
+					"jsonFile" : "target-entity-Debug-f1d73ff6551639b8b613.json",
+					"name" : "entity",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 16,
+					"id" : "entitysHead::@44b4c826949395b9c8f9",
+					"jsonFile" : "target-entitysHead-Debug-70a6c95e1793af7bbc49.json",
+					"name" : "entitysHead",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "gun::@a82f74592426cd09f3e3",
+					"jsonFile" : "target-gun-Debug-a586ecc0ca1a1176774c.json",
+					"name" : "gun",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "inventory::@35b61d3a00c6e7eaa85f",
+					"jsonFile" : "target-inventory-Debug-026291198fa4eee518ab.json",
+					"name" : "inventory",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 20,
+					"id" : "item::@048069c576f371c35852",
+					"jsonFile" : "target-item-Debug-d3977d2560ffc5d154ec.json",
+					"name" : "item",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "itemsHead::@6c6b97da9e779275eba5",
+					"jsonFile" : "target-itemsHead-Debug-b00ff566699c4d664d92.json",
+					"name" : "itemsHead",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "pickaxe::@79471a536dd129c67194",
+					"jsonFile" : "target-pickaxe-Debug-f261f9ce630229d6ff3b.json",
+					"name" : "pickaxe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "player::@840060ee628cb5b6a062",
+					"jsonFile" : "target-player-Debug-cc2407601750dc4a6e28.json",
+					"name" : "player",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 19,
+					"id" : "text::@1c4d4933edbd7942da3c",
+					"jsonFile" : "target-text-Debug-c6b0173a60e8e755672a.json",
+					"name" : "text",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 21,
+					"id" : "tree::@5362193a588261a03b04",
+					"jsonFile" : "target-tree-Debug-fbf73e5022600a7c836c.json",
+					"name" : "tree",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 22,
+					"id" : "treesHead::@e301c5c100e0fcc56eae",
+					"jsonFile" : "target-treesHead-Debug-0dc5a4005659b52a9b9a.json",
+					"name" : "treesHead",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "vector2d::@d1a58593a3baf91bb040",
+					"jsonFile" : "target-vector2d-Debug-08fea9daf8bb591b52c8.json",
+					"name" : "vector2d",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 18,
+					"id" : "worldUI::@fd14f9d0c8f34aa89d42",
+					"jsonFile" : "target-worldUI-Debug-30a8cb1ef53e73b08c58.json",
+					"name" : "worldUI",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "zombie::@98d216b87de10659c214",
+					"jsonFile" : "target-zombie-Debug-f9e16b16fc15beb92b33.json",
+					"name" : "zombie",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rdex999/Documents/cppScripts/CaffeineWorld/build",
+		"source" : "/home/rdex999/Documents/cppScripts/CaffeineWorld"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
