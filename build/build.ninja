@@ -222,6 +222,8 @@ build CMakeFiles/CaffeineWorld.dir/source/main/main.cpp.o: CXX_COMPILER__Caffein
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = CMakeFiles/CaffeineWorld.dir
   OBJECT_FILE_DIR = CMakeFiles/CaffeineWorld.dir/source/main
+  TARGET_COMPILE_PDB = CMakeFiles/CaffeineWorld.dir/
+  TARGET_PDB = /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld.pdb
 
 
 # =============================================================================
@@ -237,8 +239,9 @@ build /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld: CXX_EXECUT
   OBJECT_DIR = CMakeFiles/CaffeineWorld.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/CaffeineWorld.dir/
   TARGET_FILE = /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld
-  TARGET_PDB = CaffeineWorld.dbg
+  TARGET_PDB = /home/rdex999/Documents/cppScripts/CaffeineWorld/CaffeineWorld.pdb
 
 
 #############################################
@@ -543,6 +546,8 @@ build source/attackHand/CMakeFiles/attackHand.dir/attackHand.cpp.o: CXX_COMPILER
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/attackHand/CMakeFiles/attackHand.dir
   OBJECT_FILE_DIR = source/attackHand/CMakeFiles/attackHand.dir
+  TARGET_COMPILE_PDB = source/attackHand/CMakeFiles/attackHand.dir/attackHand.pdb
+  TARGET_PDB = source/attackHand/libattackHand.pdb
 
 
 # =============================================================================
@@ -557,8 +562,9 @@ build source/attackHand/libattackHand.a: CXX_STATIC_LIBRARY_LINKER__attackHand_D
   OBJECT_DIR = source/attackHand/CMakeFiles/attackHand.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/attackHand/CMakeFiles/attackHand.dir/attackHand.pdb
   TARGET_FILE = source/attackHand/libattackHand.a
-  TARGET_PDB = attackHand.a.dbg
+  TARGET_PDB = source/attackHand/libattackHand.pdb
 
 
 #############################################
@@ -639,6 +645,8 @@ build source/background/CMakeFiles/background.dir/background.cpp.o: CXX_COMPILER
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/background/CMakeFiles/background.dir
   OBJECT_FILE_DIR = source/background/CMakeFiles/background.dir
+  TARGET_COMPILE_PDB = source/background/CMakeFiles/background.dir/background.pdb
+  TARGET_PDB = source/background/libbackground.pdb
 
 
 # =============================================================================
@@ -653,8 +661,9 @@ build source/background/libbackground.a: CXX_STATIC_LIBRARY_LINKER__background_D
   OBJECT_DIR = source/background/CMakeFiles/background.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/background/CMakeFiles/background.dir/background.pdb
   TARGET_FILE = source/background/libbackground.a
-  TARGET_PDB = background.a.dbg
+  TARGET_PDB = source/background/libbackground.pdb
 
 
 #############################################
@@ -735,6 +744,8 @@ build source/base/CMakeFiles/base.dir/base.cpp.o: CXX_COMPILER__base_unscanned_D
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/base/CMakeFiles/base.dir
   OBJECT_FILE_DIR = source/base/CMakeFiles/base.dir
+  TARGET_COMPILE_PDB = source/base/CMakeFiles/base.dir/base.pdb
+  TARGET_PDB = source/base/libbase.pdb
 
 
 # =============================================================================
@@ -749,8 +760,9 @@ build source/base/libbase.a: CXX_STATIC_LIBRARY_LINKER__base_Debug source/base/C
   OBJECT_DIR = source/base/CMakeFiles/base.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/base/CMakeFiles/base.dir/base.pdb
   TARGET_FILE = source/base/libbase.a
-  TARGET_PDB = base.a.dbg
+  TARGET_PDB = source/base/libbase.pdb
 
 
 #############################################
@@ -831,6 +843,8 @@ build source/blocksHead/CMakeFiles/blocksHead.dir/blocksHead.cpp.o: CXX_COMPILER
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/blocksHead/CMakeFiles/blocksHead.dir
   OBJECT_FILE_DIR = source/blocksHead/CMakeFiles/blocksHead.dir
+  TARGET_COMPILE_PDB = source/blocksHead/CMakeFiles/blocksHead.dir/blocksHead.pdb
+  TARGET_PDB = source/blocksHead/libblocksHead.pdb
 
 
 # =============================================================================
@@ -845,8 +859,9 @@ build source/blocksHead/libblocksHead.a: CXX_STATIC_LIBRARY_LINKER__blocksHead_D
   OBJECT_DIR = source/blocksHead/CMakeFiles/blocksHead.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/blocksHead/CMakeFiles/blocksHead.dir/blocksHead.pdb
   TARGET_FILE = source/blocksHead/libblocksHead.a
-  TARGET_PDB = blocksHead.a.dbg
+  TARGET_PDB = source/blocksHead/libblocksHead.pdb
 
 
 #############################################
@@ -927,6 +942,8 @@ build source/bullet/CMakeFiles/bullet.dir/bullet.cpp.o: CXX_COMPILER__bullet_uns
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/bullet/CMakeFiles/bullet.dir
   OBJECT_FILE_DIR = source/bullet/CMakeFiles/bullet.dir
+  TARGET_COMPILE_PDB = source/bullet/CMakeFiles/bullet.dir/bullet.pdb
+  TARGET_PDB = source/bullet/libbullet.pdb
 
 
 # =============================================================================
@@ -941,8 +958,9 @@ build source/bullet/libbullet.a: CXX_STATIC_LIBRARY_LINKER__bullet_Debug source/
   OBJECT_DIR = source/bullet/CMakeFiles/bullet.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/bullet/CMakeFiles/bullet.dir/bullet.pdb
   TARGET_FILE = source/bullet/libbullet.a
-  TARGET_PDB = bullet.a.dbg
+  TARGET_PDB = source/bullet/libbullet.pdb
 
 
 #############################################
@@ -1023,6 +1041,8 @@ build source/coffeeCup/CMakeFiles/coffeeCup.dir/coffeeCup.cpp.o: CXX_COMPILER__c
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/coffeeCup/CMakeFiles/coffeeCup.dir
   OBJECT_FILE_DIR = source/coffeeCup/CMakeFiles/coffeeCup.dir
+  TARGET_COMPILE_PDB = source/coffeeCup/CMakeFiles/coffeeCup.dir/coffeeCup.pdb
+  TARGET_PDB = source/coffeeCup/libcoffeeCup.pdb
 
 
 # =============================================================================
@@ -1037,8 +1057,9 @@ build source/coffeeCup/libcoffeeCup.a: CXX_STATIC_LIBRARY_LINKER__coffeeCup_Debu
   OBJECT_DIR = source/coffeeCup/CMakeFiles/coffeeCup.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/coffeeCup/CMakeFiles/coffeeCup.dir/coffeeCup.pdb
   TARGET_FILE = source/coffeeCup/libcoffeeCup.a
-  TARGET_PDB = coffeeCup.a.dbg
+  TARGET_PDB = source/coffeeCup/libcoffeeCup.pdb
 
 
 #############################################
@@ -1119,6 +1140,8 @@ build source/block/CMakeFiles/block.dir/block.cpp.o: CXX_COMPILER__block_unscann
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/block/CMakeFiles/block.dir
   OBJECT_FILE_DIR = source/block/CMakeFiles/block.dir
+  TARGET_COMPILE_PDB = source/block/CMakeFiles/block.dir/block.pdb
+  TARGET_PDB = source/block/libblock.pdb
 
 
 # =============================================================================
@@ -1133,8 +1156,9 @@ build source/block/libblock.a: CXX_STATIC_LIBRARY_LINKER__block_Debug source/blo
   OBJECT_DIR = source/block/CMakeFiles/block.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/block/CMakeFiles/block.dir/block.pdb
   TARGET_FILE = source/block/libblock.a
-  TARGET_PDB = block.a.dbg
+  TARGET_PDB = source/block/libblock.pdb
 
 
 #############################################
@@ -1215,6 +1239,8 @@ build source/dVector2d/CMakeFiles/dVector2d.dir/dVector2d.cpp.o: CXX_COMPILER__d
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/dVector2d/CMakeFiles/dVector2d.dir
   OBJECT_FILE_DIR = source/dVector2d/CMakeFiles/dVector2d.dir
+  TARGET_COMPILE_PDB = source/dVector2d/CMakeFiles/dVector2d.dir/dVector2d.pdb
+  TARGET_PDB = source/dVector2d/libdVector2d.pdb
 
 
 # =============================================================================
@@ -1229,8 +1255,9 @@ build source/dVector2d/libdVector2d.a: CXX_STATIC_LIBRARY_LINKER__dVector2d_Debu
   OBJECT_DIR = source/dVector2d/CMakeFiles/dVector2d.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/dVector2d/CMakeFiles/dVector2d.dir/dVector2d.pdb
   TARGET_FILE = source/dVector2d/libdVector2d.a
-  TARGET_PDB = dVector2d.a.dbg
+  TARGET_PDB = source/dVector2d/libdVector2d.pdb
 
 
 #############################################
@@ -1311,6 +1338,8 @@ build source/gun/CMakeFiles/gun.dir/gun.cpp.o: CXX_COMPILER__gun_unscanned_Debug
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/gun/CMakeFiles/gun.dir
   OBJECT_FILE_DIR = source/gun/CMakeFiles/gun.dir
+  TARGET_COMPILE_PDB = source/gun/CMakeFiles/gun.dir/gun.pdb
+  TARGET_PDB = source/gun/libgun.pdb
 
 
 # =============================================================================
@@ -1325,8 +1354,9 @@ build source/gun/libgun.a: CXX_STATIC_LIBRARY_LINKER__gun_Debug source/gun/CMake
   OBJECT_DIR = source/gun/CMakeFiles/gun.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/gun/CMakeFiles/gun.dir/gun.pdb
   TARGET_FILE = source/gun/libgun.a
-  TARGET_PDB = gun.a.dbg
+  TARGET_PDB = source/gun/libgun.pdb
 
 
 #############################################
@@ -1407,6 +1437,8 @@ build source/inventory/CMakeFiles/inventory.dir/inventory.cpp.o: CXX_COMPILER__i
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/inventory/CMakeFiles/inventory.dir
   OBJECT_FILE_DIR = source/inventory/CMakeFiles/inventory.dir
+  TARGET_COMPILE_PDB = source/inventory/CMakeFiles/inventory.dir/inventory.pdb
+  TARGET_PDB = source/inventory/libinventory.pdb
 
 
 # =============================================================================
@@ -1421,8 +1453,9 @@ build source/inventory/libinventory.a: CXX_STATIC_LIBRARY_LINKER__inventory_Debu
   OBJECT_DIR = source/inventory/CMakeFiles/inventory.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/inventory/CMakeFiles/inventory.dir/inventory.pdb
   TARGET_FILE = source/inventory/libinventory.a
-  TARGET_PDB = inventory.a.dbg
+  TARGET_PDB = source/inventory/libinventory.pdb
 
 
 #############################################
@@ -1503,6 +1536,8 @@ build source/player/CMakeFiles/player.dir/player.cpp.o: CXX_COMPILER__player_uns
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/player/CMakeFiles/player.dir
   OBJECT_FILE_DIR = source/player/CMakeFiles/player.dir
+  TARGET_COMPILE_PDB = source/player/CMakeFiles/player.dir/player.pdb
+  TARGET_PDB = source/player/libplayer.pdb
 
 
 # =============================================================================
@@ -1517,8 +1552,9 @@ build source/player/libplayer.a: CXX_STATIC_LIBRARY_LINKER__player_Debug source/
   OBJECT_DIR = source/player/CMakeFiles/player.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/player/CMakeFiles/player.dir/player.pdb
   TARGET_FILE = source/player/libplayer.a
-  TARGET_PDB = player.a.dbg
+  TARGET_PDB = source/player/libplayer.pdb
 
 
 #############################################
@@ -1599,6 +1635,8 @@ build source/vector2d/CMakeFiles/vector2d.dir/vector2d.cpp.o: CXX_COMPILER__vect
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/vector2d/CMakeFiles/vector2d.dir
   OBJECT_FILE_DIR = source/vector2d/CMakeFiles/vector2d.dir
+  TARGET_COMPILE_PDB = source/vector2d/CMakeFiles/vector2d.dir/vector2d.pdb
+  TARGET_PDB = source/vector2d/libvector2d.pdb
 
 
 # =============================================================================
@@ -1613,8 +1651,9 @@ build source/vector2d/libvector2d.a: CXX_STATIC_LIBRARY_LINKER__vector2d_Debug s
   OBJECT_DIR = source/vector2d/CMakeFiles/vector2d.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/vector2d/CMakeFiles/vector2d.dir/vector2d.pdb
   TARGET_FILE = source/vector2d/libvector2d.a
-  TARGET_PDB = vector2d.a.dbg
+  TARGET_PDB = source/vector2d/libvector2d.pdb
 
 
 #############################################
@@ -1695,6 +1734,8 @@ build source/pickaxe/CMakeFiles/pickaxe.dir/pickaxe.cpp.o: CXX_COMPILER__pickaxe
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/pickaxe/CMakeFiles/pickaxe.dir
   OBJECT_FILE_DIR = source/pickaxe/CMakeFiles/pickaxe.dir
+  TARGET_COMPILE_PDB = source/pickaxe/CMakeFiles/pickaxe.dir/pickaxe.pdb
+  TARGET_PDB = source/pickaxe/libpickaxe.pdb
 
 
 # =============================================================================
@@ -1709,8 +1750,9 @@ build source/pickaxe/libpickaxe.a: CXX_STATIC_LIBRARY_LINKER__pickaxe_Debug sour
   OBJECT_DIR = source/pickaxe/CMakeFiles/pickaxe.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/pickaxe/CMakeFiles/pickaxe.dir/pickaxe.pdb
   TARGET_FILE = source/pickaxe/libpickaxe.a
-  TARGET_PDB = pickaxe.a.dbg
+  TARGET_PDB = source/pickaxe/libpickaxe.pdb
 
 
 #############################################
@@ -1791,6 +1833,8 @@ build source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.cpp.o: CXX_COMPILER__i
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
   OBJECT_FILE_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
+  TARGET_COMPILE_PDB = source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.pdb
+  TARGET_PDB = source/itemsHead/libitemsHead.pdb
 
 
 # =============================================================================
@@ -1805,8 +1849,9 @@ build source/itemsHead/libitemsHead.a: CXX_STATIC_LIBRARY_LINKER__itemsHead_Debu
   OBJECT_DIR = source/itemsHead/CMakeFiles/itemsHead.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/itemsHead/CMakeFiles/itemsHead.dir/itemsHead.pdb
   TARGET_FILE = source/itemsHead/libitemsHead.a
-  TARGET_PDB = itemsHead.a.dbg
+  TARGET_PDB = source/itemsHead/libitemsHead.pdb
 
 
 #############################################
@@ -1887,6 +1932,8 @@ build source/entity/CMakeFiles/entity.dir/entity.cpp.o: CXX_COMPILER__entity_uns
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/entity/CMakeFiles/entity.dir
   OBJECT_FILE_DIR = source/entity/CMakeFiles/entity.dir
+  TARGET_COMPILE_PDB = source/entity/CMakeFiles/entity.dir/entity.pdb
+  TARGET_PDB = source/entity/libentity.pdb
 
 
 # =============================================================================
@@ -1901,8 +1948,9 @@ build source/entity/libentity.a: CXX_STATIC_LIBRARY_LINKER__entity_Debug source/
   OBJECT_DIR = source/entity/CMakeFiles/entity.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/entity/CMakeFiles/entity.dir/entity.pdb
   TARGET_FILE = source/entity/libentity.a
-  TARGET_PDB = entity.a.dbg
+  TARGET_PDB = source/entity/libentity.pdb
 
 
 #############################################
@@ -1983,6 +2031,8 @@ build source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.cpp.o: CXX_COMPI
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
   OBJECT_FILE_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
+  TARGET_COMPILE_PDB = source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.pdb
+  TARGET_PDB = source/entitysHead/libentitysHead.pdb
 
 
 # =============================================================================
@@ -1997,8 +2047,9 @@ build source/entitysHead/libentitysHead.a: CXX_STATIC_LIBRARY_LINKER__entitysHea
   OBJECT_DIR = source/entitysHead/CMakeFiles/entitysHead.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/entitysHead/CMakeFiles/entitysHead.dir/entitysHead.pdb
   TARGET_FILE = source/entitysHead/libentitysHead.a
-  TARGET_PDB = entitysHead.a.dbg
+  TARGET_PDB = source/entitysHead/libentitysHead.pdb
 
 
 #############################################
@@ -2079,6 +2130,8 @@ build source/zombie/CMakeFiles/zombie.dir/zombie.cpp.o: CXX_COMPILER__zombie_uns
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/zombie/CMakeFiles/zombie.dir
   OBJECT_FILE_DIR = source/zombie/CMakeFiles/zombie.dir
+  TARGET_COMPILE_PDB = source/zombie/CMakeFiles/zombie.dir/zombie.pdb
+  TARGET_PDB = source/zombie/libzombie.pdb
 
 
 # =============================================================================
@@ -2093,8 +2146,9 @@ build source/zombie/libzombie.a: CXX_STATIC_LIBRARY_LINKER__zombie_Debug source/
   OBJECT_DIR = source/zombie/CMakeFiles/zombie.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/zombie/CMakeFiles/zombie.dir/zombie.pdb
   TARGET_FILE = source/zombie/libzombie.a
-  TARGET_PDB = zombie.a.dbg
+  TARGET_PDB = source/zombie/libzombie.pdb
 
 
 #############################################
@@ -2175,6 +2229,8 @@ build source/worldUI/CMakeFiles/worldUI.dir/worldUI.cpp.o: CXX_COMPILER__worldUI
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/worldUI/CMakeFiles/worldUI.dir
   OBJECT_FILE_DIR = source/worldUI/CMakeFiles/worldUI.dir
+  TARGET_COMPILE_PDB = source/worldUI/CMakeFiles/worldUI.dir/worldUI.pdb
+  TARGET_PDB = source/worldUI/libworldUI.pdb
 
 
 # =============================================================================
@@ -2189,8 +2245,9 @@ build source/worldUI/libworldUI.a: CXX_STATIC_LIBRARY_LINKER__worldUI_Debug sour
   OBJECT_DIR = source/worldUI/CMakeFiles/worldUI.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/worldUI/CMakeFiles/worldUI.dir/worldUI.pdb
   TARGET_FILE = source/worldUI/libworldUI.a
-  TARGET_PDB = worldUI.a.dbg
+  TARGET_PDB = source/worldUI/libworldUI.pdb
 
 
 #############################################
@@ -2271,6 +2328,8 @@ build source/text/CMakeFiles/text.dir/text.cpp.o: CXX_COMPILER__text_unscanned_D
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/text/CMakeFiles/text.dir
   OBJECT_FILE_DIR = source/text/CMakeFiles/text.dir
+  TARGET_COMPILE_PDB = source/text/CMakeFiles/text.dir/text.pdb
+  TARGET_PDB = source/text/libtext.pdb
 
 
 # =============================================================================
@@ -2285,8 +2344,9 @@ build source/text/libtext.a: CXX_STATIC_LIBRARY_LINKER__text_Debug source/text/C
   OBJECT_DIR = source/text/CMakeFiles/text.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/text/CMakeFiles/text.dir/text.pdb
   TARGET_FILE = source/text/libtext.a
-  TARGET_PDB = text.a.dbg
+  TARGET_PDB = source/text/libtext.pdb
 
 
 #############################################
@@ -2367,6 +2427,8 @@ build source/item/CMakeFiles/item.dir/item.cpp.o: CXX_COMPILER__item_unscanned_D
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/item/CMakeFiles/item.dir
   OBJECT_FILE_DIR = source/item/CMakeFiles/item.dir
+  TARGET_COMPILE_PDB = source/item/CMakeFiles/item.dir/item.pdb
+  TARGET_PDB = source/item/libitem.pdb
 
 
 # =============================================================================
@@ -2381,8 +2443,9 @@ build source/item/libitem.a: CXX_STATIC_LIBRARY_LINKER__item_Debug source/item/C
   OBJECT_DIR = source/item/CMakeFiles/item.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/item/CMakeFiles/item.dir/item.pdb
   TARGET_FILE = source/item/libitem.a
-  TARGET_PDB = item.a.dbg
+  TARGET_PDB = source/item/libitem.pdb
 
 
 #############################################
@@ -2463,6 +2526,8 @@ build source/tree/CMakeFiles/tree.dir/tree.cpp.o: CXX_COMPILER__tree_unscanned_D
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/tree/CMakeFiles/tree.dir
   OBJECT_FILE_DIR = source/tree/CMakeFiles/tree.dir
+  TARGET_COMPILE_PDB = source/tree/CMakeFiles/tree.dir/tree.pdb
+  TARGET_PDB = source/tree/libtree.pdb
 
 
 # =============================================================================
@@ -2477,8 +2542,9 @@ build source/tree/libtree.a: CXX_STATIC_LIBRARY_LINKER__tree_Debug source/tree/C
   OBJECT_DIR = source/tree/CMakeFiles/tree.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/tree/CMakeFiles/tree.dir/tree.pdb
   TARGET_FILE = source/tree/libtree.a
-  TARGET_PDB = tree.a.dbg
+  TARGET_PDB = source/tree/libtree.pdb
 
 
 #############################################
@@ -2559,6 +2625,8 @@ build source/treesHead/CMakeFiles/treesHead.dir/treesHead.cpp.o: CXX_COMPILER__t
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = source/treesHead/CMakeFiles/treesHead.dir
   OBJECT_FILE_DIR = source/treesHead/CMakeFiles/treesHead.dir
+  TARGET_COMPILE_PDB = source/treesHead/CMakeFiles/treesHead.dir/treesHead.pdb
+  TARGET_PDB = source/treesHead/libtreesHead.pdb
 
 
 # =============================================================================
@@ -2573,8 +2641,9 @@ build source/treesHead/libtreesHead.a: CXX_STATIC_LIBRARY_LINKER__treesHead_Debu
   OBJECT_DIR = source/treesHead/CMakeFiles/treesHead.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = source/treesHead/CMakeFiles/treesHead.dir/treesHead.pdb
   TARGET_FILE = source/treesHead/libtreesHead.a
-  TARGET_PDB = treesHead.a.dbg
+  TARGET_PDB = source/treesHead/libtreesHead.pdb
 
 
 #############################################
@@ -2900,14 +2969,14 @@ build source/zombie/all: phony source/zombie/libzombie.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/attackHand/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/background/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/base/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/blocksHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/bullet/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/coffeeCup/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/dVector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/gun/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/inventory/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/pickaxe/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/text/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/tree/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/treesHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CPack.cmake /usr/share/cmake/Modules/CPackComponent.cmake /usr/share/cmake/Modules/CTest.cmake /usr/share/cmake/Modules/CTestTargets.cmake /usr/share/cmake/Modules/CTestUseLaunchers.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/DartConfiguration.tcl.in /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/attackHand/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/background/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/base/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/blocksHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/bullet/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/coffeeCup/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/dVector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/gun/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/inventory/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/pickaxe/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/text/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/tree/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/treesHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/CMakeLists.txt /usr/share/cmake/Modules/CMakeCCompiler.cmake.in /usr/share/cmake/Modules/CMakeCCompilerABI.c /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXCompiler.cmake.in /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeCompilerIdDetection.cmake /usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake /usr/share/cmake/Modules/CMakeDetermineCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake /usr/share/cmake/Modules/CMakeDetermineSystem.cmake /usr/share/cmake/Modules/CMakeFindBinUtils.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeNinjaFindMake.cmake /usr/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /usr/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake /usr/share/cmake/Modules/CMakeSystem.cmake.in /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CMakeTestCCompiler.cmake /usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake /usr/share/cmake/Modules/CMakeTestCompilerCommon.cmake /usr/share/cmake/Modules/CPack.cmake /usr/share/cmake/Modules/CPackComponent.cmake /usr/share/cmake/Modules/CTest.cmake /usr/share/cmake/Modules/CTestTargets.cmake /usr/share/cmake/Modules/CTestUseLaunchers.cmake /usr/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/DartConfiguration.tcl.in /usr/share/cmake/Modules/Internal/FeatureTesting.cmake /usr/share/cmake/Modules/Platform/Linux-Determine-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/attackHand/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/background/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/base/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/blocksHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/bullet/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/coffeeCup/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/dVector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/gun/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/inventory/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/pickaxe/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/text/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/tree/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/treesHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CPack.cmake /usr/share/cmake/Modules/CPackComponent.cmake /usr/share/cmake/Modules/CTest.cmake /usr/share/cmake/Modules/CTestTargets.cmake /usr/share/cmake/Modules/CTestUseLaunchers.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/DartConfiguration.tcl.in /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake: phony
+build /home/rdex999/Documents/cppScripts/CaffeineWorld/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/attackHand/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/background/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/base/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/block/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/blocksHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/bullet/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/coffeeCup/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/dVector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entity/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/entitysHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/gun/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/inventory/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/item/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/itemsHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/pickaxe/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/player/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/text/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/tree/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/treesHead/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/vector2d/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/worldUI/CMakeLists.txt /home/rdex999/Documents/cppScripts/CaffeineWorld/source/zombie/CMakeLists.txt /usr/share/cmake/Modules/CMakeCCompiler.cmake.in /usr/share/cmake/Modules/CMakeCCompilerABI.c /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXCompiler.cmake.in /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeCompilerIdDetection.cmake /usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake /usr/share/cmake/Modules/CMakeDetermineCompiler.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake /usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake /usr/share/cmake/Modules/CMakeDetermineSystem.cmake /usr/share/cmake/Modules/CMakeFindBinUtils.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeNinjaFindMake.cmake /usr/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /usr/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake /usr/share/cmake/Modules/CMakeSystem.cmake.in /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CMakeTestCCompiler.cmake /usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake /usr/share/cmake/Modules/CMakeTestCompilerCommon.cmake /usr/share/cmake/Modules/CPack.cmake /usr/share/cmake/Modules/CPackComponent.cmake /usr/share/cmake/Modules/CTest.cmake /usr/share/cmake/Modules/CTestTargets.cmake /usr/share/cmake/Modules/CTestUseLaunchers.cmake /usr/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake /usr/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/share/cmake/Modules/DartConfiguration.tcl.in /usr/share/cmake/Modules/Internal/FeatureTesting.cmake /usr/share/cmake/Modules/Platform/Linux-Determine-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Templates/CPackConfig.cmake.in CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake: phony
 
 
 #############################################
