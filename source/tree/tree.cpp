@@ -1,4 +1,5 @@
 #include "tree.h"
+#define GRAVITY 9.80665
 
 tree::tree(base *baseObj, player *playerObj, SDL_Texture *texture,
     const vector2d* location, int treeArrayIdx)
@@ -11,6 +12,8 @@ tree::tree(base *baseObj, player *playerObj, SDL_Texture *texture,
 
     this->location.W = 396/1.3;
     this->location.H = 630/1.3;
+
+    inAir = true;
 }
 
 tree::~tree()
@@ -23,6 +26,10 @@ tree::~tree()
 void tree::tick()
 {
     render();
+
+    if(inAir){
+        location.Y += baseObj->deltaTime * 30 * GRAVITY;
+    }
 }
 
 void tree::render()

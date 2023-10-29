@@ -412,9 +412,11 @@ void block::treeCollision()
 
     for(int i=0; i<baseObj->treeArrayLength; i++){
         if(baseObj->trees[i]){
+            baseObj->trees[i]->inAir = true; 
             if(location.inBoxRel(baseObj->trees[i]->location)){
                 treeAbove = true;
-                return;
+                baseObj->trees[i]->inAir = false; 
+                baseObj->trees[i]->location.Y -= baseObj->trees[i]->location.getWH().Y - location.Y;
             }
         }
     }

@@ -15,6 +15,10 @@ class tree
         // the location of the tree on the screen 
         vector2d location;
 
+        // if the tree is in the air
+        // used to determin whether to use gravity
+        bool inAir;
+
     private:
 
         // renders the tree to the screen

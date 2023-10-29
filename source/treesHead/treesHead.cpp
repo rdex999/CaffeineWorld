@@ -15,7 +15,7 @@ treesHead::treesHead(base *baseObj, player *playerObj)
     baseObj->trees = trees;
     baseObj->treeArrayLength = MAX_TREES;
 
-    vector2d treeLoc(500, 600);
+    vector2d treeLoc(500, 450);
     trees[0] = new tree(baseObj, playerObj, textureTree, &treeLoc, 0);
 }
 
