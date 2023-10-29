@@ -1,0 +1,2 @@
+add_library(entitysHead entitysHead.cpp)
+target_link_libraries(entitysHead zombie)

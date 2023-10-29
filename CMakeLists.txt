@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.27.7)
+project(CaffeineWorld VERSION 0.1.0 LANGUAGES C CXX)
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
+set(CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+
+include(CTest)
+enable_testing()
+include(CPack)
+
+link_libraries(SDL2 SDL2main SDL2_ttf SDL2_image)
+
+add_executable(CaffeineWorld source/main/main.cpp)
+
+add_subdirectory(source/attackHand)
+add_subdirectory(source/background)
+add_subdirectory(source/base)
+add_subdirectory(source/block)
+add_subdirectory(source/blocksHead)
+add_subdirectory(source/bullet)
+add_subdirectory(source/coffeeCup)
+add_subdirectory(source/dVector2d)
+add_subdirectory(source/entity)
+add_subdirectory(source/entitysHead)
+add_subdirectory(source/gun)
+add_subdirectory(source/inventory)
+add_subdirectory(source/item)
+add_subdirectory(source/itemsHead)
+add_subdirectory(source/pickaxe)
+add_subdirectory(source/player)
+add_subdirectory(source/text)
+add_subdirectory(source/tree)
+add_subdirectory(source/treesHead)
+add_subdirectory(source/vector2d)
+add_subdirectory(source/worldUI)
+add_subdirectory(source/zombie)
+
+target_link_libraries(CaffeineWorld 
+    attackHand background base block blocksHead bullet coffeeCup 
+    dVector2d entity entitysHead gun inventory item itemsHead pickaxe player text tree 
+    treesHead vector2d worldUI zombie 
+)

@@ -1,0 +1,2 @@
+add_library(background background.cpp)
+target_link_libraries(background coffeeCup)

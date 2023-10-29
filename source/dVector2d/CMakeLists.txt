@@ -1,0 +1,1 @@
+add_library(dVector2d dVector2d.cpp)
