@@ -7,7 +7,8 @@
 // basic variables and functions that almost every class will need
 typedef struct base
 {
-    base(vector2d* screenSize);
+    base(vector2d screenSize);
+    base() = default;
     ~base();
 
     // game state

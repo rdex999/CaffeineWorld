@@ -14,7 +14,7 @@ class itemsHead
         void tick();
 
         // store attack hand pointer
-        attackHand* attackHandObj = nullptr;
+        attackHand attackHandObj;
     
     private:
 

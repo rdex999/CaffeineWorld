@@ -14,7 +14,7 @@
 // container for all of the components
 typedef struct container
 {
-    container();
+    container(vector2d screenSize);
     ~container();
 
     // handle keyboard
@@ -26,7 +26,7 @@ typedef struct container
     // adds the screenOffset to all classes that tick before the player
     void addOffset();
 
-    base* baseObj;
+    base baseObj;
     background* backgroundObj;
     player* playerObj;
     treesHead* treesHeadObj;

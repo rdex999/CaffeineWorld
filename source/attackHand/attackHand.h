@@ -7,6 +7,7 @@ class attackHand
 {
     public:
         attackHand(base* baseObj, player* playerObj);
+        attackHand() = default;
         ~attackHand();
 
         // runs every frame

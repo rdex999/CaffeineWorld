@@ -1,15 +1,15 @@
 #include "base.h"
 
-base::base(vector2d *screenSize)
+base::base(vector2d screenSize)
 {
-    this->screenSize = *screenSize;
+    this->screenSize = std::move(screenSize);
 
     screenOffset = vector2d(0, 0);
 
     SDL_Init(SDL_INIT_VIDEO);
     TTF_Init();
 
-    this->window = SDL_CreateWindow("Caffeine World", 0, 0, screenSize->X, screenSize->Y, 0);
+    this->window = SDL_CreateWindow("Caffeine World", 0, 0, this->screenSize.X, this->screenSize.Y, 0);
     SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
     this->mainRenderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }

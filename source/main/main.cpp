@@ -3,15 +3,15 @@
 int main()
 {
     srand(time(NULL));
-    container containerObj;
+    container containerObj(vector2d(1920, 1080));
 
     Uint64 deltaTimeNow = SDL_GetPerformanceCounter();
     Uint64 deltaTimeLast = 0;
-    while(containerObj.baseObj->run)
+    while(containerObj.baseObj.run)
     {
         deltaTimeLast = deltaTimeNow;
         deltaTimeNow = SDL_GetPerformanceCounter();
-        containerObj.baseObj->deltaTime = ((deltaTimeNow - deltaTimeLast)*1000 / (double)SDL_GetPerformanceFrequency())*0.001;
+        containerObj.baseObj.deltaTime = ((deltaTimeNow - deltaTimeLast)*1000 / (double)SDL_GetPerformanceFrequency())*0.001;
 
         containerObj.handleEvent();
         containerObj.runTicks();
@@ -20,19 +20,17 @@ int main()
     return 0;
 } 
 
-container::container()
+container::container(vector2d screenSize)
+    : baseObj(base(std::move(screenSize)))
 {
-    vector2d screenSize(1920, 1080);
-
-    baseObj = new base(&screenSize);
-    backgroundObj = new background(baseObj);
-    playerObj = new player(baseObj);
-    treesHeadObj = new treesHead(baseObj, playerObj);
-    itemsHeadObj = new itemsHead(baseObj, playerObj);
-    entitysHeadObj = new entitysHead(baseObj, playerObj);
-    blocksHeadObj = new blocksHead(baseObj, playerObj);
-    inventoryObj = new inventory(baseObj, playerObj, itemsHeadObj);
-    worldUiObj = new worldUI(baseObj, playerObj);
+    backgroundObj = new background(&baseObj);
+    playerObj = new player(&baseObj);
+    treesHeadObj = new treesHead(&baseObj, playerObj);
+    itemsHeadObj = new itemsHead(&baseObj, playerObj);
+    entitysHeadObj = new entitysHead(&baseObj, playerObj);
+    blocksHeadObj = new blocksHead(&baseObj, playerObj);
+    inventoryObj = new inventory(&baseObj, playerObj, itemsHeadObj);
+    worldUiObj = new worldUI(&baseObj, playerObj);
 }
 
 container::~container()
@@ -46,7 +44,7 @@ container::~container()
     if(inventoryObj){delete inventoryObj;}
     if(worldUiObj){delete worldUiObj;}
 
-    if(baseObj){delete baseObj;}
+    baseObj.~base();
 
     TTF_Quit();
     SDL_Quit();
@@ -55,9 +53,9 @@ container::~container()
 void container::handleEvent()
 {
     int x, y;
-    baseObj->mouseState = SDL_GetMouseState(&x, &y);
-    baseObj->mouseLocation.X = x;
-    baseObj->mouseLocation.Y = y;
+    baseObj.mouseState = SDL_GetMouseState(&x, &y);
+    baseObj.mouseLocation.X = x;
+    baseObj.mouseLocation.Y = y;
  
     SDL_Event event;
     while(SDL_PollEvent(&event))
@@ -67,12 +65,12 @@ void container::handleEvent()
             // In case user requests exit, quit the game.
             case SDL_WINDOWEVENT_CLOSE: 
                 std::cout << "Quiting." << std::endl;
-                baseObj->run = false; 
+                baseObj.run = false; 
                 break;
 
             case SDL_QUIT:
                 std::cout << "Quiting." << std::endl;
-                baseObj->run = false; 
+                baseObj.run = false; 
                 break;
 
             case SDL_MOUSEWHEEL:
@@ -197,28 +195,28 @@ void container::runTicks()
 
     addOffset();
 
-    SDL_RenderPresent(baseObj->mainRenderer);
+    SDL_RenderPresent(baseObj.mainRenderer);
 
-    baseObj->screenOffset = vector2d(0, 0);
+    baseObj.screenOffset = vector2d(0, 0);
 }
 
 void container::addOffset()
 {
-    for(unsigned int i=0; i<baseObj->treeArrayLength; i++){
-        if(baseObj->trees[i]){
-            baseObj->trees[i]->location += baseObj->screenOffset;
+    for(unsigned int i=0; i<baseObj.treeArrayLength; i++){
+        if(baseObj.trees[i]){
+            baseObj.trees[i]->location += baseObj.screenOffset;
         }
     }
 
     for(unsigned int i=0; i < 1500; i++){
         if(blocksHeadObj->blockArray[i]){
-            blocksHeadObj->blockArray[i]->location += baseObj->screenOffset;
+            blocksHeadObj->blockArray[i]->location += baseObj.screenOffset;
         }
     }
 
-    for(unsigned int i = 0; i < baseObj->entityArrayLength; i++){
+    for(unsigned int i = 0; i < baseObj.entityArrayLength; i++){
         if(entitysHeadObj->entityArray[i]){
-            entitysHeadObj->entityArray[i]->location += baseObj->screenOffset;
+            entitysHeadObj->entityArray[i]->location += baseObj.screenOffset;
         }
     }
 }

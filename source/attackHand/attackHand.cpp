@@ -22,7 +22,6 @@ attackHand::attackHand(base *baseObj, player* playerObj)
         std::cout << "Error: could not create attackHand texture.\n" << SDL_GetError() << std::endl;
         exit(1);
     }
-
 }
 
 attackHand::~attackHand()
