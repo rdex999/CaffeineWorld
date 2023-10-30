@@ -51,7 +51,6 @@ block::~block()
 
 void block::tick()
 {
-    location += baseObj->screenOffset;
 
     // everything in this if statement runs only once.
     // i did this because this code needs to run after all the blocks have been created.

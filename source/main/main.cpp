@@ -204,9 +204,21 @@ void container::runTicks()
 
 void container::addOffset()
 {
-    for(int i=0; i<baseObj->treeArrayLength; i++){
+    for(unsigned int i=0; i<baseObj->treeArrayLength; i++){
         if(baseObj->trees[i]){
             baseObj->trees[i]->location += baseObj->screenOffset;
+        }
+    }
+
+    for(unsigned int i=0; i < 1500; i++){
+        if(blocksHeadObj->blockArray[i]){
+            blocksHeadObj->blockArray[i]->location += baseObj->screenOffset;
+        }
+    }
+
+    for(unsigned int i = 0; i < baseObj->entityArrayLength; i++){
+        if(entitysHeadObj->entityArray[i]){
+            entitysHeadObj->entityArray[i]->location += baseObj->screenOffset;
         }
     }
 }

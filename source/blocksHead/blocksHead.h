@@ -12,6 +12,9 @@ class blocksHead
         // runs every frame
         void tick();
 
+        // an array of all dirt blocks in the world
+        block* blockArray[1500] = {nullptr};
+
     private:
 
         // store baseObj and playerObj pointers
@@ -24,8 +27,6 @@ class blocksHead
         // time since the last build event.
         double timeBuild;
 
-        // an array of all dirt blocks in the world
-        block* blockArray[1500] = {nullptr};
 
         // the textures of the dirt blcks.
         // index 0 is dirt texture, index 1 is dirtGrass texture

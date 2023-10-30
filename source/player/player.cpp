@@ -8,8 +8,6 @@ player::player(base *baseObj)
     // store the baseObj pointer
     this->baseObj = baseObj;
 
-    screenBox = vector2d(baseObj->screenSize.X/4, baseObj->screenSize.Y/4,
-        baseObj->screenSize.X - baseObj->screenSize.X/4, baseObj->screenSize.Y - baseObj->screenSize.Y/4);
 
     selectedItemIndex = 0;
 
@@ -37,16 +35,20 @@ player::player(base *baseObj)
     // the location of the floor in the background 
     floorLocation = vector2d(0, baseObj->screenSize.Y/1.064);
 
-    // set the spawn location on screen
-    location = baseObj->screenSize / 2 - vector2d(baseObj->screenSize.X/4, 0);
-
-    // set the player skin size
-    location.W = 556/9;
-    location.H = 1030/9;
-
     // for the player-v3.0 
     //location.W = 240/3.85;
     //location.H = 435/3.85;
+    
+    // set the player skin size
+    location.W = 556/9;
+    location.H = 1030/9;
+    
+    // set the spawn location on screen
+    location.X = baseObj->screenSize.X / 2 - location.W/2;
+    location.Y = baseObj->screenSize.Y / 2 - location.H/2;
+
+    screenBox = vector2d(location.X - location.W * 2, location.Y - location.H * 2,
+        location.X + location.W * 2, location.Y + location.H * 2);
 
     // load the skin images
     textures[0] = IMG_LoadTexture(baseObj->mainRenderer, "./images/player/skin.png");
